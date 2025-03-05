@@ -1424,7 +1424,7 @@
                         </spotbugsXmlOutputDirectory>
                         <onlyAnalyze>sleeper.-</onlyAnalyze>
                         <excludeFilterFile>
-                            ../code-style/spotbugs-exclude.xml
+                            ..\code-style\spotbugs-exclude.xml
                         </excludeFilterFile>
                     </configuration>
                     <executions>
