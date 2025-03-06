@@ -178,7 +178,7 @@
         <jnr.ffi.version>2.2.17</jnr.ffi.version>
         <scijava.native.version>2.5.0</scijava.native.version>
         <!-- Testing -->
-        <junit.version>5.12.0</junit.version>
+        <junit.version>5.11.4</junit.version>
         <junit.platform.version>1.12.0</junit.platform.version>
         <mockito.version>5.15.2</mockito.version>
         <testcontainers.version>1.20.5</testcontainers.version>
@@ -212,6 +212,7 @@
         <enforcer.plugin.version>3.5.0</enforcer.plugin.version>
         <distribution.format>dir</distribution.format>
         <spotbugs.version>4.9.2</spotbugs.version>
+        <diffblue.cover.annotations.version>1.3.0</diffblue.cover.annotations.version>
         <spotbugs.plugin.version>4.8.3.1</spotbugs.plugin.version>
         <dependency.plugin.version>3.8.1</dependency.plugin.version>
         <go-offline.plugin.version>1.2.8</go-offline.plugin.version>
@@ -238,13 +239,17 @@
         <!--  This is required for later correct replacement of argLine -->
         <argLine/>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-annotations</artifactId>
                 <version>${spotbugs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.diffblue.cover</groupId>
+                <artifactId>cover-annotations</artifactId>
+                <version>${diffblue.cover.annotations.version}</version>
             </dependency>
             <!-- AWS CDK -->
             <dependency>
@@ -1074,6 +1079,11 @@
                 <version>${junit.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.junit.platform</groupId>
                 <artifactId>junit-platform-suite</artifactId>
                 <version>${junit.platform.version}</version>
@@ -1110,6 +1120,21 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.diffblue.cover</groupId>
+            <artifactId>cover-annotations</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -1228,6 +1253,9 @@
                                 <!-- Hadoop client sets many exclusions in hadoop-common dependency, so we don't want to redeclare that -->
                                 <ignoredUnusedDeclaredDependency>org.apache.hadoop:hadoop-client::</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>org.apache.hadoop:hadoop-aws::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>com.diffblue.cover:cover-annotations::</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.mockito:mockito-core:jar::</ignoredUnusedDeclaredDependency>
+
                             </ignoredUnusedDeclaredDependencies>
                             <ignoreAllNonTestScoped>true</ignoreAllNonTestScoped>
                         </configuration>
@@ -1424,7 +1452,7 @@
                         </spotbugsXmlOutputDirectory>
                         <onlyAnalyze>sleeper.-</onlyAnalyze>
                         <excludeFilterFile>
-                            ..\code-style\spotbugs-exclude.xml
+                            ../code-style/spotbugs-exclude.xml
                         </excludeFilterFile>
                     </configuration>
                     <executions>
