@@ -130,6 +130,7 @@ global:
     - --global-settings=${DIFFBLUE_MAVEN_GLOBAL_SETTINGS}
     - -Denforcer.fail=false
     - -Dmdep.analyze.skip
+    - -Dcheckstyle.skip=true
 
   # The timeout for all the phases unless a phase specific timeout value has been set.
   timeout: PT10M
@@ -173,7 +174,7 @@ global:
 
     - name: org.apache.maven.plugins:maven-checkstyle-plugin
       disable: disable
-      enable: check
+      enable: disable
       flags: ~
       goals:
         - name: check
