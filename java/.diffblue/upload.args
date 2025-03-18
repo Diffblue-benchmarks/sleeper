@@ -1,0 +1,2 @@
+--exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite
+-D=skipRust=true
