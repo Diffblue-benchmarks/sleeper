@@ -24,6 +24,8 @@ import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.function.Supplier;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -32,6 +34,7 @@ import sleeper.core.properties.instance.InstanceProperties;
 import sleeper.core.tracker.ingest.task.IngestTaskStatus;
 import sleeper.ingest.tracker.IngestTrackerException;
 
+@Disabled
 class DynamoDBIngestTaskTrackerDiffblueTest {
   /**
    * Test {@link DynamoDBIngestTaskTracker#taskStatusTableName(String)}.

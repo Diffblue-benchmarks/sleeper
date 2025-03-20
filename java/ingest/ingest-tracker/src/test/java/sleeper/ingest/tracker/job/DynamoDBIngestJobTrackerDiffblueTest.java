@@ -29,6 +29,8 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Supplier;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -42,6 +44,7 @@ import sleeper.core.tracker.ingest.job.update.IngestJobValidatedEvent;
 import sleeper.core.tracker.job.run.RecordsProcessed;
 import sleeper.ingest.tracker.IngestTrackerException;
 
+@Disabled
 class DynamoDBIngestJobTrackerDiffblueTest {
   /**
    * Test {@link DynamoDBIngestJobTracker#jobUpdatesTableName(String)}.

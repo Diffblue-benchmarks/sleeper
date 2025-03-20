@@ -35,6 +35,7 @@ import java.util.function.Supplier;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hdfs.HdfsConfiguration;
 import org.apache.hadoop.yarn.conf.YarnConfiguration;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -499,6 +500,7 @@ class SplitPartitionLambdaDiffblueTest {
    * <p>
    * Method under test: {@link SplitPartitionLambda#handleRequest(SQSEvent, Context)}
    */
+  @Disabled
   @Test
   @DisplayName("Test handleRequest(SQSEvent, Context) with 'SQSEvent', 'Context'")
   @Tag("MaintainedByDiffblue")

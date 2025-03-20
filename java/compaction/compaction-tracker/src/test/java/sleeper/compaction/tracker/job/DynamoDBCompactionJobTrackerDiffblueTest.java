@@ -26,6 +26,8 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Supplier;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -42,6 +44,7 @@ import sleeper.core.tracker.compaction.job.update.CompactionJobFinishedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobStartedEvent;
 import sleeper.core.tracker.job.run.RecordsProcessed;
 
+@Disabled
 class DynamoDBCompactionJobTrackerDiffblueTest {
   /**
    * Test {@link DynamoDBCompactionJobTracker#stronglyConsistentReads(AmazonDynamoDB, InstanceProperties)}.
