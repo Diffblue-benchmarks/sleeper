@@ -136,6 +136,10 @@ global:
     - --projects=${MODULE}
     - --settings=${DIFFBLUE_MAVEN_USER_SETTINGS}
     - --global-settings=${DIFFBLUE_MAVEN_GLOBAL_SETTINGS}
+    - -DskipRust=true
+    - -Denforcer.fail=false
+    - -Dmdep.analyze.skip
+    - -Dcheckstyle.skip=true
 
   # The timeout for all the phases unless a phase specific timeout value has been set.
   timeout: PT10M
@@ -179,7 +183,7 @@ global:
 
     - name: org.apache.maven.plugins:maven-checkstyle-plugin
       disable: disable
-      enable: check
+      enable: disable
       flags: ~
       goals:
         - name: check
@@ -220,7 +224,6 @@ global:
 # The phases are named according to `dcover`'s needs and aren't specific to any build system (despite some overlap).
 # The idea is that each phase provides a list of build system `goals` which will be combined into a single invocation.
 phase:
-
   # The info phase is used early on to gather information about the structure of the project under test.
   info:
     goals:
@@ -271,7 +274,6 @@ phase:
   # The test phase is used to run the module under test's tests. This allows a filter to be specified to
   # include/exclude tests that match patterns, or run a single named test.
   test:
-
     # Allow the tests to run for 60 minutes
     timeout: PT60M
 
