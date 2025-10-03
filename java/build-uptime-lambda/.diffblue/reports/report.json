@@ -1,0 +1,823 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 616.149,
+    "environmentDetectionTime" : 0.059,
+    "indexingTime" : 0.566,
+    "entryPointsTime" : 0.048,
+    "generationTime" : 74672.828,
+    "timeToFirstTest" : 89190.038,
+    "timeToLastTest" : 88974.293,
+    "indexQueryTime" : 15.189,
+    "verificationTime" : 1145.514,
+    "validationTime" : 13.929
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 9,
+    "methodsCount" : 57,
+    "cumulativeDiffblueTestCount" : 15,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 15,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 278,
+    "perMethodTestability" : {
+      "T000" : 20,
+      "T001" : 5,
+      "T002" : 5,
+      "T003" : 6,
+      "T005" : 4,
+      "T008" : 2,
+      "T010" : 1,
+      "T012" : 11,
+      "T020" : 1,
+      "T023" : 2
+    },
+    "perMethodOutcome" : {
+      "R000" : 11,
+      "R002" : 1,
+      "R013" : 5,
+      "R083" : 9,
+      "T003" : 6,
+      "T008" : 2,
+      "T010" : 1,
+      "T012" : 11,
+      "T023" : 2
+    },
+    "perTestOutcome" : {
+      "R000" : 15
+    },
+    "perTestValidation" : {
+      "V000" : 15,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.build.uptime.lambda.BuildUptimeCondition" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 2,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 5,
+        "T003" : 1,
+        "T005" : 3,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1
+      }
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T002" : 5,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 9,
+        "T008" : 1
+      }
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEventSerDe" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1,
+        "T012" : 6,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 3,
+        "T003" : 1,
+        "T012" : 6,
+        "T023" : 1
+      }
+    },
+    "sleeper.build.uptime.lambda.GetS3ObjectAsString" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T010" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T010" : 1,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T003" : 1,
+        "T012" : 2,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 6,
+        "T003" : 1,
+        "T012" : 2,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable$Execution" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1
+      }
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable$InstantSerDe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 2,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 2,
+        "T008" : 1,
+        "T012" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.build.uptime.lambda.BuildUptimeCondition.<init>:(Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeCondition.check:(Lsleeper/build/uptime/lambda/GetS3ObjectAsString;Ljava/time/Instant;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        43,
+        44,
+        46,
+        48,
+        49,
+        51
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeCondition.check:(Lsoftware/amazon/awssdk/services/s3/S3Client;Ljava/time/Instant;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeCondition.of:(Lsleeper/build/uptime/lambda/BuildUptimeEvent;)Lsleeper/build/uptime/lambda/BuildUptimeCondition;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        81,
+        82
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.build:()Lsleeper/build/uptime/lambda/BuildUptimeEvent;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        122
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.condition:(Ljava/lang/String;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        90,
+        91
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.ec2Ids:(Ljava/util/List;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        100,
+        101
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.ec2Ids:([Ljava/lang/String;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.ifTestFinishedFromToday:()Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        118
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.operation:(Ljava/lang/String;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        85,
+        86
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.rules:(Ljava/util/List;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        105,
+        106
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.rules:([Ljava/lang/String;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        114
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent$Builder.testBucket:(Ljava/lang/String;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        95,
+        96
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.<init>:(Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.getCondition:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.getEc2Ids:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        49
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.getOperation:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.getRules:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.getTestBucket:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        45
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.operation:(Ljava/lang/String;)Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.start:()Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.stop:()Lsleeper/build/uptime/lambda/BuildUptimeEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        66
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEvent.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEventSerDe.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        25,
+        26
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEventSerDe.fromJson:(Ljava/io/InputStream;)Lsleeper/build/uptime/lambda/BuildUptimeEvent;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeEventSerDe.toJson:(Lsleeper/build/uptime/lambda/BuildUptimeEvent;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.<init>:(Lsoftware/amazon/awssdk/services/ec2/Ec2Client;Lsoftware/amazon/awssdk/services/cloudwatchevents/CloudWatchEventsClient;Lsoftware/amazon/awssdk/services/s3/S3Client;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        45,
+        38,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.applyOperation:(Lsleeper/build/uptime/lambda/BuildUptimeEvent;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        62,
+        64,
+        65,
+        67,
+        68,
+        72,
+        73,
+        75,
+        76,
+        80,
+        82
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.handleRequest:(Ljava/io/InputStream;Ljava/io/OutputStream;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        54,
+        55,
+        56,
+        57,
+        59
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.lambda$applyOperation$0:(Lsleeper/build/uptime/lambda/BuildUptimeEvent;Lsoftware/amazon/awssdk/services/ec2/model/StartInstancesRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.lambda$applyOperation$1:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/cloudwatchevents/model/EnableRuleRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.lambda$applyOperation$2:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.lambda$applyOperation$3:(Lsleeper/build/uptime/lambda/BuildUptimeEvent;Lsoftware/amazon/awssdk/services/ec2/model/StopInstancesRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        73
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.lambda$applyOperation$4:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/cloudwatchevents/model/DisableRuleRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.build.uptime.lambda.BuildUptimeLambda.lambda$applyOperation$5:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.build.uptime.lambda.GetS3ObjectAsString.fromClient:(Lsoftware/amazon/awssdk/services/s3/S3Client;)Lsleeper/build/uptime/lambda/GetS3ObjectAsString;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.build.uptime.lambda.GetS3ObjectAsString.getS3ObjectAsString:(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.build.uptime.lambda.GetS3ObjectAsString.lambda$fromClient$0:(Ljava/lang/String;Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/GetObjectRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        31
+      ]
+    },
+    "sleeper.build.uptime.lambda.GetS3ObjectAsString.lambda$fromClient$1:(Lsoftware/amazon/awssdk/services/s3/S3Client;Ljava/lang/String;Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable$Execution.<init>:(Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        82,
+        83,
+        84
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable$InstantSerDe.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable$InstantSerDe.deserialize:(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Ljava/time/Instant;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable$InstantSerDe.serialize:(Ljava/lang/Object;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable$InstantSerDe.serialize:(Ljava/time/Instant;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        43,
+        41,
+        44
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.containsTestFromToday:(Ljava/time/Instant;)Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        73
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.createGson:()Lcom/google/gson/Gson;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        88,
+        89,
+        90,
+        88
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.empty:()Lsleeper/build/uptime/lambda/NightlyTestSummaryTable;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.fromJson:(Ljava/lang/String;)Lsleeper/build/uptime/lambda/NightlyTestSummaryTable;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.fromS3:(Lsleeper/build/uptime/lambda/GetS3ObjectAsString;Ljava/lang/String;)Lsleeper/build/uptime/lambda/NightlyTestSummaryTable;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        62,
+        63
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.lambda$containsTestFromToday$0:(Lsleeper/build/uptime/lambda/NightlyTestSummaryTable$Execution;)Ljava/time/Instant;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        74
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.lambda$containsTestFromToday$1:(Ljava/time/Instant;Ljava/time/Instant;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.build.uptime.lambda.NightlyTestSummaryTable.toJson:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        68
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

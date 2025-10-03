@@ -1,0 +1,453 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 1847.507,
+    "environmentDetectionTime" : 0.049,
+    "indexingTime" : 0.445,
+    "entryPointsTime" : 0.032,
+    "generationTime" : 31106.293,
+    "timeToFirstTest" : 36984.586,
+    "timeToLastTest" : 38067.825,
+    "indexQueryTime" : 15.183,
+    "verificationTime" : 631.601,
+    "validationTime" : 14.487
+  },
+  "codes" : {
+    "R020" : "Temporary files were created but not deleted",
+    "R081" : "Exception in arrange section",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T006" : "Main method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 5,
+    "methodsCount" : 16,
+    "cumulativeDiffblueTestCount" : 0,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 0,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 351,
+    "perMethodTestability" : {
+      "T000" : 10,
+      "T001" : 1,
+      "T003" : 2,
+      "T006" : 2,
+      "T012" : 1
+    },
+    "perMethodOutcome" : {
+      "R020" : 5,
+      "R081" : 2,
+      "T003" : 2,
+      "T006" : 2,
+      "T012" : 1
+    },
+    "perTestValidation" : {
+      "V000" : 5,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.systemtest.cdk.SystemTestApp" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R020" : 4,
+        "T006" : 1
+      }
+    },
+    "sleeper.systemtest.cdk.SystemTestBucketStack" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R081" : 2,
+        "T003" : 1
+      }
+    },
+    "sleeper.systemtest.cdk.SystemTestClusterStack" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1
+      }
+    },
+    "sleeper.systemtest.cdk.SystemTestPropertiesStack" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T012" : 1
+      }
+    },
+    "sleeper.systemtest.cdk.SystemTestStandaloneApp" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R020" : 1,
+        "T006" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.systemtest.cdk.SystemTestApp.<init>:(Lsoftware/amazon/awscdk/App;Ljava/lang/String;Lsoftware/amazon/awscdk/StackProps;Lsleeper/systemtest/configuration/SystemTestProperties;Lsleeper/cdk/jars/BuiltJars;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R020",
+      "lineNumbers" : [
+        43,
+        39,
+        44,
+        45
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestApp.create:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R020",
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        53,
+        54,
+        55,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestApp.generateProperties:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R020",
+      "lineNumbers" : [
+        64,
+        65,
+        67
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestApp.getInstanceProperties:()Lsleeper/systemtest/configuration/SystemTestProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R020",
+      "lineNumbers" : [
+        71,
+        72,
+        73,
+        75
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestApp.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        79,
+        80,
+        81,
+        83,
+        85,
+        86,
+        87,
+        88,
+        89,
+        91,
+        92,
+        94,
+        95,
+        96,
+        97,
+        98,
+        100,
+        101,
+        91,
+        102
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestBucketStack.<init>:(Lsoftware/constructs/Construct;Ljava/lang/String;Lsleeper/systemtest/configuration/SystemTestProperties;Lsleeper/cdk/jars/BuiltJars;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestBucketStack.<init>:(Lsoftware/constructs/Construct;Ljava/lang/String;Lsleeper/systemtest/configuration/SystemTestStandaloneProperties;Lsleeper/cdk/jars/BuiltJars;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestBucketStack.createBucket:(Ljava/lang/String;Ljava/lang/String;Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/cdk/jars/BuiltJars;)Lsoftware/amazon/awscdk/services/s3/IBucket;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        79,
+        88
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestBucketStack.getBucket:()Lsoftware/amazon/awscdk/services/s3/IBucket;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        92
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestClusterStack.<init>:(Lsoftware/constructs/Construct;Ljava/lang/String;Lsleeper/systemtest/configuration/SystemTestProperties;Lsleeper/systemtest/cdk/SystemTestBucketStack;Lsleeper/cdk/stack/core/CoreStacks;Lsleeper/cdk/stack/ingest/IngestStacks;Lsleeper/cdk/stack/ingest/IngestBatcherStack;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestClusterStack.<init>:(Lsoftware/constructs/Construct;Ljava/lang/String;Lsleeper/systemtest/configuration/SystemTestStandaloneProperties;Lsleeper/systemtest/cdk/SystemTestBucketStack;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestClusterStack.createSystemTestCluster:(Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lsleeper/systemtest/configuration/SystemTestPropertySetter;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/systemtest/cdk/SystemTestBucketStack;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        85,
+        86,
+        87,
+        88,
+        89,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        118,
+        119,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        126,
+        130,
+        124,
+        131,
+        132,
+        133,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        137,
+        142
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestPropertiesStack.<init>:(Lsoftware/constructs/Construct;Ljava/lang/String;Lsleeper/systemtest/configuration/SystemTestStandaloneProperties;Lsleeper/systemtest/cdk/SystemTestBucketStack;Lsleeper/cdk/jars/BuiltJars;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        48,
+        50,
+        51,
+        52,
+        54,
+        55,
+        57,
+        59,
+        69,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        73,
+        77,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestPropertiesStack.lambda$new$0:(Ljava/lang/String;Lsleeper/systemtest/cdk/SystemTestBucketStack;Lsleeper/systemtest/configuration/SystemTestStandaloneProperties;Lsleeper/cdk/jars/LambdaBuilder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        64,
+        59
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestStandaloneApp.<init>:(Lsoftware/amazon/awscdk/App;Ljava/lang/String;Lsoftware/amazon/awscdk/StackProps;Lsleeper/systemtest/configuration/SystemTestStandaloneProperties;Lsleeper/cdk/jars/BuiltJars;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R020",
+      "lineNumbers" : [
+        40,
+        42,
+        43,
+        44,
+        46,
+        47
+      ]
+    },
+    "sleeper.systemtest.cdk.SystemTestStandaloneApp.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        50,
+        51,
+        52,
+        54,
+        55,
+        56,
+        58,
+        59,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        69,
+        70,
+        58,
+        71
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

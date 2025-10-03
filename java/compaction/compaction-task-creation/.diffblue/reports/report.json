@@ -1,0 +1,269 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 497.542,
+    "environmentDetectionTime" : 0.033,
+    "indexingTime" : 0.428,
+    "entryPointsTime" : 0.02,
+    "generationTime" : 27361.022,
+    "timeToFirstTest" : 32014.633,
+    "timeToLastTest" : 33265.211,
+    "indexQueryTime" : 10.426,
+    "verificationTime" : 578.802,
+    "validationTime" : 10.712
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T012" : "Synthetic method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 2,
+    "methodsCount" : 11,
+    "cumulativeDiffblueTestCount" : 6,
+    "cumulativeManualTestCount" : 17,
+    "completeTestCount" : 6,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 149,
+    "perMethodTestability" : {
+      "T000" : 7,
+      "T003" : 2,
+      "T012" : 1,
+      "T023" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 2,
+      "R013" : 5,
+      "T003" : 2,
+      "T012" : 1,
+      "T023" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 6
+    },
+    "perTestValidation" : {
+      "V000" : 6,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.compaction.task.creation.RunCompactionTasksLambda" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 4,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.compaction.task.creation.RunCompactionTasksLambda.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    "sleeper.compaction.task.creation.RunCompactionTasksLambda.eventHandler:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        55,
+        56
+      ]
+    },
+    "sleeper.compaction.task.creation.RunCompactionTasksLambda.validateParameter:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        59,
+        60,
+        61,
+        63
+      ]
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        71,
+        72,
+        74,
+        75,
+        78,
+        81,
+        82
+      ]
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.findEmptyInstances:(Ljava/lang/Iterable;ILcom/amazonaws/services/lambda/runtime/Context;)Ljava/util/Set;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        164,
+        165,
+        166,
+        167,
+        170,
+        172,
+        173,
+        174,
+        177,
+        178,
+        180,
+        181
+      ]
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.handleRequest:(Ljava/io/InputStream;Ljava/io/OutputStream;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        194,
+        195,
+        197,
+        199,
+        194,
+        199,
+        194,
+        201,
+        199,
+        200,
+        202
+      ]
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.lambda$handleRequest$0:()Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        197
+      ]
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.suggestIDsToTerminate:(Ljava/io/Reader;Ljava/io/Writer;Ljava/lang/Iterable;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        129,
+        130,
+        131,
+        132,
+        135,
+        137,
+        140,
+        142,
+        145,
+        146,
+        147,
+        149,
+        150
+      ]
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.totalTerminations:(Ljava/io/Reader;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        102,
+        103,
+        105,
+        106,
+        108,
+        111,
+        112,
+        113,
+        114
+      ]
+    },
+    "sleeper.compaction.task.creation.SafeTerminationLambda.validateParameter:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        85,
+        86,
+        87,
+        89
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

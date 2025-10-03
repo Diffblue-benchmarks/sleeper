@@ -1,0 +1,1413 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 780.441,
+    "environmentDetectionTime" : 0.071,
+    "indexingTime" : 0.529,
+    "entryPointsTime" : 0.061,
+    "generationTime" : 67938.662,
+    "timeToFirstTest" : 80026.59,
+    "timeToLastTest" : 80133.944,
+    "indexQueryTime" : 3.7880000000000003,
+    "verificationTime" : 1008.155,
+    "validationTime" : 13.078
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 15,
+    "methodsCount" : 89,
+    "cumulativeDiffblueTestCount" : 60,
+    "cumulativeManualTestCount" : 23,
+    "completeTestCount" : 60,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 585,
+    "perMethodTestability" : {
+      "T000" : 28,
+      "T001" : 10,
+      "T002" : 10,
+      "T003" : 26,
+      "T005" : 5,
+      "T008" : 3,
+      "T010" : 1,
+      "T012" : 3,
+      "T020" : 2,
+      "T023" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 35,
+      "R002" : 2,
+      "R011" : 1,
+      "R013" : 5,
+      "R083" : 1,
+      "T003" : 26,
+      "T005" : 3,
+      "T008" : 3,
+      "T010" : 1,
+      "T012" : 3,
+      "T023" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 60
+    },
+    "perTestValidation" : {
+      "V000" : 60,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.bulkexport.core.configuration.BulkExportPlatformSpec" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T005" : 1
+      }
+    },
+    "sleeper.bulkexport.core.job.BulkExportJob" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T005" : 1
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 7,
+        "T003" : 2,
+        "T005" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 12,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 13
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 7,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 8,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 7,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R083" : 1,
+        "T003" : 7,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 8,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 8,
+        "T008" : 1
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 15,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 2,
+        "R011" : 1,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 15
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$FixedSchemaLoader" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 2
+      },
+      "perMethodOutcome" : {
+        "T003" : 2
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$SchemaLoader" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$SchemaLoaderFromTableProvider" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 3,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 3,
+        "T012" : 1
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 3,
+        "T003" : 1,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery$Builder" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 3,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuerySerDe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 10,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 10
+      }
+    },
+    "sleeper.bulkexport.core.model.BulkExportQueryValidationException" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 2,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 3,
+        "T003" : 2,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.bulkexport.core.configuration.BulkExportPlatformSpec.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        21
+      ]
+    },
+    "sleeper.bulkexport.core.job.BulkExportJob.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        21
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        215,
+        216
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.build:()Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        296
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.exportId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        236,
+        237
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.files:(Ljava/util/List;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        291,
+        292
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.leafPartitionId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        269,
+        270
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.partitionRegion:(Lsleeper/core/range/Region;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        280,
+        281
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.regions:(Ljava/util/List;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        258,
+        259
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.subExportId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        247,
+        248
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery$Builder.tableId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        225,
+        226
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.<init>:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.builder:()Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        77
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "lineNumbers" : [
+        162,
+        163,
+        165,
+        166,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        169
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.forPartition:(Lsleeper/bulkexport/core/model/BulkExportQuery;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/partition/Partition;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        89
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.getExportId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        112
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.getFiles:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        157
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.getLeafPartitionId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        139
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.getPartitionRegion:()Lsleeper/core/range/Region;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        148
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.getRegions:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        130
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.getSubExportId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        121
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.hashCode:()I" : {
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "lineNumbers" : [
+        180
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.requireNonNull:(Ljava/lang/Object;Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery$Builder;Ljava/lang/String;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        197,
+        198,
+        200
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        185
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuery.validate:()Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        60
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        133,
+        134
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.build:()Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        172
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.exportId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        142,
+        143
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.files:(Ljava/util/List;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        167,
+        168
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.leafPartitionId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        157,
+        158
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.partitionRegion:(Lcom/google/gson/JsonElement;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        162,
+        163
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.regions:(Ljava/util/List;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        147,
+        148
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.subExportId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        152,
+        153
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson$Builder.tableId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        137,
+        138
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.<init>:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.builder:()Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.from:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuerySerDe$SchemaLoader;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQueryJson;" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        53
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.lambda$regionSerDeById$0:(Ljava/lang/String;Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportQueryValidationException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        98
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.readRegions:(Ljava/util/List;Lsleeper/core/range/RegionSerDe;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        103,
+        104,
+        107,
+        108,
+        109,
+        107,
+        110,
+        111
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.regionSerDe:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuerySerDe$SchemaLoader;Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;)Lsleeper/core/range/RegionSerDe;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        92
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.regionSerDeById:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuerySerDe$SchemaLoader;)Lsleeper/core/range/RegionSerDe;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        83,
+        84,
+        87
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.regionSerDeById:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuerySerDe$SchemaLoader;Ljava/lang/String;Ljava/lang/String;)Lsleeper/core/range/RegionSerDe;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        97,
+        98,
+        97
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.to:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuerySerDe$SchemaLoader;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        67
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQueryJson.writeRegions:(Ljava/util/List;Lsleeper/core/range/RegionSerDe;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        116,
+        117,
+        118,
+        116
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$FixedSchemaLoader.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        137,
+        138,
+        139
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$FixedSchemaLoader.getSchemaByTableId:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        143
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$SchemaLoader.getSchemaByTableId:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$SchemaLoaderFromTableProvider.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        112,
+        113,
+        114
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$SchemaLoaderFromTableProvider.getSchema:(Ljava/util/function/Supplier;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        123,
+        125,
+        126
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$SchemaLoaderFromTableProvider.getSchemaByTableId:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        118
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe$SchemaLoaderFromTableProvider.lambda$getSchemaByTableId$0:(Ljava/lang/String;)Lsleeper/core/properties/table/TableProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        118
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe.<init>:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuerySerDe$SchemaLoader;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        45,
+        46
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        49,
+        50
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe.fromJson:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        87,
+        88
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe.toJson:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;)Ljava/lang/String;" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportLeafPartitionQuerySerDe.toJson:(Lsleeper/bulkexport/core/model/BulkExportLeafPartitionQuery;Z)Ljava/lang/String;" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        73,
+        74,
+        76
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        130,
+        131
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery$Builder.build:()Lsleeper/bulkexport/core/model/BulkExportQuery;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        175
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery$Builder.exportId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        165,
+        166
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery$Builder.tableId:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        141,
+        142
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery$Builder.tableName:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportQuery$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        153,
+        154
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.<init>:(Lsleeper/bulkexport/core/model/BulkExportQuery$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        29,
+        30,
+        32,
+        33,
+        35,
+        36,
+        40,
+        41,
+        43
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.builder:()Lsleeper/bulkexport/core/model/BulkExportQuery$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        96,
+        97,
+        99,
+        100,
+        102,
+        103,
+        104,
+        105,
+        103
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.getExportId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        73
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.getTableName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        82
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuery.validate:()Lsleeper/bulkexport/core/model/BulkExportQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        54,
+        55,
+        51
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuerySerDe.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuerySerDe.fromJson:(Ljava/lang/String;)Lsleeper/bulkexport/core/model/BulkExportQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        69,
+        70
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuerySerDe.toJson:(Lsleeper/bulkexport/core/model/BulkExportQuery;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQuerySerDe.toJson:(Lsleeper/bulkexport/core/model/BulkExportQuery;Z)Ljava/lang/String;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        55,
+        56,
+        58
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQueryValidationException.<init>:(Ljava/lang/String;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        33,
+        34,
+        35
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQueryValidationException.<init>:(Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQueryValidationException.buildMessage:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        42,
+        43,
+        45
+      ]
+    },
+    "sleeper.bulkexport.core.model.BulkExportQueryValidationException.getExportId:()Ljava/util/Optional;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.<init>:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        56,
+        57
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.<init>:(Lsleeper/core/statestore/StateStore;Lsleeper/core/properties/table/TableProperties;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.getFiles:(Lsleeper/core/partition/Partition;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        141,
+        142,
+        143,
+        146,
+        147,
+        148,
+        149,
+        150,
+        152,
+        153
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.init:(Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        83,
+        84,
+        85,
+        86
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.init:(Ljava/util/List;Ljava/util/Map;Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        95,
+        97
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.initIfNeeded:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        74,
+        75,
+        76,
+        77,
+        79,
+        80
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.bulkexport.core.recordretrieval.BulkExportQuerySplitter.splitIntoLeafPartitionQueries:(Lsleeper/bulkexport/core/model/BulkExportQuery;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        108,
+        110,
+        111,
+        112,
+        114,
+        115,
+        116,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        130
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

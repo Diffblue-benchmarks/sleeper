@@ -1,0 +1,1763 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 668.589,
+    "environmentDetectionTime" : 0.066,
+    "indexingTime" : 0.471,
+    "entryPointsTime" : 0.057,
+    "generationTime" : 40241.115,
+    "timeToFirstTest" : 48187.677,
+    "timeToLastTest" : 48910.53,
+    "indexQueryTime" : 7.323,
+    "verificationTime" : 837.638,
+    "validationTime" : 22.914
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R081" : "Exception in arrange section",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 16,
+    "methodsCount" : 112,
+    "cumulativeDiffblueTestCount" : 64,
+    "cumulativeManualTestCount" : 36,
+    "completeTestCount" : 66,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 818,
+    "perMethodTestability" : {
+      "T000" : 29,
+      "T001" : 26,
+      "T002" : 11,
+      "T003" : 19,
+      "T005" : 6,
+      "T008" : 1,
+      "T010" : 3,
+      "T012" : 11,
+      "T020" : 1,
+      "T023" : 5
+    },
+    "perMethodOutcome" : {
+      "R000" : 40,
+      "R002" : 2,
+      "R013" : 2,
+      "R081" : 4,
+      "R083" : 12,
+      "T003" : 19,
+      "T008" : 1,
+      "T010" : 3,
+      "T012" : 11,
+      "T023" : 5
+    },
+    "perTestOutcome" : {
+      "R000" : 66
+    },
+    "perTestValidation" : {
+      "V000" : 64,
+      "V003" : 2
+    },
+    "warnings" : {
+      "W002" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.splitter.core.find.FindPartitionToSplitResult" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 3,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit$JobSender" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck" : {
+      "methodsCount" : 14,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 4,
+        "T003" : 4,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R081" : 4,
+        "T003" : 4,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 3,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 7
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      }
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe$SplitPartitionJobDefinitionJsonSerDe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      }
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 3,
+        "T012" : 3,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "T003" : 3,
+        "T012" : 3,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "warnings" : {
+        "W002" : 1
+      }
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint$SketchesLoader" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.splitter.core.split.SplitPartition" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 3,
+        "T012" : 2,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1,
+        "T003" : 3,
+        "T012" : 2,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.splitter.core.split.SplitPartition$SendAsyncCommit" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.splitter.core.split.SplitPartitionResult" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 3,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.splitter.core.split.SplitPartitionResultFactory" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.splitter.core.status.PartitionStatus" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 11,
+        "T003" : 6,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 6,
+        "T012" : 1
+      }
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 11,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 12,
+        "T008" : 1
+      }
+    },
+    "sleeper.splitter.core.status.PartitionsStatus" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 7,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 13
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.splitter.core.find.FindPartitionToSplitResult.<init>:(Ljava/lang/String;Lsleeper/core/partition/Partition;Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionToSplitResult.getPartition:()Lsleeper/core/partition/Partition;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionToSplitResult.getRelevantFiles:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionToSplitResult.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit$JobSender.send:(Lsleeper/splitter/core/find/SplitPartitionJobDefinition;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/splitter/core/find/FindPartitionsToSplit$JobSender;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56,
+        57
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit.findPartitionsToSplit:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        68,
+        69,
+        70,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        73,
+        82,
+        83,
+        84,
+        85,
+        86
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit.getResults:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;)Ljava/util/List;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        94,
+        95,
+        97,
+        98,
+        99,
+        101,
+        102,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit.lambda$findPartitionsToSplit$0:(Lsleeper/core/statestore/FileReference;Lsleeper/core/statestore/FileReference;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.splitter.core.find.FindPartitionsToSplit.run:(Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        60,
+        61
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.<init>:(Lsleeper/core/table/TableStatus;Lsleeper/core/partition/Partition;Ljava/util/List;Ljava/util/List;JJJJ)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.estimateRecordsInPartitionAndAncestors:(Lsleeper/core/partition/Partition;Lsleeper/core/partition/PartitionTree;Ljava/util/Map;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        128,
+        129,
+        130,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.estimateRecordsInPartitionDescendents:(Lsleeper/core/partition/Partition;Lsleeper/core/partition/PartitionTree;Ljava/util/Map;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        121,
+        122,
+        123,
+        124,
+        121
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.estimateRecordsInPartitionFromTree:(Lsleeper/core/partition/Partition;Lsleeper/core/partition/PartitionTree;Ljava/util/Map;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        116,
+        117,
+        116
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.fromFilesInPartition:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/partition/PartitionTree;Lsleeper/core/partition/Partition;Ljava/util/Map;)Lsleeper/splitter/core/find/PartitionSplitCheck;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        112,
+        109
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.getEstimatedRecordsFromReferencesInPartition:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.getEstimatedRecordsFromReferencesInPartitionTree:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.getKnownRecordsWhollyInPartition:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.getPartitionFileReferences:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.isNeedsSplitting:()Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.lambda$estimateRecordsInPartitionDescendents$0:(Ljava/util/Map;Lsleeper/core/partition/Partition;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        122
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.maySplitIfCompacted:()Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        83,
+        84,
+        86
+      ]
+    },
+    "sleeper.splitter.core.find.PartitionSplitCheck.splitIfNecessary:()Ljava/util/Optional;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        98,
+        99
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition.<init>:(Ljava/lang/String;Lsleeper/core/partition/Partition;Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        51,
+        52,
+        54,
+        55,
+        57,
+        58
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition.getFileNames:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition.getPartition:()Lsleeper/core/partition/Partition;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition.hashCode:()I" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinition.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe$SplitPartitionJobDefinitionJsonSerDe.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        73,
+        74,
+        75
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe$SplitPartitionJobDefinitionJsonSerDe.deserialize:(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)Lsleeper/splitter/core/find/SplitPartitionJobDefinition;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        96,
+        97,
+        99,
+        100,
+        102,
+        103,
+        104,
+        105,
+        106,
+        108,
+        109,
+        110,
+        112
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe$SplitPartitionJobDefinitionJsonSerDe.serialize:(Ljava/lang/Object;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe$SplitPartitionJobDefinitionJsonSerDe.serialize:(Lsleeper/splitter/core/find/SplitPartitionJobDefinition;Ljava/lang/reflect/Type;Lcom/google/gson/JsonSerializationContext;)Lcom/google/gson/JsonElement;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        79,
+        80,
+        82,
+        83,
+        84,
+        85,
+        86,
+        88,
+        89,
+        90,
+        91
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe.fromJson:(Ljava/lang/String;)Lsleeper/splitter/core/find/SplitPartitionJobDefinition;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe.toJson:(Lsleeper/splitter/core/find/SplitPartitionJobDefinition;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.splitter.core.find.SplitPartitionJobDefinitionSerDe.toJson:(Lsleeper/splitter/core/find/SplitPartitionJobDefinition;Z)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        60,
+        61,
+        63
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint$SketchesLoader.load:(Ljava/lang/String;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.<init>:(Lsleeper/core/schema/Schema;Ljava/util/List;Lsleeper/splitter/core/split/FindPartitionSplitPoint$SketchesLoader;)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.lambda$loadSketchesFromFile$1:(Lsleeper/core/schema/Schema;Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        114
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.lambda$loadSketchesFromFile$2:(Lsleeper/sketches/s3/SketchesSerDeToS3;Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        119
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.lambda$splitPointForDimension$0:(Ljava/lang/Object;)Lcom/facebook/collections/ByteArray;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.loadSketches:(Ljava/lang/String;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        103,
+        104,
+        105
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.loadSketchesFromFile:(Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/splitter/core/split/FindPartitionSplitPoint$SketchesLoader;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        118,
+        119
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.loadSketchesFromFile:(Lsleeper/core/schema/Schema;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/splitter/core/split/FindPartitionSplitPoint$SketchesLoader;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        114
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.splitPointForDimension:(I)Ljava/util/Optional;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        61,
+        63,
+        64,
+        65,
+        67
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.splitPointForField:(Lsleeper/core/schema/Field;I)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        81,
+        82,
+        83,
+        85,
+        86
+      ]
+    },
+    "sleeper.splitter.core.split.FindPartitionSplitPoint.unionSketches:(Lsleeper/core/schema/Field;)Lorg/apache/datasketches/quantiles/ItemsSketch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartition$SendAsyncCommit.sendCommit:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.splitter.core.split.SplitPartition.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.splitter.core.split.SplitPartition.<init>:(Lsleeper/core/statestore/StateStore;Lsleeper/core/properties/table/TableProperties;Lsleeper/splitter/core/split/FindPartitionSplitPoint$SketchesLoader;Ljava/util/function/Supplier;Lsleeper/splitter/core/split/SplitPartition$SendAsyncCommit;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartition.apply:(Lsleeper/splitter/core/split/SplitPartitionResult;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        99,
+        101,
+        102,
+        104,
+        105,
+        107,
+        108,
+        107,
+        110
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartition.getResultIfSplittable:(Lsleeper/core/partition/Partition;Ljava/util/List;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        84,
+        85,
+        81
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartition.lambda$getResultIfSplittable$0:(Lsleeper/core/partition/Partition;ILjava/lang/Object;)Lsleeper/splitter/core/split/SplitPartitionResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartition.lambda$getResultIfSplittable$1:(Lsleeper/splitter/core/split/FindPartitionSplitPoint;Lsleeper/core/partition/Partition;I)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        82,
+        83,
+        82
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartition.resultFactory:()Lsleeper/splitter/core/split/SplitPartitionResultFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        89
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartition.splitPartition:(Lsleeper/core/partition/Partition;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResult.<init>:(Lsleeper/core/partition/Partition;Lsleeper/core/partition/Partition;Lsleeper/core/partition/Partition;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResult.getLeftChild:()Lsleeper/core/partition/Partition;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResult.getParentPartition:()Lsleeper/core/partition/Partition;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResult.getRightChild:()Lsleeper/core/partition/Partition;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResultFactory.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.splitter.core.split.SplitPartitionResultFactory.<init>:(Lsleeper/core/schema/Schema;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        58,
+        59,
+        60,
+        61,
+        62
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResultFactory.lambda$removeRange$0:(Ljava/lang/String;Lsleeper/core/range/Range;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        106
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResultFactory.removeRange:(Ljava/util/List;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        105,
+        106,
+        107,
+        105
+      ]
+    },
+    "sleeper.splitter.core.split.SplitPartitionResultFactory.splitPartition:(Lsleeper/core/partition/Partition;Ljava/lang/Object;I)Lsleeper/splitter/core/split/SplitPartitionResult;" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        65,
+        66,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        96,
+        97,
+        98,
+        99,
+        101
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        171,
+        172
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.approxRecords:(J)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        200,
+        201
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.approxRecordsReferenced:(J)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        195,
+        196
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.build:()Lsleeper/splitter/core/status/PartitionStatus;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        230
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.exactRecordsReferenced:(J)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        190,
+        191
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.indexInParent:(Ljava/lang/Integer;)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        225,
+        226
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.maySplitIfCompacted:(Z)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        210,
+        211
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.numberOfFiles:(I)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        180,
+        181
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.numberOfFilesOnJobs:(I)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        185,
+        186
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.partition:(Lsleeper/core/partition/Partition;)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        175,
+        176
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.splitField:(Lsleeper/core/schema/Field;)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        215,
+        216
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.splitValue:(Ljava/lang/Object;)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        220,
+        221
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus$Builder.willBeSplit:(Z)Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        205,
+        206
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.<init>:(Lsleeper/splitter/core/status/PartitionStatus$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.builder:()Lsleeper/splitter/core/status/PartitionStatus$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        126
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.dimensionRange:(Lsleeper/core/partition/Partition;Lsleeper/core/schema/Schema;I)Lsleeper/core/range/Range;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        145,
+        146
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.from:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/partition/PartitionTree;Lsleeper/core/partition/Partition;Ljava/util/Map;)Lsleeper/splitter/core/status/PartitionStatus;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        63
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getApproxRecords:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getApproxRecordsReferenced:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        106
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getExactRecordsReferenced:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        102
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getIndexInParent:()Ljava/lang/Integer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        122
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getNumberOfFiles:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        94
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getNumberOfFilesOnJobs:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        98
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getPartition:()Lsleeper/core/partition/Partition;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        90
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getSplitField:()Lsleeper/core/schema/Field;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        114
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.getSplitValue:()Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        118
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.indexInParent:(Lsleeper/core/partition/Partition;Lsleeper/core/partition/PartitionTree;)Ljava/lang/Integer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        150,
+        151,
+        152,
+        154,
+        155
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.isLeafPartition:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        86
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.lambda$from$0:(Lsleeper/core/statestore/FileReference;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.maySplitIfCompacted:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        82
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.splitField:(Lsleeper/core/partition/Partition;Lsleeper/core/schema/Schema;)Lsleeper/core/schema/Field;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        130,
+        131,
+        133
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.splitValue:(Lsleeper/core/partition/Partition;Lsleeper/core/partition/PartitionTree;Lsleeper/core/schema/Schema;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        137,
+        138,
+        140,
+        141
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionStatus.willBeSplit:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        78
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.<init>:(Ljava/util/List;J)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.from:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;)Lsleeper/splitter/core/status/PartitionsStatus;" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        43,
+        44,
+        45,
+        46,
+        48,
+        49
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.getNumLeafPartitions:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.getNumLeafPartitionsThatWillBeSplit:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        72
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.getNumPartitions:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.getPartitions:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.getSplitThreshold:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.lambda$statusesFrom$0:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/partition/PartitionTree;Ljava/util/Map;Lsleeper/core/partition/Partition;)Lsleeper/splitter/core/status/PartitionStatus;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.splitter.core.status.PartitionsStatus.statusesFrom:(Lsleeper/core/properties/table/TableProperties;Ljava/util/List;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        58
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

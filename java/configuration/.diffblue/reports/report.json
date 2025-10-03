@@ -1,0 +1,1319 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 1647.063,
+    "environmentDetectionTime" : 0.055,
+    "indexingTime" : 0.398,
+    "entryPointsTime" : 0.041,
+    "generationTime" : 24682.354,
+    "timeToFirstTest" : 27464.602,
+    "timeToLastTest" : 28993.155,
+    "indexQueryTime" : 10.497,
+    "verificationTime" : 497.541,
+    "validationTime" : 22.458
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T012" : "Synthetic method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W001" : "Test did not compile"
+  },
+  "summary" : {
+    "classesCount" : 11,
+    "methodsCount" : 73,
+    "cumulativeDiffblueTestCount" : 46,
+    "cumulativeManualTestCount" : 6,
+    "completeTestCount" : 48,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 720,
+    "perMethodTestability" : {
+      "T000" : 38,
+      "T001" : 2,
+      "T003" : 17,
+      "T005" : 2,
+      "T008" : 4,
+      "T012" : 5,
+      "T023" : 5
+    },
+    "perMethodOutcome" : {
+      "R000" : 24,
+      "R002" : 1,
+      "R011" : 1,
+      "R013" : 12,
+      "R083" : 4,
+      "T003" : 17,
+      "T008" : 4,
+      "T012" : 5,
+      "T023" : 5
+    },
+    "perTestOutcome" : {
+      "R000" : 48
+    },
+    "perTestValidation" : {
+      "V000" : 46,
+      "V003" : 2
+    },
+    "warnings" : {
+      "W001" : 2
+    }
+  },
+  "classes" : {
+    "sleeper.configuration.CompactionTaskRequirements" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.configuration.ReadSplitPoints" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 3,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "T003" : 3,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "warnings" : {
+        "W001" : 2
+      }
+    },
+    "sleeper.configuration.WriteSplitPoints" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 16,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 16
+      }
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 4,
+        "T005" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 4,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.configuration.properties.S3InstanceProperties" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7,
+        "T003" : 2,
+        "T008" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R013" : 3,
+        "T003" : 2,
+        "T008" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.configuration.properties.S3PropertiesReloader" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R083" : 1,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.configuration.properties.S3TableProperties" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 2,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R083" : 3,
+        "T003" : 2,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIdFormat" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      }
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex" : {
+      "methodsCount" : 16,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T003" : 2,
+        "T012" : 4,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R011" : 1,
+        "R013" : 8,
+        "T003" : 2,
+        "T012" : 4,
+        "T023" : 1
+      }
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndexCreator" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "T003" : 3
+      }
+    },
+    "sleeper.configuration.utils.AwsV1ClientHelper" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.configuration.CompactionTaskRequirements.<init>:(II)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.configuration.CompactionTaskRequirements.getArchRequirements:(Ljava/lang/String;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/configuration/CompactionTaskRequirements;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        48,
+        49,
+        50,
+        52,
+        53,
+        55
+      ]
+    },
+    "sleeper.configuration.CompactionTaskRequirements.getCpu:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.configuration.CompactionTaskRequirements.getMemoryLimitMiB:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.configuration.ReadSplitPoints.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.configuration.ReadSplitPoints.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        45,
+        46
+      ]
+    },
+    "sleeper.configuration.ReadSplitPoints.fromLines:(Ljava/util/stream/Stream;Lsleeper/core/schema/Schema;Z)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        95,
+        96,
+        97,
+        96
+      ]
+    },
+    "sleeper.configuration.ReadSplitPoints.fromString:(Ljava/lang/String;Lsleeper/core/schema/Schema;Z)Ljava/util/List;" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "warnings" : {
+        "W001" : 2
+      },
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.configuration.ReadSplitPoints.lambda$fromLines$0:(Lsleeper/core/schema/type/PrimitiveType;ZLjava/lang/String;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.configuration.ReadSplitPoints.readSplitPoint:(Ljava/lang/String;Lsleeper/core/schema/type/PrimitiveType;Z)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        110,
+        112,
+        113,
+        115
+      ]
+    },
+    "sleeper.configuration.ReadSplitPoints.readSplitPoints:(Lsleeper/core/properties/table/TableProperties;)Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        58,
+        59,
+        60,
+        61,
+        59,
+        63
+      ]
+    },
+    "sleeper.configuration.ReadSplitPoints.readSplitPoints:(Lsleeper/core/properties/table/TableProperties;Ljava/lang/String;Z)Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        77,
+        78,
+        79
+      ]
+    },
+    "sleeper.configuration.WriteSplitPoints.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        33,
+        34
+      ]
+    },
+    "sleeper.configuration.WriteSplitPoints.toString:(Ljava/util/List;Z)Ljava/lang/String;" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        44,
+        46,
+        49,
+        47,
+        48,
+        50
+      ]
+    },
+    "sleeper.configuration.WriteSplitPoints.writeSplitPoints:(Ljava/util/List;Ljava/io/Writer;Z)V" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        71,
+        74,
+        76,
+        77,
+        78
+      ]
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51
+      ]
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader.buildObjectFactory:()Lsleeper/core/util/ObjectFactory;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader.getClassLoader:()Ljava/lang/ClassLoader;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        64,
+        66,
+        67,
+        68,
+        69,
+        70
+      ]
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader.getClassLoader:(Ljava/util/List;)Ljava/lang/ClassLoader;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        75,
+        76,
+        77,
+        78,
+        77,
+        80
+      ]
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader.loadJar:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        96,
+        98
+      ]
+    },
+    "sleeper.configuration.jars.S3UserJarsLoader.loadJars:(Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.loadFromBucket:(Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;)Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.loadGivenInstanceId:(Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;)Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.loadGivenInstanceIdNoValidation:(Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;)Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.loadPropertiesFromBucket:(Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;)Ljava/util/Properties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        139
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.loadPropertiesGivenInstanceId:(Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;)Ljava/util/Properties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        135
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.reload:(Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        100,
+        101
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.reloadGivenInstanceId:(Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/properties/instance/InstanceProperties;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        111,
+        112
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.saveToLocalWithTableProperties:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Ljava/nio/file/Path;)Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        127,
+        128,
+        129,
+        130,
+        128,
+        131
+      ]
+    },
+    "sleeper.configuration.properties.S3InstanceProperties.saveToS3:(Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        89,
+        90
+      ]
+    },
+    "sleeper.configuration.properties.S3PropertiesReloader.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    "sleeper.configuration.properties.S3PropertiesReloader.ifConfigured:(Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/core/properties/PropertiesReloader;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.configuration.properties.S3PropertiesReloader.ifConfigured:(Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;)Lsleeper/core/properties/PropertiesReloader;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.configuration.properties.S3PropertiesReloader.reloadIfNeeded:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        75
+      ]
+    },
+    "sleeper.configuration.properties.S3TableProperties.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.configuration.properties.S3TableProperties.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.configuration.properties.S3TableProperties.createProvider:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)Lsleeper/core/properties/table/TablePropertiesProvider;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.configuration.properties.S3TableProperties.createStore:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)Lsleeper/core/properties/table/TablePropertiesStore;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.configuration.properties.S3TableProperties.deleteProperties:(Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        101,
+        102,
+        103,
+        104,
+        105
+      ]
+    },
+    "sleeper.configuration.properties.S3TableProperties.getS3Key:(Lsleeper/core/table/TableStatus;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.configuration.properties.S3TableProperties.loadProperties:(Lsleeper/core/table/TableStatus;)Lsleeper/core/properties/table/TableProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        84,
+        85,
+        86,
+        87
+      ]
+    },
+    "sleeper.configuration.properties.S3TableProperties.saveProperties:(Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        93,
+        94,
+        95,
+        96,
+        97
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIdFormat.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        32,
+        33
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIdFormat.getIdKey:(Lsleeper/core/table/TableStatus;)Ljava/util/Map;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIdFormat.getItem:(Lsleeper/core/table/TableStatus;)Ljava/util/Map;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43,
+        40
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIdFormat.getNameKey:(Lsleeper/core/table/TableStatus;)Ljava/util/Map;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIdFormat.getOnlineKey:(Lsleeper/core/table/TableStatus;)Ljava/util/Map;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        55
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIdFormat.readItem:(Ljava/util/Map;)Lsleeper/core/table/TableStatus;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        61,
+        62,
+        63,
+        64,
+        61
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.anyCheckFailed:(Lcom/amazonaws/services/dynamodbv2/model/TransactionCanceledException;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        298,
+        299,
+        298
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.create:(Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        83,
+        84,
+        85,
+        88,
+        89,
+        90,
+        91,
+        87,
+        93,
+        94,
+        95,
+        96,
+        92,
+        98,
+        99,
+        100,
+        101,
+        97,
+        86,
+        103,
+        104,
+        105,
+        106,
+        112,
+        107,
+        108,
+        109,
+        111,
+        113
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.delete:(Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        160,
+        161,
+        164,
+        165,
+        166,
+        167,
+        163,
+        169,
+        170,
+        171,
+        172,
+        168,
+        174,
+        175,
+        176,
+        177,
+        173,
+        162,
+        179,
+        180,
+        181,
+        182,
+        197,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        190,
+        191,
+        193,
+        194,
+        196,
+        198
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.getTableByName:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        138,
+        139,
+        140,
+        142,
+        143,
+        141,
+        138,
+        144
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.getTableByUniqueId:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        149,
+        150,
+        151,
+        153,
+        154,
+        152,
+        149,
+        155
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.isCheckFailed:(Lcom/amazonaws/services/dynamodbv2/model/TransactionCanceledException;I)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        303,
+        304,
+        303
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.lambda$anyCheckFailed$3:(Lcom/amazonaws/services/dynamodbv2/model/CancellationReason;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        299
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.lambda$update$0:(Lsleeper/core/table/TableStatus;)Lsleeper/core/table/TableNotFoundException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        203
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.lambda$update$1:(Lsleeper/core/table/TableStatus;)Lsleeper/core/table/TableNotFoundException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        274
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.lambda$update$2:(Lsleeper/core/table/TableStatus;)Lsleeper/core/table/TableNotFoundException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        279
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.streamAllTables:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        117,
+        119,
+        120,
+        117,
+        121,
+        117
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.streamOnlineTables:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        126,
+        128,
+        129,
+        130,
+        131,
+        132,
+        126,
+        133,
+        126
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.update:(Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        202,
+        203,
+        204,
+        205
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndex.update:(Lsleeper/core/table/TableStatus;Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        214,
+        215,
+        216,
+        218,
+        219,
+        220,
+        221,
+        222,
+        224,
+        225,
+        226,
+        227,
+        228,
+        224,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        230,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        240,
+        245,
+        246,
+        248,
+        249,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        252,
+        257,
+        258,
+        259,
+        260,
+        262,
+        263,
+        264,
+        265,
+        294,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        276,
+        277,
+        278,
+        279,
+        281,
+        284,
+        285,
+        287,
+        288,
+        290,
+        291,
+        293,
+        295
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndexCreator.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndexCreator.create:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        62,
+        63,
+        64,
+        62,
+        65,
+        66,
+        67,
+        65,
+        68,
+        69,
+        71,
+        68,
+        73
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndexCreator.create:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        58,
+        59
+      ]
+    },
+    "sleeper.configuration.table.index.DynamoDBTableIndexCreator.initialiseTable:(Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        79,
+        81,
+        79,
+        82
+      ]
+    },
+    "sleeper.configuration.utils.AwsV1ClientHelper.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    },
+    "sleeper.configuration.utils.AwsV1ClientHelper.buildAwsV1Client:(Lcom/amazonaws/client/builder/AwsClientBuilder;)Ljava/lang/Object;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        47,
+        48,
+        50,
+        52,
+        47,
+        54
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

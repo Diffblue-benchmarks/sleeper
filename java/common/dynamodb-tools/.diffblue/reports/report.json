@@ -1,0 +1,1042 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 850.97,
+    "environmentDetectionTime" : 0.192,
+    "indexingTime" : 0.508,
+    "entryPointsTime" : 0.116,
+    "generationTime" : 62816.083,
+    "timeToFirstTest" : 73341.073,
+    "timeToLastTest" : 73676.656,
+    "indexQueryTime" : 11.747,
+    "verificationTime" : 942.321,
+    "validationTime" : 12.642
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R004" : "No meaningful assertions found",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R024" : "Analysis service shutdown unexpectedly",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W001" : "Test did not compile",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 5,
+    "methodsCount" : 69,
+    "cumulativeDiffblueTestCount" : 53,
+    "cumulativeManualTestCount" : 20,
+    "completeTestCount" : 53,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 426,
+    "perMethodTestability" : {
+      "T000" : 44,
+      "T001" : 2,
+      "T003" : 8,
+      "T005" : 2,
+      "T008" : 1,
+      "T012" : 10,
+      "T020" : 1,
+      "T023" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 37,
+      "R002" : 1,
+      "R004" : 2,
+      "R013" : 6,
+      "R024" : 1,
+      "T003" : 8,
+      "T008" : 1,
+      "T012" : 10,
+      "T023" : 1,
+      "W002" : 2
+    },
+    "perTestOutcome" : {
+      "R000" : 53
+    },
+    "perTestValidation" : {
+      "V000" : 53,
+      "V003" : 3
+    },
+    "warnings" : {
+      "W001" : 4,
+      "W002" : 2
+    }
+  },
+  "classes" : {
+    "sleeper.dynamodb.tools.DynamoDBAttributes" : {
+      "methodsCount" : 20,
+      "completeTestCount" : 23,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 17,
+        "T003" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 17,
+        "T003" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 23
+      }
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 7,
+        "R002" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 13
+      }
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder$Attribute" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 2,
+        "T008" : 1
+      }
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils" : {
+      "methodsCount" : 30,
+      "completeTestCount" : 10,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 18,
+        "T003" : 2,
+        "T012" : 9,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 7,
+        "R004" : 2,
+        "R013" : 6,
+        "R024" : 1,
+        "T003" : 2,
+        "T012" : 9,
+        "T023" : 1,
+        "W002" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 10
+      },
+      "warnings" : {
+        "W001" : 4,
+        "W002" : 2
+      }
+    },
+    "sleeper.dynamodb.tools.LoadedItemsWithLimit" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 6
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.dynamodb.tools.DynamoDBAttributes.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.createBinaryAttribute:([B)Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.createBooleanAttribute:(Z)Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.createInstantAttribute:(Ljava/time/Instant;)Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.createListAttribute:(Ljava/util/List;)Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        79,
+        80,
+        82
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.createNumberAttribute:(Ljava/lang/Number;)Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        62
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.createStringAttribute:(Ljava/lang/String;)Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        40,
+        41,
+        43
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getAttribute:(Ljava/util/Map;Ljava/lang/String;Ljava/util/function/Function;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        164,
+        165,
+        166,
+        168
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getBooleanAttribute:(Ljava/util/Map;Ljava/lang/String;)Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        95
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getDoubleAttribute:(Ljava/util/Map;Ljava/lang/String;D)D" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        135,
+        136,
+        138,
+        139,
+        140,
+        142
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getInstantAttribute:(Ljava/util/Map;Ljava/lang/String;)Ljava/time/Instant;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        123
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getInstantAttribute:(Ljava/util/Map;Ljava/lang/String;Ljava/util/function/LongFunction;)Ljava/time/Instant;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        127,
+        128,
+        129,
+        131
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getIntAttribute:(Ljava/util/Map;Ljava/lang/String;I)I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        103
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getListAttribute:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        151
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getListAttribute:(Ljava/util/Map;Ljava/lang/String;Ljava/util/function/Function;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        155,
+        156,
+        157,
+        159
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getLongAttribute:(Ljava/util/Map;Ljava/lang/String;J)J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        115,
+        116,
+        117,
+        119
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getNullableIntAttribute:(Ljava/util/Map;Ljava/lang/String;)Ljava/lang/Integer;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        107,
+        108,
+        109,
+        111
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getNumberAttribute:(Ljava/util/Map;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getStringAttribute:(Ljava/util/Map;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBAttributes.getStringListAttribute:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        147
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder$Attribute.<init>:(Ljava/lang/String;Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        79,
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder$Attribute.getKey:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder$Attribute.getValue:()Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        89
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        32,
+        34
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.add:(Ljava/lang/String;Lcom/amazonaws/services/dynamodbv2/model/AttributeValue;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        67,
+        68,
+        70,
+        72
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.apply:(Ljava/util/function/Consumer;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        57,
+        58
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.bool:(Ljava/lang/String;Ljava/lang/Boolean;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        45
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.build:()Ljava/util/Map;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        62,
+        63,
+        62
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.bytes:(Ljava/lang/String;[B)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.lambda$add$0:(Ljava/lang/String;Lsleeper/dynamodb/tools/DynamoDBRecordBuilder$Attribute;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.list:(Ljava/lang/String;Ljava/util/List;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        49
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.number:(Ljava/lang/String;Ljava/lang/Number;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBRecordBuilder.string:(Ljava/lang/String;Ljava/lang/String;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        56
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.configureTimeToLive:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        107,
+        108,
+        111,
+        112,
+        109,
+        107,
+        113,
+        114
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.deleteAllDynamoTableItems:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/QueryRequest;Ljava/util/function/UnaryOperator;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        196,
+        197,
+        198,
+        202,
+        204,
+        205
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.hasConditionalCheckFailure:(Lcom/amazonaws/services/dynamodbv2/model/AmazonDynamoDBException;)Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "warnings" : {
+        "W001" : 2
+      },
+      "lineNumbers" : [
+        212,
+        213,
+        215
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.hasConditionalCheckFailure:(Lcom/amazonaws/services/dynamodbv2/model/TransactionCanceledException;)Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "warnings" : {
+        "W001" : 2
+      },
+      "lineNumbers" : [
+        208
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.initialiseTable:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        67,
+        68
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.initialiseTable:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        76,
+        77,
+        78,
+        79,
+        76,
+        80
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.initialiseTable:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/util/Map;Lcom/amazonaws/services/dynamodbv2/model/CreateTableRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 2
+      },
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        89,
+        92,
+        95,
+        96,
+        103,
+        97,
+        98,
+        99,
+        101,
+        104
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.instanceTableName:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.isConditionCheckFailure:(Lcom/amazonaws/services/dynamodbv2/model/CancellationReason;)Z" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        220
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.isThrottlingException:(Ljava/lang/Throwable;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        225,
+        226,
+        228,
+        229,
+        230
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$deleteAllDynamoTableItems$7:(Ljava/util/function/UnaryOperator;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/QueryRequest;Ljava/util/Map;)Lcom/amazonaws/services/dynamodbv2/model/DeleteItemResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        199,
+        200,
+        201,
+        200
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$initialiseTable$0:(Ljava/util/Map$Entry;)Lcom/amazonaws/services/dynamodbv2/model/Tag;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        90
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$loadPagedItemsWithLimit$5:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/ScanRequest;Ljava/util/Map;)Lcom/amazonaws/services/dynamodbv2/model/ScanResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        153
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$loadPagedItemsWithLimit$6:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/QueryRequest;Ljava/util/Map;)Lcom/amazonaws/services/dynamodbv2/model/QueryResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        162
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$retryOnThrottlingException$8:(Ljava/lang/Runnable;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        243
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$streamPagedItems$1:(Lcom/amazonaws/services/dynamodbv2/model/ScanResult;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        118
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$streamPagedItems$2:(Lcom/amazonaws/services/dynamodbv2/model/QueryResult;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        123
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$streamResults$3:(Ljava/util/function/Function;Ljava/util/function/Function;Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        143
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.lambda$streamResults$4:(Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/Function;Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        142,
+        143,
+        144,
+        142
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.loadPagedItemsWithLimit:(ILjava/util/stream/Stream;Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/Function;)Lsleeper/dynamodb/tools/LoadedItemsWithLimit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        177,
+        179,
+        180,
+        181,
+        182,
+        184,
+        185,
+        187,
+        189,
+        190
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.loadPagedItemsWithLimit:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;ILcom/amazonaws/services/dynamodbv2/model/QueryRequest;)Lsleeper/dynamodb/tools/LoadedItemsWithLimit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        157,
+        158,
+        160
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.loadPagedItemsWithLimit:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;ILcom/amazonaws/services/dynamodbv2/model/ScanRequest;)Lsleeper/dynamodb/tools/LoadedItemsWithLimit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        148,
+        149,
+        151
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.retryOnThrottlingException:(Lsleeper/core/util/PollWithRetries;Ljava/lang/Runnable;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        234,
+        246
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.streamPagedItems:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/QueryRequest;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        122,
+        123,
+        122
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.streamPagedItems:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/ScanRequest;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        117,
+        118,
+        117
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.streamPagedResults:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/QueryRequest;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        132,
+        133,
+        132
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.streamPagedResults:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/dynamodbv2/model/ScanRequest;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        127,
+        128,
+        127
+      ]
+    },
+    "sleeper.dynamodb.tools.DynamoDBUtils.streamResults:(Ljava/lang/Object;Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        139,
+        140,
+        139
+      ]
+    },
+    "sleeper.dynamodb.tools.LoadedItemsWithLimit.<init>:(Ljava/util/List;Z)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    "sleeper.dynamodb.tools.LoadedItemsWithLimit.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        45,
+        46,
+        48,
+        49,
+        51,
+        52
+      ]
+    },
+    "sleeper.dynamodb.tools.LoadedItemsWithLimit.getItems:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.dynamodb.tools.LoadedItemsWithLimit.hashCode:()I" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.dynamodb.tools.LoadedItemsWithLimit.isMoreItems:()Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.dynamodb.tools.LoadedItemsWithLimit.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        62
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

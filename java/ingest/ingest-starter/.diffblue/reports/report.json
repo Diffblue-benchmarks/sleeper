@@ -1,0 +1,118 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 310.342,
+    "environmentDetectionTime" : 0.026,
+    "indexingTime" : 0.345,
+    "entryPointsTime" : 0.014,
+    "generationTime" : 2403.004,
+    "timeToFirstTest" : 1135.815,
+    "timeToLastTest" : 3299.154,
+    "indexQueryTime" : 7.4510000000000005,
+    "verificationTime" : 153.405,
+    "validationTime" : 10.535
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 1,
+    "methodsCount" : 3,
+    "cumulativeDiffblueTestCount" : 1,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 1,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 39,
+    "perMethodTestability" : {
+      "T000" : 2,
+      "T003" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 1,
+      "R013" : 1,
+      "T003" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 1
+    },
+    "perTestValidation" : {
+      "V000" : 1,
+      "V003" : 7
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.starter.RunIngestTasksLambda" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.starter.RunIngestTasksLambda.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        46,
+        47,
+        49,
+        51,
+        53
+      ]
+    },
+    "sleeper.ingest.starter.RunIngestTasksLambda.eventHandler:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        56,
+        57
+      ]
+    },
+    "sleeper.ingest.starter.RunIngestTasksLambda.validateParameter:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        64
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

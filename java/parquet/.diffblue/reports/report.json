@@ -1,0 +1,1940 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 946.324,
+    "environmentDetectionTime" : 0.178,
+    "indexingTime" : 0.375,
+    "entryPointsTime" : 0.158,
+    "generationTime" : 10374.416,
+    "timeToFirstTest" : 11263.094,
+    "timeToLastTest" : 13115.474,
+    "indexQueryTime" : 13.572000000000001,
+    "verificationTime" : 239.978,
+    "validationTime" : 15.117
+  },
+  "codes" : {
+    "F009" : "Internal error",
+    "R000" : "Success",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R081" : "Exception in arrange section",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T012" : "Synthetic method",
+    "T021" : "Empty method body",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 26,
+    "methodsCount" : 107,
+    "cumulativeDiffblueTestCount" : 82,
+    "cumulativeManualTestCount" : 9,
+    "completeTestCount" : 82,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 971,
+    "perMethodTestability" : {
+      "T000" : 54,
+      "T001" : 3,
+      "T003" : 28,
+      "T005" : 8,
+      "T008" : 8,
+      "T012" : 4,
+      "T021" : 2
+    },
+    "perMethodOutcome" : {
+      "F009" : 1,
+      "R000" : 24,
+      "R011" : 2,
+      "R013" : 16,
+      "R081" : 8,
+      "R083" : 8,
+      "T003" : 28,
+      "T008" : 8,
+      "T012" : 4,
+      "W002" : 8
+    },
+    "perTestOutcome" : {
+      "R000" : 82
+    },
+    "perTestValidation" : {
+      "V000" : 82,
+      "V003" : 7
+    },
+    "warnings" : {
+      "W002" : 8
+    }
+  },
+  "classes" : {
+    "sleeper.parquet.record.ParquetReaderIterator" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 3,
+        "R081" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.parquet.record.ParquetRecordReader" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.parquet.record.ParquetRecordReader$Builder" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R011" : 2,
+        "R013" : 2,
+        "R083" : 1,
+        "T003" : 2
+      }
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 6,
+        "T008" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 15,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T003" : 1,
+        "T021" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R081" : 3,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 15
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$ByteArrayConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$ByteArrayInMapConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$ElementConverter" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 3,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 3,
+        "T008" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$IntConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$IntInMapConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$KeyValueConverter" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 3,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 3,
+        "T008" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$ListConverter" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$LongConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$LongInMapConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$MapConverter" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$StringConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.parquet.record.RecordConverter$StringInMapConverter" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordReadSupport" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "R081" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordWriteSupport" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 3,
+        "R081" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.parquet.record.RecordWriter" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R081" : 1,
+        "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.parquet.record.SchemaConverter" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 11
+      }
+    },
+    "sleeper.parquet.record.SleeperRecordMaterializer" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 10,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R081" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 10
+      }
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 8,
+        "T003" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T008" : 1,
+        "W002" : 8
+      },
+      "warnings" : {
+        "W002" : 8
+      }
+    },
+    "sleeper.parquet.utils.HadoopPathUtils" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 14,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 2,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "F009" : 1,
+        "R000" : 3,
+        "T003" : 2,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 14
+      }
+    },
+    "sleeper.parquet.utils.RangeQueryUtils" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 8
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R083" : 1,
+        "T003" : 8
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.parquet.record.ParquetReaderIterator.<init>:(Lorg/apache/parquet/hadoop/ParquetReader;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        41
+      ]
+    },
+    "sleeper.parquet.record.ParquetReaderIterator.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        67,
+        68
+      ]
+    },
+    "sleeper.parquet.record.ParquetReaderIterator.getNumberOfRecordsRead:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.parquet.record.ParquetReaderIterator.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        45
+      ]
+    },
+    "sleeper.parquet.record.ParquetReaderIterator.next:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        50,
+        51,
+        53,
+        55,
+        56,
+        57,
+        61,
+        59,
+        60,
+        62
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordReader$Builder.<init>:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordReader$Builder.getReadSupport:()Lorg/apache/parquet/hadoop/api/ReadSupport;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordReader.<init>:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33,
+        34
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder.<init>:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        89,
+        90,
+        91,
+        92
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder.getWriteSupport:(Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/parquet/hadoop/api/WriteSupport;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder.self:()Lsleeper/parquet/record/ParquetRecordWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder.withCompressionCodec:(Ljava/lang/String;)Lsleeper/parquet/record/ParquetRecordWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        105
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder.withDictionaryEncodingForRowKeyFields:(Z)Lsleeper/parquet/record/ParquetRecordWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        109,
+        110
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder.withDictionaryEncodingForSortKeyFields:(Z)Lsleeper/parquet/record/ParquetRecordWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        114,
+        115
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory$Builder.withDictionaryEncodingForValueFields:(Z)Lsleeper/parquet/record/ParquetRecordWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        119,
+        120
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory.createParquetRecordWriter:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory.createParquetRecordWriter:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;Lorg/apache/parquet/hadoop/ParquetFileWriter$Mode;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        66
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory.createParquetRecordWriter:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/schema/Schema;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory.createParquetRecordWriter:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/schema/Schema;Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        56,
+        57,
+        58
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory.parquetRecordWriterBuilder:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/properties/table/TableProperties;)Lsleeper/parquet/record/ParquetRecordWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        72
+      ]
+    },
+    "sleeper.parquet.record.ParquetRecordWriterFactory.setDictionaryEncoding:(Lsleeper/parquet/record/ParquetRecordWriterFactory$Builder;Ljava/util/List;Z)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        125,
+        126,
+        127,
+        128
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ByteArrayConverter.<init>:(Ljava/lang/String;Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        142,
+        143,
+        144,
+        145
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ByteArrayConverter.addBinary:(Lorg/apache/parquet/io/api/Binary;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        149,
+        150
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ByteArrayInMapConverter.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        267,
+        268,
+        269
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ByteArrayInMapConverter.addBinary:(Lorg/apache/parquet/io/api/Binary;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        273,
+        274
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ElementConverter.<init>:(Ljava/util/List;Lsleeper/core/schema/type/PrimitiveType;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        310,
+        311,
+        312
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ElementConverter.end:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        328
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ElementConverter.getConverter:(I)Lorg/apache/parquet/io/api/Converter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        316,
+        317,
+        319
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ElementConverter.start:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        324
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$IntConverter.<init>:(Ljava/lang/String;Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        97,
+        98,
+        99,
+        100
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$IntConverter.addInt:(I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        104,
+        105
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$IntInMapConverter.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        228,
+        229,
+        230
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$IntInMapConverter.addInt:(I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        234,
+        235
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$KeyValueConverter.<init>:(Ljava/util/List;Ljava/util/List;Lsleeper/core/schema/type/PrimitiveType;Lsleeper/core/schema/type/PrimitiveType;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        282,
+        283,
+        284,
+        285
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$KeyValueConverter.end:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        304
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$KeyValueConverter.getConverter:(I)Lorg/apache/parquet/io/api/Converter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        289,
+        290,
+        292,
+        293,
+        295
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$KeyValueConverter.start:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        300
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ListConverter.<init>:(Ljava/lang/String;Lsleeper/core/schema/type/PrimitiveType;Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        159,
+        160,
+        161,
+        162,
+        163,
+        164
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ListConverter.end:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        181,
+        182,
+        183
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ListConverter.getConverter:(I)Lorg/apache/parquet/io/api/Converter;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        168,
+        169,
+        171
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$ListConverter.start:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        176,
+        177
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$LongConverter.<init>:(Ljava/lang/String;Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        112,
+        113,
+        114,
+        115
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$LongConverter.addLong:(J)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        119,
+        120
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$LongInMapConverter.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        241,
+        242,
+        243
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$LongInMapConverter.addLong:(J)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        247,
+        248
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$MapConverter.<init>:(Ljava/lang/String;Lsleeper/core/schema/type/PrimitiveType;Lsleeper/core/schema/type/PrimitiveType;Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$MapConverter.end:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        217,
+        218,
+        219,
+        218,
+        221,
+        222
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$MapConverter.getConverter:(I)Lorg/apache/parquet/io/api/Converter;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        203,
+        204,
+        206
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$MapConverter.start:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        211,
+        212,
+        213
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$StringConverter.<init>:(Ljava/lang/String;Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        127,
+        128,
+        129,
+        130
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$StringConverter.addBinary:(Lorg/apache/parquet/io/api/Binary;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        134,
+        135
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$StringInMapConverter.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        254,
+        255,
+        256
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter$StringInMapConverter.addBinary:(Lorg/apache/parquet/io/api/Binary;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        260,
+        261
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 14,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 14
+      },
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter.end:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter.getConverter:(I)Lorg/apache/parquet/io/api/Converter;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        78
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter.getInListConverter:(Lsleeper/core/schema/type/PrimitiveType;Ljava/util/List;)Lorg/apache/parquet/io/api/PrimitiveConverter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        332,
+        333,
+        335,
+        336,
+        338,
+        339,
+        341,
+        342,
+        344
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter.getRecord:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        90
+      ]
+    },
+    "sleeper.parquet.record.RecordConverter.start:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.parquet.record.RecordReadSupport.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        31,
+        32,
+        33
+      ]
+    },
+    "sleeper.parquet.record.RecordReadSupport.init:(Lorg/apache/parquet/hadoop/api/InitContext;)Lorg/apache/parquet/hadoop/api/ReadSupport$ReadContext;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.parquet.record.RecordReadSupport.prepareForRead:(Lorg/apache/hadoop/conf/Configuration;Ljava/util/Map;Lorg/apache/parquet/schema/MessageType;Lorg/apache/parquet/hadoop/api/ReadSupport$ReadContext;)Lorg/apache/parquet/io/api/RecordMaterializer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.parquet.record.RecordWriteSupport.<init>:(Lorg/apache/parquet/schema/MessageType;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "sleeper.parquet.record.RecordWriteSupport.init:(Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/parquet/hadoop/api/WriteSupport$WriteContext;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.parquet.record.RecordWriteSupport.prepareForWrite:(Lorg/apache/parquet/io/api/RecordConsumer;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.parquet.record.RecordWriteSupport.write:(Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.parquet.record.RecordWriteSupport.write:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        53,
+        54
+      ]
+    },
+    "sleeper.parquet.record.RecordWriter.<init>:(Lorg/apache/parquet/io/api/RecordConsumer;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "sleeper.parquet.record.RecordWriter.addList:(Lorg/apache/parquet/io/api/RecordConsumer;Lsleeper/core/schema/type/ListType;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        100,
+        102,
+        103,
+        104,
+        106,
+        107
+      ]
+    },
+    "sleeper.parquet.record.RecordWriter.addMap:(Lorg/apache/parquet/io/api/RecordConsumer;Lsleeper/core/schema/type/MapType;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        134,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        155,
+        157,
+        158,
+        159,
+        161,
+        162
+      ]
+    },
+    "sleeper.parquet.record.RecordWriter.write:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        68,
+        70,
+        71,
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.parquet.record.SchemaConverter.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        41,
+        42
+      ]
+    },
+    "sleeper.parquet.record.SchemaConverter.getParquetPrimitiveTypeFromSleeperPrimitiveType:(Ljava/lang/String;Lsleeper/core/schema/type/PrimitiveType;)Lorg/apache/parquet/schema/PrimitiveType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        79,
+        82,
+        83,
+        84,
+        83,
+        86,
+        87,
+        88,
+        89,
+        87,
+        91,
+        92,
+        93,
+        92,
+        95
+      ]
+    },
+    "sleeper.parquet.record.SchemaConverter.getSchema:(Lsleeper/core/schema/Schema;)Lorg/apache/parquet/schema/MessageType;" : {
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        49,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        73,
+        74
+      ]
+    },
+    "sleeper.parquet.record.SleeperRecordMaterializer.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        26,
+        27,
+        28
+      ]
+    },
+    "sleeper.parquet.record.SleeperRecordMaterializer.getCurrentRecord:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.parquet.record.SleeperRecordMaterializer.getRootConverter:()Lorg/apache/parquet/io/api/GroupConverter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        32,
+        33
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForClient:()Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        36,
+        37,
+        38,
+        40,
+        42
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForClient:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForClient:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForECS:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        94,
+        99,
+        100
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForEKS:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        76,
+        77,
+        78
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForEMR:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        82
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForLambdas:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.getConfigurationForQueryLambdas:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        70,
+        72
+      ]
+    },
+    "sleeper.parquet.utils.HadoopConfigurationProvider.setLocalStackConfiguration:(Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        39,
+        40
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.expandDirectories:(Ljava/util/List;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/properties/instance/InstanceProperties;)Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        44,
+        47,
+        48
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.getPaths:(Ljava/util/List;Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        53
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.getRequestPath:(Lorg/apache/hadoop/fs/FileStatus;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        86,
+        87
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.lambda$streamFiles$0:(Ljava/lang/String;Ljava/lang/String;)Lorg/apache/hadoop/fs/Path;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.lambda$streamFiles$1:(Lorg/apache/hadoop/conf/Configuration;Lorg/apache/hadoop/fs/Path;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        70,
+        71,
+        72
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.lambda$streamFiles$2:(Lorg/apache/hadoop/conf/Configuration;Lorg/apache/hadoop/fs/FileStatus;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        75,
+        76,
+        77,
+        78,
+        80
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.streamFiles:(Ljava/util/List;Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        59,
+        60,
+        62,
+        63,
+        62
+      ]
+    },
+    "sleeper.parquet.utils.HadoopPathUtils.streamFiles:(Ljava/util/stream/Stream;Lorg/apache/hadoop/conf/Configuration;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        68,
+        74,
+        68
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        45,
+        46
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.getFilterPredicate:(Ljava/util/List;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.getFilterPredicate:(Lsleeper/core/partition/Partition;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.getFilterPredicate:(Lsleeper/core/range/Range;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        97,
+        98,
+        99,
+        100,
+        102,
+        103,
+        105,
+        106,
+        107,
+        108,
+        106,
+        110,
+        111,
+        112,
+        113,
+        111,
+        115
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.getFilterPredicateForKey:(Lorg/apache/parquet/filter2/predicate/Operators$Column;Ljava/lang/Comparable;Ljava/lang/Comparable;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        119,
+        120,
+        123,
+        124,
+        125,
+        126,
+        128
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.getFilterPredicateMultidimensionalKey:(Ljava/util/List;Lsleeper/core/range/Region;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        51,
+        54,
+        55
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.getFilterPredicateNoCanonicalise:(Lsleeper/core/range/Region;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88,
+        90,
+        92,
+        93
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.orList:(Ljava/util/List;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        77,
+        79,
+        80
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.wrapByteArray:([B)Lorg/apache/parquet/io/api/Binary;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        140,
+        141,
+        143
+      ]
+    },
+    "sleeper.parquet.utils.RangeQueryUtils.wrapString:(Ljava/lang/String;)Lorg/apache/parquet/io/api/Binary;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        132,
+        133,
+        135
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

@@ -1,0 +1,4438 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 5460.364,
+    "environmentDetectionTime" : 0.361,
+    "indexingTime" : 0.349,
+    "entryPointsTime" : 0.342,
+    "generationTime" : 7522.532,
+    "timeToFirstTest" : 6596.987,
+    "timeToLastTest" : 8701.589,
+    "indexQueryTime" : 16.749,
+    "verificationTime" : 177.293,
+    "validationTime" : 18.695
+  },
+  "codes" : {
+    "F009" : "Internal error",
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R006" : "Static initializer failed",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R081" : "Exception in arrange section",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T008" : "Private and never called",
+    "T009" : "No implementation for abstract class",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T021" : "Empty method body",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 38,
+    "methodsCount" : 273,
+    "cumulativeDiffblueTestCount" : 85,
+    "cumulativeManualTestCount" : 5,
+    "completeTestCount" : 85,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 2857,
+    "perMethodTestability" : {
+      "T000" : 98,
+      "T001" : 4,
+      "T002" : 38,
+      "T003" : 42,
+      "T005" : 15,
+      "T006" : 1,
+      "T008" : 3,
+      "T009" : 1,
+      "T010" : 12,
+      "T012" : 43,
+      "T021" : 2,
+      "T023" : 14
+    },
+    "perMethodOutcome" : {
+      "F009" : 1,
+      "R000" : 42,
+      "R002" : 12,
+      "R006" : 1,
+      "R011" : 30,
+      "R013" : 20,
+      "R081" : 27,
+      "T003" : 42,
+      "T005" : 2,
+      "T006" : 1,
+      "T008" : 3,
+      "T009" : 1,
+      "T010" : 12,
+      "T012" : 43,
+      "T023" : 14
+    },
+    "perTestOutcome" : {
+      "R000" : 85
+    },
+    "perTestValidation" : {
+      "V000" : 85,
+      "V003" : 7
+    },
+    "warnings" : {
+      "F009" : 1,
+      "W002" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.runner.IngestFactory" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 3,
+        "T005" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 3,
+        "T012" : 1
+      }
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T002" : 7,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R081" : 8,
+        "T003" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.ingest.runner.IngestRecords" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T021" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "R081" : 2
+      }
+    },
+    "sleeper.ingest.runner.IngestRecordsFromIterator" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 4,
+        "T005" : 2,
+        "T012" : 5,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 4,
+        "T012" : 5,
+        "T023" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder" : {
+      "methodsCount" : 14,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T002" : 10
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "R081" : 11
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T012" : 5,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R013" : 1,
+        "T003" : 1,
+        "T012" : 5,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T003" : 1,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R013" : 1,
+        "T003" : 1,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration$Builder" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.RecordIteratorWithSleeperIteratorApplied" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 3,
+        "T003" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 23,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T010" : 1,
+        "T012" : 4,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "T010" : 1,
+        "T012" : 4,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 23
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T012" : 4,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 3,
+        "T003" : 1,
+        "T012" : 4,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 4,
+        "T005" : 2
+      },
+      "perMethodOutcome" : {
+        "T003" : 4
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T002" : 5,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R081" : 6,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriter" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 3,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 5,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 12
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriter" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 3
+      },
+      "perMethodOutcome" : {
+        "T010" : 3
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriterFactory" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "T010" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriterUtils" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatch" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 4
+      },
+      "perMethodOutcome" : {
+        "T010" : 4
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatchFactory" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T009" : 1,
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T009" : 1,
+        "T010" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T003" : 3,
+        "T012" : 2,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R013" : 2,
+        "T003" : 3,
+        "T012" : 2,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 12
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T005" : 2,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 1,
+        "T005" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T002" : 5,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 6,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordMapper" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowIngestSupport" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R006" : 1,
+        "T003" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch" : {
+      "methodsCount" : 20,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T003" : 8,
+        "T012" : 5,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R011" : 6,
+        "T003" : 8,
+        "T012" : 5,
+        "T023" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 2,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T023" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder" : {
+      "methodsCount" : 14,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T002" : 9,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R011" : 13,
+        "T008" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriter" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 4,
+        "T005" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 4,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T012" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 1,
+        "T012" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorFromArrowStreamReader" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 1,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R011" : 5,
+        "T003" : 1
+      }
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorOrderedFromVectorSchemaRoot" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5
+      },
+      "perMethodOutcome" : {
+        "R011" : 5
+      }
+    },
+    "sleeper.ingest.runner.task.ECSIngestTaskRunner" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 1,
+        "T023" : 1
+      }
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R011" : 1,
+        "R013" : 1,
+        "T012" : 1,
+        "T023" : 1
+      }
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T021" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "warnings" : {
+        "W002" : 3
+      }
+    },
+    "sleeper.ingest.runner.task.IngestJobRunner" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "F009" : 1,
+        "R000" : 1,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "warnings" : {
+        "F009" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.runner.IngestFactory$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        153,
+        151,
+        154
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.build:()Lsleeper/ingest/runner/IngestFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        213
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.builder:()Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        157
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.fileNameGenerator:(Ljava/util/function/Supplier;)Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        208,
+        209
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.hadoopConfiguration:(Lorg/apache/hadoop/conf/Configuration;)Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        190,
+        191
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.instanceProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        176,
+        177
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        151
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.localDir:(Ljava/lang/String;)Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        166,
+        167
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.objectFactory:(Lsleeper/core/util/ObjectFactory;)Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        161,
+        162
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.s3AsyncClient:(Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;)Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        203,
+        204
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory$Builder.stateStoreProvider:(Lsleeper/core/statestore/StateStoreProvider;)Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        171,
+        172
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.<init>:(Lsleeper/ingest/runner/IngestFactory$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.builder:()Lsleeper/ingest/runner/IngestFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        74
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.createIngestCoordinator:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/IngestCoordinator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.createIngestRecords:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/IngestRecords;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        90
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.ingestCoordinatorBuilder:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        95
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.ingestFromRecordIterator:(Lsleeper/core/properties/table/TableProperties;Ljava/util/Iterator;)Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        85,
+        84
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.ingestFromRecordIteratorAndClose:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/iterator/CloseableIterator;)Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        79,
+        78
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.lambda$new$0:()Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.standardPartitionFileWriterFactory:(Lsleeper/core/properties/table/TableProperties;Lsleeper/ingest/runner/impl/ParquetConfiguration;)Lsleeper/ingest/runner/impl/partitionfilewriter/PartitionFileWriterFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        133,
+        140
+      ]
+    },
+    "sleeper.ingest.runner.IngestFactory.standardRecordBatchFactory:(Lsleeper/core/properties/table/TableProperties;Lsleeper/ingest/runner/impl/ParquetConfiguration;)Lsleeper/ingest/runner/impl/recordbatch/RecordBatchFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        110,
+        114,
+        115,
+        116,
+        117,
+        118,
+        115,
+        120
+      ]
+    },
+    "sleeper.ingest.runner.IngestRecords.<init>:(Lsleeper/ingest/runner/impl/IngestCoordinator;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        33,
+        34,
+        35
+      ]
+    },
+    "sleeper.ingest.runner.IngestRecords.close:()Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.ingest.runner.IngestRecords.init:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.ingest.runner.IngestRecords.write:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.ingest.runner.IngestRecordsFromIterator.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.IngestRecordsFromIterator.<init>:(Lsleeper/ingest/runner/impl/IngestCoordinator;Ljava/util/Iterator;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    "sleeper.ingest.runner.IngestRecordsFromIterator.write:()Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        50,
+        52,
+        53
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        366,
+        364,
+        367
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.addFilesToStateStore:(Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        398,
+        399
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.build:()Lsleeper/ingest/runner/impl/IngestCoordinator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        493
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.ingestFileWritingStrategy:(Lsleeper/core/properties/validation/IngestFileWritingStrategy;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        476,
+        477
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.ingestPartitionRefreshFrequencyInSeconds:(I)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        442,
+        443
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.instanceProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        481,
+        482,
+        481
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.iteratorClassName:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        420,
+        421
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.iteratorConfig:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        431,
+        432
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.objectFactory:(Lsleeper/core/util/ObjectFactory;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        376,
+        377
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.partitionFileWriterFactory:(Lsleeper/ingest/runner/impl/partitionfilewriter/PartitionFileWriterFactory;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        464,
+        465
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.recordBatchFactory:(Lsleeper/ingest/runner/impl/recordbatch/RecordBatchFactory;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        453,
+        454
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.schema:(Lsleeper/core/schema/Schema;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        409,
+        410
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.stateStore:(Lsleeper/core/statestore/StateStore;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        387,
+        388
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator$Builder.tableProperties:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        486,
+        487,
+        488,
+        489,
+        486
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.<init>:(Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        120,
+        121,
+        124,
+        125,
+        126,
+        128,
+        129,
+        130,
+        131,
+        132,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.abort:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        303,
+        304,
+        305,
+        306,
+        307
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.asyncCloseReturningResult:()Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        275,
+        276,
+        278,
+        280,
+        283,
+        284,
+        285,
+        283
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.builder:()Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        145
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.builderWith:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/IngestCoordinator$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        149,
+        150,
+        151,
+        149
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        241,
+        242,
+        244,
+        246
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.closeReturningResult:()Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        259
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.initiateIngestIfNecessary:(Z)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        167,
+        168,
+        171,
+        173,
+        176,
+        177,
+        187,
+        188,
+        189,
+        193,
+        194,
+        176,
+        194,
+        176,
+        196,
+        197,
+        199
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.internalClose:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        313,
+        315,
+        318,
+        316,
+        317,
+        320,
+        322,
+        325,
+        323,
+        324,
+        327,
+        330,
+        328,
+        329,
+        331
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.lambda$abort$4:(Ljava/util/concurrent/CompletableFuture;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        304
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.lambda$asyncCloseReturningResult$2:(Ljava/lang/Void;Ljava/lang/Throwable;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        284
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.lambda$asyncCloseReturningResult$3:(Ljava/lang/Void;)Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        294,
+        291,
+        295
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.lambda$initiateIngestIfNecessary$1:(Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        190,
+        191
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.lambda$new$0:()Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        127
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.updatePartitionTreeIfNecessary:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        208,
+        209,
+        211,
+        212,
+        213,
+        215,
+        216,
+        215,
+        217,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngestCoordinator.write:(Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        345,
+        346,
+        347,
+        351,
+        348,
+        349,
+        350,
+        352
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.<init>:(Lsleeper/core/schema/Schema;Ljava/util/function/Function;Lsleeper/core/properties/validation/IngestFileWritingStrategy;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.closeMultiplePartitionFileWriters:(Ljava/util/Collection;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        95,
+        96,
+        97,
+        99,
+        100,
+        101
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.ingestOneFilePerLeafPartition:(Lsleeper/core/iterator/CloseableIterator;Lsleeper/core/partition/PartitionTree;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        130,
+        131,
+        132,
+        133,
+        135,
+        136,
+        138,
+        141,
+        142,
+        143,
+        151,
+        152,
+        153,
+        155,
+        157,
+        158,
+        159,
+        160,
+        162,
+        163,
+        165,
+        166,
+        168,
+        171,
+        172,
+        173,
+        177,
+        174,
+        175,
+        176,
+        181,
+        182,
+        181
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.ingestOneFileWithReferencesInLeafPartitions:(Lsleeper/core/iterator/CloseableIterator;Lsleeper/core/partition/PartitionTree;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        189,
+        190,
+        191,
+        192,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        201,
+        203,
+        207,
+        204,
+        205,
+        206,
+        208,
+        209
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.initiateIngest:(Lsleeper/core/iterator/CloseableIterator;Lsleeper/core/partition/PartitionTree;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        119,
+        120,
+        121,
+        122,
+        124
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.lambda$closeMultiplePartitionFileWriters$0:(Ljava/util/List;Lsleeper/ingest/runner/impl/partitionfilewriter/PartitionFileWriter;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        93
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.lambda$ingestOneFilePerLeafPartition$1:(Ljava/util/List;Ljava/lang/Void;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        184,
+        182,
+        183,
+        184
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.lambda$ingestOneFileWithReferencesInLeafPartitions$2:(Ljava/lang/String;Ljava/lang/Long;)Ljava/lang/Long;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        202
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.lambda$ingestOneFileWithReferencesInLeafPartitions$3:(Lsleeper/core/statestore/FileReference;ZLjava/util/Map$Entry;)Lsleeper/core/statestore/FileReference;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        210
+      ]
+    },
+    "sleeper.ingest.runner.impl.IngesterIntoPartitions.lambda$ingestOneFileWithReferencesInLeafPartitions$4:(Ljava/util/Map;ZLsleeper/core/statestore/FileReference;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        217,
+        209,
+        210,
+        217
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        74,
+        75
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration$Builder.build:()Lsleeper/ingest/runner/impl/ParquetConfiguration;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        88
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration$Builder.hadoopConfiguration:(Lorg/apache/hadoop/conf/Configuration;)Lsleeper/ingest/runner/impl/ParquetConfiguration$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        83,
+        84
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration$Builder.tableProperties:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/ParquetConfiguration$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        78,
+        79
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration.<init>:(Lsleeper/ingest/runner/impl/ParquetConfiguration$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration.builder:()Lsleeper/ingest/runner/impl/ParquetConfiguration$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration.builderWith:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/ParquetConfiguration$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration.createParquetWriter:(Ljava/lang/String;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration.from:(Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/ingest/runner/impl/ParquetConfiguration;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration.getHadoopConfiguration:()Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.ingest.runner.impl.ParquetConfiguration.getTableProperties:()Lsleeper/core/properties/table/TableProperties;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.ingest.runner.impl.RecordIteratorWithSleeperIteratorApplied.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.RecordIteratorWithSleeperIteratorApplied.<init>:(Lsleeper/core/util/ObjectFactory;Lsleeper/core/schema/Schema;Ljava/lang/String;Ljava/lang/String;Lsleeper/core/iterator/CloseableIterator;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        58,
+        59,
+        60,
+        66
+      ]
+    },
+    "sleeper.ingest.runner.impl.RecordIteratorWithSleeperIteratorApplied.applyIterator:(Lsleeper/core/util/ObjectFactory;Lsleeper/core/schema/Schema;Ljava/lang/String;Ljava/lang/String;Lsleeper/core/iterator/CloseableIterator;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        85,
+        88,
+        91,
+        89,
+        90,
+        92,
+        93,
+        94,
+        95,
+        97
+      ]
+    },
+    "sleeper.ingest.runner.impl.RecordIteratorWithSleeperIteratorApplied.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        112,
+        113,
+        114
+      ]
+    },
+    "sleeper.ingest.runner.impl.RecordIteratorWithSleeperIteratorApplied.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        102
+      ]
+    },
+    "sleeper.ingest.runner.impl.RecordIteratorWithSleeperIteratorApplied.next:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        107
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.addFiles:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.asynchronousNoJob:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;)Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.asynchronousWithJob:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;Ljava/util/function/Supplier;Lsleeper/core/tracker/ingest/job/update/IngestJobRunIds;)Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        67,
+        68
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.lambda$asynchronousNoJob$3:(Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;Lsleeper/core/properties/table/TableProperties;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.lambda$asynchronousWithJob$1:(Lsleeper/core/tracker/ingest/job/update/IngestJobRunIds;Ljava/util/function/Supplier;Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;Lsleeper/core/table/TableStatus;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73,
+        72,
+        74
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.lambda$synchronousNoJob$2:(Lsleeper/core/statestore/StateStore;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        78
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.lambda$synchronousWithJob$0:(Lsleeper/core/statestore/StateStore;Lsleeper/core/tracker/ingest/job/IngestJobTracker;Lsleeper/core/tracker/ingest/job/update/IngestJobRunIds;Ljava/util/function/Supplier;Lsleeper/core/table/TableStatus;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56,
+        60,
+        57,
+        58,
+        59,
+        61
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.synchronousNoJob:(Lsleeper/core/statestore/StateStore;)Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        78
+      ]
+    },
+    "sleeper.ingest.runner.impl.commit.AddFilesToStateStore.synchronousWithJob:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;Lsleeper/core/tracker/ingest/job/IngestJobTracker;Ljava/util/function/Supplier;Lsleeper/core/tracker/ingest/job/update/IngestJobRunIds;)Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        50,
+        51
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.<init>:(Lsleeper/core/partition/Partition;Lsleeper/ingest/runner/impl/ParquetConfiguration;Ljava/lang/String;Lsleeper/core/table/TableFilePaths;Lsoftware/amazon/awssdk/transfer/s3/S3TransferManager;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.abort:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        219,
+        222,
+        220,
+        221,
+        223,
+        224,
+        226,
+        227,
+        229
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.append:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        164,
+        165,
+        166,
+        167,
+        168,
+        170
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.asyncUploadLocalFileToS3ThenDeleteLocalCopy:(Lsoftware/amazon/awssdk/transfer/s3/S3TransferManager;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/apache/hadoop/conf/Configuration;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        135,
+        136,
+        140,
+        141
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.close:()Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        182,
+        183,
+        184,
+        185,
+        183,
+        188,
+        191,
+        192,
+        193,
+        194,
+        192,
+        197,
+        203,
+        209,
+        210,
+        209
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.lambda$asyncUploadLocalFileToS3ThenDeleteLocalCopy$0:(Ljava/lang/String;Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/PutObjectRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        137,
+        138,
+        137
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.lambda$asyncUploadLocalFileToS3ThenDeleteLocalCopy$1:(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Lsoftware/amazon/awssdk/transfer/s3/model/UploadFileRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        136,
+        137,
+        139,
+        136
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.lambda$asyncUploadLocalFileToS3ThenDeleteLocalCopy$2:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/apache/hadoop/conf/Configuration;Lsoftware/amazon/awssdk/transfer/s3/model/CompletedFileUpload;Ljava/lang/Throwable;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        142,
+        143,
+        144,
+        146,
+        149,
+        147,
+        148,
+        150,
+        151,
+        153
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriter.lambda$close$3:(Lsleeper/core/statestore/FileReference;Ljava/lang/Void;)Lsleeper/core/statestore/FileReference;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        161,
+        159,
+        162
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.build:()Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        206
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.fileNameGenerator:(Ljava/util/function/Supplier;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        201,
+        202
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.filePathPrefix:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        191,
+        192
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        159
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.localWorkingDirectory:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        196,
+        197
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.parquetConfiguration:(Lsleeper/ingest/runner/impl/ParquetConfiguration;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        165,
+        166
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.s3AsyncClient:(Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        170,
+        171
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.s3AsyncClientOrDefaultFromProperties:(Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        176,
+        177,
+        178,
+        180,
+        182
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory$Builder.s3BucketName:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        186,
+        187
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.<init>:(Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        67,
+        69
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.buildCrtClient:(Lsoftware/amazon/awssdk/services/s3/S3CrtAsyncClientBuilder;)Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        96,
+        102
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.buildS3Client:(Lsoftware/amazon/awssdk/services/s3/S3AsyncClientBuilder;)Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        107,
+        108,
+        109,
+        110,
+        111,
+        113,
+        114,
+        115,
+        109,
+        117
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.builder:()Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        72
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.builderWith:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/partitionfilewriter/AsyncS3PartitionFileWriterFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        76,
+        77,
+        76
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        146,
+        147,
+        149,
+        150
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.createPartitionFileWriter:(Lsleeper/core/partition/Partition;)Lsleeper/ingest/runner/impl/partitionfilewriter/PartitionFileWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        132,
+        138,
+        132,
+        139,
+        140
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.getCustomEndpoint:()Ljava/net/URI;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        122,
+        123,
+        124,
+        126
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.AsyncS3PartitionFileWriterFactory.s3AsyncClientFromProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        85,
+        89
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriter.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriter.<init>:(Lsleeper/core/partition/Partition;Lsleeper/ingest/runner/impl/ParquetConfiguration;Lsleeper/core/table/TableFilePaths;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriter.abort:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        132,
+        135,
+        133,
+        134,
+        137,
+        138,
+        141,
+        139,
+        140,
+        142
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriter.append:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        95,
+        96,
+        97,
+        98,
+        99,
+        101
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriter.close:()Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        112,
+        113,
+        115,
+        118,
+        119,
+        121,
+        119,
+        123
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.<init>:(Lsleeper/ingest/runner/impl/ParquetConfiguration;Lsleeper/core/table/TableFilePaths;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.createPartitionFileWriter:(Lsleeper/core/partition/Partition;)Lsleeper/ingest/runner/impl/partitionfilewriter/PartitionFileWriter;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        78,
+        82,
+        78,
+        83,
+        84
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.from:(Lsleeper/ingest/runner/impl/ParquetConfiguration;Ljava/lang/String;)Lsleeper/ingest/runner/impl/partitionfilewriter/DirectPartitionFileWriterFactory;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.from:(Lsleeper/ingest/runner/impl/ParquetConfiguration;Ljava/lang/String;Ljava/util/function/Supplier;)Lsleeper/ingest/runner/impl/partitionfilewriter/DirectPartitionFileWriterFactory;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.from:(Lsleeper/ingest/runner/impl/ParquetConfiguration;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/partitionfilewriter/DirectPartitionFileWriterFactory;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.from:(Lsleeper/ingest/runner/impl/ParquetConfiguration;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Ljava/util/function/Supplier;)Lsleeper/ingest/runner/impl/partitionfilewriter/DirectPartitionFileWriterFactory;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        69
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.lambda$from$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.DirectPartitionFileWriterFactory.lambda$from$1:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriter.abort:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriter.append:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriter.close:()Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriterFactory.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriterFactory.createPartitionFileWriter:(Lsleeper/core/partition/Partition;)Lsleeper/ingest/runner/impl/partitionfilewriter/PartitionFileWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriterUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        27,
+        28
+      ]
+    },
+    "sleeper.ingest.runner.impl.partitionfilewriter.PartitionFileWriterUtils.createFileReference:(Ljava/lang/String;Ljava/lang/String;J)Lsleeper/core/statestore/FileReference;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        41
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatch.append:(Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatch.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatch.createOrderedRecordIterator:()Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatch.isFull:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatchFactory.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        25
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.RecordBatchFactory.createRecordBatch:()Lsleeper/ingest/runner/impl/recordbatch/RecordBatch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.<init>:(Lsleeper/ingest/runner/impl/ParquetConfiguration;Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordMapper;Ljava/lang/String;IJ)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.addRecordToBatch:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        118,
+        119,
+        121,
+        122,
+        124,
+        125
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.append:(Ljava/lang/Object;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        173,
+        174
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        234,
+        236,
+        239,
+        237,
+        238,
+        240
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.createOrderedRecordIterator:()Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        197,
+        198,
+        200,
+        202,
+        204,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        223,
+        212,
+        215,
+        222,
+        225,
+        226
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.createParquetReader:(Ljava/lang/String;)Lorg/apache/parquet/hadoop/ParquetReader;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        250,
+        251,
+        252
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.deleteAllLocalFiles:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        259,
+        260,
+        261,
+        262,
+        263,
+        260,
+        264,
+        275,
+        276
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.flushToLocalDiskAndClear:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        133,
+        134,
+        136,
+        137,
+        140,
+        137,
+        141,
+        142,
+        145,
+        146,
+        147,
+        148,
+        149,
+        145,
+        150,
+        151,
+        152,
+        153,
+        154,
+        156,
+        158,
+        160,
+        162,
+        154,
+        164,
+        165,
+        167,
+        168,
+        169
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.isFull:()Z" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        184,
+        185,
+        184
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.lambda$createOrderedRecordIterator$0:(Lsleeper/core/iterator/CloseableIterator;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        217,
+        220,
+        218,
+        219,
+        221
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatch.lambda$deleteAllLocalFiles$1:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        266,
+        267,
+        268,
+        272,
+        270,
+        271,
+        273
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        81,
+        82
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.build:()Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        119
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.buildAcceptingRecords:()Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.instanceProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        105,
+        106,
+        105
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.lambda$buildAcceptingRecords$0:(Lsleeper/core/record/Record;)Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.localWorkingDirectory:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        90,
+        91
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.maxNoOfRecordsInLocalStore:(J)Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        100,
+        101
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.maxNoOfRecordsInMemory:(I)Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        95,
+        96
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.parquetConfiguration:(Lsleeper/ingest/runner/impl/ParquetConfiguration;)Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        85,
+        86
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory$Builder.recordMapper:(Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordMapper;)Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        110,
+        111
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory.<init>:(Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        50,
+        51,
+        53,
+        55,
+        56,
+        57
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory.builder:()Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory.builderWith:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/runner/impl/recordbatch/arraylist/ArrayListRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordBatchFactory.createRecordBatch:()Lsleeper/ingest/runner/impl/recordbatch/RecordBatch;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arraylist.ArrayListRecordMapper.map:(Ljava/lang/Object;)Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowIngestSupport.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        43,
+        44
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowIngestSupport.createSortOrderVector:(Lorg/apache/arrow/memory/BufferAllocator;Lsleeper/core/schema/Schema;Lorg/apache/arrow/vector/VectorSchemaRoot;)Lorg/apache/arrow/vector/IntVector;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R006",
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        95,
+        96,
+        100,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowIngestSupport.lambda$createSortOrderVector$0:(Ljava/util/List;Lorg/apache/arrow/vector/VectorSchemaRoot;Lsleeper/core/schema/Field;)Lorg/apache/arrow/algorithm/sort/VectorValueComparator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        93
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.<init>:(Lorg/apache/arrow/memory/BufferAllocator;Lsleeper/core/schema/Schema;Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordWriter;Ljava/lang/String;JJJJI)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        169,
+        173,
+        183,
+        184,
+        185,
+        186,
+        194,
+        187,
+        189,
+        192,
+        190,
+        191,
+        193,
+        195,
+        199,
+        200,
+        201,
+        195,
+        202
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.append:(Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        543,
+        544,
+        550,
+        551,
+        553,
+        554,
+        558,
+        555,
+        556,
+        557,
+        558,
+        560
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        382,
+        383,
+        385,
+        388,
+        386,
+        387,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.constructLocalFileNameForBatch:(I)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        464,
+        467,
+        464
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.convertSleeperFieldToArrowField:(Lsleeper/core/schema/Field;)Lorg/apache/arrow/vector/types/pojo/Field;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        311,
+        312,
+        313,
+        318,
+        319,
+        322,
+        323,
+        324,
+        325,
+        328,
+        325,
+        329,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        344,
+        345,
+        348,
+        345,
+        350
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.convertSleeperPrimitiveFieldToArrowField:(Lsleeper/core/schema/Field;)Lorg/apache/arrow/vector/types/pojo/Field;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        372
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.convertSleeperSchemaToArrowSchema:(Lsleeper/core/schema/Schema;)Lorg/apache/arrow/vector/types/pojo/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        304,
+        305,
+        306,
+        307
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.createCloseableRecordIteratorForArrowFile:(Lorg/apache/arrow/memory/BufferAllocator;Ljava/lang/String;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        292,
+        293,
+        294
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.createOrderedRecordIterator:()Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        478,
+        479,
+        481,
+        483,
+        484,
+        485,
+        487,
+        490,
+        488,
+        489,
+        491
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.createSortedRecordIterator:()Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        504,
+        505,
+        506,
+        509,
+        510,
+        511,
+        512,
+        513,
+        511,
+        516,
+        519,
+        527,
+        528,
+        530,
+        537
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.deleteAllLocalArrowFiles:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        401,
+        402,
+        403,
+        404,
+        405,
+        402,
+        406,
+        416
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.flushToLocalArrowFileThenClear:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        424,
+        425,
+        430,
+        433,
+        434,
+        437,
+        446,
+        443,
+        444,
+        445,
+        447,
+        448,
+        449,
+        450,
+        452,
+        448,
+        454,
+        455,
+        457,
+        458,
+        459,
+        460,
+        461
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.isFull:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        564
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.lambda$createSortedRecordIterator$3:(Ljava/util/List;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        521,
+        524,
+        522,
+        523,
+        525
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.lambda$createSortedRecordIterator$4:(Ljava/lang/Exception;Lsleeper/core/iterator/CloseableIterator;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        532,
+        535,
+        533,
+        534,
+        536
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.lambda$deleteAllLocalArrowFiles$2:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        408,
+        409,
+        413,
+        411,
+        412,
+        414
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.lambda$new$0:(Lorg/apache/arrow/vector/FieldVector;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        185
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.lambda$sortArrowAndWriteToLocalFile$1:(ILorg/apache/arrow/vector/FieldVector;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        240
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatch.sortArrowAndWriteToLocalFile:(Lorg/apache/arrow/memory/BufferAllocator;Lsleeper/core/schema/Schema;Lorg/apache/arrow/vector/VectorSchemaRoot;Ljava/lang/String;I)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        224,
+        225,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        240,
+        241,
+        242,
+        244,
+        245,
+        246,
+        247,
+        248,
+        251,
+        252,
+        253,
+        255,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        260,
+        265,
+        258,
+        268,
+        270,
+        271,
+        272,
+        273,
+        274,
+        276,
+        235,
+        276,
+        235,
+        276,
+        235,
+        276,
+        235,
+        277,
+        278
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        133,
+        134
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.batchBufferAllocatorBytes:(J)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        162,
+        163,
+        162
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.bufferAllocator:(Lorg/apache/arrow/memory/BufferAllocator;)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        177,
+        178
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.build:()Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        199
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.buildAcceptingRecords:()Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        195
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.instanceProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        182,
+        183,
+        184,
+        185,
+        186,
+        182
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.localWorkingDirectory:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        142,
+        143
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.maxBatchBufferAllocatorBytes:(J)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        157,
+        158
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.maxNoOfBytesToWriteLocally:(J)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        167,
+        168
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.maxNoOfRecordsToWriteToArrowFileAtOnce:(I)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        172,
+        173
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.minBatchBufferAllocatorBytes:(J)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        152,
+        153
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.recordWriter:(Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordWriter;)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        190,
+        191
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.schema:(Lsleeper/core/schema/Schema;)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        137,
+        138
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory$Builder.workingBufferAllocatorBytes:(J)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        147,
+        148
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory.<init>:(Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56,
+        58,
+        59,
+        61,
+        62,
+        64,
+        65,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        77,
+        78,
+        80,
+        88,
+        89,
+        90,
+        80,
+        91
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory.builder:()Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        94
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory.builderWith:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/runner/impl/recordbatch/arrow/ArrowRecordBatchFactory$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        98
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        117,
+        118,
+        120
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordBatchFactory.createRecordBatch:()Lsleeper/ingest/runner/impl/recordbatch/RecordBatch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriter.insert:(Ljava/util/List;Lorg/apache/arrow/vector/VectorSchemaRoot;Ljava/lang/Object;I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.insert:(Ljava/util/List;Lorg/apache/arrow/vector/VectorSchemaRoot;Ljava/lang/Object;I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.insert:(Ljava/util/List;Lorg/apache/arrow/vector/VectorSchemaRoot;Lsleeper/core/record/Record;I)I" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.lambda$writeList$0:(Lorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/complex/impl/UnionListWriter;Lsleeper/core/schema/type/Type;Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        129
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.lambda$writeMap$1:(Lorg/apache/arrow/vector/complex/impl/UnionListWriter;Lorg/apache/arrow/memory/BufferAllocator;Lsleeper/core/schema/type/Type;Lsleeper/core/schema/type/Type;Ljava/lang/Object;Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        154,
+        155,
+        156,
+        157,
+        158,
+        159
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.writeList:(Lsleeper/core/schema/type/Type;Ljava/util/List;Lorg/apache/arrow/vector/complex/ListVector;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        138,
+        140,
+        142
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.writeListElement:(Lorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/complex/impl/UnionListWriter;Lsleeper/core/schema/type/Type;Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        183,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        189,
+        193,
+        194,
+        196
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.writeMap:(Lsleeper/core/schema/type/Type;Lsleeper/core/schema/type/Type;Ljava/util/Map;Lorg/apache/arrow/vector/complex/ListVector;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        149,
+        150,
+        151,
+        152,
+        153,
+        160,
+        161,
+        168,
+        170,
+        172
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.writeRecord:(Ljava/util/List;Lorg/apache/arrow/vector/VectorSchemaRoot;Lsleeper/core/record/Record;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        105,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        111,
+        118,
+        84,
+        121
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowRecordWriterAcceptingRecords.writeStructElement:(Lorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/complex/writer/BaseWriter$StructWriter;Lsleeper/core/schema/type/Type;Ljava/lang/Object;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        207,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        213,
+        217,
+        218,
+        220
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        31,
+        32
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils.convertVectorSchemaRootToRecord:(Lorg/apache/arrow/vector/VectorSchemaRoot;I)Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        50,
+        52,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        61,
+        62,
+        63,
+        66,
+        71,
+        72,
+        73,
+        76,
+        45,
+        78
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils.lambda$convertVectorSchemaRootToRecord$0:(Ljava/lang/Object;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils.lambda$convertVectorSchemaRootToRecord$1:(Ljava/util/Map;)Ljava/util/AbstractMap$SimpleEntry;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        63
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils.lambda$convertVectorSchemaRootToRecord$2:(Ljava/util/AbstractMap$SimpleEntry;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils.lambda$convertVectorSchemaRootToRecord$3:(Ljava/util/AbstractMap$SimpleEntry;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.ArrowToRecordConversionUtils.lambda$convertVectorSchemaRootToRecord$4:(Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        72
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorFromArrowStreamReader.<init>:(Lorg/apache/arrow/vector/ipc/ArrowStreamReader;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        40,
+        37,
+        41,
+        42,
+        43
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorFromArrowStreamReader.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        90,
+        91
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorFromArrowStreamReader.getNumberOfRecordsRead:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        94
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorFromArrowStreamReader.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        60,
+        61,
+        62
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorFromArrowStreamReader.loadNextBatch:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        52,
+        53,
+        54
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorFromArrowStreamReader.next:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        68,
+        69,
+        74,
+        75,
+        76,
+        77,
+        79,
+        80,
+        82,
+        83,
+        84
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorOrderedFromVectorSchemaRoot.<init>:(Lorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/VectorSchemaRoot;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        49,
+        36,
+        50,
+        51,
+        52
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorOrderedFromVectorSchemaRoot.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        76,
+        77
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorOrderedFromVectorSchemaRoot.getNumberOfRecordsRead:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        80
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorOrderedFromVectorSchemaRoot.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.ingest.runner.impl.recordbatch.arrow.RecordIteratorOrderedFromVectorSchemaRoot.next:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        61,
+        62,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.ingest.runner.task.ECSIngestTaskRunner.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.task.ECSIngestTaskRunner.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        66,
+        67
+      ]
+    },
+    "sleeper.ingest.runner.task.ECSIngestTaskRunner.createIngestTask:(Lsleeper/core/util/ObjectFactory;Lsleeper/core/properties/instance/InstanceProperties;Ljava/lang/String;Ljava/lang/String;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/sqs/AmazonSQS;Lcom/amazonaws/services/cloudwatch/AmazonCloudWatch;Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/ingest/core/IngestTask;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        111,
+        112,
+        113,
+        114,
+        115,
+        117,
+        120,
+        123
+      ]
+    },
+    "sleeper.ingest.runner.task.ECSIngestTaskRunner.ingestHadoopConfiguration:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        128,
+        129,
+        130
+      ]
+    },
+    "sleeper.ingest.runner.task.ECSIngestTaskRunner.lambda$createIngestTask$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        123
+      ]
+    },
+    "sleeper.ingest.runner.task.ECSIngestTaskRunner.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        74,
+        76,
+        77,
+        78,
+        79,
+        80,
+        83,
+        85,
+        86,
+        87,
+        89,
+        91,
+        92,
+        89,
+        93,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle.<init>:(Lsleeper/ingest/runner/task/IngestJobQueueConsumer;Lsleeper/ingest/core/job/IngestJob;Lsleeper/job/common/action/MessageReference;Lsleeper/job/common/action/thread/PeriodicActionRunnable;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        130,
+        131,
+        132,
+        133,
+        134
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle.close:()V" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "warnings" : {
+        "W002" : 3
+      },
+      "lineNumbers" : [
+        166,
+        167,
+        168,
+        170
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle.completed:(Lsleeper/core/tracker/job/run/JobRunSummary;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        142,
+        144,
+        147,
+        145,
+        146,
+        149,
+        150,
+        151,
+        152,
+        154,
+        155,
+        156,
+        158,
+        159,
+        157,
+        153,
+        151,
+        160
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle.failed:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        163
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle.getJob:()Lsleeper/ingest/core/job/IngestJob;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        137
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer.<init>:(Lcom/amazonaws/services/sqs/AmazonSQS;Lcom/amazonaws/services/cloudwatch/AmazonCloudWatch;Lsleeper/core/properties/instance/InstanceProperties;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/table/TableIndex;Lsleeper/core/tracker/ingest/job/IngestJobTracker;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer.lambda$messageHandler$0:(Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer.messageHandler:(Lsleeper/core/properties/instance/InstanceProperties;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/table/TableIndex;Lsleeper/core/tracker/ingest/job/IngestJobTracker;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        84
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobQueueConsumer.receiveMessage:()Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        102,
+        103,
+        105,
+        106,
+        107,
+        108,
+        109,
+        111,
+        112,
+        114,
+        115,
+        116,
+        115,
+        117,
+        119,
+        121,
+        122
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobRunner.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.runner.task.IngestJobRunner.<init>:(Lsleeper/core/util/ObjectFactory;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/properties/PropertiesReloader;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/ingest/job/IngestJobTracker;Ljava/lang/String;Ljava/lang/String;Lcom/amazonaws/services/s3/AmazonS3;Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;Lcom/amazonaws/services/sqs/AmazonSQS;Lorg/apache/hadoop/conf/Configuration;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "warnings" : {
+        "F009" : 1
+      },
+      "lineNumbers" : [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobRunner.addFilesToStateStore:(Lsleeper/ingest/core/job/IngestJob;Ljava/lang/String;Lsleeper/core/properties/table/TableProperties;)Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        165,
+        166,
+        167,
+        169
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobRunner.ingest:(Lsleeper/ingest/core/job/IngestJob;Ljava/lang/String;)Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        122,
+        123,
+        124,
+        127,
+        128,
+        129,
+        133,
+        134,
+        135,
+        136,
+        137,
+        147,
+        150,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        154,
+        159,
+        154,
+        160,
+        161
+      ]
+    },
+    "sleeper.ingest.runner.task.IngestJobRunner.lambda$ingest$0:(Lorg/apache/hadoop/fs/Path;Lsleeper/core/schema/Schema;Lsleeper/ingest/core/job/IngestJob;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        139,
+        140,
+        141,
+        142,
+        143
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

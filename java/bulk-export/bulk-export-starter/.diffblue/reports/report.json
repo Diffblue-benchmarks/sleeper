@@ -1,0 +1,70 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 244.251,
+    "environmentDetectionTime" : 0.025,
+    "indexingTime" : 0.539,
+    "entryPointsTime" : 0.01,
+    "generationTime" : 67952.72,
+    "timeToFirstTest" : 80532.934,
+    "timeToLastTest" : 80602.544,
+    "indexQueryTime" : 1.812,
+    "verificationTime" : 1008.155,
+    "validationTime" : 13.078
+  },
+  "codes" : {
+    "T005" : "Trivial constructor",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 1,
+    "methodsCount" : 1,
+    "cumulativeDiffblueTestCount" : 0,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 0,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 3,
+    "perMethodTestability" : {
+      "T005" : 1
+    },
+    "perMethodOutcome" : {
+      "T005" : 1
+    },
+    "perTestValidation" : {
+      "V000" : 60,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.bulkexport.starter.BulkExportStarterLambda" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T005" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.bulkexport.starter.BulkExportStarterLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        21
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

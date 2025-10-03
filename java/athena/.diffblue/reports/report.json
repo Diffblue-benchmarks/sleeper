@@ -1,0 +1,1637 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 1132.66,
+    "environmentDetectionTime" : 0.142,
+    "indexingTime" : 0.491,
+    "entryPointsTime" : 0.125,
+    "generationTime" : 61546.312,
+    "timeToFirstTest" : 70776.662,
+    "timeToLastTest" : 71302.305,
+    "indexQueryTime" : 18.664,
+    "verificationTime" : 877.164,
+    "validationTime" : 15.059
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R081" : "Exception in arrange section",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T021" : "Empty method body",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 9,
+    "methodsCount" : 111,
+    "cumulativeDiffblueTestCount" : 9,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 9,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 1033,
+    "perMethodTestability" : {
+      "T000" : 34,
+      "T003" : 30,
+      "T010" : 10,
+      "T012" : 31,
+      "T021" : 2,
+      "T023" : 4
+    },
+    "perMethodOutcome" : {
+      "R000" : 4,
+      "R013" : 30,
+      "R081" : 2,
+      "T003" : 30,
+      "T010" : 10,
+      "T012" : 31,
+      "T023" : 4
+    },
+    "perTestOutcome" : {
+      "R000" : 9
+    },
+    "perTestValidation" : {
+      "V000" : 9,
+      "V003" : 2
+    }
+  },
+  "classes" : {
+    "sleeper.athena.FilterTranslator" : {
+      "methodsCount" : 21,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 8,
+        "T012" : 9
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "T003" : 8,
+        "T012" : 9
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      }
+    },
+    "sleeper.athena.composite.IteratorApplyingCompositeHandler" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1
+      }
+    },
+    "sleeper.athena.composite.SimpleCompositeHandler" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1
+      }
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 5,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      }
+    },
+    "sleeper.athena.metadata.SimpleMetadataHandler" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T012" : 1,
+        "T021" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 3,
+        "R081" : 2,
+        "T012" : 1
+      }
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler" : {
+      "methodsCount" : 28,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 8,
+        "T003" : 8,
+        "T010" : 5,
+        "T012" : 6,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 8,
+        "T003" : 8,
+        "T010" : 5,
+        "T012" : 6,
+        "T023" : 1
+      }
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler" : {
+      "methodsCount" : 17,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 6,
+        "T012" : 5,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 5,
+        "T003" : 6,
+        "T012" : 5,
+        "T023" : 1
+      }
+    },
+    "sleeper.athena.record.SimpleRecordHandler" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 4,
+        "T003" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.athena.record.SleeperRecordHandler" : {
+      "methodsCount" : 23,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 6,
+        "T010" : 5,
+        "T012" : 8,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 3,
+        "T003" : 6,
+        "T010" : 5,
+        "T012" : 8,
+        "T023" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.athena.FilterTranslator.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    "sleeper.athena.FilterTranslator.and:(Lorg/apache/parquet/filter2/predicate/FilterPredicate;Lorg/apache/parquet/filter2/predicate/FilterPredicate;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        234
+      ]
+    },
+    "sleeper.athena.FilterTranslator.createExactPredicates:(Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/domain/predicate/EquatableValueSet;Ljava/util/function/Function;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        142
+      ]
+    },
+    "sleeper.athena.FilterTranslator.createExactPredicates:(Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/domain/predicate/EquatableValueSet;Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        150,
+        151,
+        152,
+        153,
+        152,
+        155
+      ]
+    },
+    "sleeper.athena.FilterTranslator.createExactValuePredicate:(Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/domain/predicate/EquatableValueSet;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        100,
+        102,
+        103,
+        107,
+        108,
+        112,
+        113,
+        116,
+        117,
+        120,
+        123,
+        125,
+        126,
+        129,
+        130,
+        131,
+        134
+      ]
+    },
+    "sleeper.athena.FilterTranslator.createPredicate:(Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/domain/predicate/ValueSet;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        93,
+        96
+      ]
+    },
+    "sleeper.athena.FilterTranslator.createRangePredicate:(Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/domain/predicate/SortedRangeSet;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        159,
+        161,
+        162,
+        166,
+        167,
+        171,
+        172,
+        175,
+        176,
+        179,
+        182
+      ]
+    },
+    "sleeper.athena.FilterTranslator.createRangePredicates:(Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/domain/predicate/SortedRangeSet;Ljava/util/function/Function;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        190
+      ]
+    },
+    "sleeper.athena.FilterTranslator.createRangePredicates:(Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/domain/predicate/SortedRangeSet;Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        199,
+        200,
+        199
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$createExactPredicates$4:(Ljava/lang/Object;)Ljava/lang/Comparable;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        142
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$createExactValuePredicate$2:(Ljava/lang/Object;)Lorg/apache/parquet/io/api/Binary;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        105
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$createExactValuePredicate$3:(Ljava/lang/Object;)Lorg/apache/parquet/io/api/Binary;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$createRangePredicate$5:(Ljava/lang/Object;)Lorg/apache/parquet/io/api/Binary;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        164
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$createRangePredicate$6:(Ljava/lang/Object;)Lorg/apache/parquet/io/api/Binary;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        169
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$createRangePredicates$7:(Ljava/lang/Object;)Ljava/lang/Comparable;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        190
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$createRangePredicates$8:(Ljava/util/function/Function;Ljava/lang/String;Ljava/util/function/Function;Lcom/amazonaws/athena/connector/lambda/domain/predicate/Range;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        201,
+        202,
+        203,
+        204,
+        205,
+        204,
+        207,
+        208,
+        207,
+        211,
+        212,
+        213,
+        214,
+        213,
+        216,
+        217,
+        216,
+        220
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$new$0:(Ljava/util/Map;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.athena.FilterTranslator.lambda$toPredicate$1:(Lsleeper/core/schema/type/Type;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        74
+      ]
+    },
+    "sleeper.athena.FilterTranslator.merge:(Lorg/apache/parquet/filter2/predicate/FilterPredicate;Lorg/apache/parquet/filter2/predicate/FilterPredicate;Ljava/util/function/BinaryOperator;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        251,
+        252,
+        253,
+        254,
+        255,
+        258
+      ]
+    },
+    "sleeper.athena.FilterTranslator.or:(Lorg/apache/parquet/filter2/predicate/FilterPredicate;Lorg/apache/parquet/filter2/predicate/FilterPredicate;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        247
+      ]
+    },
+    "sleeper.athena.FilterTranslator.toPredicate:(Ljava/util/Map;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        68,
+        69,
+        72,
+        73,
+        74,
+        75,
+        77,
+        78,
+        81,
+        82,
+        83,
+        84,
+        86
+      ]
+    },
+    "sleeper.athena.composite.IteratorApplyingCompositeHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        33,
+        34
+      ]
+    },
+    "sleeper.athena.composite.SimpleCompositeHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        28,
+        29
+      ]
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        61,
+        62
+      ]
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/security/EncryptionKeyFactory;Lcom/amazonaws/services/secretsmanager/AWSSecretsManager;Lcom/amazonaws/services/athena/AmazonAthena;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        68,
+        69
+      ]
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.addExtraSchemaEnhancements:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lcom/amazonaws/athena/connector/lambda/metadata/GetTableLayoutRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.doGetSplits:(Lcom/amazonaws/athena/connector/lambda/data/BlockAllocator;Lcom/amazonaws/athena/connector/lambda/metadata/GetSplitsRequest;)Lcom/amazonaws/athena/connector/lambda/metadata/GetSplitsResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        108,
+        109,
+        112,
+        114,
+        115,
+        116,
+        118,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        128,
+        129,
+        120,
+        132
+      ]
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.lambda$doGetSplits$0:(Lorg/apache/arrow/vector/complex/reader/FieldReader;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.stringValue:(Ljava/lang/Object;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        136,
+        137,
+        138,
+        139,
+        141
+      ]
+    },
+    "sleeper.athena.metadata.IteratorApplyingMetadataHandler.writeExtraPartitionDataToBlock:(Lsleeper/core/partition/Partition;Lcom/amazonaws/athena/connector/lambda/data/Block;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ]
+    },
+    "sleeper.athena.metadata.SimpleMetadataHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.athena.metadata.SimpleMetadataHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/security/EncryptionKeyFactory;Lcom/amazonaws/services/secretsmanager/AWSSecretsManager;Lcom/amazonaws/services/athena/AmazonAthena;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        55,
+        56
+      ]
+    },
+    "sleeper.athena.metadata.SimpleMetadataHandler.addExtraSchemaEnhancements:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lcom/amazonaws/athena/connector/lambda/metadata/GetTableLayoutRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "sleeper.athena.metadata.SimpleMetadataHandler.doGetSplits:(Lcom/amazonaws/athena/connector/lambda/data/BlockAllocator;Lcom/amazonaws/athena/connector/lambda/metadata/GetSplitsRequest;)Lcom/amazonaws/athena/connector/lambda/metadata/GetSplitsResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        74,
+        80,
+        81,
+        83,
+        85
+      ]
+    },
+    "sleeper.athena.metadata.SimpleMetadataHandler.lambda$doGetSplits$0:(Lcom/amazonaws/athena/connector/lambda/metadata/GetSplitsRequest;Ljava/lang/String;)Lcom/amazonaws/athena/connector/lambda/domain/Split;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        81,
+        82,
+        81
+      ]
+    },
+    "sleeper.athena.metadata.SimpleMetadataHandler.writeExtraPartitionDataToBlock:(Lsleeper/core/partition/Partition;Lcom/amazonaws/athena/connector/lambda/data/Block;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        66
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        104,
+        105
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Lcom/amazonaws/athena/connector/lambda/security/EncryptionKeyFactory;Lcom/amazonaws/services/secretsmanager/AWSSecretsManager;Lcom/amazonaws/services/athena/AmazonAthena;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.addComplexType:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        494,
+        495,
+        496,
+        497,
+        500
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.addExtraSchemaEnhancements:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lcom/amazonaws/athena/connector/lambda/metadata/GetTableLayoutRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.addPrimitiveType:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lsleeper/core/schema/Field;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        513,
+        515
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.addType:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        488,
+        489,
+        491
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.doGetTable:(Lcom/amazonaws/athena/connector/lambda/data/BlockAllocator;Lcom/amazonaws/athena/connector/lambda/metadata/GetTableRequest;)Lcom/amazonaws/athena/connector/lambda/metadata/GetTableResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        212,
+        213,
+        214,
+        215,
+        216,
+        218,
+        220,
+        218
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.doListSchemaNames:(Lcom/amazonaws/athena/connector/lambda/data/BlockAllocator;Lcom/amazonaws/athena/connector/lambda/metadata/ListSchemasRequest;)Lcom/amazonaws/athena/connector/lambda/metadata/ListSchemasResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        137,
+        138
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.doListTables:(Lcom/amazonaws/athena/connector/lambda/data/BlockAllocator;Lcom/amazonaws/athena/connector/lambda/metadata/ListTablesRequest;)Lcom/amazonaws/athena/connector/lambda/metadata/ListTablesResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        156,
+        157,
+        158,
+        159,
+        161,
+        162,
+        163,
+        164,
+        165,
+        168,
+        170,
+        171,
+        175,
+        176,
+        177,
+        178,
+        180,
+        183,
+        185,
+        188,
+        191
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.enhancePartitionSchema:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lcom/amazonaws/athena/connector/lambda/metadata/GetTableLayoutRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        232,
+        233,
+        234,
+        235
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.getPartitions:(Lcom/amazonaws/athena/connector/lambda/data/BlockWriter;Lcom/amazonaws/athena/connector/lambda/metadata/GetTableLayoutRequest;Lcom/amazonaws/athena/connector/lambda/QueryStatusChecker;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        268,
+        269,
+        270,
+        271,
+        273,
+        274,
+        275,
+        277,
+        278,
+        279,
+        280,
+        281,
+        283,
+        303
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.getRelevantFilesForLeafPartition:(Lsleeper/core/partition/Partition;Lsleeper/core/partition/PartitionTree;Ljava/util/Map;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        377,
+        378,
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        380
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.getStateStore:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/statestore/StateStore;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        406
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.getTableProperties:(Ljava/lang/String;)Lsleeper/core/properties/table/TableProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        396
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.isValid:(Lsleeper/core/partition/Partition;Ljava/util/List;Ljava/util/Map;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        329,
+        330,
+        331,
+        332,
+        333,
+        332,
+        334,
+        335,
+        336,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        345,
+        348,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        359,
+        360,
+        362,
+        364
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.lambda$doListTables$0:(Ljava/lang/String;Ljava/lang/String;)Lcom/amazonaws/athena/connector/lambda/domain/TableName;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        164
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.lambda$getPartitions$1:(Lcom/google/gson/Gson;Ljava/util/List;Lsleeper/core/partition/Partition;Lcom/amazonaws/athena/connector/lambda/data/Block;I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        295,
+        296,
+        297
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.lambda$getPartitions$2:(Ljava/util/List;Ljava/util/Map;Lsleeper/core/partition/PartitionTree;Ljava/util/Map;Lcom/amazonaws/athena/connector/lambda/data/BlockWriter;Lsleeper/core/partition/Partition;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        284,
+        286,
+        287,
+        288,
+        289,
+        290,
+        293,
+        294,
+        299,
+        300,
+        302
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.lambda$toArrowSchema$3:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        480
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.lambda$toArrowSchema$4:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        481
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.lambda$toArrowSchema$5:(Lcom/amazonaws/athena/connector/lambda/data/SchemaBuilder;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        482
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.partitionMatchesExactValues:(Lsleeper/core/schema/type/PrimitiveType;Ljava/lang/Object;Ljava/lang/Object;Lcom/amazonaws/athena/connector/lambda/domain/predicate/EquatableValueSet;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        450,
+        456,
+        457,
+        459,
+        461,
+        462,
+        463,
+        464,
+        465,
+        468,
+        469,
+        471,
+        472,
+        464,
+        475
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.partitionMatchesRange:(Lsleeper/core/schema/type/PrimitiveType;Lcom/amazonaws/athena/connector/lambda/domain/predicate/ValueSet;Ljava/lang/Object;Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        430,
+        433,
+        434,
+        436,
+        439,
+        440,
+        441,
+        442,
+        443,
+        445,
+        446
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.toArrowSchema:(Lsleeper/core/schema/Schema;)Lorg/apache/arrow/vector/types/pojo/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        479,
+        480,
+        481,
+        482,
+        484
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.toArrowType:(Lsleeper/core/schema/type/PrimitiveType;)Lorg/apache/arrow/vector/types/pojo/ArrowType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        425
+      ]
+    },
+    "sleeper.athena.metadata.SleeperMetadataHandler.writeExtraPartitionDataToBlock:(Lsleeper/core/partition/Partition;Lcom/amazonaws/athena/connector/lambda/data/Block;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        89,
+        90,
+        89,
+        91
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        94,
+        85,
+        95,
+        96
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Lcom/amazonaws/services/secretsmanager/AWSSecretsManager;Lcom/amazonaws/services/athena/AmazonAthena;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        99,
+        85,
+        100,
+        101
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.applyCompactionIterators:(Lsleeper/core/iterator/CloseableIterator;Lsleeper/core/schema/Schema;Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        257,
+        258,
+        259,
+        261,
+        262,
+        263,
+        264,
+        265
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.createFilter:(Lsleeper/core/schema/Schema;Ljava/util/List;Ljava/util/List;)Lorg/apache/parquet/filter2/predicate/FilterPredicate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        232,
+        233,
+        236,
+        238,
+        239,
+        241,
+        218,
+        244
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.createIterator:(Ljava/util/Set;Ljava/util/List;Ljava/util/List;Lsleeper/core/schema/Schema;Lsleeper/core/properties/table/TableProperties;Ljava/util/Map;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        192,
+        193,
+        194,
+        196,
+        198,
+        201
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.createObjectFactory:(Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/core/util/ObjectFactory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        105,
+        106,
+        107
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.createRecordIterator:(Lcom/amazonaws/athena/connector/lambda/records/ReadRecordsRequest;Lsleeper/core/schema/Schema;Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        128,
+        129,
+        130,
+        132,
+        133,
+        134,
+        135,
+        137,
+        138,
+        140
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.createSchemaForDataRead:(Lsleeper/core/schema/Schema;Lcom/amazonaws/athena/connector/lambda/records/ReadRecordsRequest;)Lsleeper/core/schema/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        122
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.getIndexToObjectPair:(Ljava/util/List;Lcom/facebook/collections/Pair;)Lcom/facebook/collections/Pair;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        171
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.getRowKey:(Ljava/util/List;Ljava/util/List;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        144,
+        145,
+        146,
+        145,
+        149,
+        150,
+        151,
+        152,
+        154
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.lambda$createRecordIterator$0:(Ljava/util/Map$Entry;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        133
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.lambda$createRecordIterator$1:(Ljava/util/Map$Entry;)Lcom/facebook/collections/Pair;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        134
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.lambda$getRowKey$2:(Ljava/lang/String;Lcom/facebook/collections/Pair;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        150
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.lambda$getRowKey$3:(Ljava/util/List;Lcom/facebook/collections/Pair;)Lcom/facebook/collections/Pair;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        151
+      ]
+    },
+    "sleeper.athena.record.IteratorApplyingRecordHandler.lambda$getRowKey$4:(Ljava/util/List;Lcom/facebook/collections/Pair;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        152
+      ]
+    },
+    "sleeper.athena.record.SimpleRecordHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        49,
+        50
+      ]
+    },
+    "sleeper.athena.record.SimpleRecordHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Lcom/amazonaws/services/secretsmanager/AWSSecretsManager;Lcom/amazonaws/services/athena/AmazonAthena;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        53,
+        54
+      ]
+    },
+    "sleeper.athena.record.SimpleRecordHandler.createRecordIterator:(Lcom/amazonaws/athena/connector/lambda/records/ReadRecordsRequest;Lsleeper/core/schema/Schema;Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        96,
+        98,
+        99,
+        101,
+        102,
+        104,
+        105,
+        108
+      ]
+    },
+    "sleeper.athena.record.SimpleRecordHandler.createSchemaForDataRead:(Lsleeper/core/schema/Schema;Lcom/amazonaws/athena/connector/lambda/records/ReadRecordsRequest;)Lsleeper/core/schema/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        70,
+        71,
+        72,
+        73,
+        74,
+        70
+      ]
+    },
+    "sleeper.athena.record.SimpleRecordHandler.getRelevantFields:(Ljava/util/List;Ljava/util/Set;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        78
+      ]
+    },
+    "sleeper.athena.record.SimpleRecordHandler.lambda$getRelevantFields$0:(Ljava/util/Set;Lsleeper/core/schema/Field;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.athena.record.SleeperRecordHandler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        70,
+        71,
+        70,
+        72
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        75,
+        76,
+        77,
+        78
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/lang/String;Lcom/amazonaws/services/secretsmanager/AWSSecretsManager;Lcom/amazonaws/services/athena/AmazonAthena;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.addByteArrayExtractor:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter$RowWriterBuilder;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        183,
+        188
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.addIntExtractor:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter$RowWriterBuilder;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        242,
+        247
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.addListExtractorFactory:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter$RowWriterBuilder;Ljava/lang/String;Lsleeper/core/schema/type/ListType;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        197,
+        205
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.addLongExtractor:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter$RowWriterBuilder;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        228,
+        233
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.addStringExtractor:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter$RowWriterBuilder;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        214,
+        219
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.configureBuilder:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter$RowWriterBuilder;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        154,
+        174
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.createRecordIterator:(Lcom/amazonaws/athena/connector/lambda/records/ReadRecordsRequest;Lsleeper/core/schema/Schema;Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.athena.record.SleeperRecordHandler.createSchemaForDataRead:(Lsleeper/core/schema/Schema;Lcom/amazonaws/athena/connector/lambda/records/ReadRecordsRequest;)Lsleeper/core/schema/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.athena.record.SleeperRecordHandler.getConfigurationForTable:(Lsleeper/core/properties/table/TableProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        256,
+        257
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.getInstanceProperties:()Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        261
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$addByteArrayExtractor$2:(Ljava/lang/String;Ljava/lang/Object;Lcom/amazonaws/athena/connector/lambda/data/writers/holders/NullableVarBinaryHolder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        184,
+        185,
+        186,
+        187
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$addIntExtractor$7:(Ljava/lang/String;Ljava/lang/Object;Lorg/apache/arrow/vector/holders/NullableIntHolder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        243,
+        244,
+        245,
+        246
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$addListExtractorFactory$3:(Ljava/lang/String;Lorg/apache/arrow/vector/FieldVector;Ljava/lang/Object;I)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        198,
+        199,
+        200,
+        201,
+        203
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$addListExtractorFactory$4:(Ljava/lang/String;Lorg/apache/arrow/vector/FieldVector;Lcom/amazonaws/athena/connector/lambda/data/writers/extractors/Extractor;Lcom/amazonaws/athena/connector/lambda/domain/predicate/ConstraintProjector;)Lcom/amazonaws/athena/connector/lambda/data/writers/fieldwriters/FieldWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        197
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$addLongExtractor$6:(Ljava/lang/String;Ljava/lang/Object;Lorg/apache/arrow/vector/holders/NullableBigIntHolder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        229,
+        230,
+        231,
+        232
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$addStringExtractor$5:(Ljava/lang/String;Ljava/lang/Object;Lcom/amazonaws/athena/connector/lambda/data/writers/holders/NullableVarCharHolder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        215,
+        216,
+        217,
+        218
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$configureBuilder$1:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter$RowWriterBuilder;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        170,
+        172
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.lambda$readWithConstraint$0:(Lcom/amazonaws/athena/connector/lambda/data/writers/GeneratedRowWriter;Lsleeper/core/record/Record;Lcom/amazonaws/athena/connector/lambda/data/Block;I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        116
+      ]
+    },
+    "sleeper.athena.record.SleeperRecordHandler.readWithConstraint:(Lcom/amazonaws/athena/connector/lambda/data/BlockSpiller;Lcom/amazonaws/athena/connector/lambda/records/ReadRecordsRequest;Lcom/amazonaws/athena/connector/lambda/QueryStatusChecker;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        98,
+        99,
+        101,
+        102,
+        105,
+        106,
+        109,
+        110,
+        112,
+        114,
+        115,
+        116,
+        117,
+        119,
+        120
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}

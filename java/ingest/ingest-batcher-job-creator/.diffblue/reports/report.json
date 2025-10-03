@@ -1,0 +1,223 @@
+{
+  "meta" : {
+    "reportVersion" : "2.7"
+  },
+  "run" : {
+    "version" : "2025.09.01-44e352d-licensed",
+    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 547.764,
+    "environmentDetectionTime" : 0.025,
+    "indexingTime" : 0.37,
+    "entryPointsTime" : 0.013,
+    "generationTime" : 9734.044,
+    "timeToFirstTest" : 10315.7,
+    "timeToLastTest" : 12215.61,
+    "indexQueryTime" : 9.812,
+    "verificationTime" : 222.928,
+    "validationTime" : 12.88
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T012" : "Synthetic method",
+    "T023" : "Testability unknown",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 2,
+    "methodsCount" : 9,
+    "cumulativeDiffblueTestCount" : 5,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 5,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 87,
+    "perMethodTestability" : {
+      "T000" : 5,
+      "T003" : 1,
+      "T005" : 1,
+      "T012" : 1,
+      "T023" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 3,
+      "R002" : 1,
+      "R013" : 2,
+      "T003" : 1,
+      "T012" : 1,
+      "T023" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 5
+    },
+    "perTestValidation" : {
+      "V000" : 5,
+      "V003" : 7
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 1,
+        "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.batcher.job.creator.SQSIngestBatcherQueueClient" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T023",
+      "perMethodOutcome" : "T023"
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        57,
+        58,
+        57,
+        60
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;Lcom/amazonaws/services/sqs/AmazonSQS;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.batchFiles:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.eventHandler:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        74,
+        75
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.getConfigBucket:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        93,
+        94,
+        95,
+        97
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.SQSIngestBatcherQueueClient.<init>:(Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        29,
+        27,
+        30,
+        31
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.SQSIngestBatcherQueueClient.send:(Ljava/lang/String;Lsleeper/ingest/core/job/IngestJob;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        35,
+        36
+      ]
+    }
+  },
+  "validationMetrics" : { }
+}
