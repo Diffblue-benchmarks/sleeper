@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 723.613,
-    "environmentDetectionTime" : 0.116,
-    "indexingTime" : 0.5,
-    "entryPointsTime" : 0.099,
-    "generationTime" : 62124.687,
-    "timeToFirstTest" : 72032.387,
-    "timeToLastTest" : 72448.002,
-    "indexQueryTime" : 16.561,
-    "verificationTime" : 920.308,
-    "validationTime" : 16.977
+    "totalTime" : 543.766,
+    "environmentDetectionTime" : 0.095,
+    "indexingTime" : 0.513,
+    "entryPointsTime" : 0.084,
+    "generationTime" : 56544.522,
+    "timeToFirstTest" : 66444.149,
+    "timeToLastTest" : 66941.14,
+    "indexQueryTime" : 15.879,
+    "verificationTime" : 956.634,
+    "validationTime" : 17.293
   },
   "codes" : {
     "R000" : "Success",
@@ -32,14 +32,15 @@
     "T020" : "Other trivial method",
     "T023" : "Testability unknown",
     "V000" : "Validated successfully",
-    "V003" : "Tests discarded during validation"
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
   },
   "summary" : {
     "classesCount" : 21,
     "methodsCount" : 117,
-    "cumulativeDiffblueTestCount" : 66,
+    "cumulativeDiffblueTestCount" : 65,
     "cumulativeManualTestCount" : 33,
-    "completeTestCount" : 66,
+    "completeTestCount" : 65,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 701,
@@ -56,7 +57,7 @@
       "T023" : 5
     },
     "perMethodOutcome" : {
-      "R000" : 27,
+      "R000" : 24,
       "R002" : 13,
       "R013" : 2,
       "T003" : 27,
@@ -64,14 +65,18 @@
       "T006" : 1,
       "T010" : 6,
       "T012" : 29,
-      "T023" : 5
+      "T023" : 5,
+      "W002" : 3
     },
     "perTestOutcome" : {
-      "R000" : 66
+      "R000" : 65
     },
     "perTestValidation" : {
-      "V000" : 66,
-      "V003" : 3
+      "V000" : 65,
+      "V003" : 2
+    },
+    "warnings" : {
+      "W002" : 1
     }
   },
   "classes" : {
@@ -240,7 +245,7 @@
     },
     "sleeper.task.common.QueueMessageCount" : {
       "methodsCount" : 10,
-      "completeTestCount" : 9,
+      "completeTestCount" : 8,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4,
@@ -250,13 +255,17 @@
         "T020" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 6,
+        "R000" : 3,
         "R013" : 1,
         "T003" : 2,
-        "T012" : 1
+        "T012" : 1,
+        "W002" : 3
       },
       "perTestOutcome" : {
-        "R000" : 9
+        "R000" : 8
+      },
+      "warnings" : {
+        "W002" : 1
       }
     },
     "sleeper.task.common.QueueMessageCount$Client" : {
@@ -1066,24 +1075,24 @@
       ]
     },
     "sleeper.task.common.QueueMessageCount.getApproximateNumberOfMessages:()I" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
       },
       "lineNumbers" : [
         66
       ]
     },
     "sleeper.task.common.QueueMessageCount.getApproximateNumberOfMessagesNotVisible:()I" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
       },
       "lineNumbers" : [
         70
@@ -1126,12 +1135,12 @@
       ]
     },
     "sleeper.task.common.QueueMessageCount.toString:()Ljava/lang/String;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T020",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
       },
       "lineNumbers" : [
         92,

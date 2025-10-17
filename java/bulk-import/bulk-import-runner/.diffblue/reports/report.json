@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 4188.866,
-    "environmentDetectionTime" : 0.155,
-    "indexingTime" : 0.52,
-    "entryPointsTime" : 0.137,
-    "generationTime" : 67120.709,
-    "timeToFirstTest" : 78577.944,
-    "timeToLastTest" : 78784.922,
-    "indexQueryTime" : 37.333,
-    "verificationTime" : 972.279,
-    "validationTime" : 18.015
+    "totalTime" : 4162.038,
+    "environmentDetectionTime" : 0.177,
+    "indexingTime" : 0.535,
+    "entryPointsTime" : 0.162,
+    "generationTime" : 61510.595,
+    "timeToFirstTest" : 72944.321,
+    "timeToLastTest" : 73234.553,
+    "indexQueryTime" : 37.248,
+    "verificationTime" : 1008.925,
+    "validationTime" : 18.282
   },
   "codes" : {
     "R000" : "Success",
@@ -62,12 +62,12 @@
     },
     "perMethodOutcome" : {
       "R000" : 18,
-      "R002" : 6,
+      "R002" : 5,
       "R005" : 1,
       "R006" : 1,
       "R011" : 1,
       "R013" : 17,
-      "R081" : 10,
+      "R081" : 11,
       "T003" : 25,
       "T006" : 3,
       "T008" : 3,
@@ -81,7 +81,7 @@
     },
     "perTestValidation" : {
       "V000" : 37,
-      "V003" : 3
+      "V003" : 2
     },
     "warnings" : {
       "W002" : 1
@@ -200,8 +200,8 @@
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "R002" : 1,
-        "R006" : 1
+        "R006" : 1,
+        "R081" : 1
       }
     },
     "sleeper.bulkimport.runner.JdkImmutableListRegistrator$ImmutableListSerializer" : {
@@ -304,7 +304,7 @@
     },
     "sleeper.bulkimport.runner.dataframe.FileWritingIterator" : {
       "methodsCount" : 12,
-      "completeTestCount" : 2,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4,
@@ -313,14 +313,18 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 2,
+        "R000" : 1,
         "R013" : 2,
         "T003" : 6,
         "T012" : 1,
-        "T023" : 1
+        "T023" : 1,
+        "W002" : 1
       },
       "perTestOutcome" : {
-        "R000" : 2
+        "R000" : 1
+      },
+      "warnings" : {
+        "W002" : 1
       }
     },
     "sleeper.bulkimport.runner.dataframe.WriteParquetFiles" : {
@@ -417,7 +421,7 @@
     },
     "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator" : {
       "methodsCount" : 11,
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4,
@@ -425,17 +429,13 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
+        "R000" : 2,
         "R013" : 2,
         "T003" : 6,
-        "T023" : 1,
-        "W002" : 1
+        "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 1
-      },
-      "warnings" : {
-        "W002" : 1
+        "R000" : 2
       }
     },
     "sleeper.bulkimport.runner.rdd.SleeperPartitioner" : {
@@ -1031,7 +1031,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T005",
-      "perMethodOutcome" : "R002",
+      "perMethodOutcome" : "R081",
       "lineNumbers" : [
         27
       ]
@@ -1315,12 +1315,12 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.bulkimport.runner.dataframe.FileWritingIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
       },
       "lineNumbers" : [
         67,
@@ -1803,12 +1803,12 @@
       ]
     },
     "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/partition/PartitionTree;Ljava/lang/String;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "W002",
-      "warnings" : {
-        "W002" : 1
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
       },
       "lineNumbers" : [
         73,

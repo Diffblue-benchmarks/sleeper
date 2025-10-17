@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 457.009,
-    "environmentDetectionTime" : 0.029,
+    "totalTime" : 505.875,
+    "environmentDetectionTime" : 0.051,
     "indexingTime" : 0.389,
-    "entryPointsTime" : 0.018,
-    "generationTime" : 23093.383,
-    "timeToFirstTest" : 25248.256,
-    "timeToLastTest" : 26875.855,
-    "indexQueryTime" : 12.943,
-    "verificationTime" : 474.48,
-    "validationTime" : 12.922
+    "entryPointsTime" : 0.025,
+    "generationTime" : 24392.76,
+    "timeToFirstTest" : 26542.275,
+    "timeToLastTest" : 28245.866,
+    "indexQueryTime" : 14.491,
+    "verificationTime" : 502.612,
+    "validationTime" : 15.031
   },
   "codes" : {
     "F009" : "Internal error",

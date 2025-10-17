@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 529.624,
-    "environmentDetectionTime" : 0.09,
-    "indexingTime" : 0.496,
-    "entryPointsTime" : 0.068,
-    "generationTime" : 61755.659,
-    "timeToFirstTest" : 71307.438,
-    "timeToLastTest" : 71777.787,
-    "indexQueryTime" : 11.936,
-    "verificationTime" : 889.396,
-    "validationTime" : 26.814
+    "totalTime" : 602.567,
+    "environmentDetectionTime" : 0.046,
+    "indexingTime" : 0.507,
+    "entryPointsTime" : 0.032,
+    "generationTime" : 56348.303,
+    "timeToFirstTest" : 65899.025,
+    "timeToLastTest" : 66450.907,
+    "indexQueryTime" : 11.922,
+    "verificationTime" : 927.372,
+    "validationTime" : 13.349
   },
   "codes" : {
     "R000" : "Success",
@@ -30,15 +30,14 @@
     "T020" : "Other trivial method",
     "T023" : "Testability unknown",
     "V000" : "Validated successfully",
-    "V003" : "Tests discarded during validation",
-    "W002" : "Test compiled, but did not pass"
+    "V003" : "Tests discarded during validation"
   },
   "summary" : {
     "classesCount" : 7,
     "methodsCount" : 32,
     "cumulativeDiffblueTestCount" : 19,
     "cumulativeManualTestCount" : 0,
-    "completeTestCount" : 22,
+    "completeTestCount" : 19,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 312,
@@ -53,23 +52,20 @@
       "T023" : 4
     },
     "perMethodOutcome" : {
-      "R000" : 18,
+      "R000" : 16,
       "R002" : 4,
-      "R013" : 1,
+      "R013" : 3,
       "T003" : 3,
       "T010" : 1,
       "T012" : 1,
       "T023" : 4
     },
     "perTestOutcome" : {
-      "R000" : 22
+      "R000" : 19
     },
     "perTestValidation" : {
       "V000" : 19,
-      "V003" : 3
-    },
-    "warnings" : {
-      "W002" : 5
+      "V003" : 2
     }
   },
   "classes" : {
@@ -122,40 +118,36 @@
     },
     "sleeper.job.common.action.ChangeMessageVisibilityTimeoutAction" : {
       "methodsCount" : 3,
-      "completeTestCount" : 2,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 2,
+        "R000" : 1,
+        "R013" : 1,
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 2
-      },
-      "warnings" : {
-        "W002" : 1
+        "R000" : 1
       }
     },
     "sleeper.job.common.action.DeleteMessageAction" : {
       "methodsCount" : 3,
-      "completeTestCount" : 3,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 2,
+        "R000" : 1,
+        "R013" : 1,
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 3
-      },
-      "warnings" : {
-        "W002" : 4
+        "R000" : 1
       }
     },
     "sleeper.job.common.action.MessageReference" : {
@@ -390,16 +382,10 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.job.common.action.ChangeMessageVisibilityTimeoutAction.<init>:(Lsleeper/job/common/action/MessageReference;I)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
-      "warnings" : {
-        "W002" : 1
-      },
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         40,
         41,
@@ -455,16 +441,10 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.job.common.action.DeleteMessageAction.<init>:(Lsleeper/job/common/action/MessageReference;)V" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 2
-      },
-      "warnings" : {
-        "W002" : 4
-      },
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         40,
         41,

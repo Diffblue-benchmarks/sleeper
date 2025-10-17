@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 383.949,
-    "environmentDetectionTime" : 0.056,
-    "indexingTime" : 0.448,
-    "entryPointsTime" : 0.048,
-    "generationTime" : 31210.396,
-    "timeToFirstTest" : 37369.406,
-    "timeToLastTest" : 38413.117,
-    "indexQueryTime" : 4.081,
-    "verificationTime" : 636.388,
-    "validationTime" : 12.62
+    "totalTime" : 387.022,
+    "environmentDetectionTime" : 0.058,
+    "indexingTime" : 0.454,
+    "entryPointsTime" : 0.045,
+    "generationTime" : 32666.653,
+    "timeToFirstTest" : 38846.26,
+    "timeToLastTest" : 39961.823,
+    "indexQueryTime" : 4.17,
+    "verificationTime" : 659.06,
+    "validationTime" : 13.418
   },
   "codes" : {
     "R000" : "Success",
@@ -38,9 +38,9 @@
   "summary" : {
     "classesCount" : 9,
     "methodsCount" : 66,
-    "cumulativeDiffblueTestCount" : 16,
+    "cumulativeDiffblueTestCount" : 15,
     "cumulativeManualTestCount" : 13,
-    "completeTestCount" : 16,
+    "completeTestCount" : 15,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 426,
@@ -69,14 +69,14 @@
       "W002" : 1
     },
     "perTestOutcome" : {
-      "R000" : 16
+      "R000" : 15
     },
     "perTestValidation" : {
-      "V000" : 16,
+      "V000" : 15,
       "V003" : 3
     },
     "warnings" : {
-      "W002" : 1
+      "W002" : 2
     }
   },
   "classes" : {
@@ -113,7 +113,7 @@
     },
     "sleeper.systemtest.configuration.SystemTestProperties" : {
       "methodsCount" : 8,
-      "completeTestCount" : 4,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4,
@@ -129,7 +129,10 @@
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 3
+      },
+      "warnings" : {
+        "W002" : 1
       }
     },
     "sleeper.systemtest.configuration.SystemTestProperty" : {
@@ -377,12 +380,15 @@
       ]
     },
     "sleeper.systemtest.configuration.SystemTestProperties.testPropertiesOnly:()Lsleeper/systemtest/configuration/SystemTestPropertyValues;" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 2
+        "R000" : 1
+      },
+      "warnings" : {
+        "W002" : 1
       },
       "lineNumbers" : [
         67

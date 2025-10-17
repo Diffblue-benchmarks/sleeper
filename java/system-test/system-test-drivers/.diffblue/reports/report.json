@@ -4,24 +4,25 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 5403.873,
-    "environmentDetectionTime" : 0.324,
-    "indexingTime" : 0.462,
-    "entryPointsTime" : 0.314,
-    "generationTime" : 39497.629,
-    "timeToFirstTest" : 46802.99,
-    "timeToLastTest" : 47625.676,
-    "indexQueryTime" : 24.019000000000002,
-    "verificationTime" : 803.958,
-    "validationTime" : 28.559
+    "totalTime" : 5573.805,
+    "environmentDetectionTime" : 0.481,
+    "indexingTime" : 0.468,
+    "entryPointsTime" : 0.468,
+    "generationTime" : 41199.371,
+    "timeToFirstTest" : 48539.352,
+    "timeToLastTest" : 49432.497,
+    "indexQueryTime" : 25.247,
+    "verificationTime" : 835.392,
+    "validationTime" : 27.114
   },
   "codes" : {
     "R000" : "Success",
     "R002" : "Missing observers",
     "R011" : "Sandboxing policy violation",
     "R013" : "No inputs found that don't throw a trivial exception",
+    "R034" : "Diffblue Cover can't complete test",
     "R081" : "Exception in arrange section",
     "T000" : "Method eligible for test creation",
     "T001" : "Trivial getter",
@@ -41,9 +42,9 @@
   "summary" : {
     "classesCount" : 67,
     "methodsCount" : 534,
-    "cumulativeDiffblueTestCount" : 218,
+    "cumulativeDiffblueTestCount" : 219,
     "cumulativeManualTestCount" : 17,
-    "completeTestCount" : 218,
+    "completeTestCount" : 219,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 3811,
@@ -63,8 +64,9 @@
     "perMethodOutcome" : {
       "R000" : 144,
       "R002" : 17,
-      "R011" : 7,
+      "R011" : 6,
       "R013" : 57,
+      "R034" : 1,
       "R081" : 38,
       "T003" : 87,
       "T005" : 2,
@@ -75,10 +77,10 @@
       "T023" : 30
     },
     "perTestOutcome" : {
-      "R000" : 218
+      "R000" : 219
     },
     "perTestValidation" : {
-      "V000" : 218,
+      "V000" : 219,
       "V003" : 3
     },
     "warnings" : {
@@ -193,7 +195,7 @@
     },
     "sleeper.systemtest.drivers.compaction.AwsCompactionDriver" : {
       "methodsCount" : 8,
-      "completeTestCount" : 2,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 6,
@@ -201,13 +203,10 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
         "R013" : 5,
+        "R034" : 1,
         "T012" : 1,
         "T023" : 1
-      },
-      "perTestOutcome" : {
-        "R000" : 2
       }
     },
     "sleeper.systemtest.drivers.compaction.AwsCompactionReportsDriver" : {
@@ -350,7 +349,7 @@
     },
     "sleeper.systemtest.drivers.ingest.AwsPurgeQueueDriver" : {
       "methodsCount" : 3,
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
@@ -358,9 +357,12 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R011" : 1,
+        "R000" : 1,
         "R081" : 1,
         "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
       }
     },
     "sleeper.systemtest.drivers.ingest.DirectEmrServerlessDriver" : {
@@ -635,7 +637,7 @@
     },
     "sleeper.systemtest.drivers.metrics.AwsTableMetricsDriver" : {
       "methodsCount" : 12,
-      "completeTestCount" : 2,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 3,
@@ -653,7 +655,7 @@
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 2
+        "R000" : 4
       }
     },
     "sleeper.systemtest.drivers.metrics.AwsTableMetricsDriver$Dimensions" : {
@@ -1909,13 +1911,10 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.systemtest.drivers.compaction.AwsCompactionDriver.<init>:(Lsleeper/systemtest/dsl/instance/SystemTestInstanceContext;Lsleeper/systemtest/drivers/util/SystemTestClients;)V" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 2
-      },
+      "perMethodOutcome" : "R034",
       "lineNumbers" : [
         64,
         62,
@@ -2448,10 +2447,13 @@
       ]
     },
     "sleeper.systemtest.drivers.ingest.AwsPurgeQueueDriver.purgeQueues:(Ljava/util/List;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R011",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         41,
         42,
@@ -4016,12 +4018,12 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.systemtest.drivers.metrics.AwsTableMetricsDriver.<init>:(Lsleeper/systemtest/dsl/instance/SystemTestInstanceContext;Lsleeper/systemtest/dsl/reporting/ReportingContext;Lsleeper/systemtest/drivers/util/SystemTestClients;)V" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 2
+        "R000" : 4
       },
       "lineNumbers" : [
         78,

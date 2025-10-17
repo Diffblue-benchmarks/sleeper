@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 619.199,
-    "environmentDetectionTime" : 0.102,
-    "indexingTime" : 0.412,
-    "entryPointsTime" : 0.053,
-    "generationTime" : 25577.769,
-    "timeToFirstTest" : 29301.498,
-    "timeToLastTest" : 30688.738,
-    "indexQueryTime" : 14.614,
-    "verificationTime" : 533.809,
-    "validationTime" : 22.271
+    "totalTime" : 696.728,
+    "environmentDetectionTime" : 0.049,
+    "indexingTime" : 0.413,
+    "entryPointsTime" : 0.036,
+    "generationTime" : 26981.487,
+    "timeToFirstTest" : 30706.806,
+    "timeToLastTest" : 32172.84,
+    "indexQueryTime" : 15.093,
+    "verificationTime" : 561.175,
+    "validationTime" : 14.035
   },
   "codes" : {
     "R000" : "Success",
@@ -30,9 +30,9 @@
   "summary" : {
     "classesCount" : 3,
     "methodsCount" : 23,
-    "cumulativeDiffblueTestCount" : 6,
+    "cumulativeDiffblueTestCount" : 3,
     "cumulativeManualTestCount" : 0,
-    "completeTestCount" : 7,
+    "completeTestCount" : 3,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 228,
@@ -50,17 +50,17 @@
       "T023" : 3
     },
     "perTestOutcome" : {
-      "R000" : 7
+      "R000" : 3
     },
     "perTestValidation" : {
-      "V000" : 6,
-      "V003" : 1
+      "V000" : 3,
+      "V003" : 2
     }
   },
   "classes" : {
     "sleeper.compaction.job.creation.lambda.CompactionJobDispatchLambda" : {
       "methodsCount" : 15,
-      "completeTestCount" : 7,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 3,
@@ -76,7 +76,7 @@
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 3
       }
     },
     "sleeper.compaction.job.creation.lambda.CreateCompactionJobsLambda" : {
@@ -136,12 +136,12 @@
       ]
     },
     "sleeper.compaction.job.creation.lambda.CompactionJobDispatchLambda.dispatcher:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/sqs/AmazonSQS;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/function/Supplier;)Lsleeper/compaction/core/job/dispatch/CompactionJobDispatcher;" : {
-      "completeTestCount" : 7,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 3
       },
       "lineNumbers" : [
         87,

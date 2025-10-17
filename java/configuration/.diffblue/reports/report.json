@@ -4,20 +4,21 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 1647.063,
-    "environmentDetectionTime" : 0.055,
+    "totalTime" : 1644.565,
+    "environmentDetectionTime" : 0.085,
     "indexingTime" : 0.398,
-    "entryPointsTime" : 0.041,
-    "generationTime" : 24682.354,
-    "timeToFirstTest" : 27464.602,
-    "timeToLastTest" : 28993.155,
-    "indexQueryTime" : 10.497,
-    "verificationTime" : 497.541,
-    "validationTime" : 22.458
+    "entryPointsTime" : 0.073,
+    "generationTime" : 25984.236,
+    "timeToFirstTest" : 28773.32,
+    "timeToLastTest" : 30375.926,
+    "indexQueryTime" : 10.290000000000001,
+    "verificationTime" : 526.035,
+    "validationTime" : 22.905
   },
   "codes" : {
+    "F009" : "Internal error",
     "R000" : "Success",
     "R002" : "Missing observers",
     "R011" : "Sandboxing policy violation",
@@ -53,10 +54,11 @@
       "T023" : 5
     },
     "perMethodOutcome" : {
+      "F009" : 1,
       "R000" : 24,
       "R002" : 1,
       "R011" : 1,
-      "R013" : 12,
+      "R013" : 11,
       "R083" : 4,
       "T003" : 17,
       "T008" : 4,
@@ -234,8 +236,9 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
+        "F009" : 1,
         "R011" : 1,
-        "R013" : 8,
+        "R013" : 7,
         "T003" : 2,
         "T012" : 4,
         "T023" : 1
@@ -1151,7 +1154,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         214,
         215,

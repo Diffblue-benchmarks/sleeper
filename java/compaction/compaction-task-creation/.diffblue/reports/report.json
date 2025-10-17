@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 497.542,
+    "totalTime" : 506.041,
     "environmentDetectionTime" : 0.033,
-    "indexingTime" : 0.428,
-    "entryPointsTime" : 0.02,
-    "generationTime" : 27361.022,
-    "timeToFirstTest" : 32014.633,
-    "timeToLastTest" : 33265.211,
-    "indexQueryTime" : 10.426,
-    "verificationTime" : 578.802,
-    "validationTime" : 10.712
+    "indexingTime" : 0.43,
+    "entryPointsTime" : 0.021,
+    "generationTime" : 28819.318,
+    "timeToFirstTest" : 33488.963,
+    "timeToLastTest" : 34815.659,
+    "indexQueryTime" : 10.258000000000001,
+    "verificationTime" : 598.867,
+    "validationTime" : 10.682
   },
   "codes" : {
     "R000" : "Success",

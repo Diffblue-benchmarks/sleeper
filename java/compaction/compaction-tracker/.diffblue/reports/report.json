@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 1046.206,
-    "environmentDetectionTime" : 0.092,
-    "indexingTime" : 0.423,
-    "entryPointsTime" : 0.078,
-    "generationTime" : 27144.73,
-    "timeToFirstTest" : 31515.956,
-    "timeToLastTest" : 32804.548,
-    "indexQueryTime" : 11.045,
-    "verificationTime" : 577.499,
-    "validationTime" : 14.956
+    "totalTime" : 1019.98,
+    "environmentDetectionTime" : 0.142,
+    "indexingTime" : 0.425,
+    "entryPointsTime" : 0.091,
+    "generationTime" : 28597.37,
+    "timeToFirstTest" : 32981.888,
+    "timeToLastTest" : 34347.149,
+    "indexQueryTime" : 11.899000000000001,
+    "verificationTime" : 597.609,
+    "validationTime" : 23.75
   },
   "codes" : {
     "R000" : "Success",
@@ -35,9 +35,9 @@
   "summary" : {
     "classesCount" : 9,
     "methodsCount" : 69,
-    "cumulativeDiffblueTestCount" : 122,
+    "cumulativeDiffblueTestCount" : 101,
     "cumulativeManualTestCount" : 0,
-    "completeTestCount" : 122,
+    "completeTestCount" : 104,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 733,
@@ -52,22 +52,22 @@
     "perMethodOutcome" : {
       "R000" : 28,
       "R002" : 1,
-      "R011" : 2,
-      "R013" : 10,
+      "R011" : 1,
+      "R013" : 11,
       "T003" : 13,
       "T008" : 4,
       "T012" : 5,
       "T023" : 6
     },
     "perTestOutcome" : {
-      "R000" : 122
+      "R000" : 104
     },
     "perTestValidation" : {
-      "V000" : 122,
+      "V000" : 101,
       "V003" : 3
     },
     "warnings" : {
-      "W002" : 3
+      "W002" : 1
     }
   },
   "classes" : {
@@ -87,7 +87,7 @@
     },
     "sleeper.compaction.tracker.job.CompactionJobTrackerFactory" : {
       "methodsCount" : 3,
-      "completeTestCount" : 15,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -98,7 +98,7 @@
         "T008" : 1
       },
       "perTestOutcome" : {
-        "R000" : 15
+        "R000" : 6
       }
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobStatusFormat" : {
@@ -121,7 +121,7 @@
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobTracker" : {
       "methodsCount" : 21,
-      "completeTestCount" : 29,
+      "completeTestCount" : 38,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 12,
@@ -130,15 +130,14 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 9,
-        "R011" : 1,
+        "R000" : 10,
         "R013" : 2,
         "T003" : 6,
         "T012" : 2,
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 29
+        "R000" : 38
       },
       "warnings" : {
         "W002" : 1
@@ -161,7 +160,7 @@
     },
     "sleeper.compaction.tracker.task.CompactionTaskTrackerFactory" : {
       "methodsCount" : 2,
-      "completeTestCount" : 13,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
@@ -172,7 +171,7 @@
         "T008" : 1
       },
       "perTestOutcome" : {
-        "R000" : 13
+        "R000" : 3
       }
     },
     "sleeper.compaction.tracker.task.DynamoDBCompactionTaskStatusFormat" : {
@@ -199,7 +198,7 @@
     },
     "sleeper.compaction.tracker.task.DynamoDBCompactionTaskTracker" : {
       "methodsCount" : 13,
-      "completeTestCount" : 14,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 9,
@@ -208,18 +207,15 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 4,
+        "R000" : 3,
         "R011" : 1,
-        "R013" : 4,
+        "R013" : 5,
         "T003" : 1,
         "T012" : 2,
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 14
-      },
-      "warnings" : {
-        "W002" : 2
+        "R000" : 6
       }
     },
     "sleeper.compaction.tracker.task.DynamoDBCompactionTaskTrackerCreator" : {
@@ -263,12 +259,12 @@
       ]
     },
     "sleeper.compaction.tracker.job.CompactionJobTrackerFactory.getTracker:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/core/tracker/compaction/job/CompactionJobTracker;" : {
-      "completeTestCount" : 14,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 14
+        "R000" : 3
       },
       "lineNumbers" : [
         32,
@@ -277,12 +273,12 @@
       ]
     },
     "sleeper.compaction.tracker.job.CompactionJobTrackerFactory.getTrackerWithStronglyConsistentReads:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/core/tracker/compaction/job/CompactionJobTracker;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 3
       },
       "lineNumbers" : [
         41,
@@ -530,12 +526,12 @@
       ]
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobTracker.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;ZLjava/util/function/Supplier;)V" : {
-      "completeTestCount" : 5,
+      "completeTestCount" : 11,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 5
+        "R000" : 11
       },
       "lineNumbers" : [
         85,
@@ -569,12 +565,12 @@
       ]
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobTracker.eventuallyConsistentReads:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/compaction/tracker/job/DynamoDBCompactionJobTracker;" : {
-      "completeTestCount" : 7,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 4
       },
       "warnings" : {
         "W002" : 1
@@ -593,12 +589,12 @@
       ]
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobTracker.jobCommitted:(Lsleeper/core/tracker/compaction/job/update/CompactionJobCommittedEvent;)V" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 7
       },
       "lineNumbers" : [
         142,
@@ -625,12 +621,12 @@
       ]
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobTracker.jobFailed:(Lsleeper/core/tracker/compaction/job/update/CompactionJobFailedEvent;)V" : {
-      "completeTestCount" : 4,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 3
       },
       "lineNumbers" : [
         151,
@@ -641,12 +637,12 @@
       ]
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobTracker.jobFinished:(Lsleeper/core/tracker/compaction/job/update/CompactionJobFinishedEvent;)V" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 2
       },
       "lineNumbers" : [
         133,
@@ -782,10 +778,13 @@
       ]
     },
     "sleeper.compaction.tracker.job.DynamoDBCompactionJobTracker.stronglyConsistentReads:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/compaction/tracker/job/DynamoDBCompactionJobTracker;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R011",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
       "lineNumbers" : [
         96
       ]
@@ -886,12 +885,12 @@
       ]
     },
     "sleeper.compaction.tracker.task.CompactionTaskTrackerFactory.getTracker:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/core/tracker/compaction/task/CompactionTaskTracker;" : {
-      "completeTestCount" : 13,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 13
+        "R000" : 3
       },
       "lineNumbers" : [
         32,
@@ -1027,32 +1026,20 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.compaction.tracker.task.DynamoDBCompactionTaskTracker.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
-      "completeTestCount" : 7,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 7
-      },
-      "warnings" : {
-        "W002" : 1
-      },
+      "perMethodOutcome" : "R011",
       "lineNumbers" : [
         58,
         59
       ]
     },
     "sleeper.compaction.tracker.task.DynamoDBCompactionTaskTracker.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/function/Supplier;)V" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 3
-      },
-      "warnings" : {
-        "W002" : 1
-      },
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         62,
         63,
@@ -1175,10 +1162,13 @@
       ]
     },
     "sleeper.compaction.tracker.task.DynamoDBCompactionTaskTracker.taskStarted:(Lsleeper/core/tracker/compaction/task/CompactionTaskStatus;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R011",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         72,
         75,

@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 547.764,
-    "environmentDetectionTime" : 0.025,
-    "indexingTime" : 0.37,
+    "totalTime" : 581.861,
+    "environmentDetectionTime" : 0.024,
+    "indexingTime" : 0.366,
     "entryPointsTime" : 0.013,
-    "generationTime" : 9734.044,
-    "timeToFirstTest" : 10315.7,
-    "timeToLastTest" : 12215.61,
-    "indexQueryTime" : 9.812,
-    "verificationTime" : 222.928,
-    "validationTime" : 12.88
+    "generationTime" : 10030.926,
+    "timeToFirstTest" : 10542.395,
+    "timeToLastTest" : 12541.594,
+    "indexQueryTime" : 10.059000000000001,
+    "verificationTime" : 238.07,
+    "validationTime" : 13.48
   },
   "codes" : {
     "R000" : "Success",
@@ -58,7 +58,7 @@
     },
     "perTestValidation" : {
       "V000" : 5,
-      "V003" : 7
+      "V003" : 6
     }
   },
   "classes" : {

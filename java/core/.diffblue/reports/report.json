@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 2648.418,
-    "environmentDetectionTime" : 2.31,
-    "indexingTime" : 0.337,
-    "entryPointsTime" : 2.286,
-    "generationTime" : 2136.022,
-    "timeToFirstTest" : 298.181,
-    "timeToLastTest" : 2535.632,
-    "indexQueryTime" : 7.399,
-    "verificationTime" : 144.036,
-    "validationTime" : 56.603
+    "totalTime" : 2765.021,
+    "environmentDetectionTime" : 2.203,
+    "indexingTime" : 0.326,
+    "entryPointsTime" : 2.177,
+    "generationTime" : 2239.324,
+    "timeToFirstTest" : 299.999,
+    "timeToLastTest" : 2648.486,
+    "indexQueryTime" : 7.228,
+    "verificationTime" : 151.913,
+    "validationTime" : 58.513
   },
   "codes" : {
     "F009" : "Internal error",
@@ -44,14 +44,15 @@
     "T023" : "Testability unknown",
     "V000" : "Validated successfully",
     "V003" : "Tests discarded during validation",
-    "W001" : "Test did not compile"
+    "W001" : "Test did not compile",
+    "W002" : "Test compiled, but did not pass"
   },
   "summary" : {
     "classesCount" : 367,
     "methodsCount" : 2712,
-    "cumulativeDiffblueTestCount" : 2218,
+    "cumulativeDiffblueTestCount" : 2224,
     "cumulativeManualTestCount" : 1172,
-    "completeTestCount" : 2225,
+    "completeTestCount" : 2230,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 19102,
@@ -73,11 +74,11 @@
     },
     "perMethodOutcome" : {
       "F009" : 28,
-      "R000" : 1412,
+      "R000" : 1415,
       "R002" : 69,
       "R004" : 39,
       "R011" : 1,
-      "R013" : 76,
+      "R013" : 73,
       "R024" : 17,
       "R031" : 2,
       "R081" : 15,
@@ -94,14 +95,15 @@
       "W001" : 36
     },
     "perTestOutcome" : {
-      "R000" : 2225
+      "R000" : 2230
     },
     "perTestValidation" : {
-      "V000" : 2218,
-      "V003" : 7
+      "V000" : 2224,
+      "V003" : 6
     },
     "warnings" : {
-      "W001" : 66
+      "W001" : 62,
+      "W002" : 1
     }
   },
   "classes" : {
@@ -767,7 +769,7 @@
     },
     "sleeper.core.properties.SleeperProperties" : {
       "methodsCount" : 39,
-      "completeTestCount" : 34,
+      "completeTestCount" : 40,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 26,
@@ -776,10 +778,10 @@
         "T012" : 5
       },
       "perMethodOutcome" : {
-        "F009" : 2,
-        "R000" : 16,
+        "F009" : 1,
+        "R000" : 19,
         "R011" : 1,
-        "R013" : 5,
+        "R013" : 3,
         "R031" : 1,
         "R083" : 1,
         "T003" : 3,
@@ -787,12 +789,12 @@
         "T012" : 5
       },
       "perTestOutcome" : {
-        "R000" : 34
+        "R000" : 40
       }
     },
     "sleeper.core.properties.SleeperPropertiesInvalidException" : {
       "methodsCount" : 6,
-      "completeTestCount" : 3,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
@@ -805,7 +807,10 @@
         "T003" : 4
       },
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 2
+      },
+      "warnings" : {
+        "W002" : 1
       }
     },
     "sleeper.core.properties.SleeperPropertiesPrettyPrinter" : {
@@ -906,8 +911,8 @@
         "T012" : 2
       },
       "perMethodOutcome" : {
+        "F009" : 1,
         "R000" : 10,
-        "R013" : 1,
         "T010" : 1,
         "T012" : 2
       },
@@ -3376,7 +3381,7 @@
         "W001" : 9
       },
       "warnings" : {
-        "W001" : 27
+        "W001" : 24
       }
     },
     "sleeper.core.statestore.transactionlog.TransactionLogHead" : {
@@ -3441,7 +3446,7 @@
         "W001" : 7
       },
       "warnings" : {
-        "W001" : 14
+        "W001" : 13
       }
     },
     "sleeper.core.statestore.transactionlog.TransactionLogStateStore" : {
@@ -10485,10 +10490,13 @@
       ]
     },
     "sleeper.core.properties.SleeperProperties.set:(Lsleeper/core/properties/SleeperProperty;Ljava/lang/String;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         153,
         154,
@@ -10496,10 +10504,13 @@
       ]
     },
     "sleeper.core.properties.SleeperProperties.setEnum:(Lsleeper/core/properties/SleeperProperty;Ljava/lang/Enum;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         205,
         206
@@ -10534,10 +10545,13 @@
       ]
     },
     "sleeper.core.properties.SleeperProperties.setNumber:(Lsleeper/core/properties/SleeperProperty;Ljava/lang/Number;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         166,
         167
@@ -10623,12 +10637,15 @@
       ]
     },
     "sleeper.core.properties.SleeperPropertiesInvalidException.<init>:(Ljava/util/Map;)V" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 2
+      },
+      "warnings" : {
+        "W002" : 1
       },
       "lineNumbers" : [
         28,
@@ -11401,7 +11418,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         165
       ]
@@ -22677,7 +22694,7 @@
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "W001",
       "warnings" : {
-        "W001" : 2
+        "W001" : 4
       },
       "lineNumbers" : [
         58
@@ -22689,7 +22706,7 @@
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "W001",
       "warnings" : {
-        "W001" : 4
+        "W001" : 2
       },
       "lineNumbers" : [
         63
@@ -22701,7 +22718,7 @@
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "W001",
       "warnings" : {
-        "W001" : 5
+        "W001" : 2
       },
       "lineNumbers" : [
         68,
@@ -23521,7 +23538,7 @@
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "W001",
       "warnings" : {
-        "W001" : 3
+        "W001" : 2
       },
       "lineNumbers" : [
         70,

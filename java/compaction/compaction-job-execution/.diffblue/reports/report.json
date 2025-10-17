@@ -4,22 +4,23 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 1166.065,
-    "environmentDetectionTime" : 0.068,
-    "indexingTime" : 0.417,
-    "entryPointsTime" : 0.051,
-    "generationTime" : 26424.868,
-    "timeToFirstTest" : 30468.818,
-    "timeToLastTest" : 31802.884,
-    "indexQueryTime" : 18.735,
-    "verificationTime" : 548.066,
-    "validationTime" : 23.073
+    "totalTime" : 1252.7,
+    "environmentDetectionTime" : 0.106,
+    "indexingTime" : 0.418,
+    "entryPointsTime" : 0.086,
+    "generationTime" : 27925.941,
+    "timeToFirstTest" : 31960.673,
+    "timeToLastTest" : 33380.528,
+    "indexQueryTime" : 17.44,
+    "verificationTime" : 570.141,
+    "validationTime" : 14.486
   },
   "codes" : {
     "R000" : "Success",
     "R002" : "Missing observers",
+    "R011" : "Sandboxing policy violation",
     "R013" : "No inputs found that don't throw a trivial exception",
     "T000" : "Method eligible for test creation",
     "T001" : "Trivial getter",
@@ -30,15 +31,14 @@
     "T012" : "Synthetic method",
     "T023" : "Testability unknown",
     "V000" : "Validated successfully",
-    "V003" : "Tests discarded during validation",
-    "W002" : "Test compiled, but did not pass"
+    "V003" : "Tests discarded during validation"
   },
   "summary" : {
     "classesCount" : 7,
     "methodsCount" : 34,
-    "cumulativeDiffblueTestCount" : 25,
+    "cumulativeDiffblueTestCount" : 15,
     "cumulativeManualTestCount" : 0,
-    "completeTestCount" : 28,
+    "completeTestCount" : 15,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 420,
@@ -53,8 +53,9 @@
       "T023" : 5
     },
     "perMethodOutcome" : {
-      "R000" : 9,
+      "R000" : 8,
       "R002" : 2,
+      "R011" : 1,
       "R013" : 2,
       "T003" : 11,
       "T006" : 1,
@@ -63,14 +64,11 @@
       "T023" : 5
     },
     "perTestOutcome" : {
-      "R000" : 28
+      "R000" : 15
     },
     "perTestValidation" : {
-      "V000" : 25,
-      "V003" : 3
-    },
-    "warnings" : {
-      "W002" : 2
+      "V000" : 15,
+      "V003" : 2
     }
   },
   "classes" : {
@@ -120,7 +118,7 @@
     },
     "sleeper.compaction.job.execution.ECSCompactionTaskRunner" : {
       "methodsCount" : 10,
-      "completeTestCount" : 14,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -130,17 +128,15 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 2,
+        "R000" : 1,
+        "R011" : 1,
         "T003" : 3,
         "T006" : 1,
         "T012" : 3,
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 14
-      },
-      "warnings" : {
-        "W002" : 2
+        "R000" : 1
       }
     },
     "sleeper.compaction.job.execution.JavaCompactionRunner" : {
@@ -302,16 +298,10 @@
       ]
     },
     "sleeper.compaction.job.execution.ECSCompactionTaskRunner.committerOrSendToLambda:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/sqs/AmazonSQS;)Lsleeper/compaction/core/job/CompactionJobCommitterOrSendToLambda;" : {
-      "completeTestCount" : 13,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 13
-      },
-      "warnings" : {
-        "W002" : 2
-      },
+      "perMethodOutcome" : "R011",
       "lineNumbers" : [
         148,
         150,

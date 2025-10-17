@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 19877.365,
-    "environmentDetectionTime" : 0.243,
-    "indexingTime" : 0.483,
-    "entryPointsTime" : 0.228,
-    "generationTime" : 60452.695,
-    "timeToFirstTest" : 69058.163,
-    "timeToLastTest" : 69676.577,
-    "indexQueryTime" : 15.777000000000001,
-    "verificationTime" : 861.579,
-    "validationTime" : 18.641
+    "totalTime" : 12639.26,
+    "environmentDetectionTime" : 0.451,
+    "indexingTime" : 0.49,
+    "entryPointsTime" : 0.437,
+    "generationTime" : 54870.038,
+    "timeToFirstTest" : 63502.823,
+    "timeToLastTest" : 64188.953,
+    "indexQueryTime" : 17.985,
+    "verificationTime" : 901.753,
+    "validationTime" : 18.816
   },
   "codes" : {
     "F009" : "Internal error",
@@ -64,7 +64,7 @@
       "R000" : 28,
       "R002" : 5,
       "R013" : 1,
-      "R020" : 16,
+      "R020" : 6,
       "R024" : 4,
       "R081" : 30,
       "T003" : 114,
@@ -620,14 +620,11 @@
       }
     },
     "sleeper.cdk.stack.core.StateStoreStacks" : {
-      "methodsCount" : 10,
+      "methodsCount" : 0,
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 10
-      },
-      "perMethodOutcome" : {
-        "R020" : 10
       }
     },
     "sleeper.cdk.stack.core.TableDataStack" : {
@@ -5871,7 +5868,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         37,
         38,
@@ -5889,7 +5886,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         81,
         82
@@ -5899,7 +5896,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         49,
         50
@@ -5909,7 +5906,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         57,
         58
@@ -5919,7 +5916,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         65,
         66
@@ -5929,7 +5926,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         61,
         62
@@ -5939,7 +5936,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         69,
         70
@@ -5949,7 +5946,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         53,
         54
@@ -5959,7 +5956,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         77,
         78
@@ -5969,7 +5966,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R020",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         73,
         74

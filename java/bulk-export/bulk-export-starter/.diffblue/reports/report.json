@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 244.251,
-    "environmentDetectionTime" : 0.025,
-    "indexingTime" : 0.539,
-    "entryPointsTime" : 0.01,
-    "generationTime" : 67952.72,
-    "timeToFirstTest" : 80532.934,
-    "timeToLastTest" : 80602.544,
-    "indexQueryTime" : 1.812,
-    "verificationTime" : 1008.155,
-    "validationTime" : 13.078
+    "totalTime" : 256.444,
+    "environmentDetectionTime" : 0.037,
+    "indexingTime" : 0.555,
+    "entryPointsTime" : 0.028,
+    "generationTime" : 62301.806,
+    "timeToFirstTest" : 74873.848,
+    "timeToLastTest" : 75024.389,
+    "indexQueryTime" : 1.822,
+    "verificationTime" : 1045.372,
+    "validationTime" : 12.804
   },
   "codes" : {
     "T005" : "Trivial constructor",
@@ -39,7 +39,7 @@
     },
     "perTestValidation" : {
       "V000" : 60,
-      "V003" : 3
+      "V003" : 2
     }
   },
   "classes" : {

@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 5460.364,
-    "environmentDetectionTime" : 0.361,
-    "indexingTime" : 0.349,
-    "entryPointsTime" : 0.342,
-    "generationTime" : 7522.532,
-    "timeToFirstTest" : 6596.987,
-    "timeToLastTest" : 8701.589,
-    "indexQueryTime" : 16.749,
-    "verificationTime" : 177.293,
-    "validationTime" : 18.695
+    "totalTime" : 5360.016,
+    "environmentDetectionTime" : 0.263,
+    "indexingTime" : 0.343,
+    "entryPointsTime" : 0.241,
+    "generationTime" : 7516.77,
+    "timeToFirstTest" : 6513.362,
+    "timeToLastTest" : 8723.539,
+    "indexQueryTime" : 16.483,
+    "verificationTime" : 191.513,
+    "validationTime" : 19.359
   },
   "codes" : {
     "F009" : "Internal error",
@@ -44,9 +44,9 @@
   "summary" : {
     "classesCount" : 38,
     "methodsCount" : 273,
-    "cumulativeDiffblueTestCount" : 85,
+    "cumulativeDiffblueTestCount" : 101,
     "cumulativeManualTestCount" : 5,
-    "completeTestCount" : 85,
+    "completeTestCount" : 101,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 2857,
@@ -66,11 +66,11 @@
     },
     "perMethodOutcome" : {
       "F009" : 1,
-      "R000" : 42,
+      "R000" : 45,
       "R002" : 12,
       "R006" : 1,
       "R011" : 30,
-      "R013" : 20,
+      "R013" : 17,
       "R081" : 27,
       "T003" : 42,
       "T005" : 2,
@@ -82,15 +82,15 @@
       "T023" : 14
     },
     "perTestOutcome" : {
-      "R000" : 85
+      "R000" : 101
     },
     "perTestValidation" : {
-      "V000" : 85,
-      "V003" : 7
+      "V000" : 101,
+      "V003" : 6
     },
     "warnings" : {
       "F009" : 1,
-      "W002" : 3
+      "W002" : 5
     }
   },
   "classes" : {
@@ -662,7 +662,7 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R013" : 1,
+        "R011" : 1,
         "T003" : 2,
         "T006" : 1,
         "T012" : 1,
@@ -671,7 +671,7 @@
     },
     "sleeper.ingest.runner.task.IngestJobQueueConsumer" : {
       "methodsCount" : 5,
-      "completeTestCount" : 0,
+      "completeTestCount" : 9,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 3,
@@ -679,16 +679,18 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
+        "R000" : 2,
         "R002" : 1,
-        "R011" : 1,
-        "R013" : 1,
         "T012" : 1,
         "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 9
       }
     },
     "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle" : {
       "methodsCount" : 5,
-      "completeTestCount" : 8,
+      "completeTestCount" : 15,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -697,14 +699,13 @@
         "T021" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 4,
-        "R013" : 1
+        "R000" : 5
       },
       "perTestOutcome" : {
-        "R000" : 8
+        "R000" : 15
       },
       "warnings" : {
-        "W002" : 3
+        "W002" : 5
       }
     },
     "sleeper.ingest.runner.task.IngestJobRunner" : {
@@ -4093,7 +4094,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R011",
       "lineNumbers" : [
         111,
         112,
@@ -4189,15 +4190,15 @@
       ]
     },
     "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle.close:()V" : {
-      "completeTestCount" : 7,
+      "completeTestCount" : 8,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 8
       },
       "warnings" : {
-        "W002" : 3
+        "W002" : 5
       },
       "lineNumbers" : [
         166,
@@ -4207,10 +4208,13 @@
       ]
     },
     "sleeper.ingest.runner.task.IngestJobQueueConsumer$SqsMessageHandle.completed:(Lsleeper/core/tracker/job/run/JobRunSummary;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
       "lineNumbers" : [
         142,
         144,
@@ -4263,10 +4267,13 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.ingest.runner.task.IngestJobQueueConsumer.<init>:(Lcom/amazonaws/services/sqs/AmazonSQS;Lcom/amazonaws/services/cloudwatch/AmazonCloudWatch;Lsleeper/core/properties/instance/InstanceProperties;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/table/TableIndex;Lsleeper/core/tracker/ingest/job/IngestJobTracker;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R011",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         69,
         70,
@@ -4302,10 +4309,13 @@
       ]
     },
     "sleeper.ingest.runner.task.IngestJobQueueConsumer.receiveMessage:()Ljava/util/Optional;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
       "lineNumbers" : [
         93,
         94,

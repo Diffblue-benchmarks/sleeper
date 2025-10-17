@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 3251.794,
-    "environmentDetectionTime" : 0.118,
-    "indexingTime" : 0.385,
-    "entryPointsTime" : 0.107,
-    "generationTime" : 22940.491,
-    "timeToFirstTest" : 24790.028,
-    "timeToLastTest" : 26458.882,
-    "indexQueryTime" : 13.35,
-    "verificationTime" : 471.812,
-    "validationTime" : 18.821
+    "totalTime" : 3645.002,
+    "environmentDetectionTime" : 0.173,
+    "indexingTime" : 0.382,
+    "entryPointsTime" : 0.16,
+    "generationTime" : 24214.565,
+    "timeToFirstTest" : 26034.742,
+    "timeToLastTest" : 27786.645,
+    "indexQueryTime" : 13.834,
+    "verificationTime" : 499.103,
+    "validationTime" : 22.225
   },
   "codes" : {
     "R000" : "Success",
@@ -41,9 +41,9 @@
   "summary" : {
     "classesCount" : 37,
     "methodsCount" : 215,
-    "cumulativeDiffblueTestCount" : 87,
+    "cumulativeDiffblueTestCount" : 114,
     "cumulativeManualTestCount" : 32,
-    "completeTestCount" : 87,
+    "completeTestCount" : 114,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 1531,
@@ -60,11 +60,11 @@
       "T023" : 14
     },
     "perMethodOutcome" : {
-      "R000" : 48,
+      "R000" : 51,
       "R002" : 9,
       "R006" : 1,
-      "R011" : 22,
-      "R013" : 20,
+      "R011" : 20,
+      "R013" : 19,
       "R081" : 1,
       "T003" : 43,
       "T006" : 3,
@@ -74,10 +74,10 @@
       "T023" : 14
     },
     "perTestOutcome" : {
-      "R000" : 87
+      "R000" : 114
     },
     "perTestValidation" : {
-      "V000" : 87,
+      "V000" : 114,
       "V003" : 3
     },
     "warnings" : {
@@ -172,7 +172,7 @@
     },
     "sleeper.statestore.StateStoreFactory" : {
       "methodsCount" : 7,
-      "completeTestCount" : 8,
+      "completeTestCount" : 10,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4,
@@ -180,13 +180,12 @@
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 3,
+        "R000" : 4,
         "R002" : 1,
-        "R013" : 1,
         "T003" : 2
       },
       "perTestOutcome" : {
-        "R000" : 8
+        "R000" : 10
       }
     },
     "sleeper.statestore.StateStoreFilesArrowFormat" : {
@@ -357,7 +356,7 @@
     },
     "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore" : {
       "methodsCount" : 14,
-      "completeTestCount" : 18,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 5,
@@ -374,7 +373,7 @@
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 18
+        "R000" : 6
       }
     },
     "sleeper.statestore.transactionlog.S3TransactionBodyStore" : {
@@ -442,7 +441,7 @@
     },
     "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator" : {
       "methodsCount" : 6,
-      "completeTestCount" : 5,
+      "completeTestCount" : 19,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 3,
@@ -450,13 +449,12 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 2,
-        "R013" : 1,
+        "R000" : 3,
         "T003" : 2,
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 5
+        "R000" : 19
       }
     },
     "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator$LatestSnapshotsMetadataLoader" : {
@@ -485,7 +483,7 @@
     },
     "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore" : {
       "methodsCount" : 25,
-      "completeTestCount" : 1,
+      "completeTestCount" : 24,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 10,
@@ -493,14 +491,13 @@
         "T012" : 5
       },
       "perMethodOutcome" : {
-        "R000" : 1,
-        "R011" : 2,
-        "R013" : 7,
+        "R000" : 2,
+        "R013" : 8,
         "T003" : 10,
         "T012" : 5
       },
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 24
       }
     },
     "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStoreCreator" : {
@@ -1112,10 +1109,13 @@
       ]
     },
     "sleeper.statestore.StateStoreFactory.forCommitterProcess:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/statestore/StateStoreFactory;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         73
       ]
@@ -2053,7 +2053,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R011",
       "lineNumbers" : [
         171,
         172,
@@ -2085,12 +2085,12 @@
       ]
     },
     "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.forPartitions:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/statestore/transactionlog/DynamoDBTransactionLogStore;" : {
-      "completeTestCount" : 18,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 18
+        "R000" : 6
       },
       "lineNumbers" : [
         104,
@@ -2173,7 +2173,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R011",
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         145,
         146,
@@ -2471,10 +2471,13 @@
       ]
     },
     "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator.from:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotCreator;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 14,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 14
+      },
       "lineNumbers" : [
         69,
         71,
@@ -2550,10 +2553,13 @@
       ]
     },
     "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 21,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R011",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 21
+      },
       "lineNumbers" : [
         76,
         77
@@ -2563,7 +2569,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R011",
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         79,
         80,
@@ -2851,12 +2857,12 @@
       ]
     },
     "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.saveSnapshot:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 3
       },
       "lineNumbers" : [
         94,

@@ -4,23 +4,24 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 567.179,
-    "environmentDetectionTime" : 0.075,
-    "indexingTime" : 0.393,
-    "entryPointsTime" : 0.059,
-    "generationTime" : 23354.934,
-    "timeToFirstTest" : 25816.455,
-    "timeToLastTest" : 27399.132,
-    "indexQueryTime" : 14.805,
-    "verificationTime" : 480.334,
-    "validationTime" : 13.021
+    "totalTime" : 584.218,
+    "environmentDetectionTime" : 0.098,
+    "indexingTime" : 0.394,
+    "entryPointsTime" : 0.079,
+    "generationTime" : 24659.753,
+    "timeToFirstTest" : 27127.671,
+    "timeToLastTest" : 28785.558,
+    "indexQueryTime" : 14.858,
+    "verificationTime" : 508.809,
+    "validationTime" : 13.263
   },
   "codes" : {
     "R000" : "Success",
     "R002" : "Missing observers",
     "R013" : "No inputs found that don't throw a trivial exception",
+    "R031" : "Method may be time-sensitive",
     "T000" : "Method eligible for test creation",
     "T003" : "Private method",
     "T005" : "Trivial constructor",
@@ -47,8 +48,9 @@
     },
     "perMethodOutcome" : {
       "R000" : 4,
-      "R002" : 3,
+      "R002" : 2,
       "R013" : 14,
+      "R031" : 1,
       "T003" : 15,
       "T012" : 18,
       "T023" : 9
@@ -74,8 +76,8 @@
       },
       "perMethodOutcome" : {
         "R000" : 2,
-        "R002" : 1,
         "R013" : 1,
+        "R031" : 1,
         "T003" : 1,
         "T012" : 3,
         "T023" : 1
@@ -272,7 +274,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R002",
+      "perMethodOutcome" : "R031",
       "lineNumbers" : [
         90,
         91,

@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 528.449,
-    "environmentDetectionTime" : 0.107,
-    "indexingTime" : 0.402,
-    "entryPointsTime" : 0.096,
-    "generationTime" : 24894.908,
-    "timeToFirstTest" : 27994.06,
-    "timeToLastTest" : 29473.442,
-    "indexQueryTime" : 4.352,
-    "verificationTime" : 515.637,
-    "validationTime" : 15.745
+    "totalTime" : 539.871,
+    "environmentDetectionTime" : 0.15,
+    "indexingTime" : 0.404,
+    "entryPointsTime" : 0.137,
+    "generationTime" : 26202.368,
+    "timeToFirstTest" : 29314.314,
+    "timeToLastTest" : 30865.837,
+    "indexQueryTime" : 4.524,
+    "verificationTime" : 544.97,
+    "validationTime" : 16.734
   },
   "codes" : {
     "F009" : "Internal error",
@@ -24,6 +24,7 @@
     "R004" : "No meaningful assertions found",
     "R010" : "Timeout",
     "R013" : "No inputs found that don't throw a trivial exception",
+    "R031" : "Method may be time-sensitive",
     "T000" : "Method eligible for test creation",
     "T001" : "Trivial getter",
     "T002" : "Trivial setter",
@@ -63,10 +64,11 @@
     "perMethodOutcome" : {
       "F009" : 1,
       "R000" : 82,
-      "R002" : 14,
+      "R002" : 13,
       "R004" : 2,
       "R010" : 1,
       "R013" : 3,
+      "R031" : 1,
       "T003" : 35,
       "T005" : 1,
       "T008" : 9,
@@ -703,8 +705,9 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "R002" : 2,
+        "R002" : 1,
         "R010" : 1,
+        "R031" : 1,
         "T003" : 7,
         "T012" : 2,
         "T023" : 1
@@ -3222,7 +3225,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R002",
+      "perMethodOutcome" : "R031",
       "lineNumbers" : [
         85,
         88,

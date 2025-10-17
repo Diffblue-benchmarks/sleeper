@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 991.185,
-    "environmentDetectionTime" : 0.065,
-    "indexingTime" : 0.479,
-    "entryPointsTime" : 0.04,
-    "generationTime" : 40918.07,
-    "timeToFirstTest" : 49179.97,
-    "timeToLastTest" : 49859.352,
-    "indexQueryTime" : 15.118,
-    "verificationTime" : 845.399,
-    "validationTime" : 14.027
+    "totalTime" : 959.14,
+    "environmentDetectionTime" : 0.054,
+    "indexingTime" : 0.484,
+    "entryPointsTime" : 0.038,
+    "generationTime" : 42572.297,
+    "timeToFirstTest" : 50862.349,
+    "timeToLastTest" : 51610.439,
+    "indexQueryTime" : 15.775,
+    "verificationTime" : 884.728,
+    "validationTime" : 14.815
   },
   "codes" : {
     "R000" : "Success",
@@ -31,9 +31,9 @@
   "summary" : {
     "classesCount" : 4,
     "methodsCount" : 24,
-    "cumulativeDiffblueTestCount" : 15,
+    "cumulativeDiffblueTestCount" : 33,
     "cumulativeManualTestCount" : 0,
-    "completeTestCount" : 15,
+    "completeTestCount" : 33,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 291,
@@ -44,18 +44,18 @@
       "T023" : 4
     },
     "perMethodOutcome" : {
-      "R000" : 3,
+      "R000" : 4,
       "R011" : 2,
-      "R013" : 5,
+      "R013" : 4,
       "T003" : 5,
       "T012" : 5,
       "T023" : 4
     },
     "perTestOutcome" : {
-      "R000" : 15
+      "R000" : 33
     },
     "perTestValidation" : {
-      "V000" : 15,
+      "V000" : 33,
       "V003" : 2
     }
   },
@@ -98,7 +98,7 @@
     },
     "sleeper.splitter.lambda.SplitPartitionLambda" : {
       "methodsCount" : 12,
-      "completeTestCount" : 14,
+      "completeTestCount" : 17,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4,
@@ -115,21 +115,24 @@
         "T023" : 1
       },
       "perTestOutcome" : {
-        "R000" : 14
+        "R000" : 17
       }
     },
     "sleeper.splitter.lambda.SqsSplitPartitionJobSender" : {
       "methodsCount" : 3,
-      "completeTestCount" : 0,
+      "completeTestCount" : 15,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T023" : 1
       },
       "perMethodOutcome" : {
+        "R000" : 1,
         "R011" : 1,
-        "R013" : 1,
         "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 15
       }
     }
   },
@@ -335,12 +338,12 @@
       ]
     },
     "sleeper.splitter.lambda.SplitPartitionLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
-      "completeTestCount" : 13,
+      "completeTestCount" : 16,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 13
+        "R000" : 16
       },
       "lineNumbers" : [
         97,
@@ -434,10 +437,13 @@
       "perMethodOutcome" : "T023"
     },
     "sleeper.splitter.lambda.SqsSplitPartitionJobSender.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 15,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 15
+      },
       "lineNumbers" : [
         44,
         45,

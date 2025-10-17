@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-10-02T17:06:51.08149138Z",
+    "creationTimestamp" : "2025-10-16T02:45:34.030561125Z",
     "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
-    "totalTime" : 683.001,
-    "environmentDetectionTime" : 0.032,
-    "indexingTime" : 0.512,
-    "entryPointsTime" : 0.019,
-    "generationTime" : 63212.471,
-    "timeToFirstTest" : 74024.998,
-    "timeToLastTest" : 74335.465,
-    "indexQueryTime" : 11.227,
-    "verificationTime" : 942.321,
-    "validationTime" : 12.642
+    "totalTime" : 706.3,
+    "environmentDetectionTime" : 0.026,
+    "indexingTime" : 0.526,
+    "entryPointsTime" : 0.016,
+    "generationTime" : 57624.313,
+    "timeToFirstTest" : 68419.762,
+    "timeToLastTest" : 68811.333,
+    "indexQueryTime" : 10.991,
+    "verificationTime" : 977.545,
+    "validationTime" : 12.489
   },
   "codes" : {
     "R011" : "Sandboxing policy violation",
@@ -57,7 +57,7 @@
     },
     "perTestValidation" : {
       "V000" : 53,
-      "V003" : 3
+      "V003" : 2
     }
   },
   "classes" : {
