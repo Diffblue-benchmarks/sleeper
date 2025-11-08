@@ -1,0 +1,1288 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 2486.364,
+    "environmentDetectionTime" : 0.485,
+    "indexingTime" : 0.29,
+    "entryPointsTime" : 0.478,
+    "generationTime" : 6598.409,
+    "timeToFirstTest" : 5817.227,
+    "timeToLastTest" : 8178.178,
+    "indexQueryTime" : 14.929,
+    "verificationTime" : 224.043,
+    "validationTime" : 87.377
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 9,
+    "methodsCount" : 68,
+    "cumulativeDiffblueTestCount" : 110,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 124,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 794,
+    "perMethodTestability" : {
+      "T000" : 38,
+      "T003" : 15,
+      "T005" : 2,
+      "T008" : 3,
+      "T012" : 10
+    },
+    "perMethodOutcome" : {
+      "R000" : 27,
+      "R002" : 1,
+      "R013" : 12,
+      "T003" : 15,
+      "T008" : 3,
+      "T012" : 10
+    },
+    "perTestOutcome" : {
+      "R000" : 124
+    },
+    "perTestValidation" : {
+      "V000" : 110,
+      "V003" : 14
+    },
+    "warnings" : {
+      "W002" : 6
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.tracker.IngestTrackerException" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 32,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 8,
+        "T003" : 4,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 8,
+        "T003" : 4,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 32
+      }
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker" : {
+      "methodsCount" : 20,
+      "completeTestCount" : 50,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 11,
+        "T003" : 7,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 8,
+        "R013" : 3,
+        "T003" : 7,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 50
+      },
+      "warnings" : {
+        "W002" : 4
+      }
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTrackerCreator" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T008" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.ingest.tracker.job.IngestJobTrackerFactory" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 13
+      }
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 14,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 2,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 2,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 14
+      }
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 5,
+        "R013" : 4,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 12
+      },
+      "warnings" : {
+        "W002" : 2
+      }
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTrackerCreator" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T008" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.ingest.tracker.task.IngestTaskTrackerFactory" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.tracker.IngestTrackerException.<init>:(Ljava/lang/String;Ljava/lang/Throwable;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        22,
+        23
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        60,
+        92
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        94,
+        95
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.createJobAddedFilesUpdate:(Lsleeper/core/tracker/ingest/job/update/IngestJobAddedFilesEvent;Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;)Ljava/util/Map;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        129
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.createJobFailedUpdate:(Lsleeper/core/tracker/ingest/job/update/IngestJobFailedEvent;Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;)Ljava/util/Map;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        160,
+        163,
+        155
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.createJobFinishedUpdate:(Lsleeper/core/tracker/ingest/job/update/IngestJobFinishedEvent;Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;)Ljava/util/Map;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        141
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.createJobStartedUpdate:(Lsleeper/core/tracker/ingest/job/update/IngestJobStartedEvent;Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;)Ljava/util/Map;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        118
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.createJobValidatedUpdate:(Lsleeper/core/tracker/ingest/job/update/IngestJobValidatedEvent;Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;)Ljava/util/Map;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        103,
+        106,
+        107,
+        108,
+        109,
+        99
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.generateJobUpdateId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        179,
+        180,
+        181
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.getStatusUpdate:(Ljava/util/Map;)Lsleeper/core/tracker/job/status/JobStatusUpdate;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        200,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        204,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        209,
+        218,
+        219,
+        220,
+        221,
+        218,
+        223,
+        224,
+        225,
+        226,
+        227,
+        223,
+        229,
+        230,
+        231,
+        233,
+        234,
+        232,
+        235,
+        236,
+        237,
+        229,
+        239,
+        240,
+        241,
+        242,
+        243,
+        239,
+        245,
+        246
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.getStatusUpdateRecord:(Ljava/util/Map;)Lsleeper/core/tracker/job/status/JobStatusUpdateRecord;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        190
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.getValidationResult:(Lsleeper/core/tracker/ingest/job/update/IngestJobValidatedEvent;)Ljava/lang/String;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        113
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.jobUpdateBuilder:(Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;Ljava/time/Instant;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        167,
+        168,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        170
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobStatusFormat.streamJobStatuses:(Ljava/util/stream/Stream;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 13
+      },
+      "lineNumbers" : [
+        185,
+        186,
+        185
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.addStatusUpdate:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        154,
+        155,
+        156,
+        157,
+        158,
+        155,
+        159,
+        160,
+        161,
+        162,
+        159,
+        163
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.getInvalidJobs:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        224,
+        225,
+        224,
+        225,
+        224
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.getJob:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        230,
+        231,
+        230
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobAddedFiles:(Lsleeper/core/tracker/ingest/job/update/IngestJobAddedFilesEvent;)V" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        124,
+        127,
+        125,
+        126,
+        128
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobFailed:(Lsleeper/core/tracker/ingest/job/update/IngestJobFailedEvent;)V" : {
+      "completeTestCount" : 17,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 17
+      },
+      "warnings" : {
+        "W002" : 2
+      },
+      "lineNumbers" : [
+        142,
+        145,
+        143,
+        144,
+        146
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobFinished:(Lsleeper/core/tracker/ingest/job/update/IngestJobFinishedEvent;)V" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "warnings" : {
+        "W002" : 2
+      },
+      "lineNumbers" : [
+        133,
+        136,
+        134,
+        135,
+        137
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobLookupTableName:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        100
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobStarted:(Lsleeper/core/tracker/ingest/job/update/IngestJobStartedEvent;)V" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        115,
+        118,
+        116,
+        117,
+        119
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobUpdateBuilder:(Ljava/lang/String;Ljava/lang/String;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        206,
+        207,
+        208
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobUpdatesTableName:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.jobValidated:(Lsleeper/core/tracker/ingest/job/update/IngestJobValidatedEvent;)V" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        106,
+        109,
+        107,
+        108,
+        110
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.lambda$getJob$0:(Ljava/util/Map;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        231
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.loadStatusItems:(Ljava/util/Map;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        252,
+        253,
+        254,
+        255,
+        259,
+        260,
+        258,
+        252
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.lookupInvalidJobs:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        244,
+        245,
+        246,
+        247,
+        248,
+        244
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.lookupJobById:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        235,
+        236,
+        237,
+        238,
+        239,
+        235,
+        240
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.save:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        149,
+        150,
+        151
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.streamAllJobs:(Ljava/lang/String;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        213,
+        215,
+        216,
+        217,
+        219,
+        218,
+        214,
+        213
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTracker.updateJobStatus:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        166,
+        167,
+        173,
+        179,
+        180,
+        181,
+        182,
+        183,
+        179,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        192,
+        199,
+        200,
+        201,
+        202,
+        199,
+        203
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTrackerCreator.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTrackerCreator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTrackerCreator.create:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        52,
+        53,
+        55,
+        56,
+        57,
+        58,
+        59,
+        62,
+        57,
+        65,
+        66,
+        67,
+        70,
+        72,
+        73,
+        75,
+        76,
+        74,
+        71,
+        65,
+        77,
+        78,
+        79
+      ]
+    },
+    "sleeper.ingest.tracker.job.DynamoDBIngestJobTrackerCreator.tearDown:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        82,
+        83,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ]
+    },
+    "sleeper.ingest.tracker.job.IngestJobTrackerFactory.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        31,
+        32
+      ]
+    },
+    "sleeper.ingest.tracker.job.IngestJobTrackerFactory.getTracker:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/core/tracker/ingest/job/IngestJobTracker;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.ingest.tracker.job.IngestJobTrackerFactory.getTracker:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/function/Supplier;)Lsleeper/core/tracker/ingest/job/IngestJobTracker;" : {
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 12
+      },
+      "lineNumbers" : [
+        39,
+        40,
+        42
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.<init>:(ILjava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.addStatusUpdate:(Ljava/util/Map;Lsleeper/core/tracker/ingest/task/IngestTaskStatusesBuilder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        102,
+        103,
+        105,
+        106,
+        107,
+        105,
+        108,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        110,
+        119,
+        121,
+        123
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.createTaskFinishedRecord:(Lsleeper/core/tracker/ingest/task/IngestTaskStatus;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        74
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.createTaskRecord:(Lsleeper/core/tracker/ingest/task/IngestTaskStatus;Ljava/lang/String;)Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        88
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.createTaskStartedRecord:(Lsleeper/core/tracker/ingest/task/IngestTaskStatus;)Ljava/util/Map;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        68,
+        69,
+        70,
+        68
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.lambda$streamTaskStatuses$0:(Lsleeper/core/tracker/ingest/task/IngestTaskStatusesBuilder;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        97
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskStatusFormat.streamTaskStatuses:(Ljava/util/stream/Stream;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 13
+      },
+      "lineNumbers" : [
+        96,
+        97,
+        98
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        59,
+        60
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.getAllTasks:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        105,
+        106,
+        105,
+        107,
+        105
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.getTask:(Ljava/lang/String;)Lsleeper/core/tracker/ingest/task/IngestTaskStatus;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        94,
+        95,
+        97,
+        98,
+        96,
+        94,
+        99,
+        100,
+        99
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.getTasksInProgress:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        120,
+        121,
+        120,
+        122,
+        123,
+        120
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.getTasksInTimePeriod:(Ljava/time/Instant;Ljava/time/Instant;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        112,
+        113,
+        112,
+        114,
+        115,
+        112
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.lambda$getTasksInProgress$1:(Lsleeper/core/tracker/ingest/task/IngestTaskStatus;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        122
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.lambda$getTasksInTimePeriod$0:(Ljava/time/Instant;Ljava/time/Instant;Lsleeper/core/tracker/ingest/task/IngestTaskStatus;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        114
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.putItem:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        133,
+        137
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.taskFinished:(Lsleeper/core/tracker/ingest/task/IngestTaskStatus;)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        86,
+        89,
+        87,
+        88,
+        90
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.taskStarted:(Lsleeper/core/tracker/ingest/task/IngestTaskStatus;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "warnings" : {
+        "W002" : 2
+      },
+      "lineNumbers" : [
+        77,
+        80,
+        78,
+        79,
+        81
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTracker.taskStatusTableName:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTrackerCreator.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTrackerCreator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTrackerCreator.create:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46,
+        47,
+        49,
+        50,
+        51,
+        54,
+        50,
+        57,
+        58
+      ]
+    },
+    "sleeper.ingest.tracker.task.DynamoDBIngestTaskTrackerCreator.tearDown:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        61,
+        62,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    "sleeper.ingest.tracker.task.IngestTaskTrackerFactory.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        28,
+        29
+      ]
+    },
+    "sleeper.ingest.tracker.task.IngestTaskTrackerFactory.getTracker:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/core/tracker/ingest/task/IngestTaskTracker;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        32,
+        33,
+        35
+      ]
+    }
+  }
+}

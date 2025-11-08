@@ -1,0 +1,223 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 676.254,
+    "environmentDetectionTime" : 0.416,
+    "indexingTime" : 0.315,
+    "entryPointsTime" : 0.408,
+    "generationTime" : 8053.49,
+    "timeToFirstTest" : 8645.37,
+    "timeToLastTest" : 10733.521,
+    "indexQueryTime" : 13.362,
+    "verificationTime" : 248.099,
+    "validationTime" : 48.603
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 2,
+    "methodsCount" : 9,
+    "cumulativeDiffblueTestCount" : 6,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 6,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 87,
+    "perMethodTestability" : {
+      "T000" : 5,
+      "T003" : 1,
+      "T005" : 1,
+      "T012" : 2
+    },
+    "perMethodOutcome" : {
+      "R000" : 5,
+      "R002" : 1,
+      "T003" : 1,
+      "T012" : 2
+    },
+    "perTestOutcome" : {
+      "R000" : 6
+    },
+    "perTestValidation" : {
+      "V000" : 6,
+      "V003" : 14
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R002" : 1,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.ingest.batcher.job.creator.SQSIngestBatcherQueueClient" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        57,
+        58,
+        57,
+        60
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Ljava/lang/String;Lcom/amazonaws/services/sqs/AmazonSQS;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/util/function/Supplier;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.batchFiles:()V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.eventHandler:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        74,
+        75
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.getConfigBucket:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        93,
+        94,
+        95,
+        97
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.IngestBatcherJobCreatorLambda.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.SQSIngestBatcherQueueClient.<init>:(Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29,
+        27,
+        30,
+        31
+      ]
+    },
+    "sleeper.ingest.batcher.job.creator.SQSIngestBatcherQueueClient.send:(Ljava/lang/String;Lsleeper/ingest/core/job/IngestJob;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        35,
+        36
+      ]
+    }
+  }
+}

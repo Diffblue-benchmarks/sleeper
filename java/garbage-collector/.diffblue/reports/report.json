@@ -1,0 +1,894 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 569.377,
+    "environmentDetectionTime" : 0.409,
+    "indexingTime" : 0.416,
+    "entryPointsTime" : 0.403,
+    "generationTime" : 40077.614,
+    "timeToFirstTest" : 48952.953,
+    "timeToLastTest" : 48945.428,
+    "indexQueryTime" : 20.779,
+    "verificationTime" : 837.057,
+    "validationTime" : 53.105
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R004" : "No meaningful assertions found",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 9,
+    "methodsCount" : 47,
+    "cumulativeDiffblueTestCount" : 32,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 32,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 436,
+    "perMethodTestability" : {
+      "T000" : 14,
+      "T001" : 10,
+      "T003" : 8,
+      "T005" : 5,
+      "T010" : 1,
+      "T012" : 9
+    },
+    "perMethodOutcome" : {
+      "R000" : 22,
+      "R002" : 1,
+      "R004" : 2,
+      "R013" : 4,
+      "T003" : 8,
+      "T010" : 1,
+      "T012" : 9
+    },
+    "perTestOutcome" : {
+      "R000" : 32
+    },
+    "perTestValidation" : {
+      "V000" : 32,
+      "V003" : 7
+    }
+  },
+  "classes" : {
+    "sleeper.garbagecollector.FailedGarbageCollectionException" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 1,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$FileFailure" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$StateStoreUpdateFailure" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 4,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 6,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.garbagecollector.GarbageCollector" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 19,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 5,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R002" : 1,
+        "T003" : 5,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 19
+      }
+    },
+    "sleeper.garbagecollector.GarbageCollector$DeleteFile" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.garbagecollector.GarbageCollectorLambda" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.garbagecollector.GarbageCollectorTriggerLambda" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T012" : 2
+      }
+    },
+    "sleeper.garbagecollector.TableFilesDeleted" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T001" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5,
+        "R004" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.garbagecollector.FailedGarbageCollectionException$FileFailure.<init>:(Ljava/lang/String;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$FileFailure.getCause:()Ljava/lang/Exception;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        109
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$FileFailure.getFilename:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        105
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$StateStoreUpdateFailure.<init>:(Ljava/util/List;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        117,
+        118,
+        119,
+        120
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$StateStoreUpdateFailure.getCause:()Ljava/lang/Exception;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        127
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$StateStoreUpdateFailure.getFilenames:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        123
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures.<init>:(Lsleeper/core/table/TableStatus;Ljava/lang/Exception;Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures.getFileFailures:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures.getStateStoreUpdateFailures:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures.getTable:()Lsleeper/core/table/TableStatus;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures.getTableFailure:()Ljava/lang/Exception;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures.lambda$streamFailures$0:(Ljava/util/stream/Stream;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException$TableFailures.streamFailures:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        87,
+        88,
+        89,
+        90,
+        87,
+        91,
+        87
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        35,
+        36,
+        37
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException.getCause:(Ljava/util/List;)Ljava/lang/Exception;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        45
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException.getMessage:(Ljava/util/List;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        40,
+        41,
+        40
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException.getTableFailures:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.garbagecollector.FailedGarbageCollectionException.lambda$getCause$0:(Lsleeper/garbagecollector/FailedGarbageCollectionException$TableFailures;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector$DeleteFile.deleteFileAndSketches:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.garbagecollector.GarbageCollector.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.<init>:(Lsleeper/garbagecollector/GarbageCollector$DeleteFile;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.deleteBatch:(Ljava/util/List;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;Lsleeper/garbagecollector/TableFilesDeleted;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        126,
+        127,
+        129,
+        130,
+        131,
+        132,
+        131,
+        133,
+        135,
+        136,
+        141,
+        138,
+        139,
+        140,
+        142
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.deleteFile:(Ljava/lang/String;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        173,
+        174,
+        175,
+        176,
+        177,
+        179,
+        180,
+        181,
+        183,
+        184
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.deleteFileAndSketches:(Lorg/apache/hadoop/conf/Configuration;)Lsleeper/garbagecollector/GarbageCollector$DeleteFile;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        165
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.deleteFiles:(Ljava/util/List;Lsleeper/garbagecollector/TableFilesDeleted;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        145,
+        146,
+        148,
+        149,
+        150,
+        154,
+        151,
+        152,
+        153,
+        155,
+        156
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.deleteInBatches:(Lsleeper/core/properties/table/TableProperties;Ljava/time/Instant;Lsleeper/garbagecollector/TableFilesDeleted;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        110,
+        111,
+        112,
+        114
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.getReadyForGCIterator:(Lsleeper/core/properties/table/TableProperties;Ljava/time/Instant;Lsleeper/core/statestore/StateStore;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        118,
+        119,
+        120,
+        121,
+        122
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.lambda$deleteFileAndSketches$0:(Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        166,
+        167,
+        168,
+        169
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.run:(Ljava/util/List;)V" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        70,
+        71
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollector.runAtTime:(Ljava/time/Instant;Ljava/util/List;)V" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        81,
+        82,
+        83,
+        84,
+        85,
+        89,
+        86,
+        87,
+        88,
+        90,
+        91,
+        92,
+        93,
+        94,
+        96
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        74,
+        75,
+        76,
+        79,
+        80,
+        82,
+        83,
+        84,
+        85,
+        86,
+        88,
+        89
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        93,
+        94,
+        95,
+        97,
+        98,
+        99,
+        100,
+        102,
+        113,
+        114,
+        115,
+        114,
+        116,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        113,
+        114,
+        115,
+        114,
+        116,
+        113,
+        114,
+        115,
+        114,
+        116,
+        117
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorLambda.lambda$handleRequest$0:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorLambda.loadTables:(Ljava/util/Map;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        125,
+        126,
+        128,
+        129,
+        130,
+        137,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        138,
+        139
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorTriggerLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        49
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorTriggerLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        56,
+        51,
+        52,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorTriggerLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        69,
+        70,
+        71,
+        72,
+        73,
+        72,
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.garbagecollector.GarbageCollectorTriggerLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.garbagecollector.TableFilesDeleted.<init>:(Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37,
+        33,
+        34,
+        35,
+        38,
+        39
+      ]
+    },
+    "sleeper.garbagecollector.TableFilesDeleted.buildTableFailures:()Ljava/util/Optional;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        62,
+        63,
+        65
+      ]
+    },
+    "sleeper.garbagecollector.TableFilesDeleted.buildTableFailures:(Ljava/lang/Exception;)Lsleeper/garbagecollector/FailedGarbageCollectionException$TableFailures;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.garbagecollector.TableFilesDeleted.deleted:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.garbagecollector.TableFilesDeleted.failed:(Ljava/lang/String;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        46,
+        47
+      ]
+    },
+    "sleeper.garbagecollector.TableFilesDeleted.failedStateStoreUpdate:(Ljava/util/List;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        50,
+        51
+      ]
+    },
+    "sleeper.garbagecollector.TableFilesDeleted.getDeletedFilenames:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        54
+      ]
+    }
+  }
+}

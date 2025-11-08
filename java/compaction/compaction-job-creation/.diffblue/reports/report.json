@@ -1,0 +1,178 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 482.375,
+    "environmentDetectionTime" : 0.519,
+    "indexingTime" : 0.348,
+    "entryPointsTime" : 0.511,
+    "generationTime" : 25267.401,
+    "timeToFirstTest" : 29016.987,
+    "timeToLastTest" : 30386.21,
+    "indexQueryTime" : 18.335,
+    "verificationTime" : 545.799,
+    "validationTime" : 54.235
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R031" : "Method may be time-sensitive",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 3,
+    "methodsCount" : 6,
+    "cumulativeDiffblueTestCount" : 5,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 5,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 69,
+    "perMethodTestability" : {
+      "T000" : 5,
+      "T003" : 1
+    },
+    "perMethodOutcome" : {
+      "R000" : 3,
+      "R031" : 1,
+      "R083" : 1,
+      "T003" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 5
+    },
+    "perTestValidation" : {
+      "V000" : 5,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.compaction.job.creation.AwsCreateCompactionJobs" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R031" : 1,
+        "T003" : 1
+      }
+    },
+    "sleeper.compaction.job.creation.CompactionBatchJobsWriterToS3" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.compaction.job.creation.CompactionBatchMessageSenderToSqs" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R083" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.compaction.job.creation.AwsCreateCompactionJobs.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        36,
+        37
+      ]
+    },
+    "sleeper.compaction.job.creation.AwsCreateCompactionJobs.from:(Lsleeper/core/util/ObjectFactory;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/sqs/AmazonSQS;)Lsleeper/compaction/core/job/creation/CreateCompactionJobs;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R031",
+      "lineNumbers" : [
+        46,
+        50,
+        51,
+        46
+      ]
+    },
+    "sleeper.compaction.job.creation.CompactionBatchJobsWriterToS3.<init>:(Lcom/amazonaws/services/s3/AmazonS3;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        31,
+        29,
+        32,
+        33
+      ]
+    },
+    "sleeper.compaction.job.creation.CompactionBatchJobsWriterToS3.writeJobs:(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        37,
+        38
+      ]
+    },
+    "sleeper.compaction.job.creation.CompactionBatchMessageSenderToSqs.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        33,
+        31,
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.compaction.job.creation.CompactionBatchMessageSenderToSqs.sendMessage:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    }
+  }
+}

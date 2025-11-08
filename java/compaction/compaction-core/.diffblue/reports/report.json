@@ -1,0 +1,3611 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 608.192,
+    "environmentDetectionTime" : 0.582,
+    "indexingTime" : 0.344,
+    "entryPointsTime" : 0.578,
+    "generationTime" : 25129.461,
+    "timeToFirstTest" : 28533.213,
+    "timeToLastTest" : 29977.132,
+    "indexQueryTime" : 5.12,
+    "verificationTime" : 538.226,
+    "validationTime" : 41.864
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R004" : "No meaningful assertions found",
+    "R010" : "Timeout",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T009" : "No implementation for abstract class",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 49,
+    "methodsCount" : 220,
+    "cumulativeDiffblueTestCount" : 146,
+    "cumulativeManualTestCount" : 94,
+    "completeTestCount" : 146,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 1611,
+    "perMethodTestability" : {
+      "T000" : 65,
+      "T001" : 20,
+      "T002" : 7,
+      "T003" : 35,
+      "T005" : 20,
+      "T008" : 9,
+      "T009" : 3,
+      "T010" : 22,
+      "T012" : 34,
+      "T020" : 5
+    },
+    "perMethodOutcome" : {
+      "R000" : 83,
+      "R002" : 14,
+      "R004" : 2,
+      "R010" : 1,
+      "R013" : 3,
+      "T003" : 35,
+      "T005" : 1,
+      "T008" : 9,
+      "T009" : 3,
+      "T010" : 22,
+      "T012" : 34
+    },
+    "perTestOutcome" : {
+      "R000" : 146
+    },
+    "perTestValidation" : {
+      "V000" : 146,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.compaction.core.job.CompactionJob" : {
+      "methodsCount" : 22,
+      "completeTestCount" : 14,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T001" : 7,
+        "T003" : 2,
+        "T005" : 6,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 19,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 14
+      }
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 7,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 8,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda$BatchedCommitQueueSender" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda$CommitQueueSender" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 10,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 6,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 10
+      }
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 18,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7
+      },
+      "perMethodOutcome" : {
+        "R000" : 6,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 18
+      }
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe$Batch" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 5
+      },
+      "perMethodOutcome" : {
+        "T003" : 5
+      }
+    },
+    "sleeper.compaction.core.job.CompactionRunner" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.CompactionRunnerDetails" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T009" : 3
+      },
+      "perMethodOutcome" : {
+        "T009" : 3
+      }
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitBatcher" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessage" : {
+      "methodsCount" : 0,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle" : {
+      "methodsCount" : 0,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 3,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageSerDe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 13
+      }
+    },
+    "sleeper.compaction.core.job.creation.AssignJobIdToFiles" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T010" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T010" : 1,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs" : {
+      "methodsCount" : 16,
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 5,
+        "T005" : 1,
+        "T012" : 8
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T003" : 5,
+        "T012" : 8
+      },
+      "perTestOutcome" : {
+        "R000" : 11
+      }
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$BatchJobsWriter" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$BatchMessageSender" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateBatchId" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T010" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R004" : 1,
+        "T010" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateJobId" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T010" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R004" : 1,
+        "T010" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategy" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 1,
+        "T012" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T012" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInAscendingOrder" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 3
+      },
+      "perMethodOutcome" : {
+        "T003" : 3
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 4,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 8
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.DelegatingCompactionStrategy" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.LeafPartitionCompactionStrategy" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 2
+      },
+      "perMethodOutcome" : {
+        "T010" : 2
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.ShouldCreateJobsStrategy" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T010" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T010" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.BasicCompactionStrategy" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.BasicLeafStrategy" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioCompactionStrategy" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioLeafStrategy" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioShouldCreateJobsStrategy" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobBatchExpiredException" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 3,
+        "T003" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 7,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequestSerDe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 15,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 3,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 3,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 15
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$ReadBatch" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$ReturnRequestToPendingQueue" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$SendDeadLetter" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$SendJobs" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.task.CompactionRunnerFactory" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.task.CompactionTask" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 7,
+        "T005" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R002" : 2,
+        "R010" : 1,
+        "T003" : 7,
+        "T012" : 3
+      }
+    },
+    "sleeper.compaction.core.task.CompactionTask$ConsecutiveFailuresTracker" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T008" : 4
+      },
+      "perMethodOutcome" : {
+        "T008" : 4
+      }
+    },
+    "sleeper.compaction.core.task.CompactionTask$IdleTimeTracker" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T008" : 3
+      },
+      "perMethodOutcome" : {
+        "T008" : 3
+      }
+    },
+    "sleeper.compaction.core.task.CompactionTask$MessageHandle" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 4
+      },
+      "perMethodOutcome" : {
+        "T010" : 4
+      }
+    },
+    "sleeper.compaction.core.task.CompactionTask$MessageReceiver" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 2,
+        "T003" : 2,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles$ResultTracker" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 2,
+        "T008" : 1
+      }
+    },
+    "sleeper.compaction.core.task.TimedOutWaitingForFileAssignmentsException" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.compaction.core.job.CompactionJob$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        194,
+        195
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.build:()Lsleeper/compaction/core/job/CompactionJob;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        233
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.inputFiles:(Ljava/util/List;)Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        208,
+        209
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.iteratorClassName:(Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        223,
+        224
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.iteratorConfig:(Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        228,
+        229
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.jobId:(Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        203,
+        204
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.outputFile:(Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        213,
+        214
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.partitionId:(Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        218,
+        219
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob$Builder.tableId:(Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        198,
+        199
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.<init>:(Lsleeper/compaction/core/job/CompactionJob$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.builder:()Lsleeper/compaction/core/job/CompactionJob$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.checkDuplicates:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        132,
+        133,
+        134,
+        135,
+        137
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.committedEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/compaction/job/update/CompactionJobCommittedEvent$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.createAssignJobIdRequest:()Lsleeper/core/statestore/AssignJobIdRequest;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.createCreatedEvent:()Lsleeper/core/tracker/compaction/job/update/CompactionJobCreatedEvent;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        89
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.createInputFileAssignmentsCheck:()Lsleeper/core/statestore/CheckFileAssignmentsRequest;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        81
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.createOutputFileReference:(J)Lsleeper/core/statestore/FileReference;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        110
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        153,
+        154,
+        156,
+        157,
+        159,
+        160,
+        161,
+        162,
+        163,
+        160
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.failedEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/compaction/job/update/CompactionJobFailedEvent$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        105,
+        106,
+        105
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.finishedEventBuilder:(Lsleeper/core/tracker/job/run/JobRunSummary;)Lsleeper/core/tracker/compaction/job/update/CompactionJobFinishedEvent$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        97
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.getId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.getInputFiles:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        77
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.getIteratorClassName:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        144
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.getIteratorConfig:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        148
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.getOutputFile:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        140
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.getPartitionId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        73
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.hashCode:()I" : {
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 9
+      },
+      "lineNumbers" : [
+        168
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.replaceFileReferencesRequestBuilder:(J)Lsleeper/core/statestore/ReplaceFileReferencesRequest$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        120,
+        121,
+        120
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.startedEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/compaction/job/update/CompactionJobStartedEvent$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJob.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        174
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda$BatchedCommitQueueSender.send:(Lsleeper/compaction/core/job/commit/CompactionCommitMessage;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda$CommitQueueSender.send:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Lsleeper/compaction/core/job/CompactionJobCommitterOrSendToLambda$CommitQueueSender;Lsleeper/compaction/core/job/CompactionJobCommitterOrSendToLambda$BatchedCommitQueueSender;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        52,
+        53
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Lsleeper/compaction/core/job/CompactionJobCommitterOrSendToLambda$CommitQueueSender;Lsleeper/compaction/core/job/CompactionJobCommitterOrSendToLambda$BatchedCommitQueueSender;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobCommitterOrSendToLambda.commit:(Lsleeper/compaction/core/job/CompactionJob;Lsleeper/core/tracker/compaction/job/update/CompactionJobFinishedEvent;)V" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        79,
+        81,
+        82,
+        83,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        89,
+        93,
+        95
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory.createCompactionJob:(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        68,
+        69,
+        70,
+        69
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory.createCompactionJob:(Ljava/util/List;Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory.createCompactionJobWithFilenames:(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        77
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory.getOutputFilePrefix:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobFactory.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe$Batch.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe$Batch.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe$Batch.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe$Batch.jobs:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe$Batch.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33,
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe.batchFromJson:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe.fromJson:(Ljava/lang/String;)Lsleeper/compaction/core/job/CompactionJob;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe.toJson:(Ljava/util/List;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe.toJson:(Lsleeper/compaction/core/job/CompactionJob;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe.toJsonPrettyPrint:(Ljava/util/List;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionJobSerDe.toJsonPrettyPrint:(Lsleeper/compaction/core/job/CompactionJob;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionRunner.compact:(Lsleeper/compaction/core/job/CompactionJob;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/partition/Partition;)Lsleeper/core/tracker/job/run/RecordsProcessed;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.CompactionRunnerDetails.implementationLanguage:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionRunnerDetails.isHardwareAccelerated:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        25
+      ]
+    },
+    "sleeper.compaction.core.job.CompactionRunnerDetails.supportsIterators:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitBatcher.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitBatcher.<init>:(Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        39,
+        40,
+        41
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitBatcher.lambda$sendTransaction$0:(Lsleeper/compaction/core/job/commit/CompactionCommitMessageHandle;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitBatcher.sendBatch:(Ljava/util/List;)V" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitBatcher.sendTransaction:(Ljava/lang/String;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        54,
+        58,
+        55,
+        56,
+        57,
+        59
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessage.<init>:(Ljava/lang/String;Lsleeper/core/statestore/ReplaceFileReferencesRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessage.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessage.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessage.request:()Lsleeper/core/statestore/ReplaceFileReferencesRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessage.tableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessage.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle.<init>:(Ljava/lang/String;Lsleeper/core/statestore/ReplaceFileReferencesRequest;Ljava/lang/Runnable;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle.callbackOnFail:()Ljava/lang/Runnable;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle.request:()Lsleeper/core/statestore/ReplaceFileReferencesRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle.tableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageHandle.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageSerDe.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageSerDe.fromJsonWithCallbackOnFail:(Ljava/lang/String;Ljava/lang/Runnable;)Lsleeper/compaction/core/job/commit/CompactionCommitMessageHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        44,
+        45
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageSerDe.toJson:(Lsleeper/compaction/core/job/commit/CompactionCommitMessage;)Ljava/lang/String;" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.compaction.core.job.commit.CompactionCommitMessageSerDe.toJsonPrettyPrint:(Lsleeper/compaction/core/job/commit/CompactionCommitMessage;)Ljava/lang/String;" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.compaction.core.job.creation.AssignJobIdToFiles.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.compaction.core.job.creation.AssignJobIdToFiles.assignJobIds:(Ljava/util/List;Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.AssignJobIdToFiles.byQueue:(Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;)Lsleeper/compaction/core/job/creation/AssignJobIdToFiles;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.compaction.core.job.creation.AssignJobIdToFiles.lambda$byQueue$1:(Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;Ljava/util/List;Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        44,
+        45,
+        44,
+        47,
+        48
+      ]
+    },
+    "sleeper.compaction.core.job.creation.AssignJobIdToFiles.lambda$synchronous$0:(Lsleeper/core/statestore/StateStore;Ljava/util/List;Lsleeper/core/table/TableStatus;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "sleeper.compaction.core.job.creation.AssignJobIdToFiles.synchronous:(Lsleeper/core/statestore/StateStore;)Lsleeper/compaction/core/job/creation/AssignJobIdToFiles;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$BatchJobsWriter.writeJobs:(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$BatchMessageSender.sendMessage:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateBatchId.generate:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateBatchId.lambda$random$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        299
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateBatchId.random:()Lsleeper/compaction/core/job/creation/CreateCompactionJobs$GenerateBatchId;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        299
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateJobId.generate:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateJobId.lambda$random$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        290
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs$GenerateJobId.random:()Lsleeper/compaction/core/job/creation/CreateCompactionJobs$GenerateJobId;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        290
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.<init>:(Lsleeper/core/util/ObjectFactory;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/compaction/core/job/creation/CreateCompactionJobs$BatchJobsWriter;Lsleeper/compaction/core/job/creation/CreateCompactionJobs$BatchMessageSender;Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;Lsleeper/compaction/core/job/creation/CreateCompactionJobs$GenerateJobId;Lsleeper/compaction/core/job/creation/CreateCompactionJobs$GenerateBatchId;Ljava/util/Random;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.batchCreateJobs:(Lsleeper/compaction/core/job/creation/AssignJobIdToFiles;Lsleeper/core/properties/table/TableProperties;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        205,
+        206,
+        207,
+        206,
+        212,
+        213,
+        214,
+        215,
+        216,
+        215,
+        217,
+        220,
+        221,
+        222,
+        223,
+        221,
+        224,
+        225
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.createJobWithForceAllFiles:(Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        109,
+        110
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.createJobs:(Lsleeper/core/properties/table/TableProperties;Z)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.createJobsForTable:(Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;Z)Ljava/time/Instant;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        125,
+        127,
+        128,
+        133,
+        134,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        141,
+        144,
+        145,
+        147,
+        148,
+        150,
+        152,
+        153,
+        154,
+        157,
+        158,
+        159,
+        160,
+        163,
+        165,
+        166,
+        168,
+        170,
+        171,
+        172,
+        173,
+        174,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.createJobsFromLeftoverFiles:(Lsleeper/core/properties/table/TableProperties;Lsleeper/compaction/core/job/CompactionJobFactory;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        250,
+        251,
+        252,
+        253,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        259,
+        261,
+        262,
+        264,
+        265,
+        266,
+        267,
+        266,
+        268,
+        270,
+        271,
+        272,
+        271,
+        273
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.createJobsWithStrategy:(Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        105,
+        106
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.lambda$createJobsFromLeftoverFiles$1:(Lsleeper/core/statestore/FileReference;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        230
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.lambda$createJobsFromLeftoverFiles$2:(Lsleeper/compaction/core/job/CompactionJob;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        240
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.lambda$createJobsFromLeftoverFiles$3:(Ljava/util/Set;Lsleeper/core/statestore/FileReference;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        243
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.lambda$createJobsFromLeftoverFiles$4:(Ljava/util/Set;Lsleeper/core/statestore/FileReference;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        247
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.lambda$createJobsFromLeftoverFiles$5:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        249
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.lambda$createJobsFromLeftoverFiles$6:(Ljava/util/Map;Lsleeper/core/statestore/FileReference;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        248,
+        249,
+        248
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.lambda$reduceCompactionJobsDownToCreationLimit$0:(Ljava/util/List;Ljava/util/List;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        194,
+        197,
+        198,
+        199
+      ]
+    },
+    "sleeper.compaction.core.job.creation.CreateCompactionJobs.reduceCompactionJobsDownToCreationLimit:(Ljava/util/List;I)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        189,
+        191,
+        192,
+        201
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategy.createCompactionJobs:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lsleeper/compaction/core/job/CompactionJobFactory;Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInAscendingOrder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        65,
+        66
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInAscendingOrder.add:(Lsleeper/core/statestore/FileReference;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        69,
+        70
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInAscendingOrder.values:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        73
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.<init>:(Lsleeper/core/table/TableStatus;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        115,
+        116,
+        118,
+        119,
+        121,
+        122,
+        123,
+        122
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.getFilesWithJobId:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.getFilesWithNoJobIdInAscendingOrder:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        97
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.getPartitionId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.getTableStatus:()Lsleeper/core/table/TableStatus;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        105
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.hashCode:()I" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex$FilesInPartition.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        128
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex.<init>:(Lsleeper/core/table/TableStatus;Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        43,
+        44,
+        45,
+        53,
+        54,
+        55,
+        58,
+        59
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex.getFilesInLeafPartitions:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex.lambda$new$0:(Ljava/util/Set;Lsleeper/core/statestore/FileReference;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex.lambda$new$1:(Ljava/lang/String;)Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInAscendingOrder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex.lambda$new$2:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex.lambda$new$3:(Ljava/util/Map;Ljava/util/Map;Lsleeper/core/statestore/FileReference;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        50,
+        52
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.CompactionStrategyIndex.lambda$new$4:(Lsleeper/core/table/TableStatus;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        55
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.DelegatingCompactionStrategy.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.DelegatingCompactionStrategy.<init>:(Lsleeper/compaction/core/job/creation/strategy/LeafPartitionCompactionStrategy;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.DelegatingCompactionStrategy.<init>:(Lsleeper/compaction/core/job/creation/strategy/LeafPartitionCompactionStrategy;Lsleeper/compaction/core/job/creation/strategy/ShouldCreateJobsStrategy;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.DelegatingCompactionStrategy.createCompactionJobs:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lsleeper/compaction/core/job/CompactionJobFactory;Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex;)Ljava/util/List;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        54,
+        55,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.DelegatingCompactionStrategy.createJobsForLeafPartition:(Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        69,
+        70,
+        71,
+        72,
+        71,
+        73,
+        74,
+        76,
+        77,
+        76,
+        78
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.LeafPartitionCompactionStrategy.createJobsForLeafPartition:(Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.strategy.LeafPartitionCompactionStrategy.init:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lsleeper/compaction/core/job/CompactionJobFactory;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.strategy.ShouldCreateJobsStrategy.init:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        25
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.ShouldCreateJobsStrategy.lambda$yes$0:(Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.ShouldCreateJobsStrategy.maxCompactionJobsToCreate:(Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.creation.strategy.ShouldCreateJobsStrategy.yes:()Lsleeper/compaction/core/job/creation/strategy/ShouldCreateJobsStrategy;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.BasicCompactionStrategy.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        27,
+        28
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.BasicLeafStrategy.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.BasicLeafStrategy.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.BasicLeafStrategy.createJobsForLeafPartition:(Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;)Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        53,
+        54,
+        57,
+        58,
+        59,
+        60,
+        62,
+        63,
+        62,
+        64,
+        65,
+        67,
+        68,
+        69,
+        70,
+        71,
+        69,
+        73
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.BasicLeafStrategy.init:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lsleeper/compaction/core/job/CompactionJobFactory;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        47,
+        48,
+        49
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioCompactionStrategy.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioLeafStrategy.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioLeafStrategy.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioLeafStrategy.createJobsForLeafPartition:(Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;)Ljava/util/List;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        54,
+        55,
+        54,
+        56,
+        57,
+        58,
+        60,
+        64,
+        65,
+        66,
+        67,
+        66,
+        68,
+        70,
+        71,
+        72,
+        73,
+        75,
+        76,
+        75,
+        79,
+        80,
+        81,
+        82,
+        81,
+        83,
+        84,
+        85,
+        87,
+        89,
+        92
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioLeafStrategy.getListOfFilesThatMeetsCriteria:(Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        96,
+        98,
+        99,
+        100,
+        101,
+        103,
+        105,
+        106
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioLeafStrategy.init:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lsleeper/compaction/core/job/CompactionJobFactory;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioLeafStrategy.meetsCriteria:(Ljava/util/List;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        110,
+        111,
+        113,
+        114,
+        115,
+        116,
+        117,
+        116,
+        119,
+        120,
+        121
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioShouldCreateJobsStrategy.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioShouldCreateJobsStrategy.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        31
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioShouldCreateJobsStrategy.getNumberOfCurrentCompactionJobs:(Ljava/util/List;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        55
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioShouldCreateJobsStrategy.init:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "sleeper.compaction.core.job.creation.strategy.impl.SizeRatioShouldCreateJobsStrategy.maxCompactionJobsToCreate:(Lsleeper/compaction/core/job/creation/strategy/CompactionStrategyIndex$FilesInPartition;)J" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        43,
+        44,
+        45,
+        46,
+        45,
+        47,
+        49,
+        50,
+        51
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobBatchExpiredException.<init>:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;Ljava/time/Instant;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        23,
+        24
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.<init>:(Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        64,
+        65,
+        67,
+        68,
+        70,
+        71
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.forTableWithBatchIdAtTime:(Lsleeper/core/properties/table/TableProperties;Ljava/lang/String;Ljava/time/Instant;)Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40,
+        41,
+        42
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.getBatchKey:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.getCreateTime:()Ljava/time/Instant;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.hashCode:()I" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequest.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequestSerDe.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequestSerDe.fromJson:(Ljava/lang/String;)Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequestSerDe.toJson:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatchRequestSerDe.toJsonPrettyPrint:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$ReadBatch.read:(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$ReturnRequestToPendingQueue.sendWithDelay:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$SendDeadLetter.send:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher$SendJobs.send:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Lsleeper/compaction/core/job/dispatch/CompactionJobDispatcher$ReadBatch;Lsleeper/compaction/core/job/dispatch/CompactionJobDispatcher$SendJobs;ILsleeper/compaction/core/job/dispatch/CompactionJobDispatcher$ReturnRequestToPendingQueue;Lsleeper/compaction/core/job/dispatch/CompactionJobDispatcher$SendDeadLetter;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher.batchIsReadyToBeSent:(Lsleeper/core/properties/table/TableProperties;Ljava/util/List;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        92,
+        93,
+        94,
+        95,
+        93
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher.dispatch:(Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;)V" : {
+      "completeTestCount" : 15,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 15
+      },
+      "lineNumbers" : [
+        74,
+        75,
+        76,
+        75,
+        77,
+        78,
+        80,
+        81,
+        83,
+        88,
+        85,
+        86,
+        87,
+        89
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher.lambda$send$0:(Lsleeper/compaction/core/job/CompactionJob;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        102
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher.returnToQueueWithDelay:(Lsleeper/core/properties/table/TableProperties;Lsleeper/compaction/core/job/dispatch/CompactionJobDispatchRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        108,
+        109,
+        110,
+        109,
+        111,
+        112,
+        113,
+        114,
+        116,
+        117,
+        118,
+        119,
+        118,
+        120
+      ]
+    },
+    "sleeper.compaction.core.job.dispatch.CompactionJobDispatcher.send:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionRunnerFactory.createCompactor:(Lsleeper/compaction/core/job/CompactionJob;Lsleeper/core/properties/table/TableProperties;)Lsleeper/compaction/core/job/CompactionRunner;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.task.CompactionTask$ConsecutiveFailuresTracker.<init>:(Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        311,
+        312,
+        313
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask$ConsecutiveFailuresTracker.hasNotMetMaximumFailures:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        324,
+        325,
+        327,
+        328,
+        327,
+        329
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask$ConsecutiveFailuresTracker.incrementConsecutiveFailures:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        316,
+        317
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask$ConsecutiveFailuresTracker.resetConsecutiveFailures:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        320,
+        321
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask$IdleTimeTracker.<init>:(Lsleeper/compaction/core/task/CompactionTask;Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        277,
+        278,
+        279,
+        280,
+        281
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask$IdleTimeTracker.isLookForNextMessage:(Ljava/time/Instant;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        284,
+        285,
+        286,
+        287,
+        288,
+        286,
+        289,
+        291,
+        292,
+        293,
+        292,
+        294,
+        296
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask$IdleTimeTracker.setLastActiveTime:(Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        301,
+        302
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask$MessageHandle.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.task.CompactionTask$MessageHandle.deleteFromQueue:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.task.CompactionTask$MessageHandle.getJob:()Lsleeper/compaction/core/job/CompactionJob;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.task.CompactionTask$MessageHandle.returnToQueue:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.task.CompactionTask$MessageReceiver.receiveMessage:()Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.compaction.core.task.CompactionTask.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/properties/PropertiesReloader;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/compaction/core/task/CompactionTask$MessageReceiver;Lsleeper/compaction/core/task/StateStoreWaitForFiles;Lsleeper/compaction/core/job/CompactionJobCommitterOrSendToLambda;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Lsleeper/core/tracker/compaction/task/CompactionTaskTracker;Lsleeper/compaction/core/task/CompactionRunnerFactory;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        85,
+        88,
+        85,
+        89
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/properties/PropertiesReloader;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/compaction/core/task/CompactionTask$MessageReceiver;Lsleeper/compaction/core/task/StateStoreWaitForFiles;Lsleeper/compaction/core/job/CompactionJobCommitterOrSendToLambda;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Lsleeper/core/tracker/compaction/task/CompactionTaskTracker;Lsleeper/compaction/core/task/CompactionRunnerFactory;Ljava/lang/String;Ljava/util/function/Supplier;Ljava/util/function/Supplier;Ljava/util/function/Consumer;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.commitCompaction:(Ljava/lang/String;Lsleeper/core/tracker/compaction/task/CompactionTaskFinishedStatus$Builder;Lsleeper/compaction/core/task/CompactionTask$MessageHandle;Lsleeper/compaction/core/task/CompactionTask$IdleTimeTracker;Lsleeper/compaction/core/task/CompactionTask$ConsecutiveFailuresTracker;Lsleeper/core/tracker/job/run/JobRunSummary;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        202,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        220,
+        210,
+        211,
+        212,
+        213,
+        215,
+        216,
+        217,
+        219,
+        221
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.compact:(Lsleeper/compaction/core/job/CompactionJob;Ljava/lang/String;Ljava/time/Instant;)Lsleeper/core/tracker/job/run/JobRunSummary;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.handleMessages:(Ljava/time/Instant;Lsleeper/core/tracker/compaction/task/CompactionTaskFinishedStatus$Builder;)Ljava/time/Instant;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        141,
+        144,
+        145,
+        146,
+        147,
+        149,
+        144,
+        150,
+        151
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        88
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.lambda$threadSleep$1:(Ljava/time/Duration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        263,
+        267,
+        264,
+        265,
+        266,
+        268
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.logMetrics:(Lsleeper/compaction/core/job/CompactionJob;Lsleeper/core/tracker/job/run/JobRunSummary;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        237,
+        238,
+        239,
+        240,
+        239,
+        241,
+        242,
+        241,
+        243
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.prepareCompactionMessage:(Ljava/lang/String;Lsleeper/compaction/core/task/CompactionTask$MessageHandle;Lsleeper/compaction/core/task/CompactionTask$ConsecutiveFailuresTracker;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        156,
+        157,
+        158,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.processCompactionMessage:(Ljava/lang/String;Lsleeper/core/tracker/compaction/task/CompactionTaskFinishedStatus$Builder;Lsleeper/compaction/core/task/CompactionTask$MessageHandle;Lsleeper/compaction/core/task/CompactionTask$IdleTimeTracker;Lsleeper/compaction/core/task/CompactionTask$ConsecutiveFailuresTracker;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        176,
+        180,
+        190,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        191,
+        196,
+        192,
+        193,
+        194,
+        195,
+        193,
+        197
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.run:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R010",
+      "lineNumbers" : [
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        128,
+        129
+      ]
+    },
+    "sleeper.compaction.core.task.CompactionTask.threadSleep:()Ljava/util/function/Consumer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        261
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles$ResultTracker.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        124
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles$ResultTracker.get:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        132
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles$ResultTracker.set:(Z)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        128,
+        129
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40,
+        43,
+        44
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles.<init>:(ILsleeper/core/util/ExponentialBackoffWithJitter;Lsleeper/core/util/PollWithRetries;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        58,
+        60
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles.allFilesAssignedToJob:(Lsleeper/core/util/PollWithRetries;Lsleeper/core/statestore/StateStore;Lsleeper/compaction/core/job/CompactionJob;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        106,
+        108,
+        114,
+        111,
+        112,
+        113,
+        115
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles.lambda$allFilesAssignedToJob$0:(Lsleeper/compaction/core/task/StateStoreWaitForFiles$ResultTracker;Lsleeper/core/statestore/StateStore;Lsleeper/compaction/core/job/CompactionJob;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        109,
+        110
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles.reportFailure:(Lsleeper/compaction/core/job/CompactionJob;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        119,
+        120,
+        121,
+        120,
+        122
+      ]
+    },
+    "sleeper.compaction.core.task.StateStoreWaitForFiles.wait:(Lsleeper/compaction/core/job/CompactionJob;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        83,
+        82,
+        84,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        92,
+        94,
+        89,
+        97,
+        98,
+        99,
+        100
+      ]
+    },
+    "sleeper.compaction.core.task.TimedOutWaitingForFileAssignmentsException.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        21,
+        22
+      ]
+    }
+  }
+}

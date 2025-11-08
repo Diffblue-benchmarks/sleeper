@@ -1,0 +1,479 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 964.08,
+    "environmentDetectionTime" : 0.59,
+    "indexingTime" : 0.425,
+    "entryPointsTime" : 0.584,
+    "generationTime" : 40987.945,
+    "timeToFirstTest" : 50550.466,
+    "timeToLastTest" : 50385.135,
+    "indexQueryTime" : 20.672,
+    "verificationTime" : 856.958,
+    "validationTime" : 81.068
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 4,
+    "methodsCount" : 24,
+    "cumulativeDiffblueTestCount" : 12,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 12,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 291,
+    "perMethodTestability" : {
+      "T000" : 10,
+      "T003" : 5,
+      "T012" : 9
+    },
+    "perMethodOutcome" : {
+      "R000" : 4,
+      "R011" : 1,
+      "R013" : 5,
+      "T003" : 5,
+      "T012" : 9
+    },
+    "perTestOutcome" : {
+      "R000" : 12
+    },
+    "perTestValidation" : {
+      "V000" : 12,
+      "V003" : 7
+    },
+    "warnings" : {
+      "W002" : 2
+    }
+  },
+  "classes" : {
+    "sleeper.splitter.lambda.FindPartitionsToSplitLambda" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitTriggerLambda" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T012" : 2
+      }
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 4,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R013" : 1,
+        "T003" : 4,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.splitter.lambda.SqsSplitPartitionJobSender" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R011" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "warnings" : {
+        "W002" : 2
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.splitter.lambda.FindPartitionsToSplitLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        69,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        75,
+        77,
+        78,
+        79,
+        81
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        85,
+        86,
+        87,
+        89,
+        90,
+        91,
+        92,
+        93,
+        95,
+        103,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        104,
+        106,
+        107,
+        108,
+        107,
+        109
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitLambda.loadTables:(Ljava/util/Map;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        115,
+        116,
+        117,
+        118,
+        120,
+        121,
+        122,
+        129,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        130,
+        131
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitTriggerLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitTriggerLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        55,
+        50,
+        51,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitTriggerLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        68,
+        69,
+        70,
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.splitter.lambda.FindPartitionsToSplitTriggerLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        74,
+        75
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.<init>:(Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        78,
+        79
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        82,
+        83
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lorg/apache/hadoop/conf/Configuration;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/sqs/AmazonSQS;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        97,
+        98,
+        99,
+        101,
+        105,
+        102,
+        103,
+        104,
+        106,
+        107
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        82
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.lambda$sendAsyncCommit$1:(Lcom/amazonaws/services/sqs/AmazonSQS;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/statestore/commit/StateStoreCommitRequestSerDe;Lsleeper/core/statestore/commit/StateStoreCommitRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        132,
+        133,
+        134,
+        135,
+        136,
+        132
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.loadInstanceProperties:(Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        125,
+        127
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.sendAsyncCommit:(Lcom/amazonaws/services/sqs/AmazonSQS;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)Lsleeper/splitter/core/split/SplitPartition$SendAsyncCommit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        131,
+        132
+      ]
+    },
+    "sleeper.splitter.lambda.SplitPartitionLambda.splitPartitionFromJson:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ]
+    },
+    "sleeper.splitter.lambda.SqsSplitPartitionJobSender.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.splitter.lambda.SqsSplitPartitionJobSender.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "warnings" : {
+        "W002" : 2
+      },
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.splitter.lambda.SqsSplitPartitionJobSender.send:(Lsleeper/splitter/core/find/SplitPartitionJobDefinition;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        52,
+        55,
+        56,
+        57,
+        58,
+        60,
+        61
+      ]
+    }
+  }
+}

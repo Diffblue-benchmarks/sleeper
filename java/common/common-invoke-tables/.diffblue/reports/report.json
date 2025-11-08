@@ -1,0 +1,184 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 908.345,
+    "environmentDetectionTime" : 0.6,
+    "indexingTime" : 0.452,
+    "entryPointsTime" : 0.594,
+    "generationTime" : 45160.361,
+    "timeToFirstTest" : 56791.405,
+    "timeToLastTest" : 56181.072,
+    "indexQueryTime" : 13.47,
+    "verificationTime" : 924.008,
+    "validationTime" : 28.153
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 1,
+    "methodsCount" : 9,
+    "cumulativeDiffblueTestCount" : 1,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 1,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 42,
+    "perMethodTestability" : {
+      "T000" : 2,
+      "T003" : 2,
+      "T012" : 5
+    },
+    "perMethodOutcome" : {
+      "R000" : 1,
+      "R013" : 1,
+      "T003" : 2,
+      "T012" : 5
+    },
+    "perTestOutcome" : {
+      "R000" : 1
+    },
+    "perTestValidation" : {
+      "V000" : 1,
+      "V003" : 7
+    }
+  },
+  "classes" : {
+    "sleeper.invoke.tables.InvokeForTables" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T012" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1,
+        "T003" : 2,
+        "T012" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.invoke.tables.InvokeForTables.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.lambda$sendMessageBatch$3:(Lsleeper/core/table/TableStatus;)Lcom/amazonaws/services/sqs/model/SendMessageBatchRequestEntry;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        60
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.lambda$sendOneMessagePerTable$0:(Lcom/amazonaws/services/sqs/AmazonSQS;Ljava/lang/String;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.lambda$sendOneMessagePerTableByName$1:(Ljava/lang/String;)Lsleeper/core/table/TableNotFoundException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.lambda$sendOneMessagePerTableByName$2:(Lsleeper/core/table/TableIndex;Ljava/lang/String;)Lsleeper/core/table/TableStatus;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        50,
+        49,
+        50
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.sendMessageBatch:(Lcom/amazonaws/services/sqs/AmazonSQS;Ljava/lang/String;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        60,
+        65,
+        59,
+        57,
+        66
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.sendOneMessagePerTable:(Lcom/amazonaws/services/sqs/AmazonSQS;Ljava/lang/String;Ljava/util/stream/Stream;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        43,
+        45
+      ]
+    },
+    "sleeper.invoke.tables.InvokeForTables.sendOneMessagePerTableByName:(Lcom/amazonaws/services/sqs/AmazonSQS;Ljava/lang/String;Lsleeper/core/table/TableIndex;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        49,
+        51,
+        52,
+        53
+      ]
+    }
+  }
+}

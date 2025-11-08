@@ -1,0 +1,2115 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 1099.241,
+    "environmentDetectionTime" : 0.841,
+    "indexingTime" : 0.469,
+    "entryPointsTime" : 0.833,
+    "generationTime" : 46424.282,
+    "timeToFirstTest" : 59382.437,
+    "timeToLastTest" : 58533.402,
+    "indexQueryTime" : 68.262,
+    "verificationTime" : 976.449,
+    "validationTime" : 87.331
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R006" : "Static initializer failed",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R015" : "Method may be nondeterministic",
+    "R024" : "Analysis service shutdown unexpectedly",
+    "R081" : "Exception in arrange section",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W001" : "Test did not compile",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 25,
+    "methodsCount" : 112,
+    "cumulativeDiffblueTestCount" : 31,
+    "cumulativeManualTestCount" : 17,
+    "completeTestCount" : 31,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 1323,
+    "perMethodTestability" : {
+      "T000" : 39,
+      "T001" : 7,
+      "T002" : 5,
+      "T003" : 25,
+      "T005" : 11,
+      "T006" : 3,
+      "T008" : 3,
+      "T010" : 2,
+      "T012" : 17
+    },
+    "perMethodOutcome" : {
+      "R000" : 16,
+      "R002" : 6,
+      "R006" : 1,
+      "R013" : 19,
+      "R015" : 1,
+      "R024" : 1,
+      "R081" : 10,
+      "T003" : 25,
+      "T006" : 3,
+      "T008" : 3,
+      "T010" : 2,
+      "T012" : 17,
+      "W002" : 2
+    },
+    "perTestOutcome" : {
+      "R000" : 31
+    },
+    "perTestValidation" : {
+      "V000" : 31,
+      "V003" : 7
+    },
+    "warnings" : {
+      "W001" : 1,
+      "W002" : 2
+    }
+  },
+  "classes" : {
+    "sleeper.bulkimport.runner.BulkImportJobDriver" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.BulkImportJobDriver$SessionRunner" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 5,
+        "T003" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R024" : 1,
+        "T003" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 5,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R081" : 6,
+        "T008" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.BulkImportJobOutput" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.bulkimport.runner.BulkImportJobRunner" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.BulkImportSparkSessionRunner" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "R015" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R006" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator$ImmutableListSerializer" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 2,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 2,
+        "T008" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.SparkFileReferenceRow" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.StructTypeFactory" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "warnings" : {
+        "W001" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.dataframe.AddPartitionFunction" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R081" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.dataframe.AddPartitionIterator" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R081" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.bulkimport.runner.dataframe.BulkImportJobDataframeDriver" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 6,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 2,
+        "T003" : 6,
+        "T012" : 2,
+        "W002" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "warnings" : {
+        "W002" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.dataframe.WriteParquetFiles" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2
+      }
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.AddPartitionAsIntFunction" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R081" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.AddPartitionAsIntIterator" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.BulkImportDataframeLocalSortDriver" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.bulkimport.runner.rdd.BulkImportJobRDDDriver" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T006" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 1,
+        "T006" : 1,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.rdd.ExtractKeyFunction" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 6,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 3,
+        "T003" : 6,
+        "T012" : 1,
+        "W002" : 1
+      },
+      "warnings" : {
+        "W002" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.rdd.SleeperPartitioner" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "R081" : 1,
+        "T003" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.rdd.WrappedKeyComparator" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.bulkimport.runner.rdd.WriteParquetFile" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T012" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.bulkimport.runner.BulkImportJobDriver$SessionRunner.run:(Lsleeper/bulkimport/core/job/BulkImportJob;)Lsleeper/bulkimport/runner/BulkImportJobOutput;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.bulkimport.runner.BulkImportJobDriver.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobDriver.<init>:(Lsleeper/bulkimport/runner/BulkImportJobDriver$SessionRunner;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/ingest/job/IngestJobTracker;Lsleeper/core/statestore/commit/StateStoreCommitRequestSender;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobDriver.loadJob:(Lsleeper/core/properties/instance/InstanceProperties;Ljava/lang/String;Ljava/lang/String;Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/bulkimport/core/job/BulkImportJob;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        226,
+        227,
+        228,
+        230,
+        231,
+        232,
+        234,
+        235,
+        236,
+        237
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobDriver.logPermissions:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        253,
+        255,
+        256,
+        258,
+        259,
+        258,
+        259,
+        260
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobDriver.run:(Lsleeper/bulkimport/core/job/BulkImportJob;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        106,
+        114,
+        122,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        116,
+        121,
+        124,
+        125,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        128,
+        134,
+        136,
+        137,
+        138,
+        148,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        141,
+        146,
+        150,
+        151,
+        152,
+        153,
+        154,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        156,
+        165,
+        166
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobDriver.start:([Ljava/lang/String;Lsleeper/bulkimport/runner/BulkImportJobRunner;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        174,
+        175,
+        178,
+        179,
+        180,
+        181,
+        182,
+        184,
+        185,
+        186,
+        190,
+        196,
+        191,
+        193,
+        194,
+        195,
+        198,
+        199,
+        200,
+        201,
+        203,
+        206,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        216,
+        218,
+        219,
+        220,
+        221,
+        218,
+        219,
+        220,
+        221,
+        222
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        81,
+        82
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder.broadcastedPartitions:(Lorg/apache/spark/broadcast/Broadcast;)Lsleeper/bulkimport/runner/BulkImportJobInput$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        100,
+        101
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder.build:()Lsleeper/bulkimport/runner/BulkImportJobInput;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder.conf:(Lorg/apache/hadoop/conf/Configuration;)Lsleeper/bulkimport/runner/BulkImportJobInput$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        105,
+        106
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder.instanceProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/bulkimport/runner/BulkImportJobInput$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        85,
+        86
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder.rows:(Lorg/apache/spark/sql/Dataset;)Lsleeper/bulkimport/runner/BulkImportJobInput$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        95,
+        96
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput$Builder.tableProperties:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/bulkimport/runner/BulkImportJobInput$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        90,
+        91
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.<init>:(Lsleeper/bulkimport/runner/BulkImportJobInput$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.broadcastedPartitions:()Lorg/apache/spark/broadcast/Broadcast;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R024",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.builder:()Lsleeper/bulkimport/runner/BulkImportJobInput$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.conf:()Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.instanceProperties:()Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.rows:()Lorg/apache/spark/sql/Dataset;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.schema:()Lsleeper/core/schema/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobInput.tableProperties:()Lsleeper/core/properties/table/TableProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobOutput.<init>:(Ljava/util/List;Ljava/lang/Runnable;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobOutput.fileReferences:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobOutput.numFiles:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobOutput.numRecords:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        45
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobOutput.stopSparkContext:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        49,
+        50
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportJobRunner.createFileReferences:(Lsleeper/bulkimport/runner/BulkImportJobInput;)Lorg/apache/spark/sql/Dataset;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.bulkimport.runner.BulkImportSparkSessionRunner.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportSparkSessionRunner.<init>:(Lsleeper/bulkimport/runner/BulkImportJobRunner;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportSparkSessionRunner.createSparkConf:()Lorg/apache/spark/SparkConf;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R015",
+      "lineNumbers" : [
+        123,
+        124,
+        125,
+        126,
+        127
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportSparkSessionRunner.lambda$run$0:(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        100
+      ]
+    },
+    "sleeper.bulkimport.runner.BulkImportSparkSessionRunner.run:(Lsleeper/bulkimport/core/job/BulkImportJob;)Lsleeper/bulkimport/runner/BulkImportJobOutput;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        82,
+        83,
+        84,
+        85,
+        88,
+        89,
+        90,
+        92,
+        93,
+        94,
+        97,
+        98,
+        99,
+        100,
+        101,
+        104,
+        105,
+        106,
+        107,
+        108,
+        110,
+        111,
+        112,
+        113,
+        114,
+        111,
+        115,
+        116,
+        117,
+        119
+      ]
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator$ImmutableListSerializer.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator$ImmutableListSerializer.read:(Lcom/esotericsoftware/kryo/Kryo;Lcom/esotericsoftware/kryo/io/Input;Ljava/lang/Class;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        54,
+        55,
+        56,
+        57,
+        56,
+        59
+      ]
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator$ImmutableListSerializer.write:(Lcom/esotericsoftware/kryo/Kryo;Lcom/esotericsoftware/kryo/io/Output;Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator$ImmutableListSerializer.write:(Lcom/esotericsoftware/kryo/Kryo;Lcom/esotericsoftware/kryo/io/Output;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.bulkimport.runner.JdkImmutableListRegistrator.registerClasses:(Lcom/esotericsoftware/kryo/Kryo;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R006",
+      "lineNumbers" : [
+        30,
+        37,
+        40,
+        41
+      ]
+    },
+    "sleeper.bulkimport.runner.SparkFileReferenceRow.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        26,
+        27
+      ]
+    },
+    "sleeper.bulkimport.runner.SparkFileReferenceRow.createFileReference:(Lorg/apache/spark/sql/Row;)Lsleeper/core/statestore/FileReference;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        34
+      ]
+    },
+    "sleeper.bulkimport.runner.SparkFileReferenceRow.createFileReferenceSchema:()Lorg/apache/spark/sql/types/StructType;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48,
+        45
+      ]
+    },
+    "sleeper.bulkimport.runner.StructTypeFactory.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.bulkimport.runner.StructTypeFactory.getDataType:(Lsleeper/core/schema/type/Type;)Lorg/apache/spark/sql/types/DataType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        71
+      ]
+    },
+    "sleeper.bulkimport.runner.StructTypeFactory.getStructField:(Lsleeper/core/schema/Field;)Lorg/apache/spark/sql/types/StructField;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.bulkimport.runner.StructTypeFactory.getStructType:(Lsleeper/core/schema/Schema;)Lorg/apache/spark/sql/types/StructType;" : {
+      "completeTestCount" : 11,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
+      "warnings" : {
+        "W001" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.AddPartitionFunction.<init>:(Ljava/lang/String;Lorg/apache/spark/broadcast/Broadcast;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.AddPartitionFunction.call:(Ljava/util/Iterator;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.AddPartitionIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/schema/Schema;Lsleeper/core/partition/PartitionTree;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.AddPartitionIterator.hasNext:()Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.AddPartitionIterator.next:()Lorg/apache/spark/sql/Row;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        56,
+        63,
+        64,
+        66
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.BulkImportJobDataframeDriver.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        45
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.BulkImportJobDataframeDriver.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.BulkImportJobDataframeDriver.createEnhancedSchema:(Lorg/apache/spark/sql/types/StructType;)Lorg/apache/spark/sql/types/StructType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        91
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.BulkImportJobDataframeDriver.createFileReferences:(Lsleeper/bulkimport/runner/BulkImportJobInput;)Lorg/apache/spark/sql/Dataset;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        61,
+        62,
+        63,
+        65,
+        66,
+        67,
+        65,
+        69,
+        70,
+        71,
+        69,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        76,
+        79,
+        81,
+        83,
+        84,
+        85,
+        86,
+        81
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.BulkImportJobDataframeDriver.lambda$createFileReferences$0:(I)[Lorg/apache/spark/sql/Column;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.BulkImportJobDataframeDriver.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        52,
+        53
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        67,
+        68
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        72,
+        61,
+        62,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.createWriter:(Ljava/lang/String;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        179,
+        180,
+        181,
+        183,
+        185
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.getPartitionId:(Lorg/apache/spark/sql/Row;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        189
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.getRecord:(Lorg/apache/spark/sql/Row;)Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        171,
+        173,
+        174,
+        175
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.initialiseState:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        142,
+        144,
+        146,
+        147
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.next:()Lorg/apache/spark/sql/Row;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        92,
+        93,
+        96,
+        97,
+        99,
+        101,
+        102,
+        104,
+        105,
+        106,
+        107,
+        109,
+        110,
+        112,
+        115,
+        116,
+        119,
+        120,
+        121,
+        122,
+        123
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.write:(Lorg/apache/spark/sql/Row;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        128,
+        129,
+        132,
+        133,
+        134,
+        135,
+        136,
+        138,
+        139
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.FileWritingIterator.writeFiles:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        150,
+        151,
+        152,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        158,
+        160
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.WriteParquetFiles.<init>:(Ljava/lang/String;Ljava/lang/String;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframe.WriteParquetFiles.call:(Ljava/util/Iterator;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        50,
+        51,
+        53
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.AddPartitionAsIntFunction.<init>:(Ljava/lang/String;Lorg/apache/spark/broadcast/Broadcast;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.AddPartitionAsIntFunction.call:(Ljava/util/Iterator;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.AddPartitionAsIntIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/schema/Schema;Lsleeper/core/partition/PartitionTree;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.AddPartitionAsIntIterator.hasNext:()Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        72
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.AddPartitionAsIntIterator.next:()Lorg/apache/spark/sql/Row;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        82,
+        89,
+        90,
+        92
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.BulkImportDataframeLocalSortDriver.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.BulkImportDataframeLocalSortDriver.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        50,
+        51
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.BulkImportDataframeLocalSortDriver.createEnhancedSchema:(Lorg/apache/spark/sql/types/StructType;)Lorg/apache/spark/sql/types/StructType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        97,
+        98,
+        99,
+        98
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.BulkImportDataframeLocalSortDriver.createFileReferences:(Lsleeper/bulkimport/runner/BulkImportJobInput;)Lorg/apache/spark/sql/Dataset;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        58,
+        59,
+        60,
+        61,
+        63,
+        64,
+        65,
+        67,
+        68,
+        69,
+        67,
+        70,
+        72,
+        73,
+        74,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        81,
+        85,
+        86,
+        88,
+        90,
+        91,
+        92,
+        93,
+        88
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.BulkImportDataframeLocalSortDriver.lambda$createFileReferences$0:(I)[Lorg/apache/spark/sql/Column;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        80
+      ]
+    },
+    "sleeper.bulkimport.runner.dataframelocalsort.BulkImportDataframeLocalSortDriver.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        54,
+        55
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.BulkImportJobRDDDriver.$deserializeLambda$:(Ljava/lang/invoke/SerializedLambda;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.BulkImportJobRDDDriver.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        34,
+        35
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.BulkImportJobRDDDriver.createFileReferences:(Lsleeper/bulkimport/runner/BulkImportJobInput;)Lorg/apache/spark/sql/Dataset;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        46,
+        45,
+        48,
+        47,
+        50,
+        52,
+        53,
+        54,
+        51,
+        56,
+        57
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.BulkImportJobRDDDriver.lambda$createFileReferences$44788c24$1:(Lscala/Tuple2;)Lorg/apache/spark/sql/Row;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.BulkImportJobRDDDriver.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.ExtractKeyFunction.<init>:(I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        35,
+        36,
+        37
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.ExtractKeyFunction.call:(Ljava/lang/Object;)Lscala/Tuple2;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.ExtractKeyFunction.call:(Lorg/apache/spark/sql/Row;)Lscala/Tuple2;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        42,
+        45,
+        46
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        49
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/partition/PartitionTree;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        68,
+        69
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.<init>:(Ljava/util/Iterator;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/partition/PartitionTree;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.closeFile:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        133,
+        134,
+        135,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        141,
+        143
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.createWriter:(Ljava/lang/String;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        162,
+        163,
+        164,
+        166,
+        167
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.getPartitionId:(Lorg/apache/spark/sql/Row;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        171,
+        172,
+        173,
+        174,
+        175
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.getRecord:(Lorg/apache/spark/sql/Row;)Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        154,
+        156,
+        157,
+        158
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        89
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.initialiseState:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        127,
+        129,
+        130
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.next:()Lorg/apache/spark/sql/Row;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        94,
+        95,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SingleFileWritingIterator.write:(Lorg/apache/spark/sql/Row;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        116,
+        117,
+        118,
+        119,
+        120,
+        122,
+        123
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SleeperPartitioner.<init>:(Ljava/lang/String;Lorg/apache/spark/broadcast/Broadcast;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SleeperPartitioner.getPartition:(Ljava/lang/Object;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        83,
+        84,
+        86,
+        87,
+        88,
+        89,
+        88,
+        91,
+        92,
+        93,
+        94
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SleeperPartitioner.init:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SleeperPartitioner.lambda$init$0:(Lsleeper/core/partition/Partition;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.SleeperPartitioner.numPartitions:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        75,
+        76,
+        78
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.WrappedKeyComparator.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        37,
+        38,
+        39
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.WrappedKeyComparator.compare:(Ljava/lang/Object;Ljava/lang/Object;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.WrappedKeyComparator.compare:(Lsleeper/core/key/Key;Lsleeper/core/key/Key;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        50
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.WriteParquetFile.<init>:(Ljava/lang/String;Ljava/lang/String;Lorg/apache/hadoop/conf/Configuration;Lorg/apache/spark/broadcast/Broadcast;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.WriteParquetFile.call:(Ljava/lang/Object;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.bulkimport.runner.rdd.WriteParquetFile.call:(Ljava/util/Iterator;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        55,
+        56,
+        58,
+        60
+      ]
+    }
+  }
+}

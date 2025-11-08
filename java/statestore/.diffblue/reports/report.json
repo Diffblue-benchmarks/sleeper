@@ -1,0 +1,3619 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 3435.184,
+    "environmentDetectionTime" : 0.505,
+    "indexingTime" : 0.328,
+    "entryPointsTime" : 0.5,
+    "generationTime" : 23332.879,
+    "timeToFirstTest" : 25345.481,
+    "timeToLastTest" : 27081.742,
+    "indexQueryTime" : 19.184,
+    "verificationTime" : 485.788,
+    "validationTime" : 48.076
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R006" : "Static initializer failed",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R081" : "Exception in arrange section",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 37,
+    "methodsCount" : 215,
+    "cumulativeDiffblueTestCount" : 103,
+    "cumulativeManualTestCount" : 32,
+    "completeTestCount" : 103,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 1531,
+    "perMethodTestability" : {
+      "T000" : 91,
+      "T001" : 13,
+      "T003" : 43,
+      "T005" : 15,
+      "T006" : 3,
+      "T008" : 4,
+      "T010" : 4,
+      "T012" : 36,
+      "T020" : 6
+    },
+    "perMethodOutcome" : {
+      "R000" : 50,
+      "R002" : 10,
+      "R006" : 1,
+      "R011" : 19,
+      "R013" : 20,
+      "R081" : 1,
+      "T003" : 43,
+      "T006" : 3,
+      "T008" : 4,
+      "T010" : 4,
+      "T012" : 36
+    },
+    "perTestOutcome" : {
+      "R000" : 103
+    },
+    "perTestValidation" : {
+      "V000" : 103,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.statestore.ArrowFormatUtils" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R006" : 1,
+        "R011" : 8,
+        "T008" : 1
+      }
+    },
+    "sleeper.statestore.InitialiseStateStore" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T006" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T006" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.statestore.InitialiseStateStoreFromExportedPartitions" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T006" : 1
+      }
+    },
+    "sleeper.statestore.InitialiseStateStoreFromSplitPoints" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 2,
+        "R013" : 1,
+        "T006" : 1
+      }
+    },
+    "sleeper.statestore.StateStoreArrowFileStore" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R011" : 6,
+        "T012" : 1
+      }
+    },
+    "sleeper.statestore.StateStoreArrowFileStore$1" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T012" : 1
+      }
+    },
+    "sleeper.statestore.StateStoreFactory" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R002" : 1,
+        "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 3,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R011" : 2,
+        "T003" : 3,
+        "T012" : 2
+      }
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult" : {
+      "methodsCount" : 0,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 3,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$WriteResult" : {
+      "methodsCount" : 0,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 9,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R011" : 2,
+        "T003" : 9,
+        "T012" : 4
+      }
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$ReadResult" : {
+      "methodsCount" : 0,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$WriteResult" : {
+      "methodsCount" : 0,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.statestore.commit.SqsFifoStateStoreCommitRequestSender" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.statestore.commit.StateStoreCommitRequestUploader" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.DuplicateSnapshotException" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStateStore" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStateStoreNoSnapshots" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore" : {
+      "methodsCount" : 14,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 4,
+        "T012" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 3,
+        "T003" : 4,
+        "T012" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T005" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R002" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.statestore.transactionlog.TransactionLogStateStoreCreator" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R081" : 1,
+        "T003" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter$GetLatestSnapshotsBefore" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 1,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator$LatestSnapshotsMetadataLoader" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotLoader" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore" : {
+      "methodsCount" : 25,
+      "completeTestCount" : 43,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 10,
+        "T003" : 10,
+        "T012" : 5
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 8,
+        "T003" : 10,
+        "T012" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 43
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStoreCreator" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 2
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R011" : 1,
+        "R013" : 1,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver$SnapshotMetadataSaver" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 8
+      },
+      "perTestOutcome" : {
+        "R000" : 12
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots$1" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T012" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotDeletionTracker" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotType" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T012" : 4
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 1,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter$SnapshotFileDeleter" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 8,
+        "T001" : 4,
+        "T003" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 13,
+        "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 12
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.statestore.ArrowFormatUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        36,
+        37
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.isEmpty:(Lorg/apache/arrow/memory/BufferAllocator;Ljava/nio/channels/ReadableByteChannel;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R006",
+      "lineNumbers" : [
+        48,
+        49,
+        50,
+        51,
+        50,
+        48
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeBit:(Lorg/apache/arrow/vector/complex/writer/BaseWriter$StructWriter;Lorg/apache/arrow/vector/types/pojo/Field;Z)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        151,
+        152
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeTimeStampMilli:(Lorg/apache/arrow/vector/complex/writer/BaseWriter$StructWriter;Lorg/apache/arrow/vector/types/pojo/Field;Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        129,
+        130
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeUInt8:(Lorg/apache/arrow/vector/complex/writer/BaseWriter$StructWriter;Lorg/apache/arrow/vector/types/pojo/Field;J)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        140,
+        141
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeVarBinary:(Lorg/apache/arrow/vector/complex/writer/VarBinaryWriter;Lorg/apache/arrow/memory/BufferAllocator;[B)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        115,
+        116,
+        117,
+        118,
+        115,
+        119
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeVarChar:(Lorg/apache/arrow/vector/complex/writer/BaseWriter$StructWriter;Lorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/types/pojo/Field;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        63,
+        64
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeVarChar:(Lorg/apache/arrow/vector/complex/writer/VarCharWriter;Lorg/apache/arrow/memory/BufferAllocator;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        101,
+        102,
+        103,
+        104,
+        105,
+        102,
+        106
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeVarCharNullable:(Lorg/apache/arrow/vector/complex/writer/BaseWriter$StructWriter;Lorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/types/pojo/Field;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        75,
+        76
+      ]
+    },
+    "sleeper.statestore.ArrowFormatUtils.writeVarCharNullable:(Lorg/apache/arrow/vector/complex/writer/VarCharWriter;Lorg/apache/arrow/memory/BufferAllocator;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        90,
+        91
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStore.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        39,
+        40
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStore.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        48,
+        49,
+        50,
+        52,
+        53,
+        55,
+        56,
+        58,
+        60,
+        62,
+        63,
+        65,
+        67,
+        68,
+        69,
+        67,
+        68,
+        69,
+        70
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStoreFromExportedPartitions.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        50,
+        51
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStoreFromExportedPartitions.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        64,
+        65,
+        66,
+        68,
+        69,
+        71,
+        72,
+        74,
+        75,
+        77,
+        78,
+        79,
+        80,
+        82,
+        83,
+        84,
+        87,
+        80,
+        88,
+        90,
+        92,
+        93,
+        94,
+        92,
+        93,
+        94,
+        95
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStoreFromSplitPoints.<init>:(Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        53,
+        54
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStoreFromSplitPoints.<init>:(Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/properties/table/TableProperties;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStoreFromSplitPoints.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        82,
+        83,
+        85,
+        86,
+        88,
+        89,
+        91,
+        92,
+        93,
+        94,
+        95,
+        98,
+        99,
+        101,
+        103,
+        104,
+        105,
+        103,
+        104,
+        105,
+        106
+      ]
+    },
+    "sleeper.statestore.InitialiseStateStoreFromSplitPoints.run:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        67,
+        68,
+        69
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore$1.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        142
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.<init>:(Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.isEmpty:(Ljava/lang/String;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        167,
+        168,
+        169,
+        170,
+        171,
+        170,
+        168
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.loadFiles:(Ljava/lang/String;)Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        127,
+        129,
+        130,
+        129,
+        124
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.loadPartitions:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        108,
+        110,
+        111,
+        110,
+        105
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.loadSnapshot:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)Lsleeper/core/statestore/transactionlog/snapshot/TransactionLogSnapshot;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        142,
+        144,
+        145,
+        146,
+        144,
+        148,
+        149,
+        150,
+        148,
+        152,
+        154,
+        155
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.saveFiles:(Ljava/lang/String;Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        88,
+        90,
+        91,
+        90,
+        92,
+        86,
+        92,
+        86,
+        93
+      ]
+    },
+    "sleeper.statestore.StateStoreArrowFileStore.savePartitions:(Ljava/lang/String;Ljava/util/Collection;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        69,
+        71,
+        72,
+        71,
+        73,
+        67,
+        73,
+        67,
+        74
+      ]
+    },
+    "sleeper.statestore.StateStoreFactory.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        45,
+        46
+      ]
+    },
+    "sleeper.statestore.StateStoreFactory.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;Z)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ]
+    },
+    "sleeper.statestore.StateStoreFactory.createProvider:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/core/statestore/StateStoreProvider;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        86
+      ]
+    },
+    "sleeper.statestore.StateStoreFactory.forCommitterProcess:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/statestore/StateStoreFactory;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        73
+      ]
+    },
+    "sleeper.statestore.StateStoreFactory.forCommitterProcess:(ZLsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/transactionlog/TransactionLogStateStore$Builder;)Lsleeper/core/statestore/transactionlog/TransactionLogStateStore$Builder;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        119
+      ]
+    },
+    "sleeper.statestore.StateStoreFactory.getStateStore:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/statestore/StateStore;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        98,
+        99,
+        100,
+        101,
+        100,
+        101,
+        100,
+        103,
+        104,
+        105,
+        104,
+        105,
+        104,
+        107
+      ]
+    },
+    "sleeper.statestore.StateStoreFactory.isUpdateLogBeforeAddTransaction:(ZLsleeper/core/properties/table/TableProperties;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        126
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult.<init>:(Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;II)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult.files:()Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult.numBatches:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult.numReferences:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$ReadResult.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$WriteResult.<init>:(II)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$WriteResult.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$WriteResult.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$WriteResult.numBatches:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$WriteResult.numReferences:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat$WriteResult.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        78,
+        79
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat.lambda$write$0:(Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;Lorg/apache/arrow/vector/FieldVector;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        97
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat.read:(Lorg/apache/arrow/memory/BufferAllocator;Ljava/nio/channels/ReadableByteChannel;)Lsleeper/statestore/StateStoreFilesArrowFormat$ReadResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        146,
+        152,
+        153,
+        154,
+        140,
+        155
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat.readReferences:(Ljava/lang/String;Lorg/apache/arrow/vector/complex/ListVector;I)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        181,
+        191
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat.write:(Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;Lorg/apache/arrow/memory/BufferAllocator;Ljava/nio/channels/WritableByteChannel;I)Lsleeper/statestore/StateStoreFilesArrowFormat$WriteResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        120,
+        121,
+        122,
+        123,
+        125,
+        126,
+        95,
+        126,
+        95,
+        127
+      ]
+    },
+    "sleeper.statestore.StateStoreFilesArrowFormat.writeReferences:(Ljava/util/Collection;ILorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/complex/impl/UnionListWriter;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$ReadResult.<init>:(Ljava/util/List;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        305
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$ReadResult.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        305
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$ReadResult.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        305
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$ReadResult.numBatches:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        305
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$ReadResult.partitions:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        305
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$ReadResult.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        305
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$WriteResult.<init>:(I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        313
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$WriteResult.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        313
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$WriteResult.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        313
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$WriteResult.numBatches:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        313
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat$WriteResult.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        313
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        86,
+        88,
+        86
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        90,
+        91
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.createRowKeyTypeFields:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        292,
+        293,
+        294,
+        295,
+        296,
+        292
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.lambda$static$0:(Lsleeper/core/schema/type/PrimitiveType;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        88
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.lambda$static$1:(Lsleeper/core/schema/type/PrimitiveType;)Lsleeper/core/schema/type/Type;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        88
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.lambda$write$2:(Ljava/util/Collection;Lorg/apache/arrow/vector/FieldVector;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        107
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.read:(Lorg/apache/arrow/memory/BufferAllocator;Ljava/nio/channels/ReadableByteChannel;)Lsleeper/statestore/StateStorePartitionsArrowFormat$ReadResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        171,
+        170,
+        180,
+        181,
+        182,
+        161,
+        183
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.readChildIds:(Lorg/apache/arrow/vector/complex/ListVector;I)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        203
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.readFieldType:(Lorg/apache/arrow/vector/complex/reader/FieldReader;)Lsleeper/core/schema/type/Type;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        238,
+        239,
+        240,
+        241,
+        243
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.readRegion:(Lorg/apache/arrow/vector/complex/ListVector;I)Lsleeper/core/range/Region;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        231,
+        232,
+        229,
+        233,
+        234
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.readRowKeyValue:(Lorg/apache/arrow/vector/complex/reader/FieldReader;Lsleeper/core/schema/type/Type;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        277,
+        278,
+        279,
+        278,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        287
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.write:(Ljava/util/Collection;Lorg/apache/arrow/memory/BufferAllocator;Ljava/nio/channels/WritableByteChannel;I)Lsleeper/statestore/StateStorePartitionsArrowFormat$WriteResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        122,
+        124,
+        125,
+        126,
+        128,
+        130,
+        131,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        141,
+        143,
+        144,
+        145,
+        147,
+        148,
+        105,
+        148,
+        105,
+        149
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.writeChildIds:(Lsleeper/core/partition/Partition;ILorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/complex/impl/UnionListWriter;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.writeRegion:(Lsleeper/core/range/Region;ILorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/complex/impl/UnionListWriter;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219
+      ]
+    },
+    "sleeper.statestore.StateStorePartitionsArrowFormat.writeRowKeyValue:(Lsleeper/core/schema/type/Type;Ljava/lang/Object;Lorg/apache/arrow/memory/BufferAllocator;Lorg/apache/arrow/vector/complex/writer/BaseWriter$StructWriter;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        247,
+        248,
+        249,
+        250,
+        252,
+        254,
+        255,
+        256,
+        258,
+        260,
+        261,
+        262,
+        264,
+        266,
+        267,
+        268,
+        270,
+        273,
+        274
+      ]
+    },
+    "sleeper.statestore.commit.SqsFifoStateStoreCommitRequestSender.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.statestore.commit.SqsFifoStateStoreCommitRequestSender.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/sqs/AmazonSQS;Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/statestore/transactionlog/transaction/TransactionSerDeProvider;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.statestore.commit.SqsFifoStateStoreCommitRequestSender.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/statestore/transactionlog/log/TransactionBodyStore;Lsleeper/core/statestore/transactionlog/transaction/TransactionSerDeProvider;Lcom/amazonaws/services/sqs/AmazonSQS;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    "sleeper.statestore.commit.SqsFifoStateStoreCommitRequestSender.send:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        64,
+        69,
+        70
+      ]
+    },
+    "sleeper.statestore.commit.StateStoreCommitRequestUploader.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        31
+      ]
+    },
+    "sleeper.statestore.commit.StateStoreCommitRequestUploader.<init>:(Lsleeper/core/statestore/transactionlog/log/TransactionBodyStore;Lsleeper/core/statestore/transactionlog/transaction/TransactionSerDeProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "sleeper.statestore.commit.StateStoreCommitRequestUploader.lambda$serialiseAndUploadIfTooBig$0:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Lsleeper/core/statestore/transactionlog/transaction/StateStoreTransaction;)Lsleeper/core/statestore/commit/StateStoreCommitRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.statestore.commit.StateStoreCommitRequestUploader.lambda$uploadTransactionIfTooBig$1:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Ljava/lang/String;)Lsleeper/core/statestore/commit/StateStoreCommitRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.statestore.commit.StateStoreCommitRequestUploader.serialiseAndUploadIfTooBig:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        49
+      ]
+    },
+    "sleeper.statestore.commit.StateStoreCommitRequestUploader.uploadTransactionIfTooBig:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Lsleeper/core/statestore/transactionlog/transaction/StateStoreTransaction;)Lsleeper/core/statestore/commit/StateStoreCommitRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        55
+      ]
+    },
+    "sleeper.statestore.transactionlog.DuplicateSnapshotException.<init>:(Ljava/lang/String;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        23,
+        24
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStateStore.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStateStore.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStateStore.builderFrom:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/s3/AmazonS3;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/core/statestore/transactionlog/TransactionLogStateStore$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        59,
+        57
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStateStoreNoSnapshots.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStateStoreNoSnapshots.builderFrom:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/core/statestore/transactionlog/TransactionLogStateStore$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        64,
+        65,
+        63,
+        66,
+        67,
+        68,
+        57
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.<init>:(Ljava/lang/String;Ljava/lang/String;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/s3/AmazonS3;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.addTransaction:(Lsleeper/core/statestore/transactionlog/log/TransactionLogEntry;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        123,
+        125,
+        126,
+        128,
+        129,
+        130,
+        131,
+        132,
+        135,
+        127,
+        136,
+        137,
+        125,
+        140,
+        138,
+        139,
+        141
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.deleteTransactionsAtOrBefore:(J)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        179,
+        180,
+        181,
+        178,
+        182,
+        173,
+        183,
+        193,
+        194
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.forFiles:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/statestore/transactionlog/DynamoDBTransactionLogStore;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        87,
+        88,
+        87
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.forPartitions:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/statestore/transactionlog/DynamoDBTransactionLogStore;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        104,
+        105,
+        104
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.getKey:(Ljava/util/Map;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        222,
+        223,
+        222
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.lambda$addTransaction$0:(Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        133
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.lambda$addTransaction$1:(Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        134
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.lambda$addTransaction$2:(Lsleeper/core/statestore/transactionlog/log/TransactionLogEntry;Lsleeper/dynamodb/tools/DynamoDBRecordBuilder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        132
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.lambda$deleteTransactionsAtOrBefore$3:(Lsleeper/core/statestore/transactionlog/log/TransactionLogDeletionTracker;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        184,
+        185,
+        186,
+        187,
+        188,
+        190,
+        191,
+        192
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.readTransaction:(Ljava/util/Map;)Lsleeper/core/statestore/transactionlog/log/TransactionLogEntry;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        204,
+        205,
+        206
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.readTransactions:(Lsleeper/core/statestore/transactionlog/log/TransactionLogRange;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        153,
+        154,
+        155,
+        156,
+        152,
+        158,
+        159,
+        161,
+        162,
+        163,
+        160,
+        165,
+        166,
+        165
+      ]
+    },
+    "sleeper.statestore.transactionlog.DynamoDBTransactionLogStore.readType:(Ljava/util/Map;)Lsleeper/core/statestore/transactionlog/transaction/TransactionType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        211,
+        213,
+        214,
+        215,
+        216,
+        215,
+        217
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/statestore/transactionlog/transaction/TransactionSerDeProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        60,
+        61
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;Lsleeper/core/statestore/transactionlog/transaction/TransactionSerDeProvider;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.delete:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        109,
+        110
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.getBody:(Ljava/lang/String;Ljava/lang/String;Lsleeper/core/statestore/transactionlog/transaction/TransactionType;)Lsleeper/core/statestore/transactionlog/transaction/StateStoreTransaction;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        98,
+        99,
+        100
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.store:(Ljava/lang/String;Ljava/lang/String;Lsleeper/core/statestore/transactionlog/transaction/StateStoreTransaction;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        72,
+        73
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.store:(Ljava/lang/String;Lsleeper/core/statestore/transactionlog/transaction/StateStoreTransaction;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94
+      ]
+    },
+    "sleeper.statestore.transactionlog.S3TransactionBodyStore.storeIfTooBig:(Ljava/lang/String;Lsleeper/core/statestore/transactionlog/transaction/StateStoreTransaction;)Lsleeper/core/statestore/transactionlog/log/StoreTransactionBodyResult;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        77,
+        78,
+        79,
+        81,
+        82,
+        83
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogStateStoreCreator.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogStateStoreCreator.create:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        54
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogStateStoreCreator.createTransactionLogTable:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        57,
+        60,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter$GetLatestSnapshotsBefore.getLatestSnapshotsBefore:(Ljava/time/Instant;)Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter.<init>:(Lsleeper/core/properties/table/TableProperties;Lsleeper/statestore/transactionlog/TransactionLogTransactionDeleter$GetLatestSnapshotsBefore;Lsleeper/core/statestore/transactionlog/log/TransactionLogStore;Lsleeper/core/statestore/transactionlog/log/TransactionLogStore;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter.deleteOldTransactions:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter.deleteWithLatestSnapshot:(Lsleeper/core/statestore/transactionlog/log/TransactionLogStore;Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        70
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter.lambda$deleteOldTransactions$0:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.statestore.transactionlog.TransactionLogTransactionDeleter.lambda$deleteOldTransactions$1:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator$LatestSnapshotsMetadataLoader.load:()Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/transactionlog/log/TransactionLogStore;Lsleeper/core/statestore/transactionlog/log/TransactionLogStore;Lsleeper/core/statestore/transactionlog/log/TransactionBodyStore;Lorg/apache/hadoop/conf/Configuration;Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotCreator$LatestSnapshotsMetadataLoader;Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotSaver$SnapshotMetadataSaver;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        92,
+        93
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator.createSnapshot:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator.from:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotCreator;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        69,
+        71,
+        73,
+        74,
+        76,
+        78,
+        76
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator.updateFilesSnapshot:(Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        107,
+        108,
+        109,
+        111,
+        113,
+        114,
+        115,
+        120,
+        117,
+        118,
+        119,
+        121
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotCreator.updatePartitionsSnapshot:(Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        124,
+        125,
+        126,
+        128,
+        130,
+        131,
+        132,
+        137,
+        134,
+        135,
+        136,
+        138
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotLoader.<init>:(Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotMetadataStore;Lsleeper/statestore/StateStoreArrowFileStore;Lsleeper/statestore/transactionlog/snapshots/SnapshotType;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotLoader.loadLatestSnapshotInRange:(Lsleeper/core/statestore/transactionlog/log/TransactionLogRange;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        44,
+        45,
+        44
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        76,
+        77
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 42,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 42
+      },
+      "lineNumbers" : [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.deleteSnapshot:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        308,
+        309
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getExpiredSnapshots:(Ljava/time/Instant;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        273
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getExpiredSnapshotsExcludingLatest:(JLsleeper/statestore/transactionlog/snapshots/SnapshotType;Ljava/time/Instant;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        279,
+        280,
+        279
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getFilesSnapshots:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        154,
+        155,
+        154
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getKeyFromSnapshot:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        312,
+        313,
+        312
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getLatestSnapshotBefore:(Lsleeper/statestore/transactionlog/snapshots/SnapshotType;Ljava/time/Instant;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        284,
+        287,
+        284
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getLatestSnapshotInRange:(Lsleeper/statestore/transactionlog/snapshots/SnapshotType;Lsleeper/core/statestore/transactionlog/log/TransactionLogRange;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        204,
+        205,
+        206,
+        207,
+        208,
+        210,
+        211,
+        212,
+        213,
+        209,
+        214,
+        205,
+        215,
+        217,
+        218,
+        217
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getLatestSnapshots:()Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        182,
+        183,
+        184,
+        185,
+        187,
+        188,
+        186,
+        182,
+        189,
+        190,
+        192
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getLatestSnapshotsBefore:(Ljava/time/Instant;)Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        254,
+        255,
+        256,
+        254
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getLatestSnapshotsFromItem:(Ljava/util/Map;)Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        223,
+        224,
+        225,
+        226,
+        227,
+        229,
+        230,
+        231,
+        232,
+        233,
+        235
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getPartitionsSnapshots:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        159,
+        160,
+        159
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getSnapshotFromItem:(Ljava/util/Map;)Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        243,
+        244
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getSnapshots:(Lsleeper/statestore/transactionlog/snapshots/SnapshotType;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        164,
+        165,
+        166,
+        167,
+        168,
+        170,
+        171,
+        169,
+        172,
+        164,
+        173,
+        164
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.getSnapshotsBefore:(Lsleeper/statestore/transactionlog/snapshots/SnapshotType;Ljava/time/Instant;Ljava/util/function/Consumer;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        291,
+        292,
+        293,
+        294,
+        295,
+        299,
+        300,
+        301,
+        298,
+        302,
+        303,
+        304,
+        303
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.lambda$getExpiredSnapshotsExcludingLatest$2:(Lcom/amazonaws/services/dynamodbv2/model/QueryRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        280
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.lambda$getExpiredSnapshotsExcludingLatest$3:(JLsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        280
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.lambda$getLatestSnapshotBefore$4:(Lcom/amazonaws/services/dynamodbv2/model/QueryRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        284,
+        285,
+        286,
+        284
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.lambda$getLatestSnapshotInRange$0:(Ljava/util/Map;)Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        215
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.lambda$getLatestSnapshotInRange$1:(Lsleeper/core/statestore/transactionlog/log/TransactionLogRange;Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        218
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.putNewSnapshot:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;Ljava/time/Instant;)Lcom/amazonaws/services/dynamodbv2/model/Put;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        113,
+        114,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        115,
+        113
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.saveSnapshot:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        94,
+        96,
+        98,
+        100,
+        96,
+        101,
+        102,
+        103,
+        104,
+        109,
+        105,
+        106,
+        107,
+        110
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.tableAndType:(Ljava/lang/String;Lsleeper/statestore/transactionlog/snapshots/SnapshotType;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        239
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStore.updateLatestSnapshot:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;Ljava/time/Instant;)Lcom/amazonaws/services/dynamodbv2/model/Update;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        128,
+        129,
+        130,
+        132,
+        133,
+        135,
+        136,
+        137,
+        138,
+        142,
+        143,
+        148,
+        149,
+        150,
+        147,
+        135
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStoreCreator.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStoreCreator.create:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        50,
+        51,
+        52
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStoreCreator.createAllSnapshotsTable:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        68,
+        71,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotMetadataStoreCreator.createLatestSnapshotTable:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        57,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver$SnapshotMetadataSaver.save:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        45
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        54,
+        56
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.<init>:(Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotCreator$LatestSnapshotsMetadataLoader;Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotSaver$SnapshotMetadataSaver;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.<init>:(Lsleeper/statestore/transactionlog/snapshots/DynamoDBTransactionLogSnapshotMetadataStore;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        61,
+        62
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.getBasePath:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        124,
+        125,
+        126,
+        124
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.saveFilesSnapshot:(Lsleeper/core/statestore/transactionlog/snapshot/TransactionLogSnapshot;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        81,
+        82,
+        81,
+        83,
+        84,
+        85,
+        86
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.saveMetadata:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        106,
+        113,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        114
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.DynamoDBTransactionLogSnapshotSaver.savePartitionsSnapshot:(Lsleeper/core/statestore/transactionlog/snapshot/TransactionLogSnapshot;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        97,
+        98,
+        97,
+        99,
+        100,
+        101,
+        102
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots$1.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.<init>:(Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37,
+        38,
+        39,
+        40
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.empty:()Lsleeper/statestore/transactionlog/snapshots/LatestSnapshots;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        34
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        74,
+        75,
+        77,
+        78,
+        80,
+        81
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.getFilesSnapshot:()Ljava/util/Optional;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.getPartitionsSnapshot:()Ljava/util/Optional;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.getSnapshot:(Lsleeper/statestore/transactionlog/snapshots/SnapshotType;)Ljava/util/Optional;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        57,
+        59,
+        61,
+        63
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.hashCode:()I" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.LatestSnapshots.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        86
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotDeletionTracker.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        21,
+        22,
+        23
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotDeletionTracker.deleteSuccess:(J)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        32,
+        33,
+        34
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotDeletionTracker.getDeletedCount:()Ljava/lang/Integer;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotDeletionTracker.getLastTransactionNumber:()Ljava/lang/Long;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        46,
+        47,
+        49
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotType.$values:()[Lsleeper/statestore/transactionlog/snapshots/SnapshotType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotType.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        23,
+        22
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotType.<init>:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotType.valueOf:(Ljava/lang/String;)Lsleeper/statestore/transactionlog/snapshots/SnapshotType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.SnapshotType.values:()[Lsleeper/statestore/transactionlog/snapshots/SnapshotType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        22
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter$SnapshotFileDeleter.delete:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        47,
+        48
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotDeleter$SnapshotFileDeleter;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter.deleteSnapshots:(Ljava/time/Instant;)Lsleeper/statestore/transactionlog/snapshots/SnapshotDeletionTracker;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        69,
+        81
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter.hadoopFileDeleter:(Lorg/apache/hadoop/conf/Configuration;)Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotDeleter$SnapshotFileDeleter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter.lambda$deleteSnapshots$0:(Lsleeper/statestore/transactionlog/snapshots/SnapshotDeletionTracker;Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        70,
+        72,
+        73,
+        77,
+        74,
+        75,
+        76,
+        78,
+        79
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotDeleter.lambda$hadoopFileDeleter$1:(Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        89,
+        91,
+        93
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.<init>:(Ljava/lang/String;Lsleeper/statestore/transactionlog/snapshots/SnapshotType;J)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        81,
+        82
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.<init>:(Ljava/lang/String;Lsleeper/statestore/transactionlog/snapshots/SnapshotType;JLjava/time/Instant;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        122,
+        123,
+        125,
+        126,
+        128,
+        129
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.forFiles:(Ljava/lang/String;J)Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.forFiles:(Ljava/lang/String;JLjava/time/Instant;)Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.forPartitions:(Ljava/lang/String;J)Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.forPartitions:(Ljava/lang/String;JLjava/time/Instant;)Lsleeper/statestore/transactionlog/snapshots/TransactionLogSnapshotMetadata;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        77
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.getCreatedTime:()Ljava/time/Instant;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        104
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.getFilesPath:(Ljava/lang/String;J)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.getPartitionsPath:(Ljava/lang/String;J)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        112
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.getPath:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        92
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.getTransactionNumber:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        100
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.getType:()Lsleeper/statestore/transactionlog/snapshots/SnapshotType;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.hashCode:()I" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        117
+      ]
+    },
+    "sleeper.statestore.transactionlog.snapshots.TransactionLogSnapshotMetadata.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        134
+      ]
+    }
+  }
+}

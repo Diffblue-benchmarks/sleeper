@@ -1,0 +1,338 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 478.074,
+    "environmentDetectionTime" : 0.566,
+    "indexingTime" : 0.309,
+    "entryPointsTime" : 0.558,
+    "generationTime" : 7717.961,
+    "timeToFirstTest" : 7968.213,
+    "timeToLastTest" : 10127.342,
+    "indexQueryTime" : 17.148,
+    "verificationTime" : 240.596,
+    "validationTime" : 55.886
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 3,
+    "methodsCount" : 18,
+    "cumulativeDiffblueTestCount" : 13,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 13,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 139,
+    "perMethodTestability" : {
+      "T000" : 7,
+      "T003" : 3,
+      "T005" : 1,
+      "T012" : 7
+    },
+    "perMethodOutcome" : {
+      "R000" : 4,
+      "R002" : 2,
+      "R013" : 2,
+      "T003" : 3,
+      "T012" : 7
+    },
+    "perTestOutcome" : {
+      "R000" : 13
+    },
+    "perTestValidation" : {
+      "V000" : 13,
+      "V003" : 14
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "R013" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe$Request" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 3,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "T003" : 3,
+        "T012" : 3
+      }
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "R013" : 1,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe$Request.<init>:(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        71,
+        72
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe$Request.<init>:(Ljava/util/List;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe$Request.lambda$new$0:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe$Request.lambda$toFileIngestRequests$1:()Lsleeper/core/table/TableNotFoundException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        82
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe$Request.lambda$toFileIngestRequests$2:(Lsleeper/core/table/TableStatus;Ljava/time/Instant;Lorg/apache/hadoop/fs/FileStatus;)Lsleeper/ingest/batcher/core/FileIngestRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        85,
+        86,
+        87,
+        86,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        88
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe$Request.toFileIngestRequests:(Lsleeper/core/properties/instance/InstanceProperties;Lorg/apache/hadoop/conf/Configuration;Ljava/time/Instant;Lsleeper/core/table/TableIndex;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84,
+        95,
+        83
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        41,
+        42
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/table/TableIndex;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe.fromJson:(Ljava/lang/String;Ljava/time/Instant;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        54,
+        55
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe.toJson:(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.FileIngestRequestSerDe.toJson:(Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56,
+        58,
+        59,
+        60,
+        62,
+        63,
+        64,
+        65,
+        66,
+        68
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda.<init>:(Lsleeper/ingest/batcher/core/IngestBatcherStore;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/table/TableIndex;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda.handleMessage:(Ljava/lang/String;Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        88,
+        92,
+        89,
+        90,
+        91,
+        93,
+        94
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.ingest.batcher.submitter.IngestBatcherSubmitterLambda.lambda$handleRequest$0:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        81
+      ]
+    }
+  }
+}

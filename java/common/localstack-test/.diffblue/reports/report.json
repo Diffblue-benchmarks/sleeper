@@ -1,0 +1,472 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2025.02.02-08b2a5a-licensed",
+    "creationTimestamp" : "2025-11-07T21:45:02.552270129Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 396.167,
+    "environmentDetectionTime" : 0.52,
+    "indexingTime" : 0.46,
+    "entryPointsTime" : 0.511,
+    "generationTime" : 45679.152,
+    "timeToFirstTest" : 57926.801,
+    "timeToLastTest" : 57245.409,
+    "indexQueryTime" : 22.877,
+    "verificationTime" : 941.435,
+    "validationTime" : 31.084
+  },
+  "codes" : {
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R034" : "Diffblue Cover can't complete test",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 7,
+    "methodsCount" : 26,
+    "cumulativeDiffblueTestCount" : 3,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 0,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 212,
+    "perMethodTestability" : {
+      "T000" : 9,
+      "T003" : 5,
+      "T008" : 5,
+      "T010" : 1,
+      "T012" : 6
+    },
+    "perMethodOutcome" : {
+      "R011" : 3,
+      "R013" : 1,
+      "R034" : 5,
+      "T003" : 5,
+      "T008" : 5,
+      "T010" : 1,
+      "T012" : 6
+    },
+    "perTestValidation" : {
+      "V000" : 61,
+      "V003" : 7
+    }
+  },
+  "classes" : {
+    "sleeper.localstack.test.LocalStackAwsV1ClientHelper" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R034" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.localstack.test.LocalStackAwsV2ClientHelper" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R034" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.localstack.test.LocalStackHadoopConfigurationProvider" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R034" : 2,
+        "T008" : 1
+      }
+    },
+    "sleeper.localstack.test.LocalStackTestBase" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T010" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R011" : 3,
+        "R034" : 1,
+        "T010" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.localstack.test.SleeperLocalStackClients" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T008" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.localstack.test.SleeperLocalStackContainer" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 3,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T003" : 3,
+        "T012" : 2
+      }
+    },
+    "sleeper.localstack.test.WiremockAwsV1ClientHelper" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "T003" : 2,
+        "T008" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.localstack.test.LocalStackAwsV1ClientHelper.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        29,
+        30
+      ]
+    },
+    "sleeper.localstack.test.LocalStackAwsV1ClientHelper.buildAwsV1Client:(Lorg/testcontainers/containers/localstack/LocalStackContainer;Lorg/testcontainers/containers/localstack/LocalStackContainer$Service;Lcom/amazonaws/client/builder/AwsClientBuilder;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R034",
+      "lineNumbers" : [
+        43,
+        45,
+        46,
+        44,
+        48,
+        47,
+        49,
+        43
+      ]
+    },
+    "sleeper.localstack.test.LocalStackAwsV2ClientHelper.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        26,
+        27
+      ]
+    },
+    "sleeper.localstack.test.LocalStackAwsV2ClientHelper.buildAwsV2Client:(Lorg/testcontainers/containers/localstack/LocalStackContainer;Lorg/testcontainers/containers/localstack/LocalStackContainer$Service;Lsoftware/amazon/awssdk/awscore/client/builder/AwsClientBuilder;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R034",
+      "lineNumbers" : [
+        30,
+        31,
+        33,
+        32,
+        34,
+        35,
+        30
+      ]
+    },
+    "sleeper.localstack.test.LocalStackHadoopConfigurationProvider.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        23,
+        24
+      ]
+    },
+    "sleeper.localstack.test.LocalStackHadoopConfigurationProvider.configureHadoop:(Lorg/apache/hadoop/conf/Configuration;Lorg/testcontainers/containers/localstack/LocalStackContainer;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R034",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        55
+      ]
+    },
+    "sleeper.localstack.test.LocalStackHadoopConfigurationProvider.getHadoopConfiguration:(Lorg/testcontainers/containers/localstack/LocalStackContainer;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R034",
+      "lineNumbers" : [
+        36,
+        37,
+        38
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010",
+      "lineNumbers" : [
+        47,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.createBucket:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        63,
+        64
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.createFifoQueueGetUrl:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R034",
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        78,
+        80,
+        78
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.lambda$createBucket$0:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/CreateBucketRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.lambda$listObjectKeys$2:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/ListObjectsV2Request$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        72
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.lambda$putObject$1:(Ljava/lang/String;Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/PutObjectRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.listObjectKeys:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        72
+      ]
+    },
+    "sleeper.localstack.test.LocalStackTestBase.putObject:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lsoftware/amazon/awssdk/services/s3/model/PutObjectResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        67,
+        68,
+        67
+      ]
+    },
+    "sleeper.localstack.test.SleeperLocalStackClients.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.localstack.test.SleeperLocalStackClients.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        46,
+        47
+      ]
+    },
+    "sleeper.localstack.test.SleeperLocalStackContainer.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        34,
+        40
+      ]
+    },
+    "sleeper.localstack.test.SleeperLocalStackContainer.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        37,
+        38
+      ]
+    },
+    "sleeper.localstack.test.SleeperLocalStackContainer.getHostAddress:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        54,
+        56,
+        57,
+        58
+      ]
+    },
+    "sleeper.localstack.test.SleeperLocalStackContainer.lambda$start$0:(Lorg/testcontainers/containers/output/OutputFrame;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.localstack.test.SleeperLocalStackContainer.start:()Lorg/testcontainers/containers/localstack/LocalStackContainer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.localstack.test.WiremockAwsV1ClientHelper.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        33,
+        34
+      ]
+    },
+    "sleeper.localstack.test.WiremockAwsV1ClientHelper.buildAwsV1Client:(Lcom/github/tomakehurst/wiremock/junit5/WireMockRuntimeInfo;Lcom/amazonaws/client/builder/AwsSyncClientBuilder;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        37,
+        38,
+        39,
+        40,
+        37
+      ]
+    },
+    "sleeper.localstack.test.WiremockAwsV1ClientHelper.wiremockCredentialsProvider:()Lcom/amazonaws/auth/AWSCredentialsProvider;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.localstack.test.WiremockAwsV1ClientHelper.wiremockEndpointConfiguration:(Lcom/github/tomakehurst/wiremock/junit5/WireMockRuntimeInfo;)Lcom/amazonaws/client/builder/AwsClientBuilder$EndpointConfiguration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        44
+      ]
+    }
+  }
+}
