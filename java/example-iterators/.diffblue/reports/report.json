@@ -1,0 +1,490 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T18:20:36.385779111Z",
+    "command" : "dcover coverage-reports --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite",
+    "totalTime" : 251.208,
+    "environmentDetectionTime" : 235.201,
+    "indexingTime" : 0.0,
+    "entryPointsTime" : 0.0,
+    "generationTime" : 0.0,
+    "timeToFirstTest" : 251.208,
+    "timeToLastTest" : 251.208,
+    "indexQueryTime" : 0.0,
+    "verificationTime" : 0.0,
+    "validationTime" : 0.0
+  },
+  "codes" : {
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T012" : "Synthetic method"
+  },
+  "summary" : {
+    "classesCount" : 6,
+    "methodsCount" : 32,
+    "cumulativeDiffblueTestCount" : 0,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 0,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 233,
+    "perMethodTestability" : {
+      "T000" : 17,
+      "T001" : 1,
+      "T003" : 4,
+      "T005" : 4,
+      "T012" : 6
+    },
+    "perMethodOutcome" : {
+      "T000" : 17,
+      "T001" : 1,
+      "T003" : 4,
+      "T005" : 4,
+      "T012" : 6
+    }
+  },
+  "classes" : {
+    "sleeper.example.iterator.AdditionIterator" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.example.iterator.AdditionIterator$AdditionIteratorInternal" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T003" : 2
+      }
+    },
+    "sleeper.example.iterator.AgeOffIterator" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T005" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.example.iterator.FixedAgeOffIterator" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T005" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator$SecurityFilteringIteratorInternal" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T003" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.example.iterator.AdditionIterator$AdditionIteratorInternal.<init>:(Lsleeper/core/iterator/CloseableIterator;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator$AdditionIteratorInternal.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        104,
+        105
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator$AdditionIteratorInternal.equalRowAndSort:(Lsleeper/core/record/Record;Lsleeper/core/record/Record;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator$AdditionIteratorInternal.getNextRecord:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        108,
+        109,
+        111
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator$AdditionIteratorInternal.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator.apply:(Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator.apply:(Lsleeper/core/iterator/CloseableIterator;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator.getRequiredValueFields:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.example.iterator.AdditionIterator.init:(Ljava/lang/String;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.example.iterator.AgeOffIterator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        35,
+        36
+      ]
+    },
+    "sleeper.example.iterator.AgeOffIterator.apply:(Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        31
+      ]
+    },
+    "sleeper.example.iterator.AgeOffIterator.apply:(Lsleeper/core/iterator/CloseableIterator;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.example.iterator.AgeOffIterator.getRequiredValueFields:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.example.iterator.AgeOffIterator.init:(Ljava/lang/String;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        44,
+        45,
+        46
+      ]
+    },
+    "sleeper.example.iterator.AgeOffIterator.lambda$apply$0:(Lsleeper/core/record/Record;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56,
+        57
+      ]
+    },
+    "sleeper.example.iterator.FixedAgeOffIterator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "sleeper.example.iterator.FixedAgeOffIterator.apply:(Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "sleeper.example.iterator.FixedAgeOffIterator.apply:(Lsleeper/core/iterator/CloseableIterator;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.example.iterator.FixedAgeOffIterator.getRequiredValueFields:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.example.iterator.FixedAgeOffIterator.init:(Ljava/lang/String;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        44,
+        45,
+        46,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.example.iterator.FixedAgeOffIterator.lambda$apply$0:(Lsleeper/core/record/Record;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        37,
+        38
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator$SecurityFilteringIteratorInternal.<init>:(Lsleeper/core/iterator/CloseableIterator;Ljava/lang/String;Ljava/util/Set;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator$SecurityFilteringIteratorInternal.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        106,
+        107
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator$SecurityFilteringIteratorInternal.hasNext:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        94
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator$SecurityFilteringIteratorInternal.updateNextToAllowedValue:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        83,
+        84,
+        85,
+        86,
+        89,
+        90
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator.allowed:(Lsleeper/core/record/Record;Ljava/lang/String;Ljava/util/Set;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        111,
+        112,
+        113,
+        115
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator.apply:(Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator.apply:(Lsleeper/core/iterator/CloseableIterator;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator.getRequiredValueFields:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.example.iterator.SecurityFilteringIterator.init:(Ljava/lang/String;Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        49,
+        50,
+        51,
+        52
+      ]
+    }
+  }
+}

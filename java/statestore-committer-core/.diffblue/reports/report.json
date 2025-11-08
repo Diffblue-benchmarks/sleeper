@@ -1,0 +1,393 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 26341.134,
+    "environmentDetectionTime" : 0.442,
+    "indexingTime" : 0.391,
+    "entryPointsTime" : 0.436,
+    "generationTime" : 20942.228,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 17.912,
+    "verificationTime" : 439.984,
+    "validationTime" : 56.254
+  },
+  "codes" : {
+    "F009" : "Internal error",
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 3,
+    "methodsCount" : 22,
+    "cumulativeDiffblueTestCount" : 4,
+    "cumulativeManualTestCount" : 21,
+    "completeTestCount" : 4,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 160,
+    "perMethodTestability" : {
+      "T000" : 4,
+      "T003" : 7,
+      "T005" : 1,
+      "T010" : 1,
+      "T012" : 9
+    },
+    "perMethodOutcome" : {
+      "F009" : 2,
+      "R000" : 1,
+      "R002" : 2,
+      "T003" : 7,
+      "T010" : 1,
+      "T012" : 9
+    },
+    "perTestOutcome" : {
+      "R000" : 4
+    },
+    "perTestValidation" : {
+      "V000" : 4,
+      "V003" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.statestore.committer.StateStoreCommitter" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 4,
+        "T005" : 1,
+        "T012" : 8
+      },
+      "perMethodOutcome" : {
+        "F009" : 1,
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 4,
+        "T012" : 8
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RequestHandle" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 3,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "F009" : 1,
+        "R002" : 1,
+        "T003" : 3,
+        "T012" : 1
+      }
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RetryOnThrottling" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.statestore.committer.StateStoreCommitter$RequestHandle.<init>:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Ljava/util/function/Consumer;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        186,
+        187,
+        188,
+        189
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RequestHandle.failed:(Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        218,
+        219
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RequestHandle.lambda$withCallbackOnFail$0:(Ljava/lang/Runnable;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        199
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RequestHandle.request:()Lsleeper/core/statestore/commit/StateStoreCommitRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        214
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RequestHandle.withCallbackOnFail:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Ljava/lang/Runnable;)Lsleeper/statestore/committer/StateStoreCommitter$RequestHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        199
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RequestHandle.withCallbackOnFail:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Ljava/util/function/Consumer;)Lsleeper/statestore/committer/StateStoreCommitter$RequestHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        210
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter$RetryOnThrottling.doWithRetries:(Ljava/lang/Runnable;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/compaction/job/CompactionJobTracker;Lsleeper/core/tracker/ingest/job/IngestJobTracker;Lsleeper/core/statestore/transactionlog/log/TransactionBodyStore;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.apply:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        140,
+        141,
+        142,
+        143,
+        140,
+        145,
+        146,
+        145,
+        147
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.applyBatch:(Lsleeper/statestore/committer/StateStoreCommitter$RetryOnThrottling;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        88,
+        98,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        85,
+        100
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.commitCompaction:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        150,
+        151,
+        152,
+        153,
+        155,
+        157,
+        161,
+        158,
+        159,
+        160,
+        162
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.commitIngest:(Lsleeper/core/statestore/commit/StateStoreCommitRequest;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/StateStore;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        165,
+        166,
+        167,
+        168,
+        170,
+        172,
+        176,
+        173,
+        174,
+        175,
+        177
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.lambda$applyBatch$0:(Lsleeper/statestore/committer/StateStoreCommitter$RequestHandle;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        88
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.lambda$applyBatch$1:(Ljava/lang/InterruptedException;Lsleeper/statestore/committer/StateStoreCommitter$RequestHandle;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        92
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.lambda$commitCompaction$5:(Lsleeper/core/statestore/transactionlog/transaction/impl/ReplaceFileReferencesTransaction;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        153,
+        154,
+        153
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.lambda$commitIngest$6:(Lsleeper/core/statestore/transactionlog/transaction/impl/AddFilesTransaction;Lsleeper/core/properties/table/TableProperties;Lsleeper/core/statestore/transactionlog/state/StateStoreFiles;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        169
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.lambda$updateBeforeBatch$2:(Lsleeper/statestore/committer/StateStoreCommitter$RequestHandle;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        104
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.lambda$updateBeforeBatch$3:(Lsleeper/statestore/committer/StateStoreCommitter$RetryOnThrottling;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        105
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.lambda$updateBeforeBatchForTable$4:(Lsleeper/core/statestore/transactionlog/TransactionLogStateStore;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        119
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.updateBeforeBatch:(Lsleeper/statestore/committer/StateStoreCommitter$RetryOnThrottling;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        103,
+        104,
+        105,
+        106
+      ]
+    },
+    "sleeper.statestore.committer.StateStoreCommitter.updateBeforeBatchForTable:(Lsleeper/statestore/committer/StateStoreCommitter$RetryOnThrottling;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        109,
+        110,
+        111,
+        113,
+        114,
+        115,
+        117,
+        119,
+        123,
+        120,
+        121,
+        122,
+        124
+      ]
+    }
+  }
+}

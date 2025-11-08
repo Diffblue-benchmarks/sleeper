@@ -1,0 +1,3601 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T18:07:29.678930803Z",
+    "command" : "dcover coverage-reports --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite",
+    "totalTime" : 253.444,
+    "environmentDetectionTime" : 222.203,
+    "indexingTime" : 0.0,
+    "entryPointsTime" : 0.0,
+    "generationTime" : 0.0,
+    "timeToFirstTest" : 253.444,
+    "timeToLastTest" : 253.444,
+    "indexQueryTime" : 0.0,
+    "verificationTime" : 0.0,
+    "validationTime" : 0.0
+  },
+  "codes" : {
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T004" : "In anonymous inner class",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method"
+  },
+  "summary" : {
+    "classesCount" : 37,
+    "methodsCount" : 253,
+    "cumulativeDiffblueTestCount" : 0,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 0,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 2262,
+    "perMethodTestability" : {
+      "T000" : 127,
+      "T001" : 35,
+      "T002" : 7,
+      "T003" : 16,
+      "T004" : 2,
+      "T005" : 12,
+      "T008" : 2,
+      "T010" : 1,
+      "T012" : 44,
+      "T020" : 7
+    },
+    "perMethodOutcome" : {
+      "T000" : 127,
+      "T001" : 35,
+      "T002" : 7,
+      "T003" : 16,
+      "T004" : 2,
+      "T005" : 12,
+      "T008" : 2,
+      "T010" : 1,
+      "T012" : 44,
+      "T020" : 7
+    }
+  },
+  "classes" : {
+    "sleeper.trino.SleeperConfig" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 6,
+        "T002" : 6,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T001" : 6,
+        "T002" : 6,
+        "T005" : 1
+      }
+    },
+    "sleeper.trino.SleeperConnector" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 8,
+        "T001" : 3
+      },
+      "perMethodOutcome" : {
+        "T000" : 8,
+        "T001" : 3
+      }
+    },
+    "sleeper.trino.SleeperConnectorFactory" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T001" : 1
+      }
+    },
+    "sleeper.trino.SleeperMetadata" : {
+      "methodsCount" : 20,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 13,
+        "T003" : 1,
+        "T012" : 6
+      },
+      "perMethodOutcome" : {
+        "T000" : 13,
+        "T003" : 1,
+        "T012" : 6
+      }
+    },
+    "sleeper.trino.SleeperModule" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 1,
+        "T005" : 1
+      }
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "T000" : 4,
+        "T005" : 1,
+        "T012" : 4
+      }
+    },
+    "sleeper.trino.SleeperPageSink" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 4,
+        "T012" : 2
+      }
+    },
+    "sleeper.trino.SleeperPageSinkProvider" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T005" : 1
+      }
+    },
+    "sleeper.trino.SleeperPlugin" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3
+      },
+      "perMethodOutcome" : {
+        "T000" : 3
+      }
+    },
+    "sleeper.trino.SleeperRecordCursor" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 10,
+        "T001" : 2,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 10,
+        "T001" : 2,
+        "T003" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.trino.SleeperRecordSet" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T012" : 1
+      }
+    },
+    "sleeper.trino.SleeperRecordSetProvider" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 2
+      }
+    },
+    "sleeper.trino.SleeperSplitManager" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 2
+      }
+    },
+    "sleeper.trino.SleeperSplitSource" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T002" : 1,
+        "T003" : 3,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T002" : 1,
+        "T003" : 3,
+        "T012" : 3
+      }
+    },
+    "sleeper.trino.handle.SleeperColumnHandle" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 3,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 4,
+        "T001" : 3,
+        "T020" : 1
+      }
+    },
+    "sleeper.trino.handle.SleeperColumnHandle$SleeperColumnCategory" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "T003" : 1,
+        "T012" : 4
+      }
+    },
+    "sleeper.trino.handle.SleeperInsertTableHandle" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T001" : 2,
+        "T005" : 1
+      }
+    },
+    "sleeper.trino.handle.SleeperPartitionHandle" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle" : {
+      "methodsCount" : 17,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7,
+        "T001" : 1,
+        "T003" : 4,
+        "T012" : 5
+      },
+      "perMethodOutcome" : {
+        "T000" : 7,
+        "T001" : 1,
+        "T003" : 4,
+        "T012" : 5
+      }
+    },
+    "sleeper.trino.handle.SleeperSplit" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7,
+        "T001" : 3,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 7,
+        "T001" : 3,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.trino.handle.SleeperTableHandle" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 8,
+        "T001" : 3,
+        "T012" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 8,
+        "T001" : 3,
+        "T012" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.trino.handle.SleeperTransactionHandle" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T001" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.trino.ingest.ArrowRecordWriterAcceptingPages" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.trino.ingest.BespokeIngestCoordinator" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.trino.procedure.SleeperProcedureHello" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.trino.remotesleeperconnection.HadoopConfigurationProvider" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.trino.remotesleeperconnection.HadoopConfigurationProviderForDeployedS3Instance" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 1,
+        "T005" : 1
+      }
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino" : {
+      "methodsCount" : 25,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 12,
+        "T001" : 1,
+        "T003" : 3,
+        "T012" : 9
+      },
+      "perMethodOutcome" : {
+        "T000" : 12,
+        "T001" : 1,
+        "T003" : 3,
+        "T012" : 9
+      }
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperKeyRange" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 1,
+        "T001" : 2,
+        "T020" : 1
+      }
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T000" : 9,
+        "T003" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection$1" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T004" : 2,
+        "T012" : 1
+      }
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 3,
+        "T005" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T001" : 3,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.trino.systemtable.SleeperSystemTablePartitions" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T012" : 1
+      }
+    },
+    "sleeper.trino.systemtable.SleeperSystemTableRandom" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T001" : 1,
+        "T005" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.trino.utils.SleeperPageBlockUtils" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 2,
+        "T008" : 1
+      }
+    },
+    "sleeper.trino.utils.SleeperSerDeUtils" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 1,
+        "T003" : 1
+      }
+    },
+    "sleeper.trino.utils.SleeperTypeConversionUtils" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "T000" : 3,
+        "T003" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.trino.SleeperConfig.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    "sleeper.trino.SleeperConfig.getConfigBucket:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.trino.SleeperConfig.getLocalWorkingDirectory:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        142
+      ]
+    },
+    "sleeper.trino.SleeperConfig.getMaxArrowRootAllocatorBytes:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.trino.SleeperConfig.getMaxBytesToWriteLocallyPerWriter:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        126
+      ]
+    },
+    "sleeper.trino.SleeperConfig.getMaxSplitBatchSize:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        71
+      ]
+    },
+    "sleeper.trino.SleeperConfig.isEnableTrinoPartitioning:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        90
+      ]
+    },
+    "sleeper.trino.SleeperConfig.setConfigBucket:(Ljava/lang/String;)Lsleeper/trino/SleeperConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "T002",
+      "lineNumbers" : [
+        46,
+        47
+      ]
+    },
+    "sleeper.trino.SleeperConfig.setEnableTrinoPartitioning:(Z)Lsleeper/trino/SleeperConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "T002",
+      "lineNumbers" : [
+        95,
+        96
+      ]
+    },
+    "sleeper.trino.SleeperConfig.setLocalWorkingDirectory:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "T002",
+      "lineNumbers" : [
+        147,
+        148
+      ]
+    },
+    "sleeper.trino.SleeperConfig.setMaxArrowRootAllocatorBytes:(J)Lsleeper/trino/SleeperConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "T002",
+      "lineNumbers" : [
+        113,
+        114
+      ]
+    },
+    "sleeper.trino.SleeperConfig.setMaxBytesToWriteLocallyPerWriter:(J)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "T002",
+      "lineNumbers" : [
+        131,
+        132
+      ]
+    },
+    "sleeper.trino.SleeperConfig.setMaxSplitBatchSize:(I)Lsleeper/trino/SleeperConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "T002",
+      "lineNumbers" : [
+        76,
+        77
+      ]
+    },
+    "sleeper.trino.SleeperConnector.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;Lsleeper/trino/SleeperMetadata;Lsleeper/trino/SleeperSplitManager;Lsleeper/trino/SleeperRecordSetProvider;Lsleeper/trino/SleeperPageSinkProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64
+      ]
+    },
+    "sleeper.trino.SleeperConnector.beginTransaction:(Lio/trino/spi/transaction/IsolationLevel;Z)Lio/trino/spi/connector/ConnectorTransactionHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getCapabilities:()Ljava/util/Set;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        159
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getMetadata:(Lio/trino/spi/connector/ConnectorTransactionHandle;)Lio/trino/spi/connector/ConnectorMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        92
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getNodePartitioningProvider:()Lio/trino/spi/connector/ConnectorNodePartitioningProvider;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        170
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getPageSinkProvider:()Lio/trino/spi/connector/ConnectorPageSinkProvider;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        121
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getProcedures:()Ljava/util/Set;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        145
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getRecordSetProvider:()Lio/trino/spi/connector/ConnectorRecordSetProvider;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        111
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getSplitManager:()Lio/trino/spi/connector/ConnectorSplitManager;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.trino.SleeperConnector.getSystemTables:()Ljava/util/Set;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        132
+      ]
+    },
+    "sleeper.trino.SleeperConnector.shutdown:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        178,
+        179
+      ]
+    },
+    "sleeper.trino.SleeperConnectorFactory.<init>:(Lcom/google/inject/Module;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        40,
+        41,
+        42
+      ]
+    },
+    "sleeper.trino.SleeperConnectorFactory.create:(Ljava/lang/String;Ljava/util/Map;Lio/trino/spi/connector/ConnectorContext;)Lio/trino/spi/connector/Connector;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        56,
+        59,
+        60,
+        61,
+        62,
+        64
+      ]
+    },
+    "sleeper.trino.SleeperConnectorFactory.getName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        77
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.<init>:(Lsleeper/trino/SleeperConfig;Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.applyFilter:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;Lio/trino/spi/connector/Constraint;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        269,
+        270,
+        272,
+        273,
+        272,
+        275,
+        276,
+        277,
+        278,
+        280,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        289,
+        291,
+        292,
+        293,
+        294,
+        296,
+        297,
+        298,
+        299,
+        300,
+        303,
+        304,
+        305
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.beginInsert:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;Ljava/util/List;Lio/trino/spi/connector/RetryMode;)Lio/trino/spi/connector/ConnectorInsertTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        325,
+        326,
+        328,
+        329,
+        330,
+        331
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.finishInsert:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorInsertTableHandle;Ljava/util/Collection;Ljava/util/Collection;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        351
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.getColumnHandles:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        175,
+        176,
+        177,
+        176
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.getColumnMetadata:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;Lio/trino/spi/connector/ColumnHandle;)Lio/trino/spi/connector/ColumnMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        192,
+        193
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.getTableHandle:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/SchemaTableName;)Lio/trino/spi/connector/ConnectorTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        132
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.getTableMetadata:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;)Lio/trino/spi/connector/ConnectorTableMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        144,
+        145
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.getTableProperties:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;)Lio/trino/spi/connector/ConnectorTableProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        215,
+        216,
+        217,
+        218,
+        219,
+        221,
+        222,
+        223,
+        224,
+        225,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        232,
+        239
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.handleToNames:(Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        91,
+        92,
+        93,
+        94,
+        91
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.lambda$applyFilter$3:(Ljava/util/Set;Ljava/util/Map$Entry;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        283
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.lambda$applyFilter$4:(Ljava/util/Set;Ljava/util/Map$Entry;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        292
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.lambda$getTableProperties$1:(Lsleeper/core/partition/Partition;)Lsleeper/core/key/Key;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        223
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.lambda$getTableProperties$2:(Lio/trino/spi/connector/ColumnHandle;)Lio/trino/spi/connector/SortingProperty;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        230
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.lambda$streamTableColumns$0:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/SchemaTableName;)Lsleeper/trino/handle/SleeperTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        160
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.listSchemaNames:(Lio/trino/spi/connector/ConnectorSession;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        105
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.listTables:(Lio/trino/spi/connector/ConnectorSession;Ljava/util/Optional;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        117,
+        118,
+        119,
+        120,
+        118
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.makeCompatiblePartitioning:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;Lio/trino/spi/connector/ConnectorPartitioningHandle;)Lio/trino/spi/connector/ConnectorTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        356
+      ]
+    },
+    "sleeper.trino.SleeperMetadata.streamTableColumns:(Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/SchemaTablePrefix;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        158,
+        159,
+        160,
+        161,
+        162,
+        158
+      ]
+    },
+    "sleeper.trino.SleeperModule.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.trino.SleeperModule.configure:(Lcom/google/inject/Binder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        67,
+        68,
+        69,
+        72,
+        75,
+        76
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.getBucketFunction:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorPartitioningHandle;Ljava/util/List;I)Lio/trino/spi/connector/BucketFunction;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        128
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.getBucketNodeMap:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorPartitioningHandle;)Lio/trino/spi/connector/ConnectorBucketNodeMap;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        77,
+        78
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.getSplitBucketFunction:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorPartitioningHandle;)Ljava/util/function/ToIntFunction;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        94,
+        95
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.lambda$getBucketFunction$1:(Ljava/util/List;I)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        124
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.lambda$getBucketFunction$2:(Ljava/util/List;Lio/trino/spi/Page;ILjava/lang/Integer;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        130
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.lambda$getBucketFunction$3:(Ljava/util/List;Ljava/util/List;Lsleeper/trino/handle/SleeperPartitioningHandle;Lio/trino/spi/Page;I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        129,
+        130,
+        131,
+        132,
+        133
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.lambda$getSplitBucketFunction$0:(Lsleeper/trino/handle/SleeperPartitioningHandle;Lio/trino/spi/connector/ConnectorSplit;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        96,
+        97,
+        98
+      ]
+    },
+    "sleeper.trino.SleeperNodePartitioningProvider.listPartitionHandles:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorPartitioningHandle;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        154
+      ]
+    },
+    "sleeper.trino.SleeperPageSink.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.trino.SleeperPageSink.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;Lio/trino/spi/connector/SchemaTableName;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        60,
+        47,
+        48,
+        61,
+        62,
+        63,
+        64
+      ]
+    },
+    "sleeper.trino.SleeperPageSink.abort:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        113,
+        114
+      ]
+    },
+    "sleeper.trino.SleeperPageSink.appendPage:(Lio/trino/spi/Page;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        85,
+        83,
+        84,
+        86
+      ]
+    },
+    "sleeper.trino.SleeperPageSink.finish:()Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        98,
+        100,
+        98,
+        102,
+        103,
+        104
+      ]
+    },
+    "sleeper.trino.SleeperPageSink.lambda$finish$0:(Lsleeper/ingest/core/IngestResult;)Ljava/util/Collection;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        102
+      ]
+    },
+    "sleeper.trino.SleeperPageSinkProvider.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        37,
+        38,
+        39
+      ]
+    },
+    "sleeper.trino.SleeperPageSinkProvider.createPageSink:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorInsertTableHandle;)Lio/trino/spi/connector/ConnectorPageSink;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        48,
+        49,
+        51,
+        52,
+        49
+      ]
+    },
+    "sleeper.trino.SleeperPageSinkProvider.createPageSink:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorOutputTableHandle;)Lio/trino/spi/connector/ConnectorPageSink;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.trino.SleeperPlugin.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.trino.SleeperPlugin.<init>:(Lcom/google/inject/Module;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        38,
+        39,
+        40
+      ]
+    },
+    "sleeper.trino.SleeperPlugin.getConnectorFactories:()Ljava/lang/Iterable;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.<init>:(Ljava/lang/String;Ljava/util/List;Ljava/util/stream/Stream;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        70,
+        55,
+        56,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.advanceNextPosition:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        96,
+        97,
+        98,
+        100,
+        101,
+        102,
+        104,
+        105
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.checkFieldType:(ILjava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        172,
+        173,
+        174,
+        176,
+        177
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        167,
+        168,
+        169
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getBoolean:(I)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        110,
+        111
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getCompletedBytes:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        80
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getDouble:(I)D" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        127,
+        128
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getLong:(I)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        116,
+        117,
+        118,
+        119,
+        121
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getObject:(I)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        146,
+        147,
+        149,
+        150,
+        151,
+        152,
+        153,
+        155
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getReadTimeNanos:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getSlice:(I)Lio/airlift/slice/Slice;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        133,
+        134,
+        135
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.getType:(I)Lio/trino/spi/type/Type;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        90,
+        91
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.isNull:(I)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        161,
+        162
+      ]
+    },
+    "sleeper.trino.SleeperRecordCursor.lambda$getObject$0:(Lio/trino/spi/block/VariableWidthBlockBuilder;Lio/trino/spi/type/Type;Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        152
+      ]
+    },
+    "sleeper.trino.SleeperRecordSet.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.trino.SleeperRecordSet.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;Lsleeper/trino/handle/SleeperTransactionHandle;Lsleeper/trino/handle/SleeperSplit;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        73
+      ]
+    },
+    "sleeper.trino.SleeperRecordSet.cursor:()Lio/trino/spi/connector/RecordCursor;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        94,
+        95
+      ]
+    },
+    "sleeper.trino.SleeperRecordSet.getColumnTypes:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        82,
+        83,
+        84,
+        82
+      ]
+    },
+    "sleeper.trino.SleeperRecordSetProvider.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.trino.SleeperRecordSetProvider.getRecordSet:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorSplit;Lio/trino/spi/connector/ConnectorTableHandle;Ljava/util/List;)Lio/trino/spi/connector/RecordSet;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        74
+      ]
+    },
+    "sleeper.trino.SleeperSplitManager.<init>:(Lsleeper/trino/SleeperConfig;Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    "sleeper.trino.SleeperSplitManager.getSplits:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/connector/ConnectorTableHandle;Lio/trino/spi/connector/DynamicFilter;Lio/trino/spi/connector/Constraint;)Lio/trino/spi/connector/ConnectorSplitSource;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;Lsleeper/trino/handle/SleeperTransactionHandle;Lsleeper/trino/handle/SleeperTableHandle;Lio/trino/spi/connector/DynamicFilter;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        72,
+        66,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "T002",
+      "lineNumbers" : [
+        223,
+        224
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.futureWhenDynamicFilterHasNarrowedCompletely:(Lio/trino/spi/connector/DynamicFilter;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        114,
+        115,
+        119,
+        120,
+        121,
+        119
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.generateSleeperSplits:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;Lsleeper/trino/handle/SleeperTransactionHandle;Lsleeper/trino/handle/SleeperTableHandle;Lio/trino/spi/predicate/TupleDomain;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        96,
+        98,
+        100,
+        103,
+        100
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.getNextBatch:(Lio/trino/spi/connector/ConnectorPartitionHandle;I)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        179,
+        180,
+        183
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.isFinished:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        215
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.lambda$futureWhenDynamicFilterHasNarrowedCompletely$0:(Lio/trino/spi/connector/DynamicFilter;Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        121
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.lambda$getNextBatch$1:(ILjava/lang/Object;)Lio/trino/spi/connector/ConnectorSplitSource$ConnectorSplitBatch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        188,
+        189,
+        193,
+        189,
+        193,
+        197,
+        198,
+        197,
+        200,
+        201,
+        203,
+        204
+      ]
+    },
+    "sleeper.trino.SleeperSplitSource.verifyAndExtractRowKeyRanges:(Lsleeper/trino/handle/SleeperTableHandle;Lio/trino/spi/predicate/TupleDomain;)Lio/trino/spi/predicate/Ranges;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        143,
+        144,
+        145,
+        148,
+        150,
+        151,
+        152,
+        154,
+        155,
+        156,
+        153,
+        158,
+        159,
+        160,
+        162,
+        160,
+        165
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle$SleeperColumnCategory.$values:()[Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle$SleeperColumnCategory.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        109,
+        110,
+        111,
+        108
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle$SleeperColumnCategory.<init>:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle$SleeperColumnCategory.valueOf:(Ljava/lang/String;)Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle$SleeperColumnCategory.values:()[Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.<init>:(Ljava/lang/String;Lio/trino/spi/type/Type;Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        79,
+        80,
+        82,
+        83,
+        85,
+        86,
+        87,
+        88,
+        86
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.getColumnCategory:()Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.getColumnName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.getColumnTrinoType:()Lio/trino/spi/type/Type;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.toColumnMetadata:()Lio/trino/spi/connector/ColumnMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        69
+      ]
+    },
+    "sleeper.trino.handle.SleeperColumnHandle.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "T020",
+      "lineNumbers" : [
+        98,
+        99,
+        100,
+        101,
+        102,
+        98
+      ]
+    },
+    "sleeper.trino.handle.SleeperInsertTableHandle.<init>:(Lsleeper/trino/handle/SleeperTableHandle;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    "sleeper.trino.handle.SleeperInsertTableHandle.getSleeperColumnHandlesInOrder:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.trino.handle.SleeperInsertTableHandle.getSleeperTableHandle:()Lsleeper/trino/handle/SleeperTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitionHandle.<init>:(Lsleeper/core/key/Key;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        31,
+        32,
+        33
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitionHandle.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        41,
+        42,
+        44,
+        45,
+        47,
+        48
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitionHandle.getTrinoPartitionMin:()Lsleeper/core/key/Key;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitionHandle.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitionHandle.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "T020",
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.<init>:(Ljava/util/List;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        81,
+        82,
+        81,
+        83
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.<init>:(Ljava/util/List;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        73,
+        74,
+        71,
+        75
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.<init>:(Lsleeper/trino/handle/SleeperTableHandle;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        59,
+        60
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.decodeKeyFromString:(Ljava/lang/String;)Lsleeper/core/key/Key;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        101,
+        102,
+        103,
+        105,
+        106,
+        107,
+        109,
+        110,
+        111,
+        112
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.decodeKeyListFromString:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        116,
+        117,
+        118,
+        116
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.encodeKeyListToString:(Ljava/util/List;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        86
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.encodeKeyToString:(Lsleeper/core/key/Key;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        94
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.getNoOfPartitions:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        122
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.getPartitionMinKeysAsString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        136
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.getPartitionMinKeysInOrder:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        131
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.getPartitionNo:(Lsleeper/core/key/Key;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        141,
+        142
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.getSleeperColumnHandlesInOrder:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        127
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.lambda$decodeKeyFromString$3:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        102
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.lambda$decodeKeyFromString$4:(Ljava/util/List;Ljava/util/List;I)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        110
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.lambda$encodeKeyToString$1:(Ljava/lang/Object;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.lambda$encodeKeyToString$2:(Ljava/lang/Object;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.trino.handle.SleeperPartitioningHandle.lambda$new$0:(Lsleeper/trino/handle/SleeperColumnHandle;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.<init>:(Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.<init>:(Lsleeper/core/schema/Schema;Lsleeper/query/core/model/LeafPartitionQuery;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        125,
+        126,
+        128,
+        129,
+        131,
+        132
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.getAddresses:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.getInfo:()Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        120
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.getLeafPartitionQuery:()Lsleeper/query/core/model/LeafPartitionQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.getLeafPartitionQueryAsString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        92,
+        93
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.getSleeperSchema:()Lsleeper/core/schema/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        77
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.getSleeperSchemaAsString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        82,
+        83
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        137
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.isRemotelyAccessible:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.trino.handle.SleeperSplit.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "T020",
+      "lineNumbers" : [
+        142
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.<init>:(Lio/trino/spi/connector/SchemaTableName;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        55,
+        56
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.<init>:(Lio/trino/spi/connector/SchemaTableName;Ljava/util/List;Lio/trino/spi/predicate/TupleDomain;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        113,
+        114,
+        116,
+        117,
+        119,
+        120,
+        121,
+        122,
+        120
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.getColumnHandlesInCategoryInOrder:(Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        105,
+        106,
+        107,
+        108,
+        105
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.getSchemaTableName:()Lio/trino/spi/connector/SchemaTableName;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.getSleeperColumnHandleListInOrder:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.getTupleDomain:()Lio/trino/spi/predicate/TupleDomain;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        127
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.lambda$getColumnHandlesInCategoryInOrder$0:(Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;Lsleeper/trino/handle/SleeperColumnHandle;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        107
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.toConnectorTableMetadata:()Lio/trino/spi/connector/ConnectorTableMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        79,
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "T020",
+      "lineNumbers" : [
+        132,
+        133,
+        134,
+        135,
+        136,
+        132
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.toTableColumnsMetadata:()Lio/trino/spi/connector/TableColumnsMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.trino.handle.SleeperTableHandle.withTupleDomain:(Lio/trino/spi/predicate/TupleDomain;)Lsleeper/trino/handle/SleeperTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.trino.handle.SleeperTransactionHandle.<init>:(Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.trino.handle.SleeperTransactionHandle.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        45,
+        46,
+        48,
+        49,
+        51,
+        52
+      ]
+    },
+    "sleeper.trino.handle.SleeperTransactionHandle.getTransactionStartInstant:()Ljava/time/Instant;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.trino.handle.SleeperTransactionHandle.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.trino.handle.SleeperTransactionHandle.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "T020",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.trino.ingest.ArrowRecordWriterAcceptingPages.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.trino.ingest.ArrowRecordWriterAcceptingPages.insert:(Ljava/util/List;Lorg/apache/arrow/vector/VectorSchemaRoot;Lio/trino/spi/Page;I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        69,
+        65,
+        87,
+        88,
+        89
+      ]
+    },
+    "sleeper.trino.ingest.ArrowRecordWriterAcceptingPages.insert:(Ljava/util/List;Lorg/apache/arrow/vector/VectorSchemaRoot;Ljava/lang/Object;I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.trino.ingest.BespokeIngestCoordinator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "sleeper.trino.ingest.BespokeIngestCoordinator.asyncFromPage:(Lsleeper/core/util/ObjectFactory;Lsleeper/core/statestore/StateStore;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lsleeper/trino/SleeperConfig;Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;Ljava/lang/String;ILsoftware/amazon/awssdk/services/s3/S3AsyncClient;Lorg/apache/arrow/memory/BufferAllocator;)Lsleeper/ingest/runner/impl/IngestCoordinator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        78
+      ]
+    },
+    "sleeper.trino.procedure.SleeperProcedureHello.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        27
+      ]
+    },
+    "sleeper.trino.procedure.SleeperProcedureHello.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        26
+      ]
+    },
+    "sleeper.trino.procedure.SleeperProcedureHello.entryPoint:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "sleeper.trino.procedure.SleeperProcedureHello.getProcedure:()Lio/trino/spi/procedure/Procedure;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        30,
+        33,
+        34,
+        30
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.HadoopConfigurationProvider.getHadoopConfiguration:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.trino.remotesleeperconnection.HadoopConfigurationProviderForDeployedS3Instance.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        25
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.HadoopConfigurationProviderForDeployedS3Instance.getHadoopConfiguration:(Lsleeper/core/properties/instance/InstanceProperties;)Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.<init>:(Lsleeper/trino/SleeperConfig;Lcom/amazonaws/services/s3/AmazonS3;Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/trino/remotesleeperconnection/HadoopConfigurationProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        345,
+        346
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.constructSleeperTableHandle:(Ljava/lang/String;)Lsleeper/trino/handle/SleeperTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        362,
+        363
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.convertColumnNameToCategory:(Ljava/lang/String;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)Lsleeper/trino/handle/SleeperColumnHandle$SleeperColumnCategory;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        91,
+        92,
+        94,
+        95,
+        97,
+        98,
+        100
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.createIngestCoordinator:(Lio/trino/spi/connector/SchemaTableName;)Lsleeper/ingest/runner/impl/IngestCoordinator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        332,
+        334,
+        335,
+        336
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.generateSleeperSplits:(Lsleeper/trino/handle/SleeperTransactionHandle;Lsleeper/trino/handle/SleeperTableHandle;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        280,
+        282,
+        283,
+        285,
+        288,
+        289,
+        290,
+        299,
+        300,
+        303,
+        304,
+        305,
+        306,
+        307,
+        311,
+        312,
+        311,
+        314,
+        315,
+        316,
+        314,
+        317,
+        318
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.getAllSchemaTableNamesInTrinoSchema:(Ljava/lang/String;)Ljava/util/Set;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        166,
+        167,
+        168,
+        169,
+        167
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.getAllTrinoSchemaNames:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        147
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.getDefaultTrinoSchemaName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.getNewSleeperTransactionHandle:()Lsleeper/trino/handle/SleeperTransactionHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        137
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.getPartitionStatusColumnMetadata:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        110
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.getSleeperTableHandle:(Lio/trino/spi/connector/SchemaTableName;)Lsleeper/trino/handle/SleeperTableHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        179,
+        180
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$constructSleeperTableHandle$7:(Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Lsleeper/core/schema/Field;)Lsleeper/trino/handle/SleeperColumnHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        355,
+        356,
+        358,
+        357,
+        355
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$generateSleeperSplits$4:(Lsleeper/core/range/Range$RangeFactory;Lsleeper/trino/handle/SleeperColumnHandle;Lio/trino/spi/predicate/Range;)Lsleeper/core/range/Range;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        291,
+        292,
+        294,
+        293,
+        295,
+        297,
+        296,
+        298,
+        291
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$generateSleeperSplits$5:(Lsleeper/core/range/Range;)Lsleeper/core/range/Region;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        299
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$generateSleeperSplits$6:(Lsleeper/core/schema/Schema;Lsleeper/query/core/model/LeafPartitionQuery;)Lsleeper/trino/handle/SleeperSplit;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        315
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$getAllSchemaTableNamesInTrinoSchema$0:(Ljava/lang/String;)Lio/trino/spi/connector/SchemaTableName;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        168
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$streamEntireSplitResultRows$2:(Lsleeper/core/record/Record;Lsleeper/trino/handle/SleeperColumnHandle;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        256
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$streamEntireSplitResultRows$3:(Ljava/util/List;Lsleeper/core/record/Record;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        257,
+        255,
+        256,
+        257
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.lambda$streamPartitionStatusRows$1:(Lio/trino/spi/connector/SchemaTableName;Lsleeper/core/partition/Partition;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        201
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.nullOrString:(Ljava/lang/Object;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        126
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.streamEntireSplitResultRows:(Lsleeper/trino/handle/SleeperTransactionHandle;Lsleeper/trino/handle/SleeperSplit;Ljava/util/List;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        242,
+        243,
+        244,
+        245,
+        246,
+        250,
+        251,
+        250,
+        254,
+        255,
+        254,
+        258,
+        259
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.streamPartitionStatusRows:(Lio/trino/spi/connector/SchemaTableName;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        195,
+        196,
+        197,
+        198,
+        196,
+        198,
+        200,
+        201,
+        200
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperConnectionAsTrino.streamPartitions:(Lio/trino/spi/connector/SchemaTableName;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        220,
+        221,
+        222,
+        223,
+        221,
+        223,
+        221
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperKeyRange.<init>:(Lsleeper/core/key/Key;Lsleeper/core/key/Key;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperKeyRange.getMax:()Lsleeper/core/key/Key;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperKeyRange.getMin:()Lsleeper/core/key/Key;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperKeyRange.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "T020",
+      "lineNumbers" : [
+        49
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection$1.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperRawAwsConnection;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        158
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection$1.load:(Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        158
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection$1.load:(Lorg/apache/commons/lang3/tuple/Pair;)Lsleeper/trino/remotesleeperconnection/SleeperTablePartitionStructure;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        163,
+        164,
+        166,
+        167,
+        169
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        89,
+        93
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.<init>:(Lsleeper/trino/SleeperConfig;Lcom/amazonaws/services/s3/AmazonS3;Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/trino/remotesleeperconnection/HadoopConfigurationProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        129,
+        130,
+        131,
+        130,
+        132,
+        133,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        147,
+        148,
+        158,
+        172,
+        173,
+        174,
+        175
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.createIngestRecordsAsync:(Ljava/lang/String;)Lsleeper/ingest/runner/impl/IngestCoordinator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        325,
+        329,
+        331,
+        337,
+        331
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.createResultRecordIterator:(Ljava/time/Instant;Lsleeper/query/core/model/LeafPartitionQuery;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        302,
+        303,
+        304,
+        306,
+        307,
+        312,
+        314,
+        315
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.createResultRecordStream:(Ljava/time/Instant;Lsleeper/query/core/model/LeafPartitionQuery;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        245,
+        246,
+        249,
+        250
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.getAllSleeperTableNames:()Ljava/util/Set;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        197
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.getSleeperSchema:(Ljava/lang/String;)Lsleeper/core/schema/Schema;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        207
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.getSleeperTablePartitionStructure:(Ljava/lang/String;Ljava/time/Instant;)Lsleeper/trino/remotesleeperconnection/SleeperTablePartitionStructure;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        220
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.getSleeperTablePartitionStructure:(Lsleeper/core/properties/table/TableProperties;Ljava/time/Instant;)Lsleeper/trino/remotesleeperconnection/SleeperTablePartitionStructure;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        227,
+        228,
+        229,
+        230,
+        231
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.lambda$createResultRecordStream$0:(Lsleeper/core/iterator/CloseableIterator;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        252,
+        255,
+        253,
+        254,
+        256
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperRawAwsConnection.splitIntoLeafPartitionQueries:(Ljava/time/Instant;Lsleeper/query/core/model/Query;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        274,
+        275,
+        278,
+        283,
+        285,
+        286,
+        285,
+        287
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure.<init>:(Ljava/time/Instant;Ljava/util/List;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        52,
+        53,
+        55,
+        56,
+        58,
+        59
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure.getAllPartitions:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure.getAsOfInstant:()Ljava/time/Instant;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure.getPartitionToFileMapping:()Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.trino.remotesleeperconnection.SleeperTablePartitionStructure.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "T020",
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTablePartitions.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        42,
+        44,
+        42
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTablePartitions.<init>:(Lsleeper/trino/remotesleeperconnection/SleeperConnectionAsTrino;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        51,
+        52,
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTablePartitions.cursor:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/predicate/TupleDomain;)Lio/trino/spi/connector/RecordCursor;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        69,
+        70,
+        71,
+        72,
+        74,
+        75,
+        76,
+        78,
+        80,
+        81,
+        78
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTablePartitions.getDistribution:()Lio/trino/spi/connector/SystemTable$Distribution;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        86
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTablePartitions.getTableMetadata:()Lio/trino/spi/connector/ConnectorTableMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTableRandom.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTableRandom.cursor:(Lio/trino/spi/connector/ConnectorTransactionHandle;Lio/trino/spi/connector/ConnectorSession;Lio/trino/spi/predicate/TupleDomain;)Lio/trino/spi/connector/RecordCursor;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        39,
+        40,
+        41,
+        45,
+        47
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTableRandom.getDistribution:()Lio/trino/spi/connector/SystemTable$Distribution;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "T001",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTableRandom.getTableMetadata:()Lio/trino/spi/connector/ConnectorTableMetadata;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ]
+    },
+    "sleeper.trino.systemtable.SleeperSystemTableRandom.lambda$cursor$0:(I)Lcom/google/common/collect/ImmutableList;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        41
+      ]
+    },
+    "sleeper.trino.utils.SleeperPageBlockUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        39,
+        40
+      ]
+    },
+    "sleeper.trino.utils.SleeperPageBlockUtils.readObjectFromPage:(Ljava/util/List;Lio/trino/spi/Page;II)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        62,
+        63,
+        65,
+        66,
+        68
+      ]
+    },
+    "sleeper.trino.utils.SleeperPageBlockUtils.writeElementToBuilder:(Lio/trino/spi/block/BlockBuilder;Lio/trino/spi/type/ArrayType;Ljava/lang/Object;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        80,
+        82,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        96,
+        98
+      ]
+    },
+    "sleeper.trino.utils.SleeperSerDeUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        20,
+        21
+      ]
+    },
+    "sleeper.trino.utils.SleeperSerDeUtils.convertStringToObjectOfNamedType:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        32,
+        33,
+        35,
+        37,
+        39,
+        41,
+        43
+      ]
+    },
+    "sleeper.trino.utils.SleeperTypeConversionUtils.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        31,
+        32
+      ]
+    },
+    "sleeper.trino.utils.SleeperTypeConversionUtils.convertSleeperTypeToTrinoType:(Lsleeper/core/schema/type/Type;)Lio/trino/spi/type/Type;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        41,
+        42,
+        44,
+        45,
+        47,
+        48,
+        59
+      ]
+    },
+    "sleeper.trino.utils.SleeperTypeConversionUtils.convertTrinoObjectToSleeperRowKeyObject:(Lio/trino/spi/type/Type;Ljava/lang/Object;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        94,
+        95,
+        97,
+        98,
+        100,
+        101,
+        108
+      ]
+    },
+    "sleeper.trino.utils.SleeperTypeConversionUtils.convertTrinoTypeToSleeperType:(Lio/trino/spi/type/Type;)Lsleeper/core/schema/type/Type;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "T000",
+      "lineNumbers" : [
+        69,
+        70,
+        72,
+        73,
+        75,
+        76,
+        83
+      ]
+    }
+  }
+}

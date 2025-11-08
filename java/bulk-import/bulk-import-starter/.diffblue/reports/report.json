@@ -1,0 +1,1610 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 55777.884,
+    "environmentDetectionTime" : 0.465,
+    "indexingTime" : 0.513,
+    "entryPointsTime" : 0.459,
+    "generationTime" : 39016.709,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 22.701,
+    "verificationTime" : 905.978,
+    "validationTime" : 62.372
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 15,
+    "methodsCount" : 87,
+    "cumulativeDiffblueTestCount" : 15,
+    "cumulativeManualTestCount" : 46,
+    "completeTestCount" : 15,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 938,
+    "perMethodTestability" : {
+      "T000" : 25,
+      "T001" : 3,
+      "T002" : 3,
+      "T003" : 21,
+      "T005" : 8,
+      "T008" : 1,
+      "T010" : 4,
+      "T012" : 22
+    },
+    "perMethodOutcome" : {
+      "R000" : 16,
+      "R002" : 7,
+      "R013" : 5,
+      "R083" : 10,
+      "T003" : 21,
+      "T005" : 1,
+      "T008" : 1,
+      "T010" : 4,
+      "T012" : 22
+    },
+    "perTestOutcome" : {
+      "R000" : 15
+    },
+    "perTestValidation" : {
+      "V000" : 15,
+      "V003" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.bulkimport.starter.BulkImportStarterLambda" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "R013" : 1,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments" : {
+      "methodsCount" : 20,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 3,
+        "T003" : 6,
+        "T005" : 1,
+        "T012" : 6
+      },
+      "perMethodOutcome" : {
+        "R083" : 7,
+        "T003" : 6,
+        "T005" : 1,
+        "T012" : 6
+      }
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments$Builder" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 3,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor$WriteJobToBucket" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportJobWriterToS3" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceConfiguration" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 2
+      },
+      "perMethodOutcome" : {
+        "T010" : 2
+      }
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 5,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T003" : 5,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceGroups" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 2,
+        "R013" : 1,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.starter.executor.EmrJarLocation" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "R083" : 1,
+        "T003" : 1,
+        "T012" : 4
+      }
+    },
+    "sleeper.bulkimport.starter.executor.EmrServerlessPlatformExecutor" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.bulkimport.starter.executor.PersistentEmrPlatformExecutor" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R083" : 1,
+        "T003" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.bulkimport.starter.executor.PlatformExecutor" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 1,
+        "T010" : 1
+      }
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 4,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 4,
+        "T012" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        70,
+        71,
+        72,
+        73,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.<init>:(Lsleeper/bulkimport/starter/executor/BulkImportExecutor;Lsleeper/ingest/core/job/IngestJobMessageHandler;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88
+      ]
+    },
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ]
+    },
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.lambda$handleRequest$1:(Ljava/lang/String;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.lambda$new$0:(Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        80
+      ]
+    },
+    "sleeper.bulkimport.starter.BulkImportStarterLambda.messageHandlerBuilder:()Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        91,
+        92,
+        93,
+        94,
+        91
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        131,
+        132
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments$Builder.build:()Lsleeper/bulkimport/starter/executor/BulkImportArguments;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        150
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments$Builder.bulkImportJob:(Lsleeper/bulkimport/core/job/BulkImportJob;)Lsleeper/bulkimport/starter/executor/BulkImportArguments$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        140,
+        141
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments$Builder.instanceProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/bulkimport/starter/executor/BulkImportArguments$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        135,
+        136
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments$Builder.jobRunId:(Ljava/lang/String;)Lsleeper/bulkimport/starter/executor/BulkImportArguments$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        145,
+        146
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.<init>:(Lsleeper/bulkimport/starter/executor/BulkImportArguments$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.builder:()Lsleeper/bulkimport/starter/executor/BulkImportArguments$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.getBulkImportJob:()Lsleeper/bulkimport/core/job/BulkImportJob;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        119
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.getClassName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        109,
+        110,
+        111,
+        109
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.getInstanceProperties:()Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.getJobRunId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        123
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.lambda$mergeSparkValue$5:(Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.lambda$overrideWithUserSparkConfig$2:(Ljava/util/Map;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        94
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.lambda$overrideWithUserSparkConfig$3:(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map$Entry;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.lambda$overrideWithUserSparkConfig$4:(Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        95,
+        96,
+        97,
+        95
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.lambda$sparkSubmitCommandForCluster$0:(Ljava/util/stream/Stream;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.lambda$sparkSubmitParameters$1:(Ljava/util/Map$Entry;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.mergeSparkValue:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        102,
+        103,
+        104,
+        105,
+        102
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.overrideWithUserSparkConfig:(Ljava/util/Map;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        89,
+        90,
+        91,
+        93,
+        94,
+        95,
+        93
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.sparkSubmitCommandForCluster:(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        66,
+        70,
+        71,
+        66
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.sparkSubmitCommandForEKSCluster:(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.sparkSubmitCommandForEMRCluster:(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.sparkSubmitCommandForEMRCluster:(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.sparkSubmitParameters:(Ljava/util/Map;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        82,
+        83,
+        84,
+        85,
+        82
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportArguments.sparkSubmitParametersForServerless:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        75,
+        76,
+        75,
+        78,
+        75
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor$WriteJobToBucket.writeJobToBulkImportBucket:(Lsleeper/bulkimport/core/job/BulkImportJob;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        39,
+        40
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/tracker/ingest/job/IngestJobTracker;Lsleeper/bulkimport/starter/executor/BulkImportExecutor$WriteJobToBucket;Lsleeper/bulkimport/starter/executor/PlatformExecutor;Ljava/util/function/Supplier;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor.hasMinimumPartitions:(Lsleeper/bulkimport/core/job/BulkImportJob;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        130,
+        131,
+        132
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor.runJob:(Lsleeper/bulkimport/core/job/BulkImportJob;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        64,
+        65
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor.runJob:(Lsleeper/bulkimport/core/job/BulkImportJob;Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        68,
+        69,
+        70,
+        72,
+        73,
+        74,
+        76,
+        77,
+        78,
+        76,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        83,
+        87,
+        96,
+        88,
+        89,
+        90,
+        89,
+        91,
+        92,
+        93,
+        94,
+        91,
+        95,
+        97
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportExecutor.validateJob:(Lsleeper/bulkimport/core/job/BulkImportJob;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        100,
+        101,
+        102,
+        103,
+        105,
+        106,
+        109,
+        110,
+        113,
+        114,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        121,
+        123,
+        125
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportJobWriterToS3.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportJobWriterToS3.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/s3/AmazonS3;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.BulkImportJobWriterToS3.writeJobToBulkImportBucket:(Lsleeper/bulkimport/core/job/BulkImportJob;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceConfiguration.createComputeLimits:(Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/ComputeLimits;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceConfiguration.createJobFlowInstancesConfig:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/JobFlowInstancesConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.<init>:(Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        53,
+        54,
+        55
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.createComputeLimits:(Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/ComputeLimits;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        71,
+        72,
+        73,
+        74,
+        75,
+        71
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.createJobFlowInstancesConfig:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/JobFlowInstancesConfig;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        60,
+        61,
+        63,
+        64,
+        62,
+        65,
+        60
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.driverFleet:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/InstanceFleetConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        110
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.executorFleet:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/InstanceFleetConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        83,
+        84,
+        86,
+        87,
+        88,
+        90,
+        92
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.getConfigurations:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/validation/EmrInstanceArchitecture;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        132,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        148,
+        150,
+        151,
+        152,
+        153,
+        154,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        175,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        187
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.lambda$readExecutorInstanceTypes$0:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/validation/EmrInstanceTypeConfig;)Lsoftware/amazon/awssdk/services/emr/model/InstanceTypeConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.lambda$readMasterInstanceTypes$1:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/core/properties/validation/EmrInstanceTypeConfig;)Lsoftware/amazon/awssdk/services/emr/model/InstanceTypeConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        122,
+        123,
+        124,
+        125,
+        126
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.readExecutorInstanceTypes:(Lsleeper/core/properties/instance/InstanceProperties;Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        97,
+        99,
+        105,
+        97
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceFleets.readMasterInstanceTypes:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        120,
+        122,
+        127,
+        120
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceGroups.<init>:(Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        46,
+        47
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceGroups.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Ljava/util/function/IntUnaryOperator;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceGroups.createComputeLimits:(Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/ComputeLimits;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        82,
+        83,
+        84,
+        82,
+        85,
+        86,
+        87,
+        88,
+        89,
+        85
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceGroups.createJobFlowInstancesConfig:(Lsoftware/amazon/awssdk/services/emr/model/EbsConfiguration;Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/JobFlowInstancesConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        57,
+        58,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        59,
+        76,
+        57
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrInstanceGroups.randomSubnet:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        93,
+        94
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrJarLocation.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        26,
+        27
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrJarLocation.getJarLocation:(Lsleeper/core/properties/instance/InstanceProperties;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        30,
+        31,
+        33,
+        30
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.<init>:(Lsoftware/amazon/awssdk/services/emr/EmrClient;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        64,
+        65
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.<init>:(Lsoftware/amazon/awssdk/services/emr/EmrClient;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/bulkimport/starter/executor/EmrInstanceConfiguration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.createJobFlowInstancesConfig:(Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;)Lsoftware/amazon/awssdk/services/emr/model/JobFlowInstancesConfig;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        120,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        134,
+        136,
+        137,
+        138,
+        140,
+        141,
+        142,
+        144
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.lambda$runJobOnPlatform$0:(Lsleeper/bulkimport/core/configuration/BulkImportPlatformSpec;Lsoftware/amazon/awssdk/services/emr/model/ManagedScalingPolicy$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        94,
+        95,
+        94
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.lambda$runJobOnPlatform$1:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;Ljava/lang/String;Lsoftware/amazon/awssdk/services/emr/model/HadoopJarStepConfig$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        104,
+        105,
+        108,
+        106,
+        104
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.lambda$runJobOnPlatform$2:(Ljava/util/Map$Entry;)Lsoftware/amazon/awssdk/services/emr/model/Tag;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        111
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrPlatformExecutor.runJobOnPlatform:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        78,
+        79,
+        80,
+        81,
+        82,
+        84,
+        85,
+        86,
+        87,
+        84,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        109,
+        102,
+        110,
+        111,
+        112,
+        110,
+        113,
+        89,
+        115,
+        116
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrServerlessPlatformExecutor.<init>:(Lsoftware/amazon/awssdk/services/emrserverless/EmrServerlessClient;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.EmrServerlessPlatformExecutor.runJobOnPlatform:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52,
+        54,
+        55,
+        56,
+        58,
+        57,
+        59,
+        60,
+        61,
+        62,
+        61,
+        63,
+        64,
+        59,
+        64,
+        59,
+        66,
+        67,
+        68,
+        69,
+        70,
+        68,
+        71,
+        67,
+        72,
+        65,
+        73,
+        74,
+        75
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PersistentEmrPlatformExecutor.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PersistentEmrPlatformExecutor.<init>:(Lsoftware/amazon/awssdk/services/emr/EmrClient;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PersistentEmrPlatformExecutor.getClusterIdFromName:(Lsoftware/amazon/awssdk/services/emr/EmrClient;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        69,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        79,
+        80,
+        81,
+        83,
+        85
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PersistentEmrPlatformExecutor.lambda$getClusterIdFromName$1:(Lsoftware/amazon/awssdk/services/emr/model/ListClustersRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        70,
+        71,
+        70
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PersistentEmrPlatformExecutor.lambda$runJobOnPlatform$0:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;Lsoftware/amazon/awssdk/services/emr/model/HadoopJarStepConfig$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        54,
+        55,
+        57,
+        56,
+        54
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PersistentEmrPlatformExecutor.runJobOnPlatform:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        51,
+        52,
+        53,
+        54,
+        58,
+        59,
+        60,
+        61,
+        62,
+        64,
+        65,
+        66
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PlatformExecutor.fromEnvironment:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;)Lsleeper/bulkimport/starter/executor/PlatformExecutor;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        32,
+        33,
+        35,
+        36,
+        35,
+        39,
+        40,
+        39,
+        43,
+        44,
+        43,
+        47,
+        49
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.PlatformExecutor.runJobOnPlatform:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        58,
+        59,
+        62,
+        63,
+        66,
+        67,
+        68,
+        70,
+        71,
+        70,
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor.<init>:(Lcom/amazonaws/services/stepfunctions/AWSStepFunctions;Lsleeper/core/properties/instance/InstanceProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor.constructArgs:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        118,
+        119,
+        123,
+        124,
+        125,
+        126,
+        127,
+        129,
+        130,
+        133
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor.getDefaultSparkConfig:(Lsleeper/bulkimport/core/job/BulkImportJob;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        112,
+        114
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor.jobExecutionName:(Lsleeper/bulkimport/core/job/BulkImportJob;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        153,
+        154,
+        157,
+        158,
+        159,
+        161
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor.jobPodPrefix:(Lsleeper/bulkimport/core/job/BulkImportJob;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        145,
+        146,
+        148
+      ]
+    },
+    "sleeper.bulkimport.starter.executor.StateMachinePlatformExecutor.runJobOnPlatform:(Lsleeper/bulkimport/starter/executor/BulkImportArguments;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        92,
+        94,
+        95,
+        96,
+        92,
+        97
+      ]
+    }
+  }
+}

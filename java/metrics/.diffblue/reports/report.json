@@ -1,0 +1,269 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 57978.962,
+    "environmentDetectionTime" : 0.381,
+    "indexingTime" : 0.541,
+    "entryPointsTime" : 0.374,
+    "generationTime" : 39479.022,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 15.88,
+    "verificationTime" : 937.469,
+    "validationTime" : 32.11
+  },
+  "codes" : {
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R034" : "Diffblue Cover can't complete test",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 2,
+    "methodsCount" : 11,
+    "cumulativeDiffblueTestCount" : 3,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 0,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 180,
+    "perMethodTestability" : {
+      "T000" : 6,
+      "T003" : 1,
+      "T012" : 4
+    },
+    "perMethodOutcome" : {
+      "R013" : 5,
+      "R034" : 1,
+      "T003" : 1,
+      "T012" : 4
+    },
+    "perTestValidation" : {
+      "V000" : 70,
+      "V003" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.metrics.TableMetricsLambda" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 3,
+        "R034" : 1,
+        "T003" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.metrics.TableMetricsTriggerLambda" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T012" : 2
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.metrics.TableMetricsLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.metrics.TableMetricsLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        76,
+        78,
+        79
+      ]
+    },
+    "sleeper.metrics.TableMetricsLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        88,
+        89,
+        90,
+        91,
+        92,
+        94,
+        95,
+        96
+      ]
+    },
+    "sleeper.metrics.TableMetricsLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.metrics.TableMetricsLambda.loadTables:(Ljava/util/Map;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        144,
+        145,
+        146,
+        147,
+        149,
+        150,
+        151,
+        158,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        159,
+        160
+      ]
+    },
+    "sleeper.metrics.TableMetricsLambda.publishStateStoreMetrics:(Ljava/util/List;Ljava/util/Map;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R034",
+      "lineNumbers" : [
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        110,
+        111,
+        112,
+        111,
+        113,
+        120,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        121,
+        122
+      ]
+    },
+    "sleeper.metrics.TableMetricsLambda.publishStateStoreMetrics:(Lsoftware/amazon/cloudwatchlogs/emf/logger/MetricsLogger;Lsleeper/core/metrics/TableMetrics;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        125,
+        126,
+        127,
+        125,
+        129,
+        130,
+        131,
+        132,
+        136,
+        137,
+        138,
+        139
+      ]
+    },
+    "sleeper.metrics.TableMetricsTriggerLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.metrics.TableMetricsTriggerLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        53,
+        48,
+        49,
+        54,
+        55,
+        56,
+        57,
+        58
+      ]
+    },
+    "sleeper.metrics.TableMetricsTriggerLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        62,
+        63,
+        64,
+        66,
+        67,
+        68,
+        69,
+        70,
+        69,
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.metrics.TableMetricsTriggerLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        45
+      ]
+    }
+  }
+}

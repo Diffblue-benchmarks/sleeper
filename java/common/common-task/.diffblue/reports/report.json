@@ -1,0 +1,1891 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 51828.566,
+    "environmentDetectionTime" : 0.574,
+    "indexingTime" : 0.488,
+    "entryPointsTime" : 0.567,
+    "generationTime" : 37182.334,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 23.469,
+    "verificationTime" : 841.192,
+    "validationTime" : 41.934
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 21,
+    "methodsCount" : 117,
+    "cumulativeDiffblueTestCount" : 42,
+    "cumulativeManualTestCount" : 33,
+    "completeTestCount" : 42,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 701,
+    "perMethodTestability" : {
+      "T000" : 24,
+      "T001" : 4,
+      "T002" : 7,
+      "T003" : 27,
+      "T005" : 11,
+      "T006" : 1,
+      "T010" : 6,
+      "T012" : 34,
+      "T020" : 3
+    },
+    "perMethodOutcome" : {
+      "R000" : 21,
+      "R002" : 13,
+      "R013" : 3,
+      "R083" : 2,
+      "T003" : 27,
+      "T005" : 1,
+      "T006" : 1,
+      "T010" : 6,
+      "T012" : 34,
+      "W002" : 3
+    },
+    "perTestOutcome" : {
+      "R000" : 42
+    },
+    "perTestValidation" : {
+      "V000" : 42,
+      "V003" : 1
+    },
+    "warnings" : {
+      "W002" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.task.common.CompactionTaskHostScaler" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 5,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T003" : 5,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$CheckAutoScalingGroup" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$CheckInstanceType" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$InstanceType" : {
+      "methodsCount" : 0,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T005" : 1,
+        "T020" : 1
+      }
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$SetDesiredInstances" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.task.common.DescribeClusterException" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.task.common.EC2InstanceDetails" : {
+      "methodsCount" : 14,
+      "completeTestCount" : 16,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 2,
+        "T005" : 1,
+        "T012" : 6,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 6,
+        "T003" : 2,
+        "T012" : 6
+      },
+      "perTestOutcome" : {
+        "R000" : 16
+      }
+    },
+    "sleeper.task.common.EC2Scaler" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 4,
+        "T012" : 7
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "T003" : 4,
+        "T012" : 7
+      }
+    },
+    "sleeper.task.common.ECSAbortException" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.task.common.ECSFailureException" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.task.common.ECSTaskCount" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.task.common.QueueMessageCount" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 2,
+        "T003" : 2,
+        "T012" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R013" : 1,
+        "T003" : 2,
+        "T012" : 1,
+        "W002" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "warnings" : {
+        "W002" : 1
+      }
+    },
+    "sleeper.task.common.QueueMessageCount$Client" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.task.common.RunCompactionTasks" : {
+      "methodsCount" : 16,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 5,
+        "T005" : 1,
+        "T006" : 1,
+        "T012" : 6
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 2,
+        "T003" : 5,
+        "T006" : 1,
+        "T012" : 6
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      }
+    },
+    "sleeper.task.common.RunCompactionTasks$TaskCounts" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.task.common.RunCompactionTasks$TaskLauncher" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.task.common.RunECSTasks" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 3,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 1,
+        "R083" : 2,
+        "T003" : 3,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.task.common.RunECSTasks$Builder" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T002" : 7,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 8,
+        "T003" : 1,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.task.common.RunECSTasks$ContainerName" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T003" : 2,
+        "T012" : 1
+      }
+    },
+    "sleeper.task.common.RunECSTasks$TaskDefinitionArn" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 2
+      },
+      "perMethodOutcome" : {
+        "T003" : 2
+      }
+    },
+    "sleeper.task.common.RunIngestTasks" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "T012" : 4
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.task.common.CompactionTaskHostScaler$CheckAutoScalingGroup.getAutoScalingGroupMaxSize:(Ljava/lang/String;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$CheckInstanceType.getInstanceTypeInfo:(Ljava/lang/String;)Lsleeper/task/common/CompactionTaskHostScaler$InstanceType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$InstanceType.<init>:(IJ)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$InstanceType.defaultVCpus:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$InstanceType.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$InstanceType.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$InstanceType.memoryMiB:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$InstanceType.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler$SetDesiredInstances.setClusterDesiredSize:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/task/common/CompactionTaskHostScaler$CheckAutoScalingGroup;Lsleeper/task/common/CompactionTaskHostScaler$SetDesiredInstances;Lsleeper/task/common/CompactionTaskHostScaler$CheckInstanceType;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        52,
+        46,
+        53,
+        54,
+        55,
+        56,
+        57
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.computeContainersPerInstance:(Lsleeper/task/common/CompactionTaskHostScaler$InstanceType;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        100,
+        101,
+        102,
+        104,
+        105,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        114,
+        115,
+        117
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.getAvailableMemoryMiBWithoutOverhead:(Lsleeper/task/common/CompactionTaskHostScaler$InstanceType;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        126
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.getMemoryOverheadMiB:(Lsleeper/task/common/CompactionTaskHostScaler$InstanceType;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        130,
+        131,
+        132,
+        134,
+        135
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.getTaskRequirements:()Lsleeper/configuration/CompactionTaskRequirements;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        140,
+        141
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.lambda$lookupInstanceType$0:(Ljava/lang/String;)Lsleeper/task/common/CompactionTaskHostScaler$InstanceType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.lookupInstanceType:()Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        88,
+        90,
+        92,
+        93,
+        94
+      ]
+    },
+    "sleeper.task.common.CompactionTaskHostScaler.scaleTo:(I)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        67,
+        69,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        78,
+        79,
+        80,
+        81,
+        82,
+        80,
+        84,
+        85
+      ]
+    },
+    "sleeper.task.common.DescribeClusterException.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        29,
+        30
+      ]
+    },
+    "sleeper.task.common.DescribeClusterException.<init>:(Ljava/lang/String;Ljava/lang/Throwable;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        25,
+        26
+      ]
+    },
+    "sleeper.task.common.DescribeClusterException.<init>:(Ljava/lang/Throwable;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        21,
+        22
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.<init>:(Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;IIIIII)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 13
+      },
+      "lineNumbers" : [
+        179,
+        180,
+        182,
+        183,
+        185,
+        186,
+        188,
+        189,
+        190,
+        189
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.fetchInstanceDetails:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/ecs/EcsClient;)Ljava/util/Map;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        102,
+        103,
+        102
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.findResourceAmount:(Ljava/lang/String;Ljava/util/List;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        154,
+        155,
+        156,
+        157,
+        158,
+        160,
+        162,
+        163
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.from:(Lsoftware/amazon/awssdk/services/ecs/model/ContainerInstance;)Lsleeper/task/common/EC2InstanceDetails;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        132
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.hashCode:()I" : {
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 13
+      },
+      "lineNumbers" : [
+        174
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.lambda$fetchInstanceDetails$0:(Lsleeper/task/common/EC2InstanceDetails;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.lambda$fetchInstanceDetails$1:(Lsleeper/task/common/EC2InstanceDetails;)Lsleeper/task/common/EC2InstanceDetails;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.lambda$streamInstances$2:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/ecs/model/ListContainerInstancesRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        107,
+        108,
+        109,
+        110,
+        107
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.lambda$streamInstances$3:(Lsoftware/amazon/awssdk/services/ecs/model/ListContainerInstancesResponse;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        113
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.lambda$streamInstances$4:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/ecs/model/ListContainerInstancesResponse;Lsoftware/amazon/awssdk/services/ecs/model/DescribeContainerInstancesRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        114,
+        115,
+        116,
+        114
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.lambda$streamInstances$5:(Lsoftware/amazon/awssdk/services/ecs/EcsClient;Ljava/lang/String;Lsoftware/amazon/awssdk/services/ecs/model/ListContainerInstancesResponse;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        114,
+        117,
+        114
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.streamInstances:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/ecs/EcsClient;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        107,
+        111,
+        112,
+        113,
+        114,
+        118,
+        107
+      ]
+    },
+    "sleeper.task.common.EC2InstanceDetails.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        168
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        37,
+        38
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.create:(Lsleeper/core/properties/instance/InstanceProperties;Lsoftware/amazon/awssdk/services/autoscaling/AutoScalingClient;Lsoftware/amazon/awssdk/services/ec2/Ec2Client;)Lsleeper/task/common/CompactionTaskHostScaler;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.getAutoScalingGroupMaxSize:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/autoscaling/AutoScalingClient;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        60,
+        61,
+        62,
+        61,
+        63
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.getEc2InstanceType:(Lsoftware/amazon/awssdk/services/ec2/Ec2Client;Ljava/lang/String;)Lsleeper/task/common/CompactionTaskHostScaler$InstanceType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        71,
+        72,
+        73,
+        74,
+        75,
+        73
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.lambda$create$0:(Lsoftware/amazon/awssdk/services/autoscaling/AutoScalingClient;Ljava/lang/String;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.lambda$create$1:(Lsoftware/amazon/awssdk/services/autoscaling/AutoScalingClient;Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.lambda$create$2:(Lsoftware/amazon/awssdk/services/ec2/Ec2Client;Ljava/lang/String;)Lsleeper/task/common/CompactionTaskHostScaler$InstanceType;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.lambda$getAutoScalingGroupMaxSize$3:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/autoscaling/model/DescribeAutoScalingGroupsRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.lambda$getEc2InstanceType$4:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/ec2/model/DescribeInstanceTypesRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.lambda$setClusterDesiredSize$5:(Ljava/lang/String;ILsoftware/amazon/awssdk/services/autoscaling/model/SetDesiredCapacityRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.task.common.EC2Scaler.setClusterDesiredSize:(Lsoftware/amazon/awssdk/services/autoscaling/AutoScalingClient;Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        84,
+        85,
+        86
+      ]
+    },
+    "sleeper.task.common.ECSAbortException.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        21,
+        22
+      ]
+    },
+    "sleeper.task.common.ECSFailureException.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        21,
+        22
+      ]
+    },
+    "sleeper.task.common.ECSTaskCount.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        25,
+        26
+      ]
+    },
+    "sleeper.task.common.ECSTaskCount.getNumPendingAndRunningTasks:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/ecs/EcsClient;)I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        29,
+        30,
+        31,
+        33
+      ]
+    },
+    "sleeper.task.common.ECSTaskCount.lambda$getNumPendingAndRunningTasks$0:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/ecs/model/DescribeClustersRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount$Client.getQueueMessageCount:(Ljava/lang/String;)Lsleeper/task/common/QueueMessageCount;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.task.common.QueueMessageCount.<init>:(II)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.approximateNumberVisibleAndNotVisible:(II)Lsleeper/task/common/QueueMessageCount;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        75,
+        76,
+        78,
+        79,
+        81,
+        82
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.getApproximateNumberOfMessages:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        66
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.getApproximateNumberOfMessagesNotVisible:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.getQueueMessageCountFromSqs:(Ljava/lang/String;Lcom/amazonaws/services/sqs/AmazonSQS;)Lsleeper/task/common/QueueMessageCount;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        57,
+        60,
+        61,
+        62
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.hashCode:()I" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.lambda$withSqsClient$0:(Lcom/amazonaws/services/sqs/AmazonSQS;Ljava/lang/String;)Lsleeper/task/common/QueueMessageCount;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        92,
+        93,
+        94,
+        92,
+        94,
+        92
+      ]
+    },
+    "sleeper.task.common.QueueMessageCount.withSqsClient:(Lcom/amazonaws/services/sqs/AmazonSQS;)Lsleeper/task/common/QueueMessageCount$Client;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        44
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks$TaskCounts.getRunningAndPending:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.task.common.RunCompactionTasks$TaskLauncher.launchTasks:(ILjava/util/function/BooleanSupplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.task.common.RunCompactionTasks.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/task/common/RunCompactionTasks$TaskCounts;Lsleeper/task/common/CompactionTaskHostScaler;Lsleeper/task/common/RunCompactionTasks$TaskLauncher;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsoftware/amazon/awssdk/services/ecs/EcsClient;Lsoftware/amazon/awssdk/services/autoscaling/AutoScalingClient;Lsoftware/amazon/awssdk/services/ec2/Ec2Client;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        69,
+        71,
+        69,
+        73
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.createOverride:(Lsleeper/core/properties/instance/InstanceProperties;)Lsoftware/amazon/awssdk/services/ecs/model/TaskOverride;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        216
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.createRunTaskRequest:(Lsleeper/core/properties/instance/InstanceProperties;)Lsoftware/amazon/awssdk/services/ecs/model/RunTaskRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        180,
+        181,
+        182,
+        183,
+        184,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        200,
+        202
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.lambda$launchTasks$4:(Lsoftware/amazon/awssdk/services/ecs/EcsClient;Lsleeper/core/properties/instance/InstanceProperties;ILjava/util/function/BooleanSupplier;Lsleeper/task/common/RunECSTasks$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        165,
+        166,
+        167,
+        168,
+        169,
+        165
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.lambda$new$0:(Lsleeper/core/properties/instance/InstanceProperties;Lsoftware/amazon/awssdk/services/ecs/EcsClient;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.lambda$new$1:(Lsoftware/amazon/awssdk/services/ecs/EcsClient;Lsleeper/core/properties/instance/InstanceProperties;ILjava/util/function/BooleanSupplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        72
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.lambda$run$2:(J)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        112,
+        113,
+        114,
+        116
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.lambda$runToMeetTargetTasks$3:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        137
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.launchTasks:(Lsoftware/amazon/awssdk/services/ecs/EcsClient;Lsleeper/core/properties/instance/InstanceProperties;ILjava/util/function/BooleanSupplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        165,
+        170
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        238,
+        239,
+        240,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        246,
+        252,
+        246,
+        252,
+        246,
+        253,
+        254,
+        255,
+        253,
+        254,
+        255,
+        256
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.networkConfig:(Lsleeper/core/properties/instance/InstanceProperties;)Lsoftware/amazon/awssdk/services/ecs/model/NetworkConfiguration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        232
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.run:(Lsleeper/task/common/QueueMessageCount$Client;)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        92,
+        93,
+        94,
+        95,
+        97,
+        98,
+        99,
+        101,
+        102,
+        103,
+        105,
+        106,
+        107,
+        108,
+        119
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.runToMeetTargetTasks:(I)V" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        131,
+        132,
+        133,
+        137,
+        138
+      ]
+    },
+    "sleeper.task.common.RunCompactionTasks.scaleToHostsAndLaunchTasks:(IILjava/util/function/BooleanSupplier;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        141,
+        142,
+        143,
+        144,
+        146,
+        147,
+        148,
+        149,
+        151,
+        152
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        196,
+        190,
+        191,
+        193,
+        194,
+        197
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.build:()Lsleeper/task/common/RunECSTasks;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        241
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.checkAbort:(Ljava/util/function/BooleanSupplier;)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        221,
+        222
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.ecsClient:(Lsoftware/amazon/awssdk/services/ecs/EcsClient;)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        200,
+        201
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.lambda$new$0:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        190
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.lambda$new$1:(Lsoftware/amazon/awssdk/services/ecs/model/RunTaskResponse;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        192
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.numberOfTasksToCreate:(I)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        216,
+        217
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.responseConsumer:(Ljava/util/function/Consumer;)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        226,
+        227
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.retryWhenNoCapacity:(Lsleeper/core/util/PollWithRetries;)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        236,
+        237
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.runTaskRequest:(Ljava/util/function/Consumer;)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        210,
+        211,
+        212
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.runTaskRequest:(Lsoftware/amazon/awssdk/services/ecs/model/RunTaskRequest;)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        205,
+        206
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$Builder.sleepForSustainedRatePerSecond:(Ljava/util/function/DoubleConsumer;)Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        231,
+        232
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$ContainerName.<init>:(Lsoftware/amazon/awssdk/services/ecs/model/RunTaskResponse;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        156,
+        157,
+        158
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$ContainerName.lambda$toString$0:(Lsoftware/amazon/awssdk/services/ecs/model/Task;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        162
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$ContainerName.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        161,
+        162,
+        163,
+        164,
+        161
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$TaskDefinitionArn.<init>:(Lsoftware/amazon/awssdk/services/ecs/model/RunTaskResponse;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        171,
+        172,
+        173
+      ]
+    },
+    "sleeper.task.common.RunECSTasks$TaskDefinitionArn.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        176,
+        177,
+        178,
+        176
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        41
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.<init>:(Lsleeper/task/common/RunECSTasks$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.builder:()Lsleeper/task/common/RunECSTasks$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.isCapacityUnavailable:(Lsoftware/amazon/awssdk/services/ecs/model/Failure;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        183
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.lambda$retryTaskUntilCapacityAvailable$1:(II)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        137
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.lambda$retryTaskUntilCapacityAvailable$2:(Ljava/util/concurrent/atomic/AtomicInteger;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        125,
+        126,
+        127,
+        128,
+        129,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        139,
+        140,
+        139,
+        142,
+        143,
+        144,
+        145,
+        148
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.lambda$runTasks$0:(Lsoftware/amazon/awssdk/services/ecs/EcsClient;Lsoftware/amazon/awssdk/services/ecs/model/RunTaskRequest;ILsleeper/task/common/RunECSTasks$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        67
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.retryTaskUntilCapacityAvailable:(I)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        150
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.runTasks:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        86,
+        92,
+        87,
+        88,
+        92,
+        90,
+        91,
+        93
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.runTasks:(Ljava/util/function/Consumer;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.runTasks:(Lsoftware/amazon/awssdk/services/ecs/EcsClient;Lsoftware/amazon/awssdk/services/ecs/model/RunTaskRequest;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        67,
+        70
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.runTasksOrThrow:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        96,
+        98,
+        99,
+        102,
+        105,
+        103,
+        104,
+        106,
+        112,
+        119,
+        117,
+        118,
+        120
+      ]
+    },
+    "sleeper.task.common.RunECSTasks.runTasksOrThrow:(Ljava/util/function/Consumer;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        79,
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.task.common.RunIngestTasks.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        45
+      ]
+    },
+    "sleeper.task.common.RunIngestTasks.<init>:(Lcom/amazonaws/services/sqs/AmazonSQS;Lsoftware/amazon/awssdk/services/ecs/EcsClient;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/PropertiesReloader;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63
+      ]
+    },
+    "sleeper.task.common.RunIngestTasks.lambda$run$0:(Lsoftware/amazon/awssdk/services/ecs/model/AwsVpcConfiguration$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        104,
+        105,
+        106,
+        104
+      ]
+    },
+    "sleeper.task.common.RunIngestTasks.lambda$run$1:(Lsoftware/amazon/awssdk/services/ecs/model/NetworkConfiguration$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        103,
+        104,
+        103
+      ]
+    },
+    "sleeper.task.common.RunIngestTasks.lambda$run$2:(Ljava/util/List;Lsoftware/amazon/awssdk/services/ecs/model/TaskOverride$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        107,
+        108,
+        109,
+        110,
+        111,
+        108,
+        107
+      ]
+    },
+    "sleeper.task.common.RunIngestTasks.run:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        79,
+        80,
+        79,
+        81,
+        84,
+        85,
+        86,
+        87,
+        91,
+        92,
+        95,
+        97,
+        99,
+        100,
+        101,
+        102,
+        103,
+        107,
+        112,
+        113,
+        114,
+        115,
+        116
+      ]
+    }
+  }
+}

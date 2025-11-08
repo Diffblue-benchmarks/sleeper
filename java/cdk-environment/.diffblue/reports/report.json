@@ -1,0 +1,2323 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 57617.706,
+    "environmentDetectionTime" : 0.599,
+    "indexingTime" : 0.537,
+    "entryPointsTime" : 0.596,
+    "generationTime" : 39402.029,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 12.463000000000001,
+    "verificationTime" : 937.469,
+    "validationTime" : 32.11
+  },
+  "codes" : {
+    "F009" : "Internal error",
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R034" : "Diffblue Cover can't complete test",
+    "R081" : "Exception in arrange section",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T008" : "Private and never called",
+    "T009" : "No implementation for abstract class",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 27,
+    "methodsCount" : 139,
+    "cumulativeDiffblueTestCount" : 70,
+    "cumulativeManualTestCount" : 36,
+    "completeTestCount" : 70,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 1106,
+    "perMethodTestability" : {
+      "T000" : 65,
+      "T001" : 10,
+      "T002" : 2,
+      "T003" : 24,
+      "T005" : 2,
+      "T006" : 2,
+      "T008" : 4,
+      "T009" : 6,
+      "T010" : 1,
+      "T012" : 21,
+      "T020" : 2
+    },
+    "perMethodOutcome" : {
+      "F009" : 3,
+      "R000" : 31,
+      "R002" : 15,
+      "R011" : 4,
+      "R013" : 13,
+      "R034" : 1,
+      "R081" : 5,
+      "R083" : 8,
+      "T003" : 24,
+      "T005" : 1,
+      "T006" : 2,
+      "T008" : 4,
+      "T009" : 6,
+      "T010" : 1,
+      "T012" : 21
+    },
+    "perTestOutcome" : {
+      "R000" : 70
+    },
+    "perTestValidation" : {
+      "V000" : 70,
+      "V003" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.environment.cdk.GetStackOutputs" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T006" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "T006" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.environment.cdk.SleeperEnvironmentCdkApp" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 2,
+        "T006" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Deployment" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 1,
+        "T003" : 2
+      },
+      "perMethodOutcome" : {
+        "R011" : 1,
+        "R081" : 1,
+        "T003" : 2
+      }
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Image" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R083" : 3,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters$Builder" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T002" : 2,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R011" : 1,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 6,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 4,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 3
+      },
+      "perMethodOutcome" : {
+        "F009" : 2,
+        "R000" : 2,
+        "T003" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.environment.cdk.builduptime.AutoShutdownSchedule" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R034" : 1,
+        "T003" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.environment.cdk.builduptime.BuildUptimeDeployment" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R081" : 1,
+        "T012" : 2
+      }
+    },
+    "sleeper.environment.cdk.config.AppContext" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T009" : 6,
+        "T010" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R011" : 1,
+        "R013" : 1,
+        "T009" : 6,
+        "T010" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.environment.cdk.config.AppParameters" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T008" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.environment.cdk.config.BooleanParameter" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 3,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.environment.cdk.config.IntParameter" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 3,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.environment.cdk.config.OptionalStringParameter" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 2,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.environment.cdk.config.RequiredStringParameter" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.environment.cdk.config.StringListParameter" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 2,
+        "T003" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.environment.cdk.config.StringParameter" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 2,
+        "T003" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.environment.cdk.config.StringValue" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.environment.cdk.networking.NetworkingDeployment" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R081" : 1
+      }
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestBucket" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R081" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestDeployment" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3
+      },
+      "perMethodOutcome" : {
+        "R011" : 1,
+        "R013" : 2
+      }
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestUptimeSchedules" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T001" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R081" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs" : {
+      "methodsCount" : 14,
+      "completeTestCount" : 16,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T003" : 3,
+        "T012" : 5,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 6,
+        "T003" : 3,
+        "T012" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 16
+      }
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs$Stack" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T001" : 2,
+        "T003" : 1,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 5,
+        "T003" : 1
+      }
+    },
+    "sleeper.environment.cdk.util.CdkFailedException" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.environment.cdk.util.MyIpUtil" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "F009" : 1,
+        "T008" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.environment.cdk.GetStackOutputs.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        31,
+        32
+      ]
+    },
+    "sleeper.environment.cdk.GetStackOutputs.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        35,
+        36,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        46,
+        47,
+        40,
+        48
+      ]
+    },
+    "sleeper.environment.cdk.SleeperEnvironmentCdkApp.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        43,
+        44
+      ]
+    },
+    "sleeper.environment.cdk.SleeperEnvironmentCdkApp.getStackNameForEnvironment:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.environment.cdk.SleeperEnvironmentCdkApp.getStackNamesForEnvironment:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.environment.cdk.SleeperEnvironmentCdkApp.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        66,
+        67,
+        68,
+        69,
+        71,
+        72
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Deployment.<init>:(Lsoftware/constructs/Construct;Lsoftware/amazon/awscdk/services/ec2/IVpc;Lsleeper/environment/cdk/nightlytests/NightlyTestDeployment;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        69,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        84,
+        85
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Deployment.createRestrictedRole:(Lsoftware/constructs/Construct;)Lsoftware/amazon/awscdk/services/iam/Role;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        89,
+        90,
+        91,
+        92,
+        96,
+        97,
+        98,
+        99,
+        102,
+        96,
+        105,
+        106,
+        107,
+        108,
+        109,
+        105,
+        112,
+        113,
+        114,
+        117,
+        118,
+        112,
+        119,
+        121,
+        122
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Deployment.createSecurityGroup:(Lsoftware/constructs/Construct;)Lsoftware/amazon/awscdk/services/ec2/SecurityGroup;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        126,
+        127,
+        128,
+        129,
+        130,
+        126
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Deployment.getInstance:()Lsoftware/amazon/awscdk/services/ec2/IInstance;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        134
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Image.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Image.<init>:(Lsleeper/environment/cdk/config/AppContext;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Image.from:(Lsleeper/environment/cdk/config/AppContext;)Lsleeper/environment/cdk/buildec2/BuildEC2Image;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Image.loginUser:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Image.machineImage:()Lsoftware/amazon/awscdk/services/ec2/IMachineImage;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        60
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Image.rootBlockDevice:()Lsoftware/amazon/awscdk/services/ec2/BlockDevice;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        70,
+        69,
+        71,
+        67
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters$Builder.build:()Lsleeper/environment/cdk/buildec2/BuildEC2Parameters;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        150
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters$Builder.context:(Lsleeper/environment/cdk/config/AppContext;)Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        127,
+        128
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters$Builder.inheritVpc:(Ljava/lang/String;Ljava/util/List;)Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        137,
+        138,
+        139
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters$Builder.inheritVpc:(Lsoftware/amazon/awscdk/services/ec2/IVpc;)Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        143,
+        144,
+        145,
+        146,
+        143
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters$Builder.testBucket:(Ljava/lang/String;)Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        132,
+        133
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        38,
+        39,
+        40
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.<init>:(Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        82
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.builder:()Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        89
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.fillUserDataTemplate:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        105
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.from:(Lsleeper/environment/cdk/config/AppContext;)Lsleeper/environment/cdk/buildec2/BuildEC2Parameters;" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.image:()Lsleeper/environment/cdk/buildec2/BuildEC2Image;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        114
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.isNightlyTestEnabled:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.lambda$new$0:()Ljava/lang/IllegalArgumentException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.lambda$new$1:(Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.BuildEC2Parameters.lambda$new$2:(Lsleeper/environment/cdk/buildec2/BuildEC2Parameters$Builder;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        40,
+        42
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil.generate:()Ljava/security/KeyPair;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil.privatePem:(Ljava/security/KeyPair;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil.publicBase64:(Ljava/security/KeyPair;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil.readPrivatePem:(Ljava/io/Reader;)Ljava/security/KeyPair;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        84,
+        85,
+        86
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil.readPrivatePem:(Ljava/lang/String;)Ljava/security/KeyPair;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        80
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.KeyPairUtil.writePrivateToFile:(Ljava/security/KeyPair;Ljava/lang/String;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        58,
+        60,
+        61,
+        64,
+        62,
+        63,
+        65
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        27,
+        29
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil.crontab:(Lsleeper/environment/cdk/buildec2/BuildEC2Parameters;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        53,
+        54
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil.nightlyTestSettingsJson:(Lsleeper/environment/cdk/buildec2/BuildEC2Parameters;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil.resourceString:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        68
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil.templateString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil.userData:(Lsleeper/environment/cdk/buildec2/BuildEC2Parameters;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        32,
+        33,
+        32
+      ]
+    },
+    "sleeper.environment.cdk.buildec2.LoadUserDataUtil.writeFilesYaml:(Lsleeper/environment/cdk/buildec2/BuildEC2Parameters;)Ljava/lang/String;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        37,
+        38,
+        40,
+        42,
+        41,
+        44,
+        43,
+        40
+      ]
+    },
+    "sleeper.environment.cdk.builduptime.AutoShutdownSchedule.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        41,
+        42
+      ]
+    },
+    "sleeper.environment.cdk.builduptime.AutoShutdownSchedule.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        44,
+        45
+      ]
+    },
+    "sleeper.environment.cdk.builduptime.AutoShutdownSchedule.create:(Lsoftware/constructs/Construct;Lsleeper/environment/cdk/builduptime/BuildUptimeDeployment;Lsleeper/environment/cdk/buildec2/BuildEC2Deployment;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R034",
+      "lineNumbers" : [
+        48,
+        50,
+        51,
+        52,
+        53,
+        56,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        61,
+        65,
+        66,
+        70,
+        65,
+        71,
+        72
+      ]
+    },
+    "sleeper.environment.cdk.builduptime.BuildUptimeDeployment.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.environment.cdk.builduptime.BuildUptimeDeployment.<init>:(Lsoftware/constructs/Construct;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        61,
+        65,
+        67,
+        68,
+        69,
+        72,
+        67,
+        73
+      ]
+    },
+    "sleeper.environment.cdk.builduptime.BuildUptimeDeployment.getFunction:()Lsoftware/amazon/awscdk/services/lambda/IFunction;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.environment.cdk.builduptime.BuildUptimeDeployment.lambda$new$0:()Ljava/lang/IllegalArgumentException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        48
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.empty:()Lsleeper/environment/cdk/config/AppContext;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.get:(Ljava/lang/String;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.environment.cdk.config.AppContext.get:(Lsleeper/environment/cdk/config/BooleanParameter;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.get:(Lsleeper/environment/cdk/config/IntParameter;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.get:(Lsleeper/environment/cdk/config/OptionalStringParameter;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.get:(Lsleeper/environment/cdk/config/RequiredStringParameter;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        34
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.get:(Lsleeper/environment/cdk/config/StringListParameter;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.get:(Lsleeper/environment/cdk/config/StringParameter;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T009",
+      "perMethodOutcome" : "T009",
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.lambda$empty$0:(Ljava/lang/String;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        67
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.of:(Lsoftware/constructs/Construct;)Lsleeper/environment/cdk/config/AppContext;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.of:(Lsoftware/constructs/Node;)Lsleeper/environment/cdk/config/AppContext;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.environment.cdk.config.AppContext.of:([Lsleeper/environment/cdk/config/StringValue;)Lsleeper/environment/cdk/config/AppContext;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.environment.cdk.config.AppParameters.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        23,
+        24,
+        25,
+        27,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34,
+        35,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    "sleeper.environment.cdk.config.AppParameters.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        20,
+        21
+      ]
+    },
+    "sleeper.environment.cdk.config.BooleanParameter.<init>:(Ljava/lang/String;Z)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        23,
+        24,
+        25,
+        26
+      ]
+    },
+    "sleeper.environment.cdk.config.BooleanParameter.get:(Lsleeper/environment/cdk/config/AppContext;)Z" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        29,
+        30,
+        31,
+        29
+      ]
+    },
+    "sleeper.environment.cdk.config.BooleanParameter.keyAndDefault:(Ljava/lang/String;Z)Lsleeper/environment/cdk/config/BooleanParameter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.environment.cdk.config.BooleanParameter.value:(Ljava/lang/String;)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.environment.cdk.config.BooleanParameter.value:(Z)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.environment.cdk.config.IntParameter.<init>:(Ljava/lang/String;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    "sleeper.environment.cdk.config.IntParameter.get:(Lsleeper/environment/cdk/config/AppContext;)I" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        28
+      ]
+    },
+    "sleeper.environment.cdk.config.IntParameter.keyAndDefault:(Ljava/lang/String;I)Lsleeper/environment/cdk/config/IntParameter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.environment.cdk.config.IntParameter.lambda$get$0:(Ljava/lang/String;)Ljava/lang/Integer;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.environment.cdk.config.IntParameter.parse:(Ljava/lang/String;Ljava/lang/String;)I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        47,
+        48,
+        49
+      ]
+    },
+    "sleeper.environment.cdk.config.IntParameter.value:(I)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        34
+      ]
+    },
+    "sleeper.environment.cdk.config.IntParameter.value:(Ljava/lang/String;)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.environment.cdk.config.OptionalStringParameter.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        24,
+        25,
+        26
+      ]
+    },
+    "sleeper.environment.cdk.config.OptionalStringParameter.get:(Lsleeper/environment/cdk/config/AppContext;)Ljava/util/Optional;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.environment.cdk.config.OptionalStringParameter.getOptionalString:(Lsleeper/environment/cdk/config/AppContext;Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        41
+      ]
+    },
+    "sleeper.environment.cdk.config.OptionalStringParameter.key:(Ljava/lang/String;)Lsleeper/environment/cdk/config/OptionalStringParameter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.environment.cdk.config.OptionalStringParameter.value:(Ljava/lang/String;)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.environment.cdk.config.RequiredStringParameter.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        24,
+        25,
+        26
+      ]
+    },
+    "sleeper.environment.cdk.config.RequiredStringParameter.get:(Lsleeper/environment/cdk/config/AppContext;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        29,
+        30,
+        29
+      ]
+    },
+    "sleeper.environment.cdk.config.RequiredStringParameter.getOptionalString:(Lsleeper/environment/cdk/config/AppContext;Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.environment.cdk.config.RequiredStringParameter.key:(Ljava/lang/String;)Lsleeper/environment/cdk/config/RequiredStringParameter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.environment.cdk.config.RequiredStringParameter.lambda$get$0:()Ljava/lang/IllegalArgumentException;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        30
+      ]
+    },
+    "sleeper.environment.cdk.config.RequiredStringParameter.value:(Ljava/lang/String;)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        34
+      ]
+    },
+    "sleeper.environment.cdk.config.StringListParameter.<init>:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        24,
+        25,
+        26
+      ]
+    },
+    "sleeper.environment.cdk.config.StringListParameter.get:(Lsleeper/environment/cdk/config/AppContext;)Ljava/util/List;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.environment.cdk.config.StringListParameter.key:(Ljava/lang/String;)Lsleeper/environment/cdk/config/StringListParameter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.environment.cdk.config.StringListParameter.readList:(Ljava/lang/Object;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        46
+      ]
+    },
+    "sleeper.environment.cdk.config.StringListParameter.readList:(Ljava/lang/String;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        51,
+        52,
+        54
+      ]
+    },
+    "sleeper.environment.cdk.config.StringListParameter.value:([Ljava/lang/String;)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.environment.cdk.config.StringParameter.<init>:(Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        23,
+        24,
+        25,
+        26
+      ]
+    },
+    "sleeper.environment.cdk.config.StringParameter.get:(Lsleeper/environment/cdk/config/AppContext;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.environment.cdk.config.StringParameter.getStringOrDefault:(Lsleeper/environment/cdk/config/AppContext;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        46,
+        48
+      ]
+    },
+    "sleeper.environment.cdk.config.StringParameter.keyAndDefault:(Ljava/lang/String;Ljava/lang/String;)Lsleeper/environment/cdk/config/StringParameter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.environment.cdk.config.StringParameter.value:(Ljava/lang/String;)Lsleeper/environment/cdk/config/StringValue;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.environment.cdk.config.StringValue.<init>:(Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    "sleeper.environment.cdk.config.StringValue.mapOf:([Lsleeper/environment/cdk/config/StringValue;)Ljava/util/Map;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        32,
+        33,
+        34,
+        33,
+        36
+      ]
+    },
+    "sleeper.environment.cdk.networking.NetworkingDeployment.<init>:(Lsoftware/constructs/Construct;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        48,
+        49,
+        50,
+        51,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        52,
+        59,
+        61,
+        62,
+        63,
+        64,
+        63,
+        65,
+        67,
+        68,
+        69,
+        70,
+        69,
+        71,
+        72
+      ]
+    },
+    "sleeper.environment.cdk.networking.NetworkingDeployment.getVpc:()Lsoftware/amazon/awscdk/services/ec2/IVpc;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestBucket.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestBucket.<init>:(Lsoftware/constructs/Construct;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        36,
+        37,
+        39,
+        40,
+        41,
+        48
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestBucket.getBucket:()Lsoftware/amazon/awscdk/services/s3/IBucket;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestBucket.lambda$new$0:(Lsoftware/constructs/Construct;Ljava/lang/String;)Lsoftware/amazon/awscdk/services/s3/IBucket;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestBucket.lambda$new$1:(Lsoftware/constructs/Construct;Lsleeper/environment/cdk/config/AppContext;)Lsoftware/amazon/awscdk/services/s3/IBucket;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        41
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestDeployment.<init>:(Lsoftware/constructs/Construct;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        43,
+        45
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestDeployment.automateUptimeGetAutoStopRules:(Lsleeper/environment/cdk/buildec2/BuildEC2Deployment;Lsleeper/environment/cdk/builduptime/BuildUptimeDeployment;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        60,
+        62
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestDeployment.getTestBucketName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        48,
+        49,
+        51
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestUptimeSchedules.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        39
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestUptimeSchedules.<init>:(Lsoftware/constructs/Construct;Lsoftware/amazon/awscdk/services/lambda/IFunction;Lsoftware/amazon/awscdk/services/ec2/IInstance;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        44,
+        45,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        57,
+        58,
+        53,
+        59,
+        52,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        65,
+        69,
+        72,
+        73,
+        70,
+        74,
+        69,
+        75,
+        76
+      ]
+    },
+    "sleeper.environment.cdk.nightlytests.NightlyTestUptimeSchedules.getStopAfterTestsRule:()Lsoftware/amazon/awscdk/services/events/IRule;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs$Stack.<init>:(Ljava/lang/String;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        103,
+        104,
+        105,
+        106
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs$Stack.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        118,
+        119,
+        121,
+        122,
+        124,
+        125
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs$Stack.getOutputs:()Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        113
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs$Stack.getStackName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        109
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs$Stack.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        130
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs$Stack.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        135
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.<init>:(Ljava/util/Set;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        77,
+        78,
+        80,
+        81,
+        83,
+        84
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.fromMap:(Ljava/util/Map;)Lsleeper/environment/cdk/outputs/StackOutputs;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        45
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.hashCode:()I" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        89
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.lambda$fromMap$1:(Ljava/util/Map$Entry;)Lsleeper/environment/cdk/outputs/StackOutputs$Stack;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.lambda$load$0:(Lsoftware/amazon/awssdk/services/cloudformation/CloudFormationClient;Ljava/lang/String;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        40
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.lambda$loadStack$2:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/cloudformation/model/DescribeStacksRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.lambda$loadStack$3:(Lsoftware/amazon/awssdk/services/cloudformation/model/Stack;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.lambda$loadStack$4:(Ljava/lang/String;Ljava/util/Map;)Lsleeper/environment/cdk/outputs/StackOutputs$Stack;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.load:(Lsoftware/amazon/awssdk/services/cloudformation/CloudFormationClient;Ljava/util/List;)Lsleeper/environment/cdk/outputs/StackOutputs;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        39,
+        40,
+        41,
+        39
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.loadOutputs:(Ljava/util/List;)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        66,
+        67,
+        66
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.loadStack:(Lsoftware/amazon/awssdk/services/cloudformation/CloudFormationClient;Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        52,
+        53,
+        54,
+        55,
+        52,
+        56,
+        57,
+        58,
+        60
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.toMap:()Ljava/util/Map;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        71,
+        72,
+        71
+      ]
+    },
+    "sleeper.environment.cdk.outputs.StackOutputs.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        94
+      ]
+    },
+    "sleeper.environment.cdk.util.CdkFailedException.<init>:(Ljava/util/List;I)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        23,
+        24
+      ]
+    },
+    "sleeper.environment.cdk.util.MyIpUtil.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        26,
+        28
+      ]
+    },
+    "sleeper.environment.cdk.util.MyIpUtil.findMyIp:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        32,
+        33,
+        34,
+        35,
+        36,
+        35,
+        33,
+        37,
+        38
+      ]
+    }
+  }
+}

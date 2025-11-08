@@ -1,0 +1,476 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 57071.455,
+    "environmentDetectionTime" : 0.482,
+    "indexingTime" : 0.531,
+    "entryPointsTime" : 0.476,
+    "generationTime" : 39193.25,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 17.564,
+    "verificationTime" : 919.501,
+    "validationTime" : 42.484
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R081" : "Exception in arrange section",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 3,
+    "methodsCount" : 29,
+    "cumulativeDiffblueTestCount" : 3,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 3,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 176,
+    "perMethodTestability" : {
+      "T000" : 6,
+      "T003" : 8,
+      "T005" : 3,
+      "T012" : 12
+    },
+    "perMethodOutcome" : {
+      "R000" : 3,
+      "R002" : 4,
+      "R081" : 2,
+      "T003" : 8,
+      "T012" : 12
+    },
+    "perTestOutcome" : {
+      "R000" : 3
+    },
+    "perTestValidation" : {
+      "V000" : 3,
+      "V003" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 4,
+        "T005" : 1,
+        "T012" : 8
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R081" : 1,
+        "T003" : 4,
+        "T012" : 8
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 3,
+        "T005" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R081" : 1,
+        "T003" : 3,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.cdk.custom.VpcCheckLambda" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        36
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.<init>:(Lsoftware/amazon/awssdk/services/s3/S3Client;I)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.deleteMarkers:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsResponse;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        91,
+        92,
+        93,
+        97
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.deleteVersions:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsResponse;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        88
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.emptyBucket:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        68,
+        69,
+        70,
+        71,
+        77,
+        75,
+        76,
+        78
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.handleEvent:(Lcom/amazonaws/services/lambda/runtime/events/CloudFormationCustomResourceEvent;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51,
+        52,
+        54,
+        57,
+        59,
+        60,
+        62,
+        64
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.lambda$deleteMarkers$4:(Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsResponse;Lsoftware/amazon/awssdk/services/s3/model/Delete$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        94,
+        95,
+        94
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.lambda$deleteMarkers$5:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsResponse;Lsoftware/amazon/awssdk/services/s3/model/DeleteObjectsRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        93,
+        94,
+        93
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.lambda$deleteVersions$2:(Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsResponse;Lsoftware/amazon/awssdk/services/s3/model/Delete$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        84,
+        85,
+        84
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.lambda$deleteVersions$3:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsResponse;Lsoftware/amazon/awssdk/services/s3/model/DeleteObjectsRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        83,
+        84,
+        83
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.lambda$emptyBucket$0:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.lambda$emptyBucket$1:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/ListObjectVersionsResponse;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        72,
+        73,
+        74
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.lambda$objectIdentifiers$6:(Ljava/util/function/Function;Ljava/util/function/Function;Ljava/lang/Object;)Lsoftware/amazon/awssdk/services/s3/model/ObjectIdentifier;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        102,
+        103,
+        104
+      ]
+    },
+    "sleeper.cdk.custom.AutoDeleteS3ObjectsLambda.objectIdentifiers:(Ljava/util/List;Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/Collection;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        101,
+        102,
+        105,
+        101
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        42,
+        43
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.<init>:(Lsoftware/amazon/awssdk/services/s3/S3Client;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.deleteProperties:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        69
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.handleEvent:(Lcom/amazonaws/services/lambda/runtime/events/CloudFormationCustomResourceEvent;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51,
+        52,
+        55,
+        56,
+        58,
+        59,
+        61,
+        63
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.lambda$deleteProperties$0:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/DeleteObjectRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.lambda$updateProperties$1:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/s3/model/PutObjectRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        74
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.readBucketName:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        79,
+        80,
+        81
+      ]
+    },
+    "sleeper.cdk.custom.PropertiesWriterLambda.updateProperties:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        74,
+        76
+      ]
+    },
+    "sleeper.cdk.custom.VpcCheckLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        31,
+        32
+      ]
+    },
+    "sleeper.cdk.custom.VpcCheckLambda.<init>:(Lsoftware/amazon/awssdk/services/ec2/Ec2Client;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        34,
+        35,
+        36
+      ]
+    },
+    "sleeper.cdk.custom.VpcCheckLambda.handleEvent:(Lcom/amazonaws/services/lambda/runtime/events/CloudFormationCustomResourceEvent;Lcom/amazonaws/services/lambda/runtime/Context;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        39,
+        40,
+        41,
+        43,
+        46,
+        47,
+        49,
+        51,
+        53
+      ]
+    },
+    "sleeper.cdk.custom.VpcCheckLambda.lambda$validateVpc$0:(Ljava/lang/String;Ljava/lang/String;Lsoftware/amazon/awssdk/services/ec2/model/DescribeVpcEndpointsRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        57,
+        56
+      ]
+    },
+    "sleeper.cdk.custom.VpcCheckLambda.validateVpc:(Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        56,
+        59,
+        61,
+        62,
+        66
+      ]
+    }
+  }
+}

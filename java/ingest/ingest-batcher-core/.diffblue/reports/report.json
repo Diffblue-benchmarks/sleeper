@@ -1,0 +1,834 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 8559.973,
+    "environmentDetectionTime" : 0.398,
+    "indexingTime" : 0.364,
+    "entryPointsTime" : 0.395,
+    "generationTime" : 6023.164,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 3.7920000000000003,
+    "verificationTime" : 183.207,
+    "validationTime" : 29.753
+  },
+  "codes" : {
+    "F009" : "Internal error",
+    "R000" : "Success",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 8,
+    "methodsCount" : 56,
+    "cumulativeDiffblueTestCount" : 1,
+    "cumulativeManualTestCount" : 54,
+    "completeTestCount" : 1,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 348,
+    "perMethodTestability" : {
+      "T000" : 6,
+      "T001" : 5,
+      "T002" : 11,
+      "T003" : 16,
+      "T005" : 3,
+      "T008" : 1,
+      "T010" : 6,
+      "T012" : 7,
+      "T020" : 1
+    },
+    "perMethodOutcome" : {
+      "F009" : 7,
+      "R000" : 6,
+      "R083" : 11,
+      "T003" : 16,
+      "T005" : 2,
+      "T008" : 1,
+      "T010" : 6,
+      "T012" : 7
+    },
+    "perTestOutcome" : {
+      "R000" : 1
+    },
+    "perTestValidation" : {
+      "V000" : 1,
+      "V003" : 10
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.batcher.core.FileIngestRequest" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 5,
+        "T003" : 1,
+        "T005" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 10,
+        "T003" : 1,
+        "T005" : 1
+      }
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 5,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 6,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 6,
+        "T005" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R083" : 1,
+        "T003" : 6,
+        "T005" : 1,
+        "T012" : 4
+      }
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Batch" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 4
+      },
+      "perMethodOutcome" : {
+        "T003" : 4
+      }
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$BatchCreator" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 4,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "T003" : 4,
+        "T012" : 2
+      }
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 6,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "F009" : 7,
+        "T003" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherQueueClient" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherStore" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 5
+      },
+      "perMethodOutcome" : {
+        "T010" : 5
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        112,
+        113
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder.build:()Lsleeper/ingest/batcher/core/FileIngestRequest;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        141
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder.file:(Ljava/lang/String;)Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        116,
+        117
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder.fileSizeBytes:(J)Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        121,
+        122
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder.jobId:(Ljava/lang/String;)Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        136,
+        137
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder.receivedTime:(Ljava/time/Instant;)Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        131,
+        132
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest$Builder.tableId:(Ljava/lang/String;)Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        126,
+        127
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.<init>:(Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.builder:()Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        75,
+        76,
+        78,
+        79,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        82
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.getFile:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.getFileSizeBytes:()J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.getJobId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        62
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.getReceivedTime:()Ljava/time/Instant;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.isAssignedToJob:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.toBuilder:()Lsleeper/ingest/batcher/core/FileIngestRequest$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        66,
+        67,
+        68,
+        69,
+        70,
+        66
+      ]
+    },
+    "sleeper.ingest.batcher.core.FileIngestRequest.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Batch.<init>:(IJ)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        207,
+        203,
+        208,
+        209,
+        210
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Batch.add:(Lsleeper/ingest/batcher/core/FileIngestRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        218,
+        219,
+        220
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Batch.getFiles:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        223
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Batch.hasSpaceForFile:(Lsleeper/ingest/batcher/core/FileIngestRequest;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        213,
+        214,
+        213
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$BatchCreator.<init>:(Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        178,
+        176,
+        179,
+        180,
+        181
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$BatchCreator.add:(Lsleeper/ingest/batcher/core/FileIngestRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        184,
+        185
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$BatchCreator.getBatchWithSpaceFor:(Lsleeper/ingest/batcher/core/FileIngestRequest;)Lsleeper/ingest/batcher/core/IngestBatcher$Batch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        188,
+        189,
+        190,
+        188
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$BatchCreator.lambda$getBatchWithSpaceFor$0:(Lsleeper/ingest/batcher/core/FileIngestRequest;Lsleeper/ingest/batcher/core/IngestBatcher$Batch;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        189
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$BatchCreator.lambda$getBatchWithSpaceFor$1:()Lsleeper/ingest/batcher/core/IngestBatcher$Batch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        191,
+        192,
+        193
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$BatchCreator.streamBatches:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        198
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        239,
+        234,
+        235,
+        240
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.build:()Lsleeper/ingest/batcher/core/IngestBatcher;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        273
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.instanceProperties:(Lsleeper/core/properties/instance/InstanceProperties;)Lsleeper/ingest/batcher/core/IngestBatcher$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        243,
+        244
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.jobIdSupplier:(Ljava/util/function/Supplier;)Lsleeper/ingest/batcher/core/IngestBatcher$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        253,
+        254
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        234
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.queueClient:(Lsleeper/ingest/batcher/core/IngestBatcherQueueClient;)Lsleeper/ingest/batcher/core/IngestBatcher$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        268,
+        269
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.store:(Lsleeper/ingest/batcher/core/IngestBatcherStore;)Lsleeper/ingest/batcher/core/IngestBatcher$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        263,
+        264
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.tablePropertiesProvider:(Lsleeper/core/properties/table/TablePropertiesProvider;)Lsleeper/ingest/batcher/core/IngestBatcher$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        248,
+        249
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher$Builder.timeSupplier:(Ljava/util/function/Supplier;)Lsleeper/ingest/batcher/core/IngestBatcher$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        258,
+        259
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        50
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.<init>:(Lsleeper/ingest/batcher/core/IngestBatcher$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.batchFiles:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        76,
+        78,
+        79,
+        80,
+        81,
+        83
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.batchTableFiles:(Ljava/lang/String;Ljava/util/List;Ljava/time/Instant;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        86,
+        87,
+        88,
+        89,
+        90,
+        89,
+        91,
+        92,
+        93,
+        94,
+        93,
+        95,
+        96,
+        97,
+        98,
+        99,
+        98,
+        100,
+        101,
+        103
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.builder:()Lsleeper/ingest/batcher/core/IngestBatcher$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        68
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.createBatches:(Lsleeper/core/properties/table/TableProperties;Ljava/util/List;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        168,
+        169,
+        170
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.lambda$batchFiles$0:(Ljava/time/Instant;Ljava/lang/String;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        81
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.lambda$batchTableFiles$1:(Lsleeper/core/table/TableStatus;Lsleeper/core/properties/validation/IngestQueue;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.lambda$shouldCreateBatches$2:(Ljava/time/Instant;Lsleeper/ingest/batcher/core/FileIngestRequest;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        112
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.sendBatch:(Lsleeper/core/table/TableStatus;Lsleeper/core/properties/validation/IngestQueue;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        140,
+        141,
+        142,
+        143,
+        144,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        153,
+        154,
+        155,
+        157,
+        158,
+        157,
+        159,
+        163,
+        161,
+        162,
+        164
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.shouldCreateBatches:(Lsleeper/core/properties/table/TableProperties;Ljava/util/List;Ljava/time/Instant;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        117,
+        119,
+        120,
+        121,
+        122,
+        121,
+        123,
+        125,
+        126,
+        125,
+        128,
+        129,
+        130,
+        129,
+        131,
+        133,
+        134,
+        133,
+        136
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcher.totalBytes:(Ljava/util/List;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        228
+      ]
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherQueueClient.send:(Ljava/lang/String;Lsleeper/ingest/core/job/IngestJob;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherStore.addFile:(Lsleeper/ingest/batcher/core/FileIngestRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherStore.assignJobGetAssigned:(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherStore.deleteAllPending:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherStore.getAllFilesNewestFirst:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.batcher.core.IngestBatcherStore.getPendingFilesOldestFirst:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    }
+  }
+}

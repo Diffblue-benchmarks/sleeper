@@ -1,0 +1,1136 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 2847.2,
+    "environmentDetectionTime" : 0.523,
+    "indexingTime" : 0.348,
+    "entryPointsTime" : 0.519,
+    "generationTime" : 1766.226,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 4.107,
+    "verificationTime" : 122.566,
+    "validationTime" : 26.775
+  },
+  "codes" : {
+    "F009" : "Internal error",
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "T020" : "Other trivial method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 10,
+    "methodsCount" : 75,
+    "cumulativeDiffblueTestCount" : 19,
+    "cumulativeManualTestCount" : 28,
+    "completeTestCount" : 21,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 496,
+    "perMethodTestability" : {
+      "T000" : 24,
+      "T001" : 5,
+      "T002" : 12,
+      "T003" : 8,
+      "T005" : 11,
+      "T008" : 1,
+      "T010" : 6,
+      "T012" : 6,
+      "T020" : 2
+    },
+    "perMethodOutcome" : {
+      "F009" : 9,
+      "R000" : 21,
+      "R002" : 1,
+      "R013" : 1,
+      "R083" : 20,
+      "T003" : 8,
+      "T005" : 2,
+      "T008" : 1,
+      "T010" : 6,
+      "T012" : 6
+    },
+    "perTestOutcome" : {
+      "R000" : 21
+    },
+    "perTestValidation" : {
+      "V000" : 21,
+      "V003" : 5
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.core.IngestResult" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7,
+        "T001" : 1,
+        "T003" : 2,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 9,
+        "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 12
+      }
+    },
+    "sleeper.ingest.core.IngestTask" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R002" : 1,
+        "R013" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.ingest.core.IngestTask$MessageHandle" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 4
+      },
+      "perMethodOutcome" : {
+        "T010" : 4
+      }
+    },
+    "sleeper.ingest.core.IngestTask$MessageReceiver" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.ingest.core.job.IngestJob" : {
+      "methodsCount" : 20,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 4,
+        "T003" : 2,
+        "T005" : 9,
+        "T020" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 17,
+        "T003" : 2,
+        "T005" : 1
+      }
+    },
+    "sleeper.ingest.core.job.IngestJob$Builder" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 4,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 5,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.ingest.core.job.IngestJobHandler" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 3,
+        "T005" : 2,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R083" : 3,
+        "T003" : 3,
+        "T005" : 1,
+        "T012" : 4
+      }
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T002" : 8,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "F009" : 9,
+        "T003" : 1,
+        "T012" : 1
+      }
+    },
+    "sleeper.ingest.core.job.IngestJobSerDe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.core.IngestResult.<init>:(Ljava/util/List;JJ)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.allReadWereWritten:(Ljava/util/List;)Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        48,
+        49
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.asRecordsProcessed:()Lsleeper/core/tracker/job/run/RecordsProcessed;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        92,
+        93,
+        95,
+        96,
+        98,
+        99
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.fromReadAndWritten:(JLjava/util/List;)Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.getFileReferenceList:()Ljava/util/List;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        78
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.getRecordsWritten:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        74
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.hashCode:()I" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        104
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.noFiles:()Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.recordsWritten:(Ljava/util/List;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        116,
+        117,
+        118,
+        116
+      ]
+    },
+    "sleeper.ingest.core.IngestResult.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        109
+      ]
+    },
+    "sleeper.ingest.core.IngestTask$MessageHandle.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.core.IngestTask$MessageHandle.completed:(Lsleeper/core/tracker/job/run/JobRunSummary;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.core.IngestTask$MessageHandle.failed:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.core.IngestTask$MessageHandle.getJob:()Lsleeper/ingest/core/job/IngestJob;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.core.IngestTask$MessageReceiver.receiveMessage:()Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.core.IngestTask.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.ingest.core.IngestTask.<init>:(Ljava/util/function/Supplier;Ljava/util/function/Supplier;Lsleeper/ingest/core/IngestTask$MessageReceiver;Lsleeper/ingest/core/job/IngestJobHandler;Lsleeper/core/tracker/ingest/job/IngestJobTracker;Lsleeper/core/tracker/ingest/task/IngestTaskTracker;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        52,
+        47,
+        48,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    "sleeper.ingest.core.IngestTask.finish:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        88,
+        89,
+        90,
+        91,
+        92
+      ]
+    },
+    "sleeper.ingest.core.IngestTask.handleOneMessage:()Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        100,
+        101,
+        102,
+        103,
+        105,
+        106,
+        107,
+        108,
+        109,
+        111,
+        112,
+        111,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        117,
+        122,
+        123,
+        124,
+        125,
+        135,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        128,
+        132,
+        133,
+        135,
+        133,
+        105
+      ]
+    },
+    "sleeper.ingest.core.IngestTask.run:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        67,
+        69,
+        70,
+        73,
+        74
+      ]
+    },
+    "sleeper.ingest.core.IngestTask.start:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        212,
+        213
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob$Builder.build:()Lsleeper/ingest/core/job/IngestJob;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        261
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob$Builder.files:(Ljava/util/List;)Lsleeper/ingest/core/job/IngestJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        256,
+        257
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob$Builder.id:(Ljava/lang/String;)Lsleeper/ingest/core/job/IngestJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        222,
+        223
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob$Builder.tableId:(Ljava/lang/String;)Lsleeper/ingest/core/job/IngestJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        245,
+        246
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob$Builder.tableName:(Ljava/lang/String;)Lsleeper/ingest/core/job/IngestJob$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        233,
+        234
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.<init>:(Lsleeper/ingest/core/job/IngestJob$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.acceptedEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/ingest/job/update/IngestJobValidatedEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        59
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.addedFilesEventBuilder:()Lsleeper/core/tracker/ingest/job/update/IngestJobAddedFilesEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        128
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.addedFilesEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/ingest/job/update/IngestJobAddedFilesEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        119
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.builder:()Lsleeper/ingest/core/job/IngestJob$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        49
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.createRejectedEvent:(Ljava/time/Instant;Ljava/util/List;)Lsleeper/core/tracker/ingest/job/update/IngestJobValidatedEvent;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.equals:(Ljava/lang/Object;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        177,
+        178,
+        180,
+        181,
+        183,
+        184,
+        185,
+        184
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.failedEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/ingest/job/update/IngestJobFailedEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        148
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.finishedEventBuilder:(Lsleeper/core/tracker/job/run/JobRunSummary;)Lsleeper/core/tracker/ingest/job/update/IngestJobFinishedEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        138
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.getFileCount:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        168
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.getFiles:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        164
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.getId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        152
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.getTableId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        160
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.getTableName:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        156
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.hashCode:()I" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        190
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.startedAfterValidationEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/ingest/job/update/IngestJobStartedEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        109
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.startedEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/ingest/job/update/IngestJobStartedEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        90
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.toBuilder:()Lsleeper/ingest/core/job/IngestJob$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        172
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.toString:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T020",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        195
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJob.validatedEventBuilder:(Ljava/time/Instant;)Lsleeper/core/tracker/ingest/job/update/IngestJobValidatedEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        74
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobHandler.ingest:(Lsleeper/ingest/core/job/IngestJob;Ljava/lang/String;)Lsleeper/ingest/core/IngestResult;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        204,
+        201,
+        202,
+        205
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.applyIngestJobChanges:(Ljava/util/function/BiFunction;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        258,
+        259
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.build:()Lsleeper/ingest/core/job/IngestJobMessageHandler;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        297
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.deserialiser:(Ljava/util/function/Function;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        236,
+        237
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.expandDirectories:(Ljava/util/function/Function;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        269,
+        270
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.ingestJobTracker:(Lsleeper/core/tracker/ingest/job/IngestJobTracker;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        225,
+        226
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.jobIdSupplier:(Ljava/util/function/Supplier;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        281,
+        282
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.lambda$new$0:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        201
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.tableIndex:(Lsleeper/core/table/TableIndex;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        214,
+        215
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.timeSupplier:(Ljava/util/function/Supplier;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        292,
+        293
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler$Builder.toIngestJob:(Ljava/util/function/Function;)Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        247,
+        248
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.<init>:(Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.builder:()Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        80
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.deserialiseAndValidate:(Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        100,
+        101,
+        108,
+        102,
+        103,
+        104,
+        105,
+        106,
+        105,
+        104,
+        107,
+        109
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.forIngestJob:()Lsleeper/ingest/core/job/IngestJobMessageHandler$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        73
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.getTable:(Lsleeper/ingest/core/job/IngestJob;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        175,
+        176,
+        177,
+        178,
+        180
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.lambda$forIngestJob$0:(Lsleeper/ingest/core/job/IngestJob;)Lsleeper/ingest/core/job/IngestJob;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.lambda$forIngestJob$1:(Lsleeper/ingest/core/job/IngestJob;Lsleeper/ingest/core/job/IngestJob;)Lsleeper/ingest/core/job/IngestJob;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.lambda$validate$2:(Ljava/lang/String;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        131
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.refusedEventBuilder:()Lsleeper/core/tracker/ingest/job/update/IngestJobValidatedEvent$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        185,
+        186,
+        185
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobMessageHandler.validate:(Ljava/lang/Object;Ljava/lang/String;)Ljava/util/Optional;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        120,
+        121,
+        122,
+        123,
+        124,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        134,
+        135,
+        136,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        140,
+        147,
+        149,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        154,
+        161,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        165
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobSerDe.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobSerDe.fromJson:(Ljava/lang/String;)Lsleeper/ingest/core/job/IngestJob;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        66
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobSerDe.toJson:(Lsleeper/ingest/core/job/IngestJob;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.ingest.core.job.IngestJobSerDe.toJson:(Lsleeper/ingest/core/job/IngestJob;Z)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        53,
+        54,
+        56
+      ]
+    }
+  }
+}

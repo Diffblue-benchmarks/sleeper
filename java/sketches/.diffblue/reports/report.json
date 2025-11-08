@@ -1,0 +1,581 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 49588.11,
+    "environmentDetectionTime" : 0.362,
+    "indexingTime" : 0.475,
+    "entryPointsTime" : 0.356,
+    "generationTime" : 36056.829,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 14.366,
+    "verificationTime" : 806.897,
+    "validationTime" : 28.39
+  },
+  "codes" : {
+    "F009" : "Internal error",
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R011" : "Sandboxing policy violation",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 5,
+    "methodsCount" : 31,
+    "cumulativeDiffblueTestCount" : 19,
+    "cumulativeManualTestCount" : 6,
+    "completeTestCount" : 20,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 247,
+    "perMethodTestability" : {
+      "T000" : 18,
+      "T001" : 2,
+      "T003" : 3,
+      "T005" : 4,
+      "T008" : 1,
+      "T012" : 3
+    },
+    "perMethodOutcome" : {
+      "F009" : 1,
+      "R000" : 10,
+      "R002" : 4,
+      "R011" : 1,
+      "R013" : 6,
+      "R083" : 2,
+      "T003" : 3,
+      "T008" : 1,
+      "T012" : 3
+    },
+    "perTestOutcome" : {
+      "R000" : 20
+    },
+    "perTestValidation" : {
+      "V000" : 20,
+      "V003" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.sketches.Sketches" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 10,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "F009" : 1,
+        "R000" : 6,
+        "R002" : 1,
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 10
+      }
+    },
+    "sleeper.sketches.Sketches$FieldSketch" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T001" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R083" : 2,
+        "T008" : 1
+      }
+    },
+    "sleeper.sketches.SketchesSerDe" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 4
+      }
+    },
+    "sleeper.sketches.SketchesSerDe$ArrayOfByteArraysSerSe" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R011" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "R013" : 4,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.sketches.Sketches$FieldSketch.<init>:(Lsleeper/core/schema/Field;Lorg/apache/datasketches/quantiles/ItemsSketch;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        115,
+        116,
+        117,
+        118
+      ]
+    },
+    "sleeper.sketches.Sketches$FieldSketch.getField:()Lsleeper/core/schema/Field;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        121
+      ]
+    },
+    "sleeper.sketches.Sketches$FieldSketch.getSketch:()Lorg/apache/datasketches/quantiles/ItemsSketch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        125
+      ]
+    },
+    "sleeper.sketches.Sketches.<init>:(Lsleeper/core/schema/Schema;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    "sleeper.sketches.Sketches.convertValueForSketch:(Lsleeper/core/record/Record;Lsleeper/core/schema/Field;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        107
+      ]
+    },
+    "sleeper.sketches.Sketches.createComparator:(Lsleeper/core/schema/type/Type;)Ljava/util/Comparator;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        62,
+        63,
+        65
+      ]
+    },
+    "sleeper.sketches.Sketches.createSketch:(Lsleeper/core/schema/type/Type;I)Lorg/apache/datasketches/quantiles/ItemsSketch;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.sketches.Sketches.createUnion:(Lsleeper/core/schema/type/Type;I)Lorg/apache/datasketches/quantiles/ItemsUnion;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        58
+      ]
+    },
+    "sleeper.sketches.Sketches.fieldSketches:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        74,
+        75,
+        74
+      ]
+    },
+    "sleeper.sketches.Sketches.from:(Lsleeper/core/schema/Schema;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.sketches.Sketches.getQuantilesSketch:(Ljava/lang/String;)Lorg/apache/datasketches/quantiles/ItemsSketch;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        70
+      ]
+    },
+    "sleeper.sketches.Sketches.lambda$fieldSketches$0:(Ljava/util/Map$Entry;)Lsleeper/sketches/Sketches$FieldSketch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        75
+      ]
+    },
+    "sleeper.sketches.Sketches.readValueFromSketchWithWrappedBytes:(Ljava/lang/Object;Lsleeper/core/schema/Field;)Ljava/lang/Object;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        89,
+        90,
+        91,
+        92,
+        94
+      ]
+    },
+    "sleeper.sketches.Sketches.update:(Lorg/apache/datasketches/quantiles/ItemsSketch;Lsleeper/core/record/Record;Lsleeper/core/schema/Field;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        85,
+        86
+      ]
+    },
+    "sleeper.sketches.Sketches.update:(Lsleeper/core/record/Record;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "F009",
+      "lineNumbers" : [
+        79,
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe$ArrayOfByteArraysSerSe.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe$ArrayOfByteArraysSerSe.deserializeFromMemory:(Lorg/apache/datasketches/memory/Memory;I)[Lcom/facebook/collections/ByteArray;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        127,
+        137
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe$ArrayOfByteArraysSerSe.serializeToByteArray:([Lcom/facebook/collections/ByteArray;)[B" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R011",
+      "lineNumbers" : [
+        105,
+        106,
+        107,
+        108,
+        109,
+        107,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        114,
+        120
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe$ArrayOfByteArraysSerSe.serializeToByteArray:([Ljava/lang/Object;)[B" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        44,
+        45,
+        46
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe.deserialise:(Ljava/io/DataInputStream;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe.deserialise:(Ljava/io/DataInputStream;Lsleeper/core/schema/type/Type;)Lorg/apache/datasketches/quantiles/ItemsSketch;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        83
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe.getItemsSerDe:(Lsleeper/core/schema/type/Type;)Lorg/apache/datasketches/ArrayOfItemsSerDe;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        94
+      ]
+    },
+    "sleeper.sketches.SketchesSerDe.serialise:(Lsleeper/sketches/Sketches;Ljava/io/DataOutputStream;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        68,
+        69
+      ]
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        33
+      ]
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3.<init>:(Lsleeper/core/schema/Schema;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        37,
+        38,
+        39
+      ]
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3.loadFromHadoopFS:(Ljava/lang/String;Ljava/lang/String;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        67,
+        68
+      ]
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3.loadFromHadoopFS:(Lorg/apache/hadoop/fs/Path;Lorg/apache/hadoop/conf/Configuration;)Lsleeper/sketches/Sketches;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        59,
+        60,
+        61,
+        59,
+        62,
+        63
+      ]
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3.saveToHadoopFS:(Ljava/lang/String;Ljava/lang/String;Lsleeper/sketches/Sketches;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        53,
+        54,
+        55
+      ]
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3.saveToHadoopFS:(Lorg/apache/hadoop/fs/Path;Lsleeper/sketches/Sketches;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        46,
+        50
+      ]
+    },
+    "sleeper.sketches.s3.SketchesSerDeToS3.sketchesPathForDataFile:(Ljava/lang/String;)Lorg/apache/hadoop/fs/Path;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        42
+      ]
+    }
+  }
+}

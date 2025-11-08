@@ -1,0 +1,1040 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 27021.692,
+    "environmentDetectionTime" : 0.407,
+    "indexingTime" : 0.395,
+    "entryPointsTime" : 0.4,
+    "generationTime" : 21252.49,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 19.504,
+    "verificationTime" : 443.719,
+    "validationTime" : 68.186
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 9,
+    "methodsCount" : 63,
+    "cumulativeDiffblueTestCount" : 3,
+    "cumulativeManualTestCount" : 2,
+    "completeTestCount" : 3,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 657,
+    "perMethodTestability" : {
+      "T000" : 19,
+      "T003" : 15,
+      "T005" : 2,
+      "T012" : 27
+    },
+    "perMethodOutcome" : {
+      "R000" : 3,
+      "R002" : 3,
+      "R013" : 15,
+      "T003" : 15,
+      "T012" : 27
+    },
+    "perTestOutcome" : {
+      "R000" : 3
+    },
+    "perTestValidation" : {
+      "V000" : 3,
+      "V003" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T003" : 1,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 1,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 3,
+        "T005" : 1,
+        "T012" : 6
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 2,
+        "T003" : 3,
+        "T012" : 6
+      }
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationLambda" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 2,
+        "T012" : 2
+      }
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationTriggerLambda" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionLambda" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 2,
+        "T012" : 2
+      }
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionTriggerLambda" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogFollowerLambda" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R002" : 1,
+        "T012" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda" : {
+      "methodsCount" : 8,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 4,
+        "T012" : 2
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 4,
+        "T012" : 2
+      }
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionTriggerLambda" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 1,
+        "T012" : 3
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        49
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        53,
+        50,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.<init>:(Lsleeper/compaction/core/job/commit/CompactionCommitBatcher;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        61,
+        50,
+        62,
+        63
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.createBatcher:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/sqs/AmazonSQS;Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/compaction/core/job/commit/CompactionCommitBatcher;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        90,
+        91,
+        90
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        47
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.lambda$handleRequest$0:(Ljava/util/List;Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;)Lsleeper/compaction/core/job/commit/CompactionCommitMessageHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        69
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.lambda$readMessageTrackingFailure$1:(Ljava/util/List;Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        77
+      ]
+    },
+    "sleeper.statestore.lambda.committer.CompactionCommitBatcherLambda.readMessageTrackingFailure:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;Ljava/util/List;)Lsleeper/compaction/core/job/commit/CompactionCommitMessageHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        76
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        77,
+        78,
+        80,
+        81,
+        82,
+        83,
+        84,
+        87,
+        88,
+        89,
+        90,
+        91
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.<init>:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/statestore/StateStoreProvider;Lsleeper/core/statestore/commit/StateStoreCommitRequestSerDe;Lsleeper/statestore/committer/StateStoreCommitter;Lsleeper/core/util/PollWithRetries;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.getRequestHandlesWithFailureTracking:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Ljava/util/function/Consumer;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        121,
+        122,
+        123,
+        121
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        108,
+        109,
+        110,
+        111,
+        113,
+        114,
+        115,
+        116,
+        115,
+        117
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.lambda$getRequestHandlesWithFailureTracking$1:(Ljava/util/function/Consumer;Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;)Lsleeper/statestore/committer/StateStoreCommitter$RequestHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        122
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.lambda$handleRequest$0:(Ljava/util/List;Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        112
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.lambda$readRequest$2:(Ljava/util/function/Consumer;Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        130
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.lambda$retryForBatch$3:(Lsleeper/core/util/PollWithRetries;Ljava/lang/Runnable;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        137
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.readRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent$SQSMessage;Ljava/util/function/Consumer;)Lsleeper/statestore/committer/StateStoreCommitter$RequestHandle;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        127,
+        128,
+        129,
+        128
+      ]
+    },
+    "sleeper.statestore.lambda.committer.StateStoreCommitterLambda.retryForBatch:()Lsleeper/statestore/committer/StateStoreCommitter$RetryOnThrottling;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        134,
+        135,
+        136,
+        137
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationLambda.createSnapshots:(Ljava/util/List;Ljava/util/Map;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        85,
+        86,
+        88,
+        89,
+        88,
+        90,
+        97,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        98,
+        99
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        69,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        78,
+        79,
+        80
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationLambda.loadTables:(Ljava/util/Map;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        104,
+        105,
+        106,
+        107,
+        109,
+        110,
+        111,
+        118,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        119,
+        120
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationTriggerLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationTriggerLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationTriggerLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationTriggerLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationTriggerLambda.lambda$streamOnlineTransactionLogTables$0:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/table/TableStatus;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        84,
+        85,
+        84
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotCreationTriggerLambda.streamOnlineTransactionLogTables:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        80,
+        81,
+        82,
+        83,
+        84,
+        83
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionLambda.deleteSnapshots:(Ljava/util/List;Ljava/util/Map;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        92,
+        93,
+        94,
+        96,
+        97,
+        98,
+        105,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        106,
+        107
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        75,
+        76,
+        77,
+        79,
+        80,
+        81,
+        82,
+        83,
+        85,
+        86,
+        87
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionLambda.loadTables:(Ljava/util/Map;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        112,
+        113,
+        114,
+        115,
+        117,
+        118,
+        119,
+        126,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        127,
+        128
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionTriggerLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionTriggerLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionTriggerLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        73,
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionTriggerLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionTriggerLambda.lambda$streamOnlineTransactionLogTables$0:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/table/TableStatus;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        85,
+        86,
+        85
+      ]
+    },
+    "sleeper.statestore.lambda.snapshot.TransactionLogSnapshotDeletionTriggerLambda.streamOnlineTransactionLogTables:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84,
+        85,
+        84
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogFollowerLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        29
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogFollowerLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogFollowerLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/DynamodbEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        33,
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogFollowerLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        28
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        56
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.deleteTransactions:(Ljava/util/List;Ljava/util/Map;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        92,
+        93,
+        95,
+        96,
+        97,
+        98,
+        99,
+        106,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        107,
+        108
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.getLogStoreForFiles:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/statestore/transactionlog/log/TransactionLogStore;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        111
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.getLogStoreForPartitions:(Lsleeper/core/properties/table/TableProperties;)Lsleeper/core/statestore/transactionlog/log/TransactionLogStore;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/SQSEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Lcom/amazonaws/services/lambda/runtime/events/SQSBatchResponse;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        75,
+        76,
+        77,
+        79,
+        80,
+        81,
+        82,
+        83,
+        85,
+        86,
+        87
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionLambda.loadTables:(Ljava/util/Map;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        121,
+        122,
+        123,
+        124,
+        126,
+        127,
+        128,
+        135,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        136,
+        137
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionTriggerLambda.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        53
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionTriggerLambda.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionTriggerLambda.handleRequest:(Lcom/amazonaws/services/lambda/runtime/events/ScheduledEvent;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Void;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        73,
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionTriggerLambda.handleRequest:(Ljava/lang/Object;Lcom/amazonaws/services/lambda/runtime/Context;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionTriggerLambda.lambda$streamOnlineTransactionLogTables$0:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/core/table/TableStatus;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        85,
+        86,
+        85
+      ]
+    },
+    "sleeper.statestore.lambda.transaction.TransactionLogTransactionDeletionTriggerLambda.streamOnlineTransactionLogTables:()Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84,
+        85,
+        84
+      ]
+    }
+  }
+}

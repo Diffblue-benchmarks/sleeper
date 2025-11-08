@@ -1,0 +1,481 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 9759.164,
+    "environmentDetectionTime" : 0.426,
+    "indexingTime" : 0.368,
+    "entryPointsTime" : 0.421,
+    "generationTime" : 6860.353,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 11.281,
+    "verificationTime" : 194.794,
+    "validationTime" : 53.653
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "T000" : "Method eligible for test creation",
+    "T003" : "Private method",
+    "T008" : "Private and never called",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation"
+  },
+  "summary" : {
+    "classesCount" : 4,
+    "methodsCount" : 23,
+    "cumulativeDiffblueTestCount" : 33,
+    "cumulativeManualTestCount" : 2,
+    "completeTestCount" : 36,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 269,
+    "perMethodTestability" : {
+      "T000" : 13,
+      "T003" : 4,
+      "T008" : 2,
+      "T012" : 4
+    },
+    "perMethodOutcome" : {
+      "R000" : 7,
+      "R013" : 6,
+      "T003" : 4,
+      "T008" : 2,
+      "T012" : 4
+    },
+    "perTestOutcome" : {
+      "R000" : 36
+    },
+    "perTestValidation" : {
+      "V000" : 33,
+      "V003" : 3
+    }
+  },
+  "classes" : {
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 30,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 8,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 4,
+        "R013" : 4,
+        "T012" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 30
+      }
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStoreCreator" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 4
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R013" : 1,
+        "T003" : 4
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.ingest.batcher.store.IngestBatcherStoreFactory" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        61
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;)V" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        72,
+        73
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.<init>:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;I)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.addFile:(Lsleeper/ingest/batcher/core/FileIngestRequest;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        90,
+        91,
+        92,
+        93,
+        90,
+        94,
+        95,
+        94,
+        96
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.assignJobGetAssigned:(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;" : {
+      "completeTestCount" : 23,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 23
+      },
+      "lineNumbers" : [
+        100,
+        101,
+        102,
+        104,
+        105,
+        106,
+        107,
+        119,
+        106,
+        120,
+        121,
+        122,
+        123,
+        124,
+        123,
+        125,
+        133,
+        126,
+        127,
+        128,
+        129,
+        130,
+        133,
+        131,
+        132,
+        101,
+        135,
+        136,
+        137,
+        135
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.deleteAllPending:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        165,
+        166,
+        167,
+        169,
+        170,
+        173,
+        168,
+        167,
+        175
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.getAllFilesNewestFirst:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        142,
+        143,
+        142,
+        144,
+        145,
+        146,
+        142
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.getPendingFilesOldestFirst:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        151,
+        152,
+        153,
+        154,
+        156,
+        157,
+        155,
+        151,
+        158,
+        159,
+        160,
+        151
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.ingestRequestsTableName:(Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        85
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.lambda$assignJobGetAssigned$0:(Ljava/lang/String;Lsleeper/ingest/batcher/core/FileIngestRequest;)Ljava/util/stream/Stream;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        107,
+        109,
+        110,
+        111,
+        112,
+        108,
+        114,
+        116,
+        115,
+        117,
+        118,
+        113,
+        107
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.lambda$assignJobGetAssigned$1:(Lcom/amazonaws/services/dynamodbv2/model/CancellationReason;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        129
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStore.lambda$deleteAllPending$2:(Lsleeper/ingest/batcher/core/FileIngestRequest;)Lcom/amazonaws/services/dynamodbv2/model/WriteRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        170,
+        172,
+        171,
+        170
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStoreCreator.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        38,
+        39
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestBatcherStoreCreator.create:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        42,
+        43,
+        44,
+        47,
+        43,
+        50,
+        51
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        35,
+        36
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat.createRecord:(Lsleeper/core/properties/table/TablePropertiesProvider;Lsleeper/ingest/batcher/core/FileIngestRequest;)Ljava/util/Map;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        50
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat.createUnassignedKey:(Lsleeper/ingest/batcher/core/FileIngestRequest;)Ljava/util/Map;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        74,
+        75,
+        76,
+        77,
+        74
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat.getExpiryTimeEpochSeconds:(Lsleeper/core/properties/table/TableProperties;Lsleeper/ingest/batcher/core/FileIngestRequest;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        81,
+        82,
+        83,
+        84,
+        82
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat.getJobIdAttribute:(Ljava/util/Map;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        96,
+        97,
+        98,
+        100
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat.getJobIdOrUnassigned:(Lsleeper/ingest/batcher/core/FileIngestRequest;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        88,
+        89,
+        91
+      ]
+    },
+    "sleeper.ingest.batcher.store.DynamoDBIngestRequestFormat.readRecord:(Ljava/util/Map;)Lsleeper/ingest/batcher/core/FileIngestRequest;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        64
+      ]
+    },
+    "sleeper.ingest.batcher.store.IngestBatcherStoreFactory.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        31,
+        32
+      ]
+    },
+    "sleeper.ingest.batcher.store.IngestBatcherStoreFactory.getStore:(Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TablePropertiesProvider;)Ljava/util/Optional;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        36,
+        37,
+        39
+      ]
+    }
+  }
+}

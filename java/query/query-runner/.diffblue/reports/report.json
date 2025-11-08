@@ -1,0 +1,2073 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 37103.577,
+    "environmentDetectionTime" : 0.655,
+    "indexingTime" : 0.429,
+    "entryPointsTime" : 0.649,
+    "generationTime" : 27989.078,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 25.738,
+    "verificationTime" : 576.988,
+    "validationTime" : 93.837
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R004" : "No meaningful assertions found",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R081" : "Exception in arrange section",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T002" : "Trivial setter",
+    "T003" : "Private method",
+    "T005" : "Trivial constructor",
+    "T008" : "Private and never called",
+    "T012" : "Synthetic method",
+    "T021" : "Empty method body",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 14,
+    "methodsCount" : 119,
+    "cumulativeDiffblueTestCount" : 80,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 81,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 1129,
+    "perMethodTestability" : {
+      "T000" : 63,
+      "T001" : 4,
+      "T002" : 5,
+      "T003" : 17,
+      "T005" : 6,
+      "T008" : 1,
+      "T012" : 20,
+      "T021" : 3
+    },
+    "perMethodOutcome" : {
+      "R000" : 39,
+      "R002" : 6,
+      "R004" : 2,
+      "R013" : 24,
+      "R081" : 1,
+      "R083" : 7,
+      "T003" : 17,
+      "T005" : 1,
+      "T008" : 1,
+      "T012" : 20,
+      "W002" : 1
+    },
+    "perTestOutcome" : {
+      "R000" : 81
+    },
+    "perTestValidation" : {
+      "V000" : 80,
+      "V003" : 1
+    },
+    "warnings" : {
+      "W002" : 5
+    }
+  },
+  "classes" : {
+    "sleeper.query.runner.output.NoResultsOutput" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2
+      },
+      "perMethodOutcome" : {
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      }
+    },
+    "sleeper.query.runner.output.S3ResultsOutput" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.query.runner.output.SQSResultsOutput" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 2,
+        "T012" : 1,
+        "W002" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 12
+      },
+      "warnings" : {
+        "W002" : 1
+      }
+    },
+    "sleeper.query.runner.output.WebSocketOutput" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 20,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 7,
+        "T001" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 9,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 20
+      }
+    },
+    "sleeper.query.runner.output.WebSocketResultsOutput" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R013" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 8
+      }
+    },
+    "sleeper.query.runner.recordretrieval.LeafPartitionRecordRetrieverImpl" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T005" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 2,
+        "R002" : 1,
+        "T003" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "warnings" : {
+        "W002" : 4
+      }
+    },
+    "sleeper.query.runner.recordretrieval.RetrieveTask" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "R081" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker" : {
+      "methodsCount" : 23,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 16,
+        "T003" : 3,
+        "T012" : 4
+      },
+      "perMethodOutcome" : {
+        "R004" : 2,
+        "R013" : 14,
+        "T003" : 3,
+        "T012" : 4
+      }
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker$1" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "T012" : 1
+      }
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerCreator" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T005" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "T003" : 2
+      }
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry" : {
+      "methodsCount" : 11,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 5,
+        "T001" : 1,
+        "T003" : 2,
+        "T005" : 3
+      },
+      "perMethodOutcome" : {
+        "R013" : 1,
+        "R083" : 7,
+        "T003" : 2,
+        "T005" : 1
+      }
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder" : {
+      "methodsCount" : 9,
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T002" : 5,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 8,
+        "T008" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 5
+      }
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners" : {
+      "methodsCount" : 24,
+      "completeTestCount" : 13,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 11,
+        "T003" : 3,
+        "T012" : 10
+      },
+      "perMethodOutcome" : {
+        "R000" : 10,
+        "R002" : 1,
+        "T003" : 3,
+        "T012" : 10
+      },
+      "perTestOutcome" : {
+        "R000" : 13
+      }
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination" : {
+      "methodsCount" : 15,
+      "completeTestCount" : 9,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 9,
+        "T003" : 2,
+        "T012" : 1,
+        "T021" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "R002" : 3,
+        "R013" : 6,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 9
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.query.runner.output.NoResultsOutput.<init>:()V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        35,
+        33,
+        36,
+        37
+      ]
+    },
+    "sleeper.query.runner.output.NoResultsOutput.publish:(Lsleeper/query/core/model/QueryOrLeafPartitionQuery;Lsleeper/core/iterator/CloseableIterator;)Lsleeper/query/core/output/ResultsOutputInfo;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        42
+      ]
+    },
+    "sleeper.query.runner.output.S3ResultsOutput.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        51
+      ]
+    },
+    "sleeper.query.runner.output.S3ResultsOutput.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Ljava/util/Map;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        72,
+        73,
+        75,
+        76
+      ]
+    },
+    "sleeper.query.runner.output.S3ResultsOutput.buildParquetWriter:(Lorg/apache/hadoop/fs/Path;)Lorg/apache/parquet/hadoop/ParquetWriter;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ]
+    },
+    "sleeper.query.runner.output.S3ResultsOutput.publish:(Lsleeper/query/core/model/QueryOrLeafPartitionQuery;Lsleeper/core/iterator/CloseableIterator;)Lsleeper/query/core/output/ResultsOutputInfo;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        80,
+        81,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        94,
+        95,
+        96,
+        97,
+        96,
+        98,
+        99,
+        104,
+        107,
+        105,
+        106,
+        98,
+        85,
+        99,
+        100,
+        101,
+        104,
+        107,
+        105,
+        106,
+        101,
+        103,
+        104,
+        107,
+        105,
+        106,
+        108
+      ]
+    },
+    "sleeper.query.runner.output.SQSResultsOutput.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        46
+      ]
+    },
+    "sleeper.query.runner.output.SQSResultsOutput.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/sqs/AmazonSQS;Lsleeper/core/schema/Schema;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        64,
+        65,
+        67,
+        68,
+        69
+      ]
+    },
+    "sleeper.query.runner.output.SQSResultsOutput.publish:(Lsleeper/query/core/model/QueryOrLeafPartitionQuery;Lsleeper/core/iterator/CloseableIterator;)Lsleeper/query/core/output/ResultsOutputInfo;" : {
+      "completeTestCount" : 12,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 12
+      },
+      "lineNumbers" : [
+        73,
+        74,
+        76,
+        77,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        93,
+        94,
+        95,
+        103,
+        106,
+        104,
+        105,
+        107,
+        98,
+        99,
+        100,
+        103,
+        106,
+        104,
+        105,
+        100,
+        102,
+        103,
+        106,
+        104,
+        105,
+        107,
+        109
+      ]
+    },
+    "sleeper.query.runner.output.SQSResultsOutput.sendBatchToSQS:(Lsleeper/core/record/ResultsBatch;ILjava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        113,
+        114,
+        115
+      ]
+    },
+    "sleeper.query.runner.output.SQSResultsOutput.sendResultsToSQS:(Lsleeper/core/record/ResultsBatch;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        118,
+        119,
+        120,
+        121,
+        122,
+        123
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.<init>:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        54,
+        55
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.<init>:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/amazonaws/auth/AWSCredentials;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        57,
+        51,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        65,
+        66
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.<init>:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        68,
+        51,
+        69,
+        70,
+        71,
+        73,
+        74,
+        77,
+        78,
+        79,
+        82,
+        83,
+        84,
+        87,
+        88,
+        90,
+        91,
+        92,
+        93,
+        94,
+        97,
+        98
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.getConnectionId:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        109
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.getEndpoint:()Ljava/lang/String;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        105
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.getQueryId:(Lsleeper/query/core/model/LeafPartitionQuery;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        141
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.getQueryId:(Lsleeper/query/core/model/Query;)Ljava/lang/String;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        145
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.getQueryId:(Lsleeper/query/core/model/QueryOrLeafPartitionQuery;)Ljava/lang/String;" : {
+      "completeTestCount" : 4,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
+      "lineNumbers" : [
+        133,
+        134,
+        136
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.isClientGone:()Z" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        101
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketOutput.sendString:(Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        113,
+        114,
+        117,
+        118,
+        119,
+        122,
+        129,
+        123,
+        124,
+        125,
+        126,
+        128,
+        130
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketResultsOutput.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        43
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketResultsOutput.<init>:(Lsleeper/core/schema/Schema;Ljava/util/Map;)V" : {
+      "completeTestCount" : 8,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 8
+      },
+      "lineNumbers" : [
+        51,
+        46,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketResultsOutput.publish:(Lsleeper/query/core/model/QueryOrLeafPartitionQuery;Lsleeper/core/iterator/CloseableIterator;)Lsleeper/query/core/output/ResultsOutputInfo;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        64,
+        66,
+        67,
+        68,
+        69,
+        70,
+        72,
+        73,
+        74,
+        77,
+        78,
+        80,
+        81,
+        82,
+        84,
+        85,
+        86,
+        87,
+        88,
+        90,
+        94,
+        95,
+        96,
+        97,
+        100,
+        101,
+        103,
+        104,
+        105,
+        106,
+        113,
+        116,
+        114,
+        115,
+        117,
+        108,
+        109,
+        110,
+        113,
+        116,
+        114,
+        115,
+        110,
+        112,
+        113,
+        116,
+        114,
+        115,
+        117,
+        119
+      ]
+    },
+    "sleeper.query.runner.output.WebSocketResultsOutput.publishBatch:(Ljava/util/Map;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        123,
+        124,
+        125,
+        126
+      ]
+    },
+    "sleeper.query.runner.recordretrieval.LeafPartitionRecordRetrieverImpl.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        57
+      ]
+    },
+    "sleeper.query.runner.recordretrieval.LeafPartitionRecordRetrieverImpl.<init>:(Ljava/util/concurrent/ExecutorService;Lorg/apache/hadoop/conf/Configuration;Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    "sleeper.query.runner.recordretrieval.LeafPartitionRecordRetrieverImpl.createParquetReader:(Lsleeper/core/schema/Schema;Ljava/lang/String;Lorg/apache/parquet/filter2/predicate/FilterPredicate;)Lorg/apache/parquet/hadoop/ParquetReader;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        142,
+        143,
+        144,
+        145,
+        146,
+        142
+      ]
+    },
+    "sleeper.query.runner.recordretrieval.LeafPartitionRecordRetrieverImpl.getRecords:(Ljava/util/List;Lsleeper/core/schema/Schema;Lorg/apache/parquet/filter2/predicate/FilterPredicate;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "warnings" : {
+        "W002" : 4
+      },
+      "lineNumbers" : [
+        70,
+        71,
+        74,
+        75,
+        76,
+        78,
+        81,
+        79,
+        80,
+        82,
+        83,
+        87,
+        90,
+        88,
+        89,
+        95,
+        96,
+        97,
+        100,
+        103,
+        101,
+        102,
+        104,
+        105,
+        106,
+        107,
+        109,
+        112,
+        113,
+        114,
+        115,
+        116,
+        120,
+        121,
+        122,
+        124
+      ]
+    },
+    "sleeper.query.runner.recordretrieval.LeafPartitionRecordRetrieverImpl.getRecords:(Lsleeper/query/core/model/LeafPartitionQuery;Lsleeper/core/schema/Schema;)Lsleeper/core/iterator/CloseableIterator;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        129,
+        130,
+        131,
+        134,
+        135,
+        134,
+        136
+      ]
+    },
+    "sleeper.query.runner.recordretrieval.RetrieveTask.<init>:(Lorg/apache/parquet/hadoop/ParquetReader;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        36,
+        37,
+        38
+      ]
+    },
+    "sleeper.query.runner.recordretrieval.RetrieveTask.call:()Lorg/apache/commons/lang3/tuple/Pair;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        44,
+        47,
+        45,
+        46,
+        48,
+        49,
+        51
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker$1.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        232
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.<init>:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        71,
+        72,
+        73,
+        74,
+        75,
+        76
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        68,
+        69
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.getAllQueries:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        107,
+        108,
+        109,
+        110,
+        108
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.getFailedQueries:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        126,
+        127,
+        129,
+        130,
+        128,
+        131,
+        126,
+        132,
+        133,
+        134,
+        132
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.getParentState:(Ljava/util/List;)Lsleeper/query/core/tracker/QueryState;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        235,
+        236,
+        238,
+        239,
+        241,
+        242,
+        244,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        253,
+        254,
+        253,
+        255
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.getQueriesWithState:(Lsleeper/query/core/tracker/QueryState;)Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        115,
+        116,
+        117,
+        118,
+        115,
+        119,
+        120,
+        121,
+        119
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.getStatus:(Ljava/lang/String;)Lsleeper/query/core/tracker/TrackedQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        80
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.getStatus:(Ljava/lang/String;Ljava/lang/String;)Lsleeper/query/core/tracker/TrackedQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        85,
+        86,
+        88,
+        89,
+        87,
+        91,
+        92,
+        90,
+        85,
+        94,
+        95,
+        96,
+        97,
+        98,
+        102
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.lambda$subQueriesCreated$0:(Lsleeper/query/core/model/LeafPartitionQuery;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        154,
+        155,
+        154
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.lambda$updateStateOfParent$1:(Lsleeper/query/core/tracker/TrackedQuery;)Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        213
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.lambda$updateStateOfParent$2:(Lsleeper/query/core/tracker/TrackedQuery;)J" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        220
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryCompleted:(Lsleeper/query/core/model/LeafPartitionQuery;Lsleeper/query/core/output/ResultsOutputInfo;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        167,
+        168,
+        169,
+        167,
+        170
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryCompleted:(Lsleeper/query/core/model/Query;Lsleeper/query/core/output/ResultsOutputInfo;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        160,
+        161,
+        162,
+        160,
+        163
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryFailed:(Ljava/lang/String;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        181,
+        182,
+        183,
+        184,
+        181,
+        185
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryFailed:(Lsleeper/query/core/model/LeafPartitionQuery;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        189,
+        190,
+        191,
+        189,
+        192
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryFailed:(Lsleeper/query/core/model/Query;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        174,
+        175,
+        176,
+        174,
+        177
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryInProgress:(Lsleeper/query/core/model/LeafPartitionQuery;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        149,
+        150
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryInProgress:(Lsleeper/query/core/model/Query;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        144,
+        145
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.queryQueued:(Lsleeper/query/core/model/Query;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        139,
+        140
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.subQueriesCreated:(Lsleeper/query/core/model/Query;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R004",
+      "lineNumbers" : [
+        154,
+        156
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.updateState:(Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        195,
+        196,
+        195,
+        197,
+        198,
+        200
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTracker.updateStateOfParent:(Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        203,
+        204,
+        205,
+        207,
+        208,
+        206,
+        203,
+        209,
+        211,
+        212,
+        213,
+        214,
+        216,
+        218,
+        219,
+        220,
+        221,
+        222,
+        224
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerCreator.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerCreator.create:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        48,
+        51
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerCreator.createAttributeDefinitions:()Ljava/util/Collection;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        54
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerCreator.createKeySchema:()Ljava/util/List;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        60,
+        62,
+        63,
+        65,
+        66,
+        60
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        156,
+        151,
+        157
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.build:()Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        206
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.completed:(Lsleeper/query/core/output/ResultsOutputInfo;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        185,
+        186,
+        187,
+        188,
+        189,
+        187,
+        191,
+        192,
+        191,
+        195,
+        196,
+        195
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.errorMessage:(Ljava/lang/String;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        180,
+        181
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.failed:(Ljava/lang/Exception;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        201,
+        202,
+        201
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.queryId:(Ljava/lang/String;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        160,
+        161
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.recordCount:(J)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        175,
+        176
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.state:(Lsleeper/query/core/tracker/QueryState;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        170,
+        171
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry$Builder.subQueryId:(Ljava/lang/String;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T002",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        165,
+        166
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.<init>:(Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.builder:()Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "T005",
+      "lineNumbers" : [
+        73
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.getKey:()Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.getQueryId:()Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        137
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.getValueUpdate:(J)Ljava/util/Map;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        87,
+        88,
+        87,
+        90,
+        91,
+        90,
+        93,
+        94,
+        93,
+        96,
+        97,
+        96,
+        98,
+        99,
+        100,
+        99,
+        102
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.isSubQuery:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        133
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.isUpdateParent:()Z" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        128,
+        129,
+        128
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.toTrackedQuery:(Ljava/util/Map;)Lsleeper/query/core/tracker/TrackedQuery;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        117
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.updateParent:(Lsleeper/query/core/tracker/QueryState;J)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        141
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.withLeafQuery:(Lsleeper/query/core/model/LeafPartitionQuery;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        67,
+        68,
+        69,
+        67
+      ]
+    },
+    "sleeper.query.runner.tracker.DynamoDBQueryTrackerEntry.withQuery:(Lsleeper/query/core/model/Query;)Lsleeper/query/runner/tracker/DynamoDBQueryTrackerEntry$Builder;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        63
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        36,
+        34,
+        37
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.<init>:(Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        39,
+        34,
+        40,
+        41,
+        43
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.add:(Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        72,
+        73
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.fromConfig:(Ljava/util/List;)Lsleeper/query/runner/tracker/QueryStatusReportListeners;" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        46,
+        47,
+        50,
+        51,
+        52,
+        53
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryCompleted$4:(Lsleeper/query/core/model/Query;Lsleeper/query/core/output/ResultsOutputInfo;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        102
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryCompleted$5:(Lsleeper/query/core/model/LeafPartitionQuery;Lsleeper/query/core/output/ResultsOutputInfo;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        108
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryFailed$6:(Lsleeper/query/core/model/Query;Ljava/lang/Exception;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        114
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryFailed$7:(Ljava/lang/String;Ljava/lang/Exception;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        120
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryFailed$8:(Lsleeper/query/core/model/LeafPartitionQuery;Ljava/lang/Exception;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        126
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryInProgress$1:(Lsleeper/query/core/model/Query;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        84
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryInProgress$2:(Lsleeper/query/core/model/LeafPartitionQuery;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        90
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$queryQueued$0:(Lsleeper/query/core/model/Query;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        78
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.lambda$subQueriesCreated$3:(Lsleeper/query/core/model/Query;Ljava/util/List;Lsleeper/query/core/tracker/QueryStatusReportListener;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        96
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.listenerFromConfig:(Ljava/util/Map;)Lsleeper/query/core/tracker/QueryStatusReportListener;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        57,
+        58,
+        61,
+        62,
+        63,
+        64,
+        65,
+        68
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryCompleted:(Lsleeper/query/core/model/LeafPartitionQuery;Lsleeper/query/core/output/ResultsOutputInfo;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        107,
+        108,
+        109
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryCompleted:(Lsleeper/query/core/model/Query;Lsleeper/query/core/output/ResultsOutputInfo;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        101,
+        102,
+        103
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryFailed:(Ljava/lang/String;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        119,
+        120,
+        121
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryFailed:(Lsleeper/query/core/model/LeafPartitionQuery;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        125,
+        126,
+        127
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryFailed:(Lsleeper/query/core/model/Query;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        113,
+        114,
+        115
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryInProgress:(Lsleeper/query/core/model/LeafPartitionQuery;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        89,
+        90,
+        91
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryInProgress:(Lsleeper/query/core/model/Query;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        83,
+        84,
+        85
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.queryQueued:(Lsleeper/query/core/model/Query;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        77,
+        78,
+        79
+      ]
+    },
+    "sleeper.query.runner.tracker.QueryStatusReportListeners.subQueriesCreated:(Lsleeper/query/core/model/Query;Ljava/util/List;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        95,
+        96,
+        97
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        38
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.<init>:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        41,
+        37,
+        42
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.<init>:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/amazonaws/auth/AWSCredentials;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        45,
+        37,
+        46
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.<init>:(Ljava/util/Map;)V" : {
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
+      "lineNumbers" : [
+        49,
+        37,
+        50
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryCompleted:(Ljava/lang/String;Lsleeper/query/core/output/ResultsOutputInfo;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        86,
+        88,
+        89,
+        90,
+        91,
+        92,
+        95,
+        96
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryCompleted:(Lsleeper/query/core/model/LeafPartitionQuery;Lsleeper/query/core/output/ResultsOutputInfo;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        82,
+        83
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryCompleted:(Lsleeper/query/core/model/Query;Lsleeper/query/core/output/ResultsOutputInfo;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        77,
+        78
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryFailed:(Ljava/lang/String;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        105,
+        106,
+        107,
+        108
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryFailed:(Lsleeper/query/core/model/LeafPartitionQuery;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        112,
+        113
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryFailed:(Lsleeper/query/core/model/Query;Ljava/lang/Exception;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        100,
+        101
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryInProgress:(Lsleeper/query/core/model/LeafPartitionQuery;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        65
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryInProgress:(Lsleeper/query/core/model/Query;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        60
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.queryQueued:(Lsleeper/query/core/model/Query;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T021",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        55
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.sendStatusReport:(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        116,
+        117,
+        118,
+        121,
+        124,
+        122,
+        123,
+        125
+      ]
+    },
+    "sleeper.query.runner.tracker.WebSocketQueryStatusReportDestination.subQueriesCreated:(Lsleeper/query/core/model/Query;Ljava/util/List;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        69,
+        70,
+        71,
+        72,
+        73
+      ]
+    }
+  }
+}

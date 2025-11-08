@@ -1,0 +1,1623 @@
+{
+  "meta" : {
+    "reportVersion" : "2.6"
+  },
+  "run" : {
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-11-07T21:42:24.535538735Z",
+    "command" : "dcover create --exclude-modules=sleeper:compaction-rust,sleeper:bulk-import-eks,sleeper:distribution,sleeper:system-test-suite --coverage-reports --upload http://localhost:8080 --project-name sleeper --name with-diffblue-tests",
+    "totalTime" : 39622.127,
+    "environmentDetectionTime" : 0.707,
+    "indexingTime" : 0.447,
+    "entryPointsTime" : 0.699,
+    "generationTime" : 29035.505,
+    "timeToFirstTest" : 541.374,
+    "timeToLastTest" : 2339.566,
+    "indexQueryTime" : 26.116,
+    "verificationTime" : 602.98,
+    "validationTime" : 135.777
+  },
+  "codes" : {
+    "R000" : "Success",
+    "R002" : "Missing observers",
+    "R013" : "No inputs found that don't throw a trivial exception",
+    "R081" : "Exception in arrange section",
+    "R083" : "Can't find a suitable constructor",
+    "T000" : "Method eligible for test creation",
+    "T001" : "Trivial getter",
+    "T003" : "Private method",
+    "T004" : "In anonymous inner class",
+    "T005" : "Trivial constructor",
+    "T006" : "Main method",
+    "T008" : "Private and never called",
+    "T010" : "Abstract or interface method",
+    "T012" : "Synthetic method",
+    "V000" : "Validated successfully",
+    "V003" : "Tests discarded during validation",
+    "W002" : "Test compiled, but did not pass"
+  },
+  "summary" : {
+    "classesCount" : 18,
+    "methodsCount" : 89,
+    "cumulativeDiffblueTestCount" : 31,
+    "cumulativeManualTestCount" : 0,
+    "completeTestCount" : 31,
+    "incompleteTestCount" : 0,
+    "skeletonTestCount" : 0,
+    "totalPhysicalLineCount" : 919,
+    "perMethodTestability" : {
+      "T000" : 22,
+      "T001" : 17,
+      "T003" : 20,
+      "T004" : 8,
+      "T005" : 1,
+      "T006" : 4,
+      "T008" : 4,
+      "T010" : 1,
+      "T012" : 12
+    },
+    "perMethodOutcome" : {
+      "R000" : 19,
+      "R002" : 2,
+      "R013" : 10,
+      "R081" : 8,
+      "R083" : 1,
+      "T003" : 20,
+      "T004" : 8,
+      "T006" : 4,
+      "T008" : 4,
+      "T010" : 1,
+      "T012" : 12
+    },
+    "perTestOutcome" : {
+      "R000" : 31
+    },
+    "perTestValidation" : {
+      "V000" : 31,
+      "V003" : 1
+    },
+    "warnings" : {
+      "W002" : 1
+    }
+  },
+  "classes" : {
+    "sleeper.systemtest.datageneration.GenerateRandomDataFiles" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T003" : 1,
+        "T006" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 1
+      }
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData" : {
+      "methodsCount" : 7,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R083" : 1,
+        "T003" : 2,
+        "T006" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$CommandLineFactory" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 6
+      },
+      "perMethodOutcome" : {
+        "T003" : 6
+      }
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$Ingester" : {
+      "methodsCount" : 1,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T010" : 1
+      },
+      "perMethodOutcome" : {
+        "T010" : 1
+      }
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataToDocker" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T003" : 3,
+        "T005" : 1,
+        "T006" : 1
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "T003" : 3,
+        "T006" : 1
+      }
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaBatcher" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      }
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaQueue" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 1,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R000" : 1,
+        "T008" : 1,
+        "T012" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "warnings" : {
+        "W002" : 1
+      }
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession" : {
+      "methodsCount" : 12,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T001" : 8,
+        "T003" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 3,
+        "R081" : 8,
+        "T003" : 1
+      }
+    },
+    "sleeper.systemtest.datageneration.MultipleQueries" : {
+      "methodsCount" : 6,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T006" : 1,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R002" : 1,
+        "R013" : 1,
+        "T006" : 1,
+        "T012" : 3
+      }
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier" : {
+      "methodsCount" : 10,
+      "completeTestCount" : 19,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 3,
+        "T003" : 4,
+        "T012" : 3
+      },
+      "perMethodOutcome" : {
+        "R000" : 3,
+        "T003" : 4,
+        "T012" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 19
+      }
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$1" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 2
+      },
+      "perMethodOutcome" : {
+        "T004" : 2
+      }
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$2" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 2
+      },
+      "perMethodOutcome" : {
+        "T004" : 2
+      }
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$3" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 2
+      },
+      "perMethodOutcome" : {
+        "T004" : 2
+      }
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$4" : {
+      "methodsCount" : 2,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T004" : 2
+      },
+      "perMethodOutcome" : {
+        "T004" : 2
+      }
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig" : {
+      "methodsCount" : 13,
+      "completeTestCount" : 6,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 4,
+        "T001" : 9
+      },
+      "perMethodOutcome" : {
+        "R000" : 13
+      },
+      "perTestOutcome" : {
+        "R000" : 6
+      }
+    },
+    "sleeper.systemtest.datageneration.WriteRandomData" : {
+      "methodsCount" : 3,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T008" : 1
+      }
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataDirect" : {
+      "methodsCount" : 4,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 1,
+        "T008" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 1,
+        "T008" : 1
+      }
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataFiles" : {
+      "methodsCount" : 5,
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : {
+        "T000" : 2,
+        "T003" : 2,
+        "T012" : 1
+      },
+      "perMethodOutcome" : {
+        "R013" : 2,
+        "T003" : 2,
+        "T012" : 1
+      }
+    }
+  },
+  "methods" : {
+    "sleeper.systemtest.datageneration.GenerateRandomDataFiles.<init>:(Lsleeper/core/properties/table/TableProperties;JLjava/lang/String;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43,
+        44
+      ]
+    },
+    "sleeper.systemtest.datageneration.GenerateRandomDataFiles.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        54,
+        55,
+        57,
+        58,
+        59,
+        60,
+        61,
+        64,
+        65,
+        67,
+        68,
+        69,
+        71,
+        72,
+        74,
+        75,
+        76,
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    "sleeper.systemtest.datageneration.GenerateRandomDataFiles.run:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        49,
+        51
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$CommandLineFactory.<init>:(Lcom/amazonaws/services/securitytoken/AWSSecurityTokenService;Lsoftware/amazon/awssdk/services/sts/StsClient;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        139,
+        140,
+        141,
+        142
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$CommandLineFactory.combinedInstance:(Ljava/lang/String;Ljava/lang/String;Lcom/amazonaws/services/s3/AmazonS3;)Lsleeper/systemtest/datageneration/IngestRandomData;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        176,
+        177
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$CommandLineFactory.ingestRandomData:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/systemtest/configuration/SystemTestPropertyValues;Ljava/lang/String;)Lsleeper/systemtest/datageneration/IngestRandomData;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        181,
+        182,
+        181
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$CommandLineFactory.noLoadConfigRole:(Ljava/lang/String;Ljava/lang/String;)Lsleeper/systemtest/datageneration/IngestRandomData;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        145,
+        147,
+        149,
+        147,
+        149,
+        150
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$CommandLineFactory.standalone:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lsleeper/systemtest/datageneration/IngestRandomData;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        163,
+        164,
+        166,
+        167,
+        168,
+        170,
+        171,
+        168,
+        170,
+        171,
+        172
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$CommandLineFactory.withLoadConfigRole:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lsleeper/systemtest/datageneration/IngestRandomData;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        154,
+        156,
+        158,
+        156,
+        158,
+        159
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData$Ingester.ingest:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T010",
+      "perMethodOutcome" : "T010"
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        52
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/systemtest/configuration/SystemTestPropertyValues;Ljava/lang/String;Lcom/amazonaws/services/securitytoken/AWSSecurityTokenService;Lsoftware/amazon/awssdk/services/sts/StsClient;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData.ingester:()Lsleeper/systemtest/datageneration/IngestRandomData$Ingester;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        105,
+        106,
+        107,
+        113
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData.lambda$ingester$0:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        108,
+        109,
+        110,
+        108,
+        111
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData.lambda$ingester$1:(Lsleeper/systemtest/configuration/SystemTestIngestMode;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        114,
+        115,
+        116,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        125,
+        127,
+        114,
+        128
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        84,
+        85,
+        86,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        95,
+        98,
+        99,
+        85,
+        100,
+        101,
+        100,
+        101,
+        102
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomData.run:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R083",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        75,
+        80,
+        81
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataToDocker.<init>:(Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;J)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T005",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataToDocker.buildS3AsyncClient:(Lsoftware/amazon/awssdk/services/s3/S3AsyncClientBuilder;)Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        82,
+        83,
+        84,
+        85,
+        86,
+        88,
+        89,
+        90,
+        84,
+        92
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataToDocker.getCustomEndpoint:()Ljava/net/URI;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        97,
+        98,
+        99,
+        101
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataToDocker.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        105,
+        106,
+        108,
+        109,
+        110,
+        111,
+        112,
+        115,
+        116,
+        118,
+        119,
+        120,
+        122,
+        123,
+        125,
+        126,
+        127,
+        125,
+        126,
+        127,
+        128
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataToDocker.run:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        65,
+        66,
+        67,
+        68,
+        67,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        69,
+        79
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaBatcher.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        31
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaBatcher.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        33,
+        34
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaBatcher.sendRequest:(Ljava/lang/String;Lsleeper/systemtest/datageneration/InstanceIngestSession;)V" : {
+      "completeTestCount" : 3,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "lineNumbers" : [
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaQueue.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        32
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaQueue.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        34,
+        35
+      ]
+    },
+    "sleeper.systemtest.datageneration.IngestRandomDataViaQueue.sendJob:(Ljava/lang/String;Ljava/lang/String;Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lsleeper/systemtest/datageneration/InstanceIngestSession;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "warnings" : {
+        "W002" : 1
+      },
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.<init>:(Lsleeper/clients/util/AssumeSleeperRole;Lcom/amazonaws/services/securitytoken/AWSSecurityTokenService;Lsoftware/amazon/awssdk/services/sts/StsClient;Lsleeper/core/properties/instance/InstanceProperties;Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.byQueue:(Lcom/amazonaws/services/securitytoken/AWSSecurityTokenService;Lsoftware/amazon/awssdk/services/sts/StsClient;Lsleeper/core/properties/instance/InstanceProperties;Ljava/lang/String;)Lsleeper/systemtest/datageneration/InstanceIngestSession;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        74,
+        75
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.close:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        112,
+        113,
+        114,
+        115,
+        116
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.direct:(Lcom/amazonaws/services/securitytoken/AWSSecurityTokenService;Lsoftware/amazon/awssdk/services/sts/StsClient;Lsleeper/core/properties/instance/InstanceProperties;Ljava/lang/String;)Lsleeper/systemtest/datageneration/InstanceIngestSession;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        69,
+        70
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.hadoopConfiguration:()Lorg/apache/hadoop/conf/Configuration;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.instanceProperties:()Lsleeper/core/properties/instance/InstanceProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        95
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.s3:()Lcom/amazonaws/services/s3/AmazonS3;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        79
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.s3Async:()Lsoftware/amazon/awssdk/services/s3/S3AsyncClient;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.sqs:()Lcom/amazonaws/services/sqs/AmazonSQS;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.stateStoreProvider:()Lsleeper/core/statestore/StateStoreProvider;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        107
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.tableProperties:()Lsleeper/core/properties/table/TableProperties;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        99
+      ]
+    },
+    "sleeper.systemtest.datageneration.InstanceIngestSession.tablePropertiesProvider:()Lsleeper/core/properties/table/TablePropertiesProvider;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R081",
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.systemtest.datageneration.MultipleQueries.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        64
+      ]
+    },
+    "sleeper.systemtest.datageneration.MultipleQueries.<init>:(Ljava/lang/String;JLsleeper/systemtest/configuration/SystemTestProperties;Lsoftware/amazon/awssdk/services/sqs/SqsClient;Lcom/amazonaws/services/s3/AmazonS3;Lcom/amazonaws/services/dynamodbv2/AmazonDynamoDB;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R002",
+      "lineNumbers" : [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "sleeper.systemtest.datageneration.MultipleQueries.lambda$run$0:(Lsoftware/amazon/awssdk/services/sqs/model/ReceiveMessageRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        116,
+        117,
+        118,
+        119,
+        116
+      ]
+    },
+    "sleeper.systemtest.datageneration.MultipleQueries.lambda$run$1:(Ljava/lang/String;Lsoftware/amazon/awssdk/services/sqs/model/DeleteMessageRequest$Builder;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        132,
+        133,
+        134,
+        132
+      ]
+    },
+    "sleeper.systemtest.datageneration.MultipleQueries.main:([Ljava/lang/String;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T006",
+      "perMethodOutcome" : "T006",
+      "lineNumbers" : [
+        143,
+        144,
+        146,
+        147,
+        148,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        152,
+        157,
+        158,
+        159,
+        157,
+        158,
+        159,
+        160
+      ]
+    },
+    "sleeper.systemtest.datageneration.MultipleQueries.run:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        82,
+        83,
+        85,
+        86,
+        87,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        93,
+        109,
+        110,
+        113,
+        114,
+        115,
+        116,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$1.<init>:(Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        78,
+        79
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$1.get:()Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$2.<init>:(Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        88,
+        89
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$2.get:()Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        93
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$3.<init>:(Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        98,
+        99,
+        100,
+        101,
+        102,
+        99
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$3.get:()Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        106
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$4.<init>:(Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        111,
+        112
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier$4.get:()Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T004",
+      "perMethodOutcome" : "T004",
+      "lineNumbers" : [
+        116,
+        117,
+        118
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.<init>:(Lsleeper/core/schema/Schema;Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)V" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.get:()Lsleeper/core/record/Record;" : {
+      "completeTestCount" : 7,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 7
+      },
+      "lineNumbers" : [
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.getSupplier:(Ljava/util/List;Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)Ljava/util/function/Supplier;" : {
+      "completeTestCount" : 5,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
+      "lineNumbers" : [
+        155,
+        156,
+        157,
+        158,
+        159
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.getSupplier:(Lsleeper/core/schema/type/PrimitiveType;Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)Ljava/util/function/Supplier;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        77,
+        78,
+        87,
+        88,
+        97,
+        98,
+        110,
+        111,
+        122
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.getSupplier:(Lsleeper/core/schema/type/Type;Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)Ljava/util/function/Supplier;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        64,
+        65,
+        67,
+        68,
+        70,
+        71,
+        73
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.getSupplierForListType:(Lsleeper/core/schema/type/ListType;Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)Ljava/util/function/Supplier;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        141,
+        142,
+        143,
+        144
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.getSupplierForMapType:(Lsleeper/core/schema/type/MapType;Lsleeper/systemtest/datageneration/RandomRecordSupplierConfig;)Ljava/util/function/Supplier;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        126,
+        127,
+        128,
+        129,
+        130
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.lambda$getSupplier$2:(Ljava/util/List;)Lsleeper/core/key/Key;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        160,
+        161,
+        162,
+        163,
+        164
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.lambda$getSupplierForListType$1:(Lorg/apache/commons/math3/random/RandomDataGenerator;ILjava/util/function/Supplier;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        145,
+        146,
+        147,
+        148,
+        147,
+        150
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplier.lambda$getSupplierForMapType$0:(Lorg/apache/commons/math3/random/RandomDataGenerator;ILjava/util/function/Supplier;Ljava/util/function/Supplier;)Ljava/lang/Object;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        131,
+        132,
+        133,
+        134,
+        133,
+        136
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.<init>:(IIJJIIIILorg/apache/commons/math3/random/RandomGenerator;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.<init>:(Lsleeper/systemtest/configuration/SystemTestProperties;)V" : {
+      "completeTestCount" : 2,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
+      "lineNumbers" : [
+        47,
+        48
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.<init>:(Lsleeper/systemtest/configuration/SystemTestPropertyValues;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        51,
+        52
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.<init>:(Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lorg/apache/commons/math3/random/RandomGenerator;)V" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        55,
+        64
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getGenerator:()Lorg/apache/commons/math3/random/RandomGenerator;" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        115
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getMaxEntriesInRandomList:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        111
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getMaxEntriesInRandomMap:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        107
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getMaxRandomInt:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        87
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getMaxRandomLong:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        95
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getMinRandomInt:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        83
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getMinRandomLong:()J" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        91
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getRandomByteArrayLength:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        103
+      ]
+    },
+    "sleeper.systemtest.datageneration.RandomRecordSupplierConfig.getRandomStringLength:()I" : {
+      "completeTestCount" : 1,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T001",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "lineNumbers" : [
+        99
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomData.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        30,
+        31
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomData.createRecordIterator:(Lsleeper/systemtest/configuration/SystemTestProperties;Lsleeper/core/properties/table/TableProperties;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        35
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomData.createRecordIterator:(Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lsleeper/core/properties/table/TableProperties;)Ljava/util/Iterator;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        40,
+        41,
+        42,
+        43,
+        44,
+        41
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataDirect.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T008",
+      "perMethodOutcome" : "T008",
+      "lineNumbers" : [
+        40,
+        41
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataDirect.addFilesToStateStore:(Lsleeper/systemtest/datageneration/InstanceIngestSession;)Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        73,
+        74,
+        75,
+        76,
+        74,
+        78
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataDirect.writeWithIngestFactory:(Lsleeper/ingest/runner/IngestFactory;Lsleeper/ingest/runner/impl/commit/AddFilesToStateStore;Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lsleeper/core/properties/table/TableProperties;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        61,
+        63,
+        64,
+        65,
+        66,
+        67,
+        63,
+        69,
+        67,
+        68,
+        70
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataDirect.writeWithIngestFactory:(Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lsleeper/systemtest/datageneration/InstanceIngestSession;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        45,
+        56
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataFiles.<clinit>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T012",
+      "perMethodOutcome" : "T012",
+      "lineNumbers" : [
+        37
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataFiles.<init>:()V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        39,
+        40
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataFiles.writeFilesToDirectory:(Ljava/lang/String;Lsleeper/core/properties/instance/InstanceProperties;Lsleeper/core/properties/table/TableProperties;Ljava/util/Iterator;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        56,
+        57,
+        58
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataFiles.writeToPath:(Ljava/lang/String;Ljava/lang/String;Lsleeper/core/properties/table/TableProperties;Ljava/util/Iterator;Lorg/apache/hadoop/conf/Configuration;)V" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
+      "lineNumbers" : [
+        63,
+        64,
+        65,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        87,
+        88,
+        89,
+        90
+      ]
+    },
+    "sleeper.systemtest.datageneration.WriteRandomDataFiles.writeToS3GetDirectory:(Lsleeper/systemtest/configuration/SystemTestPropertyValues;Lsleeper/core/properties/table/TableProperties;Lorg/apache/hadoop/conf/Configuration;Ljava/lang/String;)Ljava/lang/String;" : {
+      "completeTestCount" : 0,
+      "incompleteTestCount" : 0,
+      "perMethodTestability" : "T000",
+      "perMethodOutcome" : "R013",
+      "lineNumbers" : [
+        45,
+        47,
+        48,
+        47,
+        50
+      ]
+    }
+  }
+}
