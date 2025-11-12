@@ -50,6 +50,12 @@
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>emrserverless</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.diffblue.cover</groupId>
+            <artifactId>cover-annotations</artifactId>
+            <version>1.7.0</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- Sleeper Dependencies -->
         <dependency>
             <groupId>sleeper</groupId>
@@ -80,6 +86,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.15.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.8</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>sleeper</groupId>
             <artifactId>localstack-test</artifactId>
             <version>${project.parent.version}</version>
@@ -94,6 +112,17 @@
         <dependency>
             <groupId>net.javacrumbs.json-unit</groupId>
             <artifactId>json-unit-assertj</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.12.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
