@@ -28,4 +28,5 @@ python/env/
 scripts/test/deployAll/system-test-instance.properties
 scripts/test/maven/system-test-instance.properties
 input.json
+.diffblue/
 .approval_tests_temp/

@@ -17,6 +17,8 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
+    <!-- Suppress all checks for Diffblue Cover generated tests -->
+    <suppress files=".*DiffblueTest\.java$" checks=".*"/>
     <suppress files="[\\/]src[\\/]test[\\/].*" id="finalParameters"/>
     <suppress files="[\\/]src[\\/]test[\\/].*" id="localFinalVariableName"/>
     <suppress files="[\\/]src[\\/]test[\\/].*" id="localVariableName"/>

@@ -185,6 +185,7 @@
         <wiremock.version>2.35.2</wiremock.version>
         <assertj.version>3.27.3</assertj.version>
         <approvaltests.version>24.17.0</approvaltests.version>
+        <diffblue-cover.version>1.7.0</diffblue-cover.version>
         <json-path.version>2.9.0</json-path.version>
         <xmlunit.version>2.10.0</xmlunit.version>
         <jsonunit.version>4.1.0</jsonunit.version>
@@ -1082,6 +1083,16 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.diffblue.cover</groupId>
+                <artifactId>cover-annotations</artifactId>
+                <version>${diffblue-cover.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>
