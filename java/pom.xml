@@ -185,7 +185,7 @@
         <wiremock.version>2.35.2</wiremock.version>
         <assertj.version>3.27.3</assertj.version>
         <approvaltests.version>24.17.0</approvaltests.version>
-        <diffblue-cover.version>1.7.0</diffblue-cover.version>
+        <diffblue-cover.version>1.9.0</diffblue-cover.version>
         <json-path.version>2.9.0</json-path.version>
         <xmlunit.version>2.10.0</xmlunit.version>
         <jsonunit.version>4.1.0</jsonunit.version>
@@ -214,6 +214,7 @@
         <distribution.format>dir</distribution.format>
         <spotbugs.version>4.9.2</spotbugs.version>
         <spotbugs.plugin.version>4.8.3.1</spotbugs.plugin.version>
+        <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
         <dependency.plugin.version>3.8.1</dependency.plugin.version>
         <go-offline.plugin.version>1.2.8</go-offline.plugin.version>
         <dependency-check.plugin.version>12.1.0</dependency-check.plugin.version>
@@ -1318,6 +1319,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -1551,6 +1556,26 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>${site.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>prepare-agent</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
