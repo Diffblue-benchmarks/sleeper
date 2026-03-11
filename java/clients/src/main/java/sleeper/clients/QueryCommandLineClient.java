@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,17 @@
  */
 package sleeper.clients;
 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.s3.AmazonS3;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
 import org.apache.commons.codec.binary.Base64;
-import sleeper.query.model.Query;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.configuration.properties.table.TableProperties;
-import sleeper.configuration.properties.table.TablePropertiesProvider;
-import static sleeper.configuration.properties.table.TableProperty.TABLE_NAME;
-import sleeper.core.key.Key;
+
+import sleeper.clients.util.console.ConsoleInput;
+import sleeper.clients.util.console.ConsoleOutput;
+import sleeper.configuration.properties.S3TableProperties;
+import sleeper.configuration.table.index.DynamoDBTableIndex;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
+import sleeper.core.properties.table.TablePropertiesProvider;
 import sleeper.core.range.Range;
 import sleeper.core.range.Range.RangeFactory;
 import sleeper.core.range.Region;
@@ -37,51 +36,80 @@ import sleeper.core.schema.type.IntType;
 import sleeper.core.schema.type.LongType;
 import sleeper.core.schema.type.PrimitiveType;
 import sleeper.core.schema.type.StringType;
-import sleeper.statestore.StateStoreException;
-import sleeper.table.job.TableLister;
+import sleeper.core.schema.type.Type;
+import sleeper.core.table.TableIndex;
+import sleeper.core.table.TableStatus;
+import sleeper.query.core.model.Query;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
+import static sleeper.core.properties.table.TableProperty.TABLE_NAME;
 
 /**
  * Allows a user to enter a query from the command line.
  */
 public abstract class QueryCommandLineClient {
-    private final AmazonS3 s3Client;
+    private final TableIndex tableIndex;
     private final TablePropertiesProvider tablePropertiesProvider;
     private final InstanceProperties instanceProperties;
+    private final Supplier<String> queryIdSupplier;
+    protected ConsoleInput in;
+    protected ConsoleOutput out;
 
-    protected QueryCommandLineClient(AmazonS3 s3Client, InstanceProperties instanceProperties) {
-        this.s3Client = s3Client;
-        this.instanceProperties = instanceProperties;
-        this.tablePropertiesProvider = new TablePropertiesProvider(s3Client, instanceProperties);
+    protected QueryCommandLineClient(AmazonS3 s3Client, AmazonDynamoDB dynamoDBClient, InstanceProperties instanceProperties) {
+        this(s3Client, dynamoDBClient, instanceProperties, new ConsoleInput(System.console()), new ConsoleOutput(System.out));
     }
 
-    public void run() throws StateStoreException {
+    protected QueryCommandLineClient(AmazonS3 s3Client, AmazonDynamoDB dynamoDBClient, InstanceProperties instanceProperties,
+            ConsoleInput in, ConsoleOutput out) {
+        this(instanceProperties, new DynamoDBTableIndex(instanceProperties, dynamoDBClient), S3TableProperties.createProvider(instanceProperties, s3Client, dynamoDBClient), in, out);
+    }
+
+    protected QueryCommandLineClient(InstanceProperties instanceProperties, TableIndex tableIndex, TablePropertiesProvider tablePropertiesProvider,
+            ConsoleInput in, ConsoleOutput out) {
+        this(instanceProperties, tableIndex, tablePropertiesProvider, in, out, () -> UUID.randomUUID().toString());
+    }
+
+    protected QueryCommandLineClient(InstanceProperties instanceProperties, TableIndex tableIndex, TablePropertiesProvider tablePropertiesProvider,
+            ConsoleInput in, ConsoleOutput out, Supplier<String> queryIdSupplier) {
+        this.instanceProperties = instanceProperties;
+        this.tableIndex = tableIndex;
+        this.tablePropertiesProvider = tablePropertiesProvider;
+        this.queryIdSupplier = queryIdSupplier;
+        this.in = in;
+        this.out = out;
+    }
+
+    public void run() throws InterruptedException {
         TableProperties tableProperties = getTableProperties();
         init(tableProperties);
-        
+
         runQueries(tableProperties);
     }
 
-    protected abstract void init(TableProperties tableProperties) throws StateStoreException;
-    
-    protected abstract void submitQuery(TableProperties tableProperties, Query query);
-    
+    protected abstract void init(TableProperties tableProperties);
+
+    protected abstract void submitQuery(TableProperties tableProperties, Query query) throws InterruptedException;
+
     protected TableProperties getTableProperties() {
-        String tableName = getTableName(s3Client, instanceProperties);
+        String tableName = promptTableName();
         if (tableName == null) {
             return null;
         }
-        return tablePropertiesProvider.getTableProperties(tableName);
+        return tablePropertiesProvider.getByName(tableName);
     }
 
-    protected void runQueries(TableProperties tableProperties) {
+    protected void runQueries(TableProperties tableProperties) throws InterruptedException {
         String tableName = tableProperties.get(TABLE_NAME);
         Schema schema = tableProperties.getSchema();
         RangeFactory rangeFactory = new RangeFactory(schema);
 
-        Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print("Exact (e) or range (r) query? ");
-            String type = scanner.nextLine();
+            String type = in.promptLine("Exact (e) or range (r) query? ");
             if ("".equals(type)) {
                 break;
             }
@@ -90,107 +118,91 @@ public abstract class QueryCommandLineClient {
             }
             Query query;
             if (type.equalsIgnoreCase("e")) {
-                query = constructExactQuery(tableName, schema, rangeFactory, scanner);
+                query = constructExactQuery(tableName, schema, rangeFactory);
             } else {
-                query = constructRangeQuery(tableName, schema, rangeFactory, scanner);
+                query = constructRangeQuery(tableName, schema, rangeFactory);
             }
 
-            submitQuery(tablePropertiesProvider.getTableProperties(tableName), query);
+            submitQuery(tablePropertiesProvider.getByName(tableName), query);
         }
     }
 
-    private Query constructRangeQuery(String tableName, Schema schema, Range.RangeFactory rangeFactory, Scanner scanner) {
-        String entry;
-        while (true) {
-            System.out.print("Is the minimum inclusive? (y/n) ");
-            entry = scanner.nextLine();
-            if (entry.equalsIgnoreCase("y") || entry.equalsIgnoreCase("n")) {
-                break;
-            }
-        }
-        boolean minInclusive = entry.equalsIgnoreCase("y");
-        while (true) {
-            System.out.print("Is the maximum inclusive? (y/n) ");
-            entry = scanner.nextLine();
-            if (entry.equalsIgnoreCase("y") || entry.equalsIgnoreCase("n")) {
-                break;
-            }
-        }
-        boolean maxInclusive = entry.equalsIgnoreCase("y");
-        
+    private Query constructRangeQuery(String tableName, Schema schema, Range.RangeFactory rangeFactory) {
+        boolean minInclusive = promptBoolean("Is the minimum inclusive?");
+        boolean maxInclusive = promptBoolean("Is the maximum inclusive?");
         List<Range> ranges = new ArrayList<>();
         int i = 0;
         for (Field field : schema.getRowKeyFields()) {
-            Object min;
-            Object max;
-            if (i == 0) {
-                System.out.print("Enter a minimum key for row key field " + field.getName() + " of type = " + field.getType() + " - hit return for no minimum: ");
-                String minRowKey = scanner.nextLine();
-                if ("".equals(minRowKey)) {
-                    min = null;
-                } else {
-                    min = parse(minRowKey, (PrimitiveType) field.getType());
-                }
-                System.out.print("Enter a maximum key for row key field " + field.getName() + " of type = " + field.getType() + " - hit return for no maximum: ");
-                String maxRowKey = scanner.nextLine();
-                if ("".equals(maxRowKey)) {
-                    max = null;
-                } else {
-                    max = parse(maxRowKey, (PrimitiveType) field.getType());
-                }
-            } else {
-                while (true) {
-                    System.out.print("Enter a value for row key field " + field.getName() + " of type = " + field.getType() + ": (y/n) ");
-                    entry = scanner.nextLine();
-                    if (entry.equalsIgnoreCase("y") || entry.equalsIgnoreCase("n")) {
-                        break;
-                    }
-                }
-                if (entry.equalsIgnoreCase("n")) {
-                    break;
-                } else {
-                    System.out.print("Enter a minimum key for row key field " + field.getName() + " of type = " + field.getType() + " - hit return for no minimum: ");
-                    String minRowKey = scanner.nextLine();
-                    if ("".equals(minRowKey)) {
-                       min = null;
-                    } else {
-                        min = parse(minRowKey, (PrimitiveType) field.getType());
-                    }
-                    System.out.print("Enter a maximum key for row key field " + field.getName() + " of type = " + field.getType() + " - hit return for no maximum: ");
-                    String maxRowKey = scanner.nextLine();
-                    if ("".equals(maxRowKey)) {
-                        max = null;
-                    } else {
-                        max = parse(maxRowKey, (PrimitiveType) field.getType());
-                    }
-                }
+            String fieldName = field.getName();
+            Type fieldType = field.getType();
+            if (i > 0 && !promptBoolean("Enter a value for row key field " + fieldName + " of type = " + fieldType + "?")) {
+                break;
             }
-            if (null != min || null != max) {
-                if (null == min) {
-                    min = getMinimum((PrimitiveType) field.getType());
-                }
-                Range range = rangeFactory.createRange(field, min, minInclusive, max, maxInclusive);
-                ranges.add(range);
-            }
+            Object min = promptForMinKey(fieldName, fieldType);
+            Object max = promptForMaxKey(fieldName, fieldType);
+            Range range = rangeFactory.createRange(field, min, minInclusive, max, maxInclusive);
+            ranges.add(range);
             i++;
         }
-        
+
         Region region = new Region(ranges);
-        
-        return new Query.Builder(tableName, UUID.randomUUID().toString(), region).build();
+
+        return Query.builder()
+                .tableName(tableName)
+                .queryId(queryIdSupplier.get())
+                .regions(List.of(region))
+                .build();
     }
 
-    protected Query constructExactQuery(String tableName, Schema schema, RangeFactory rangeFactory, Scanner scanner) {
+    private boolean promptBoolean(String prompt) {
+        String entry;
+        while (true) {
+            entry = in.promptLine(prompt + " (y/n) ");
+            if (entry.equalsIgnoreCase("y") || entry.equalsIgnoreCase("n")) {
+                return entry.equalsIgnoreCase("y");
+            }
+        }
+    }
+
+    private Object promptForMinKey(String fieldName, Type fieldType) {
+        while (true) {
+            String minRowKey = in.promptLine("Enter a minimum key for row key field " + fieldName + " of type = " + fieldType + " - hit return for no minimum: ");
+            if ("".equals(minRowKey)) {
+                return getMinimum((PrimitiveType) fieldType);
+            } else {
+                try {
+                    return parse(minRowKey, (PrimitiveType) fieldType);
+                } catch (NumberFormatException e) {
+                    out.println("Failed to convert provided key \"" + minRowKey + "\" to type " + fieldType);
+                }
+            }
+        }
+    }
+
+    private Object promptForMaxKey(String fieldName, Type fieldType) {
+        while (true) {
+            String maxRowKey = in.promptLine("Enter a maximum key for row key field " + fieldName + " of type = " + fieldType + " - hit return for no maximum: ");
+            if ("".equals(maxRowKey)) {
+                return null;
+            } else {
+                try {
+                    return parse(maxRowKey, (PrimitiveType) fieldType);
+                } catch (NumberFormatException e) {
+                    out.println("Failed to convert provided key \"" + maxRowKey + "\" to type " + fieldType);
+                }
+            }
+        }
+    }
+
+    protected Query constructExactQuery(String tableName, Schema schema, RangeFactory rangeFactory) {
         int i = 0;
         List<Range> ranges = new ArrayList<>();
         for (Field field : schema.getRowKeyFields()) {
             String key;
             if (i == 0) {
-                System.out.print("Enter a key for row key field " + field.getName() + " of type " + field.getType() + ": ");
-                key = scanner.nextLine();
+                key = in.promptLine("Enter a key for row key field " + field.getName() + " of type " + field.getType() + ": ");
             } else {
-                System.out.print("Enter a key for row key field " + field.getName() + " of type " + field.getType() + " - blank for no value: ");
-                String entry = scanner.nextLine();
+                String entry = in.promptLine("Enter a key for row key field " + field.getName() + " of type " + field.getType() + " - blank for no value: ");
                 if ("".equals(entry)) {
                     break;
                 } else {
@@ -198,8 +210,8 @@ public abstract class QueryCommandLineClient {
                 }
             }
             if (null == key) {
-                System.out.println("Failed to get valid value, restarting creation of exact query");
-                return constructExactQuery(tableName, schema, rangeFactory, scanner);
+                out.println("Failed to get valid value, restarting creation of exact query");
+                return constructExactQuery(tableName, schema, rangeFactory);
             } else {
                 Range range = rangeFactory.createExactRange(field, parse(key, (PrimitiveType) field.getType()));
                 ranges.add(range);
@@ -207,56 +219,45 @@ public abstract class QueryCommandLineClient {
             i++;
         }
         Region region = new Region(ranges);
-        return new Query.Builder(tableName, UUID.randomUUID().toString(), region).build();
+        return Query.builder()
+                .tableName(tableName)
+                .queryId(queryIdSupplier.get())
+                .regions(List.of(region))
+                .build();
     }
 
-    private String getTableName(AmazonS3 s3Client, InstanceProperties instanceProperties) {
-        List<String> tables = new TableLister(s3Client, instanceProperties).listTables();
+    private String promptTableName() {
+        List<String> tables = tableIndex.streamAllTables()
+                .map(TableStatus::getTableName)
+                .collect(Collectors.toUnmodifiableList());
         String tableName;
         if (tables.isEmpty()) {
-            System.out.println("There are no tables. Please create one and add data before running this class.");
+            out.println("There are no tables. Please create one and add data before running this class.");
             return null;
         }
         if (tables.size() == 1) {
             tableName = tables.get(0);
-            System.out.println("Querying table " + tableName);
+            out.println("Querying table " + tableName);
         } else {
-            Scanner scanner = new Scanner(System.in);
             while (true) {
-                System.out.println("The system contains the following tables:");
-                tables.forEach(System.out::println);
-                System.out.println("Which table do you wish to query?");
-                tableName = scanner.nextLine();
+                out.println("The system contains the following tables:");
+                tables.forEach(out::println);
+                tableName = in.promptLine("Which table do you wish to query?");
                 if (tables.contains(tableName)) {
                     break;
                 } else {
-                    System.out.println("Invalid table, try again");
+                    out.println("Invalid table, try again");
                 }
             }
         }
-        
-        System.out.println("Thie table has schema " + tablePropertiesProvider.getTableProperties(tableName).getSchema());
+
+        out.println("The table has the schema " + tablePropertiesProvider.getByName(tableName).getSchema());
 
         return tableName;
     }
 
     protected InstanceProperties getInstanceProperties() {
         return instanceProperties;
-    }
-
-    public Key deserialise(List<String> rowKeys, Schema schema) {
-        if (1 == schema.getRowKeyFields().size()) {
-            return Key.create(parse(rowKeys.get(0), schema.getRowKeyTypes().get(0)));
-        }
-
-        int i = 0;
-        List<Object> parsedKeys = new ArrayList<>();
-        for (String rowKey : rowKeys) {
-            parsedKeys.add(parse(rowKey, schema.getRowKeyTypes().get(i)));
-            i++;
-        }
-        
-        return Key.create(parsedKeys);
     }
 
     private Object parse(String string, PrimitiveType type) {
@@ -278,7 +279,7 @@ public abstract class QueryCommandLineClient {
         }
         throw new IllegalArgumentException("Unknown type " + type);
     }
-    
+
     private Object getMinimum(PrimitiveType type) {
         if (type instanceof IntType) {
             return Integer.MIN_VALUE;

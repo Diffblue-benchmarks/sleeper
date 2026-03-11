@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,14 @@
  */
 package sleeper.core;
 
+/**
+ * Defines names of containers to be referenced both during deployment in the CDK and when starting tasks.
+ */
 public class ContainerConstants {
-    public static final String COMPACTION_CONTAINER_NAME = "MergeContainer";
-    public static final String SPLITTING_COMPACTION_CONTAINER_NAME = "SplittingMergeContainer";
+
+    private ContainerConstants() {
+    }
+
+    public static final String COMPACTION_CONTAINER_NAME = "CompactionContainer";
     public static final String INGEST_CONTAINER_NAME = "IngestContainer";
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,8 +40,8 @@ import java.util.List;
  */
 public class KeySerDe {
     private static final String NULL_STRING_MARKER = "SLEEPER-NULL-STRING";
-    private static final byte[] NULL_BYTE_ARRAY_MARKER = "SLEEPER-NULL-BYTE-ARRAY".getBytes();
-    
+    private static final byte[] NULL_BYTE_ARRAY_MARKER = "SLEEPER-NULL-BYTE-ARRAY".getBytes(Charset.forName("UTF-8"));
+
     private final List<PrimitiveType> rowKeyTypes;
     private final int numRowKeysInSchema;
 
@@ -48,17 +49,24 @@ public class KeySerDe {
         this.rowKeyTypes = schema.getRowKeyTypes();
         this.numRowKeysInSchema = this.rowKeyTypes.size();
     }
-    
+
     public KeySerDe(List<PrimitiveType> rowKeyTypes) {
         this.rowKeyTypes = new ArrayList<>();
         this.rowKeyTypes.addAll(rowKeyTypes);
         this.numRowKeysInSchema = this.rowKeyTypes.size();
     }
-    
+
+    /**
+     * Writes values of key fields to a byte array.
+     *
+     * @param  key         values to serialise
+     * @return             the values serialised as a byte array
+     * @throws IOException if data could not be written to the byte array
+     */
     public byte[] serialise(Key key) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
-        int numKeys = key.size();
+        int numKeys = key != null ? key.size() : 0;
         int numKeysToSerialise = Math.min(numKeys, numRowKeysInSchema);
         dos.writeInt(numKeysToSerialise);
         for (int i = 0; i < numKeysToSerialise; i++) {
@@ -106,7 +114,14 @@ public class KeySerDe {
         dos.close();
         return baos.toByteArray();
     }
-    
+
+    /**
+     * Reads values of key fields from a byte array.
+     *
+     * @param  bytes       byte array to read
+     * @return             the values contained in the byte array
+     * @throws IOException if the byte array could not be read
+     */
     public Key deserialise(byte[] bytes) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         DataInputStream dis = new DataInputStream(bais);
@@ -136,7 +151,7 @@ public class KeySerDe {
             } else if (type instanceof ByteArrayType) {
                 int length = dis.readInt();
                 byte[] byteArray = new byte[length];
-                dis.read(byteArray);
+                dis.readFully(byteArray);
                 if (Arrays.equals(NULL_BYTE_ARRAY_MARKER, byteArray)) {
                     key.add(null);
                 } else {
@@ -147,6 +162,9 @@ public class KeySerDe {
             }
         }
         dis.close();
+        if (key.isEmpty()) {
+            return null;
+        }
         return Key.create(key);
     }
 }

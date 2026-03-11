@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,53 +19,54 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
-import java.io.IOException;
+import software.amazon.awssdk.services.sqs.SqsClient;
+
+import sleeper.configuration.properties.S3InstanceProperties;
+import sleeper.configuration.properties.S3TableProperties;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
+import sleeper.query.core.model.Query;
+import sleeper.query.core.model.QuerySerDe;
+import sleeper.query.core.output.ResultsOutputConstants;
+import sleeper.query.core.tracker.QueryState;
+import sleeper.query.core.tracker.QueryTrackerException;
+import sleeper.query.core.tracker.TrackedQuery;
+import sleeper.query.runner.output.SQSResultsOutput;
+import sleeper.query.runner.tracker.DynamoDBQueryTracker;
+
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import sleeper.ClientUtils;
-import sleeper.query.model.Query;
-import sleeper.query.model.QuerySerDe;
-import sleeper.query.model.output.ResultsOutputConstants;
-import sleeper.query.model.output.SQSResultsOutput;
-import sleeper.query.tracker.QueryState;
-import sleeper.query.tracker.DynamoDBQueryTracker;
-import sleeper.query.tracker.TrackedQuery;
-import sleeper.query.tracker.exception.QueryTrackerException;
-import sleeper.configuration.properties.InstanceProperties;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.QUERY_QUEUE_URL;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.QUERY_RESULTS_BUCKET;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.QUERY_RESULTS_QUEUE_URL;
-import sleeper.configuration.properties.table.TableProperties;
-import sleeper.configuration.properties.table.TablePropertiesProvider;
-import sleeper.statestore.StateStoreException;
+
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.QUERY_QUEUE_URL;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.QUERY_RESULTS_BUCKET;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.QUERY_RESULTS_QUEUE_URL;
 
 /**
  * Runs queries by sending them to an SQS queue which will trigger a lambda to
  * execute the query.
  */
 public class QueryLambdaClient extends QueryCommandLineClient {
-    private final AmazonSQS sqsClient;
+    private final SqsClient sqsClient;
     private final DynamoDBQueryTracker queryTracker;
     private Map<String, String> resultsPublisherConfig;
     private final String queryQueueUrl;
     private final QuerySerDe querySerDe;
 
-    public QueryLambdaClient(AmazonS3 s3Client, AmazonDynamoDB dynamoDB, AmazonSQS sqsClient, InstanceProperties instanceProperties) {
-        super(s3Client, instanceProperties);
+    public QueryLambdaClient(AmazonS3 s3Client, AmazonDynamoDB dynamoDBClient, SqsClient sqsClient, InstanceProperties instanceProperties) {
+        super(s3Client, dynamoDBClient, instanceProperties);
         this.sqsClient = sqsClient;
-        this.queryTracker = new DynamoDBQueryTracker(instanceProperties, dynamoDB);
+        this.queryTracker = new DynamoDBQueryTracker(instanceProperties, dynamoDBClient);
         this.queryQueueUrl = instanceProperties.get(QUERY_QUEUE_URL);
-        this.querySerDe = new QuerySerDe(new TablePropertiesProvider(s3Client, instanceProperties));
+        this.querySerDe = new QuerySerDe(S3TableProperties.createProvider(instanceProperties, s3Client, dynamoDBClient));
     }
 
     @Override
-    protected void init(TableProperties tableProperties) throws StateStoreException {
+    protected void init(TableProperties tableProperties) {
         // No-op
     }
-    
+
     @Override
     protected void submitQuery(TableProperties tableProperties, Query query) {
         System.out.println("Submitting query with id " + query.getQueryId());
@@ -100,8 +101,8 @@ public class QueryLambdaClient extends QueryCommandLineClient {
     }
 
     @Override
-    protected void runQueries(TableProperties tableProperties) {
-        Scanner scanner = new Scanner(System.in);
+    protected void runQueries(TableProperties tableProperties) throws InterruptedException {
+        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.displayName());
         resultsPublisherConfig = new HashMap<>();
         while (true) {
             System.out.println("Send output to S3 results bucket (s) or SQS (q)?");
@@ -124,24 +125,28 @@ public class QueryLambdaClient extends QueryCommandLineClient {
         }
         super.runQueries(tableProperties);
     }
-    
+
     public void submitQuery(Query query) {
-        query.setResultsPublisherConfig(resultsPublisherConfig);
-        sqsClient.sendMessage(queryQueueUrl, querySerDe.toJson(query));
+        sqsClient.sendMessage(request -> request.queueUrl(queryQueueUrl)
+                .messageBody(querySerDe.toJson(
+                        query.withResultsPublisherConfig(resultsPublisherConfig))));
     }
 
-    public static void main(String[] args) throws IOException, StateStoreException {
+    public static void main(String[] args) throws InterruptedException {
         if (1 != args.length) {
-            throw new IllegalArgumentException("Usage: <instance id>");
+            throw new IllegalArgumentException("Usage: <instance-id>");
         }
 
-        AmazonS3 amazonS3 = AmazonS3ClientBuilder.defaultClient();
-        AmazonSQS amazonSQS = AmazonSQSClientBuilder.defaultClient();
-        AmazonDynamoDB dynamoDB = AmazonDynamoDBClientBuilder.defaultClient();
+        AmazonS3 s3Client = AmazonS3ClientBuilder.defaultClient();
+        AmazonDynamoDB dynamoDBClient = AmazonDynamoDBClientBuilder.defaultClient();
 
-        InstanceProperties instanceProperties = ClientUtils.getInstanceProperties(amazonS3, args[0]);
-
-        QueryLambdaClient queryLambdaClient = new QueryLambdaClient(amazonS3, dynamoDB, amazonSQS, instanceProperties);
-        queryLambdaClient.run();
+        try (SqsClient sqsClient = SqsClient.create()) {
+            InstanceProperties instanceProperties = S3InstanceProperties.loadGivenInstanceId(s3Client, args[0]);
+            QueryLambdaClient queryLambdaClient = new QueryLambdaClient(s3Client, dynamoDBClient, sqsClient, instanceProperties);
+            queryLambdaClient.run();
+        } finally {
+            s3Client.shutdown();
+            dynamoDBClient.shutdown();
+        }
     }
 }

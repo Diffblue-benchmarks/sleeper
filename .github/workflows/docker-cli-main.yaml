@@ -1,0 +1,11 @@
+name: Docker CLI Deployment
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-cli:
+    uses: ./.github/workflows/docker-cli.yaml
+    with:
+      pushImages: ${{ github.repository_owner == 'gchq' }}

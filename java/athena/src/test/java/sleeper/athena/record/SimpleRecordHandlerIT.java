@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,15 +33,15 @@ import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import org.apache.arrow.vector.types.Types;
 import org.apache.arrow.vector.util.Text;
 import org.apache.hadoop.fs.Path;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import sleeper.athena.TestUtils;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.configuration.properties.table.TableProperties;
 import sleeper.core.partition.Partition;
-import sleeper.core.schema.Schema;
-import sleeper.io.parquet.record.ParquetReaderIterator;
-import sleeper.io.parquet.record.ParquetRecordReader;
-import sleeper.statestore.dynamodb.DynamoDBStateStore;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
+import sleeper.core.statestore.StateStore;
+import sleeper.parquet.record.ParquetReaderIterator;
+import sleeper.parquet.record.ParquetRecordReader;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,16 +49,13 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static sleeper.athena.metadata.SleeperMetadataHandler.RELEVANT_FILES_FIELD;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.table.TableProperty.TABLE_NAME;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
+import static sleeper.core.properties.table.TableProperty.TABLE_NAME;
 
-public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
+public class SimpleRecordHandlerIT extends RecordHandlerITBase {
 
     @Test
     public void shouldReturnNoRecordsWhenFileDoesNotContainExactValue() throws Exception {
@@ -66,10 +63,12 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        String file = stateStore.getActiveFiles().get(0).getFilename();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        String file = stateStore.getFileReferences().get(0).getFilename();
 
-        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(createS3Client(), instanceProperties.get(CONFIG_BUCKET),
+        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(
+                s3Client, dynamoClient,
+                instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
         String tableName = tableProperties.get(TABLE_NAME);
@@ -80,12 +79,10 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("month", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(2).build()
-        );
+                .add(2).build());
         predicates.put("day", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(30).build()
-        );
+                .add(30).build());
 
         RecordResponse response = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -98,12 +95,11 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 1_000_000L,
-                1_000L
-        ));
+                1_000L));
 
         // Then
-        assertTrue(response instanceof ReadRecordsResponse);
-        assertEquals(0, ((ReadRecordsResponse) response).getRecordCount());
+        assertThat(response).isInstanceOf(ReadRecordsResponse.class);
+        assertThat(((ReadRecordsResponse) response).getRecordCount()).isZero();
     }
 
     @Test
@@ -112,10 +108,12 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        String file = stateStore.getActiveFiles().get(0).getFilename();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        String file = stateStore.getFileReferences().get(0).getFilename();
 
-        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(createS3Client(), instanceProperties.get(CONFIG_BUCKET),
+        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(
+                s3Client, dynamoClient,
+                instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
         String tableName = tableProperties.get(TABLE_NAME);
@@ -125,8 +123,7 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
 
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("year", SortedRangeSet.of(Range.range(new BlockAllocatorImpl(), Types.MinorType.INT.getType(),
-                2022, true, 2024, false))
-        );
+                2022, true, 2024, false)));
 
         RecordResponse response = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -139,12 +136,11 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 1_000_000L,
-                1_000L
-        ));
+                1_000L));
 
         // Then
-        assertTrue(response instanceof ReadRecordsResponse);
-        assertEquals(0, ((ReadRecordsResponse) response).getRecordCount());
+        assertThat(response).isInstanceOf(ReadRecordsResponse.class);
+        assertThat(((ReadRecordsResponse) response).getRecordCount()).isZero();
     }
 
     @Test
@@ -153,17 +149,19 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         String file2018 = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .flatMap(List::stream)
                 .findAny()
                 .orElseThrow(RuntimeException::new);
 
-        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(createS3Client(), instanceProperties.get(CONFIG_BUCKET),
+        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(
+                s3Client, dynamoClient,
+                instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
         String tableName = tableProperties.get(TABLE_NAME);
@@ -173,12 +171,9 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
 
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("year", SortedRangeSet.of(Range.range(new BlockAllocatorImpl(), Types.MinorType.INT.getType(),
-                2018, true, 2020, false))
-        );
+                2018, true, 2020, false)));
         predicates.put("month", SortedRangeSet.of(Range.range(new BlockAllocatorImpl(), Types.MinorType.INT.getType(),
-                6, true, 8, false))
-        );
-
+                6, true, 8, false)));
 
         RecordResponse response = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -191,12 +186,11 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 1_000_000L,
-                1_000_000L
-        ));
+                1_000_000L));
 
         // Then
-        assertTrue(response instanceof ReadRecordsResponse);
-        assertEquals(61, ((ReadRecordsResponse) response).getRecordCount());
+        assertThat(response).isInstanceOf(ReadRecordsResponse.class);
+        assertThat(((ReadRecordsResponse) response).getRecordCount()).isEqualTo(61);
     }
 
     @Test
@@ -205,17 +199,19 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         String file = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .flatMap(List::stream)
                 .findAny()
                 .orElseThrow(RuntimeException::new);
 
-        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(createS3Client(), instanceProperties.get(CONFIG_BUCKET),
+        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(
+                s3Client, dynamoClient,
+                instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
         String tableName = tableProperties.get(TABLE_NAME);
@@ -225,8 +221,7 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
 
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("str", SortedRangeSet.of(Range.range(new BlockAllocatorImpl(), Types.MinorType.VARCHAR.getType(),
-                "2018-01-05", true, "2018-01-10", true))
-        );
+                "2018-01-05", true, "2018-01-10", true)));
 
         RecordResponse response = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -239,12 +234,11 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 1_000_000L,
-                1_000L
-        ));
+                1_000L));
 
         // Then
-        assertTrue(response instanceof ReadRecordsResponse);
-        assertEquals(6, ((ReadRecordsResponse) response).getRecordCount());
+        assertThat(response).isInstanceOf(ReadRecordsResponse.class);
+        assertThat(((ReadRecordsResponse) response).getRecordCount()).isEqualTo(6);
         Block records = ((ReadRecordsResponse) response).getRecords();
         assertFieldContainedValue(records, 0, "str", new Text("2018-01-05"));
         assertFieldContainedValue(records, 5, "str", new Text("2018-01-10"));
@@ -256,10 +250,12 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        String file = stateStore.getActiveFiles().get(0).getFilename();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        String file = stateStore.getFileReferences().get(0).getFilename();
 
-        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(createS3Client(), instanceProperties.get(CONFIG_BUCKET),
+        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(
+                s3Client, dynamoClient,
+                instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
         String tableName = tableProperties.get(TABLE_NAME);
@@ -278,19 +274,18 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(new HashMap<>()),
                 1_000_000L,
-                1_000_000L
-        ));
+                1_000_000L));
 
         // Then
-        ParquetReaderIterator parquetReaderIterator = new ParquetReaderIterator(new ParquetRecordReader(new Path(file), new Schema()));
+        ParquetReaderIterator parquetReaderIterator = new ParquetReaderIterator(new ParquetRecordReader(new Path(file), SCHEMA));
         while (parquetReaderIterator.hasNext()) {
             parquetReaderIterator.next();
         }
 
         long numberOfRecords = parquetReaderIterator.getNumberOfRecordsRead();
 
-        assertTrue(response instanceof ReadRecordsResponse);
-        assertEquals(numberOfRecords, ((ReadRecordsResponse) response).getRecordCount());
+        assertThat(response).isInstanceOf(ReadRecordsResponse.class);
+        assertThat(((ReadRecordsResponse) response).getRecordCount()).isEqualTo(numberOfRecords);
     }
 
     @Test
@@ -299,18 +294,21 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         String file = stateStore.getLeafPartitions().stream()
+                .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
-                .filter(list -> list.size() == 1)   // Ensure the partition has a single file, otherwise the file might
-                                                    // not contain the entirety of Feb
+                .map(partitionToFiles::get)
+                // Ensure the partition has a single file, otherwise the file might not contain the entirety of Feb
+                .filter(list -> list.size() == 1)
                 .flatMap(List::stream)
                 .findAny()
                 .orElseThrow(RuntimeException::new);
 
-        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(createS3Client(), instanceProperties.get(CONFIG_BUCKET),
+        SimpleRecordHandler sleeperRecordHandler = new SimpleRecordHandler(
+                s3Client, dynamoClient,
+                instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
         String tableName = tableProperties.get(TABLE_NAME);
@@ -321,16 +319,13 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("month", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(2).build()
-        );
-
+                .add(2).build());
 
         org.apache.arrow.vector.types.pojo.Schema schemaWithoutDay = new org.apache.arrow.vector.types.pojo.Schema(
                 createArrowSchema().getFields()
-                .stream()
-                .filter(field -> !field.getName().equals("day"))
-                .collect(Collectors.toList()));
-
+                        .stream()
+                        .filter(field -> !field.getName().equals("day"))
+                        .collect(Collectors.toList()));
 
         RecordResponse response = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -343,15 +338,14 @@ public class SimpleRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 1_000_000L,
-                1_000_000L
-        ));
+                1_000_000L));
 
         // Then
-        assertTrue(response instanceof ReadRecordsResponse);
-        assertEquals(28, ((ReadRecordsResponse) response).getRecordCount());
+        assertThat(response).isInstanceOf(ReadRecordsResponse.class);
+        assertThat(((ReadRecordsResponse) response).getRecordCount()).isEqualTo(28);
         Block records = ((ReadRecordsResponse) response).getRecords();
         // Just to show the difference
-        assertNotNull(records.getFieldVector("month"));
-        assertNull(records.getFieldVector("day"));
+        assertThat(records.getFieldVector("month")).isNotNull();
+        assertThat(records.getFieldVector("day")).isNull();
     }
 }

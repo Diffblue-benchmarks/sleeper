@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+
 import sleeper.core.record.Record;
 import sleeper.core.schema.Field;
 import sleeper.core.schema.Schema;
@@ -44,32 +45,41 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Serialises and deserialises a {@link Record} to and from a JSON {@link String}.
+ * Serialises and deserialises a record to and from a JSON string.
  */
 public class RecordJSONSerDe {
     private final Gson gson;
     private final Gson gsonPrettyPrinting;
 
     public RecordJSONSerDe(Schema schema) {
-        try {
-            this.gson = new GsonBuilder()
-                    .registerTypeAdapter(Class.forName(Record.class.getName()), new RecordGsonSerialiser(schema))
-                    .serializeNulls()
-                    .create();
-            this.gsonPrettyPrinting = new GsonBuilder()
-                    .setPrettyPrinting()
-                    .registerTypeAdapter(Class.forName(Record.class.getName()), new RecordGsonSerialiser(schema))
-                    .serializeNulls()
-                    .create();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Exception creating Gson", e);
-        }
+        this.gson = new GsonBuilder()
+                .registerTypeAdapter(Record.class, new RecordGsonSerialiser(schema))
+                .serializeNulls()
+                .create();
+        this.gsonPrettyPrinting = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Record.class, new RecordGsonSerialiser(schema))
+                .serializeNulls()
+                .create();
     }
 
+    /**
+     * Serialises a record to a JSON string.
+     *
+     * @param  record the record
+     * @return        a JSON string
+     */
     public String toJson(Record record) {
         return gson.toJson(record);
     }
 
+    /**
+     * Serialises a record to a JSON string.
+     *
+     * @param  record      the record
+     * @param  prettyPrint whether to pretty-print the JSON string
+     * @return             a JSON string
+     */
     public String toJson(Record record, boolean prettyPrint) {
         if (prettyPrint) {
             return gsonPrettyPrinting.toJson(record);
@@ -77,10 +87,19 @@ public class RecordJSONSerDe {
         return toJson(record);
     }
 
+    /**
+     * Deserialises a JSON string to a record.
+     *
+     * @param  jsonSchema the JSON string
+     * @return            a record
+     */
     public Record fromJson(String jsonSchema) {
         return gson.fromJson(jsonSchema, Record.class);
     }
 
+    /**
+     * A GSON plugin to serialise/deserialise a record.
+     */
     public static class RecordGsonSerialiser implements JsonSerializer<Record>, JsonDeserializer<Record> {
         private final Schema schema;
 
@@ -112,9 +131,9 @@ public class RecordJSONSerDe {
 
     private static void addFieldToJsonObject(Field field, Object fieldValue, JsonObject json) {
         if (field.getType() instanceof IntType) {
-            json.addProperty(field.getName(), (int) fieldValue);
+            json.addProperty(field.getName(), (Integer) fieldValue);
         } else if (field.getType() instanceof LongType) {
-            json.addProperty(field.getName(), (long) fieldValue);
+            json.addProperty(field.getName(), (Long) fieldValue);
         } else if (field.getType() instanceof StringType) {
             json.addProperty(field.getName(), (String) fieldValue);
         } else if (field.getType() instanceof ByteArrayType) {
@@ -139,11 +158,11 @@ public class RecordJSONSerDe {
         JsonArray array = new JsonArray();
         if (elementType instanceof IntType) {
             for (Object o : fieldValue) {
-                array.add((int) o);
+                array.add((Integer) o);
             }
         } else if (elementType instanceof LongType) {
             for (Object o : fieldValue) {
-                array.add((long) o);
+                array.add((Long) o);
             }
         } else if (elementType instanceof StringType) {
             for (Object o : fieldValue) {

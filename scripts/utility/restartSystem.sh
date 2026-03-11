@@ -1,12 +1,12 @@
-#!/bin/bash
-# Copyright 2022 Crown Copyright
-# 
+#!/usr/bin/env bash
+# Copyright 2022-2024 Crown Copyright
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,18 +14,19 @@
 # limitations under the License.
 
 set -e
+unset CDPATH
 
 #####################
 # Initial variables #
 #####################
 
 if [[ -z $1 ]]; then
-	echo "Usage: $0 <instance-id>"
-	exit 1
+  echo "Usage: $0 <instance-id>"
+  exit 1
 fi
 
 INSTANCE_ID=$1
 
-BASE_DIR=$(cd $(dirname $0) && cd "../../" && pwd)
+SCRIPTS_DIR=$(cd "$(dirname "$0")" && cd "../" && pwd)
 
-java -cp ${BASE_DIR}/scripts/jars/clients-*-utility.jar sleeper.status.update.RestartSystem ${INSTANCE_ID}
+java -cp "${SCRIPTS_DIR}"/jars/clients-*-utility.jar sleeper.clients.status.update.RestartSystem "${INSTANCE_ID}"

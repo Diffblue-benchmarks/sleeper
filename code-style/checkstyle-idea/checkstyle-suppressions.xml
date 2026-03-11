@@ -1,0 +1,73 @@
+<!--
+  ~ Copyright 2022-2024 Crown Copyright
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE suppressions PUBLIC "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="finalParameters"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="localFinalVariableName"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="localVariableName"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="equalsHashCode"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="fileLength"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="missingSwitchDefault"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="methodLengthMax"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*" id="parameterNumber"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*TestBase.java$" id="missingJavadocMethod"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*Test.java$" id="missingJavadocMethod"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*IT.java$" id="missingJavadocMethod"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*TestBase.java$" id="missingJavadocType"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*Test.java$" id="missingJavadocType"/>
+    <suppress files="[\\/]src[\\/]test[\\/].*IT.java$" id="missingJavadocType"/>
+    <suppress files=".*Application.java" id="hideUtilityClassConstructor"/>
+    <suppress files="[\\/]athena[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]athena[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]bulk-import[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]bulk-import[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]cdk[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]cdk[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]system-test[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]system-test[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]parquet[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]parquet[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]sketches[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]sketches[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]common[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]common[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]clients[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]clients[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]compaction[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]compaction[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]splitter[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]splitter[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]garbage-collector[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]garbage-collector[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]ingest[\\/]ingest-batcher.*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]ingest[\\/]ingest-batcher.*" id="missingJavadocType"/>
+    <suppress files="[\\/]ingest[\\/]ingest-runner[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]ingest[\\/]ingest-runner[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]ingest[\\/]ingest-starter[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]ingest[\\/]ingest-starter[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]ingest[\\/]ingest-tracker[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]ingest[\\/]ingest-tracker[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]query[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]query[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]trino[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]trino[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]metrics[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]metrics[\\/].*" id="missingJavadocType"/>
+    <suppress files="[\\/]build[\\/].*" id="missingJavadocMethod"/>
+    <suppress files="[\\/]build[\\/].*" id="missingJavadocType"/>
+</suppressions>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,12 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * An interface which adds a <code>close()</code> method to an {@link Iterator}.
+ * An iterator with a close method. Uses {@link AutoCloseable} to allow use with try-with-resource statements.
+ *
+ * @param <T> the type of elements returned by this iterator
  */
 public interface CloseableIterator<T> extends Iterator<T>, AutoCloseable {
+
+    @Override
     void close() throws IOException;
 }

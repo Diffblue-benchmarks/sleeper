@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,18 +34,20 @@ import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import org.apache.arrow.vector.types.Types;
 import org.apache.arrow.vector.util.Text;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import sleeper.athena.TestUtils;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.configuration.properties.table.TableProperties;
+import sleeper.configuration.properties.S3TableProperties;
 import sleeper.core.iterator.CloseableIterator;
 import sleeper.core.iterator.SortedRecordIterator;
 import sleeper.core.partition.Partition;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
 import sleeper.core.record.Record;
 import sleeper.core.schema.Field;
 import sleeper.core.schema.Schema;
 import sleeper.core.schema.type.StringType;
-import sleeper.statestore.dynamodb.DynamoDBStateStore;
+import sleeper.core.statestore.StateStore;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -60,17 +62,16 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static sleeper.athena.metadata.IteratorApplyingMetadataHandler.MAX_ROW_KEY_PREFIX;
 import static sleeper.athena.metadata.IteratorApplyingMetadataHandler.MIN_ROW_KEY_PREFIX;
-import static sleeper.athena.metadata.IteratorApplyingMetadataHandler.RELEVANT_FILES_FIELD;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.table.TableProperty.ITERATOR_CLASS_NAME;
-import static sleeper.configuration.properties.table.TableProperty.TABLE_NAME;
+import static sleeper.athena.metadata.SleeperMetadataHandler.RELEVANT_FILES_FIELD;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
+import static sleeper.core.properties.table.TableProperty.ITERATOR_CLASS_NAME;
+import static sleeper.core.properties.table.TableProperty.TABLE_NAME;
 
-public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
+public class IteratorApplyingRecordHandlerIT extends RecordHandlerITBase {
 
     @Test
     public void shouldReturnNoResultsIfPartitionDoesNotContainExactValue() throws Exception {
@@ -79,16 +80,17 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<String> partition2018Files = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
 
-        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(createS3Client(),
+        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(
+                s3Client, dynamoClient,
                 instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
@@ -100,12 +102,10 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("month", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(2).build()
-        );
+                .add(2).build());
         predicates.put("day", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(30).build()
-        );
+                .add(30).build());
 
         RecordResponse response = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -122,12 +122,11 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 1_000_000L,
-                1_000L
-        ));
+                1_000L));
 
         // Then
-        assertTrue(response instanceof ReadRecordsResponse);
-        assertEquals(0, ((ReadRecordsResponse) response).getRecordCount());
+        assertThat(response).isInstanceOf(ReadRecordsResponse.class);
+        assertThat(((ReadRecordsResponse) response).getRecordCount()).isZero();
     }
 
     @Test
@@ -137,16 +136,17 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<String> partition2018Files = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
 
-        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(createS3Client(),
+        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(
+                s3Client, dynamoClient,
                 instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
@@ -158,12 +158,10 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("month", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(2).build()
-        );
+                .add(2).build());
         predicates.put("day", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(28).build()
-        );
+                .add(28).build());
 
         RecordResponse rawResponse = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -180,13 +178,12 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 Integer.MAX_VALUE,
-                Integer.MAX_VALUE
-        ));
+                Integer.MAX_VALUE));
 
         // Then
-        assertTrue(rawResponse instanceof ReadRecordsResponse);
+        assertThat(rawResponse).isInstanceOf(ReadRecordsResponse.class);
         ReadRecordsResponse response = (ReadRecordsResponse) rawResponse;
-        assertEquals(1, response.getRecordCount());
+        assertThat(response.getRecordCount()).isOne();
         Block records = response.getRecords();
         assertRecordContainedDay(records, 0, 2018, Month.FEBRUARY, 28);
     }
@@ -198,16 +195,17 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         TableProperties tableProperties = createTable(instanceProperties, 2018, 2019, 2020);
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<String> partition2018Files = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
 
-        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(createS3Client(),
+        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(
+                s3Client, dynamoClient,
                 instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
@@ -218,11 +216,9 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
 
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("year", SortedRangeSet.of(Range.range(new BlockAllocatorImpl(), Types.MinorType.INT.getType(),
-                2018, true, 2019, false))
-        );
+                2018, true, 2019, false)));
         predicates.put("month", SortedRangeSet.of(Range.range(new BlockAllocatorImpl(), Types.MinorType.INT.getType(),
-                5, false, 6, true))
-        );
+                5, false, 6, true)));
 
         RecordResponse rawResponse = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -239,13 +235,12 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 Integer.MAX_VALUE,
-                Integer.MAX_VALUE
-        ));
+                Integer.MAX_VALUE));
 
         // Then
-        assertTrue(rawResponse instanceof ReadRecordsResponse);
+        assertThat(rawResponse).isInstanceOf(ReadRecordsResponse.class);
         ReadRecordsResponse response = (ReadRecordsResponse) rawResponse;
-        assertEquals(30, response.getRecordCount());
+        assertThat(response.getRecordCount()).isEqualTo(30);
         Block records = response.getRecords();
         assertRecordContainedDay(records, 0, 2018, Month.JUNE, 1);
         assertRecordContainedDay(records, 29, 2018, Month.JUNE, 30);
@@ -260,7 +255,8 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         // When
         List<String> partition2016Files = new ArrayList<>();
 
-        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(createS3Client(), instanceProperties.get(CONFIG_BUCKET),
+        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(
+                s3Client, dynamoClient, instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
         String tableName = tableProperties.get(TABLE_NAME);
@@ -284,29 +280,30 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 Integer.MAX_VALUE,
-                Integer.MAX_VALUE
-        ));
+                Integer.MAX_VALUE));
 
         // Then
-        assertTrue(rawResponse instanceof ReadRecordsResponse);
+        assertThat(rawResponse).isInstanceOf(ReadRecordsResponse.class);
         ReadRecordsResponse response = (ReadRecordsResponse) rawResponse;
-        assertEquals(0, response.getRecordCount());
+        assertThat(response.getRecordCount()).isZero();
     }
 
     @Test
     public void shouldHandleStringRowKeyTypes() throws Exception {
         // Given
         InstanceProperties instanceProperties = getInstanceProperties();
-        Schema schema = new Schema();
-        schema.setRowKeyFields(new Field("key", new StringType()));
-        schema.setValueFields(new Field("value", new StringType()));
+        Schema schema = Schema.builder()
+                .rowKeyFields(new Field("key", new StringType()))
+                .valueFields(new Field("value", new StringType()))
+                .build();
 
         TableProperties tableProperties = createEmptyTable(instanceProperties, schema);
 
         // When
         List<String> emptyFiles = new ArrayList<>();
 
-        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(createS3Client(),
+        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(
+                s3Client, dynamoClient,
                 instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
@@ -329,13 +326,12 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 Integer.MAX_VALUE,
-                Integer.MAX_VALUE
-        ));
+                Integer.MAX_VALUE));
 
         // Then
-        assertTrue(rawResponse instanceof ReadRecordsResponse);
+        assertThat(rawResponse).isInstanceOf(ReadRecordsResponse.class);
         ReadRecordsResponse response = (ReadRecordsResponse) rawResponse;
-        assertEquals(0, response.getRecordCount());
+        assertThat(response.getRecordCount()).isZero();
     }
 
     @Test
@@ -346,18 +342,19 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
 
         // When
         tableProperties.set(ITERATOR_CLASS_NAME, CountAggregator.class.getName());
-        tableProperties.saveToS3(createS3Client());
+        S3TableProperties.createStore(instanceProperties, s3Client, dynamoClient).save(tableProperties);
 
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(tableProperties, createDynamoClient());
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = stateStoreFactory.getStateStore(tableProperties);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<String> partition2018Files = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
 
-        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(createS3Client(),
+        IteratorApplyingRecordHandler sleeperRecordHandler = new IteratorApplyingRecordHandler(
+                s3Client, dynamoClient,
                 instanceProperties.get(CONFIG_BUCKET),
                 mock(AWSSecretsManager.class), mock(AmazonAthena.class));
 
@@ -369,11 +366,9 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         Map<String, ValueSet> predicates = new HashMap<>();
         predicates.put("month", EquatableValueSet
                 .newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(), true, false)
-                .add(3).build()
-        );
+                .add(3).build());
         predicates.put("day", SortedRangeSet.of(Range.range(new BlockAllocatorImpl(), Types.MinorType.INT.getType(),
-                5, false, 8, true))
-        );
+                5, false, 8, true)));
 
         RecordResponse rawResponse = sleeperRecordHandler.doReadRecords(new BlockAllocatorImpl(), new ReadRecordsRequest(
                 TestUtils.createIdentity(),
@@ -390,13 +385,12 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
                         .build(),
                 new Constraints(predicates),
                 Integer.MAX_VALUE,
-                Integer.MAX_VALUE
-        ));
+                Integer.MAX_VALUE));
 
         // Then
-        assertTrue(rawResponse instanceof ReadRecordsResponse);
+        assertThat(rawResponse).isInstanceOf(ReadRecordsResponse.class);
         ReadRecordsResponse response = (ReadRecordsResponse) rawResponse;
-        assertEquals(3, response.getRecordCount());
+        assertThat(response.getRecordCount()).isEqualTo(3);
 
         Block records = response.getRecords();
 
@@ -405,7 +399,7 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
         assertFieldContainedValue(records, 0, "count", firstCount);
 
         // Second should be the first plus second
-        long secondCount  = firstCount + 2018 * 3 * 7;
+        long secondCount = firstCount + 2018 * 3 * 7;
         assertFieldContainedValue(records, 1, "count", secondCount);
 
         // Third should be aggregated second plus third
@@ -429,7 +423,7 @@ public class IteratorApplyingRecordHandlerIT extends AbstractRecordHandlerIT {
     }
 
     /**
-     * Simple iterator which adds the count of the previous record to the current one
+     * Simple iterator which adds the count of the previous record to the current one.
      */
     public static class CountAggregator implements SortedRecordIterator {
 

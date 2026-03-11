@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@
  */
 package sleeper.core.record.serialiser;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import sleeper.core.record.Record;
 import sleeper.core.schema.Field;
 import sleeper.core.schema.Schema;
@@ -30,17 +31,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RecordJSONSerDeTest {
 
     @Test
     public void shouldSerDeRecordWithPrimitives() {
         // Given
-        Schema schema = new Schema();
-        schema.setRowKeyFields(new Field("field1", new IntType()));
-        schema.setSortKeyFields(new Field("field2", new LongType()));
-        schema.setValueFields(new Field("field3", new StringType()));
+        Schema schema = Schema.builder()
+                .rowKeyFields(new Field("field1", new IntType()))
+                .sortKeyFields(new Field("field2", new LongType()))
+                .valueFields(new Field("field3", new StringType()))
+                .build();
         Record record = new Record();
         record.put("field1", 1);
         record.put("field2", 100L);
@@ -51,16 +53,17 @@ public class RecordJSONSerDeTest {
         Record deserialised = jsonSerDe.fromJson(jsonSerDe.toJson(record));
 
         // Then
-        assertEquals(record, deserialised);
+        assertThat(deserialised).isEqualTo(record);
     }
 
     @Test
     public void shouldSerDeRecordWithByteArrays() {
         // Given
-        Schema schema = new Schema();
-        schema.setRowKeyFields(new Field("field1", new ByteArrayType()));
-        schema.setSortKeyFields(new Field("field2", new ByteArrayType()));
-        schema.setValueFields(new Field("field3", new ByteArrayType()));
+        Schema schema = Schema.builder()
+                .rowKeyFields(new Field("field1", new ByteArrayType()))
+                .sortKeyFields(new Field("field2", new ByteArrayType()))
+                .valueFields(new Field("field3", new ByteArrayType()))
+                .build();
         Record record = new Record();
         record.put("field1", new byte[]{});
         record.put("field2", new byte[]{1});
@@ -71,16 +74,17 @@ public class RecordJSONSerDeTest {
         Record deserialised = jsonSerDe.fromJson(jsonSerDe.toJson(record));
 
         // Then
-        assertEquals(record, deserialised);
+        assertThat(deserialised).isEqualTo(record);
     }
 
     @Test
     public void shouldSerDeRecordWithList() {
         // Given
-        Schema schema = new Schema();
-        schema.setRowKeyFields(new Field("field1", new IntType()));
-        schema.setSortKeyFields(new Field("field2", new LongType()));
-        schema.setValueFields(new Field("field3", new ListType(new StringType())));
+        Schema schema = Schema.builder()
+                .rowKeyFields(new Field("field1", new IntType()))
+                .sortKeyFields(new Field("field2", new LongType()))
+                .valueFields(new Field("field3", new ListType(new StringType())))
+                .build();
         Record record = new Record();
         record.put("field1", 1);
         record.put("field2", 100L);
@@ -91,16 +95,17 @@ public class RecordJSONSerDeTest {
         Record deserialised = jsonSerDe.fromJson(jsonSerDe.toJson(record));
 
         // Then
-        assertEquals(record, deserialised);
+        assertThat(deserialised).isEqualTo(record);
     }
 
     @Test
     public void shouldSerDeRecordWithMap() {
         // Given
-        Schema schema = new Schema();
-        schema.setRowKeyFields(new Field("field1", new IntType()));
-        schema.setSortKeyFields(new Field("field2", new LongType()));
-        schema.setValueFields(new Field("field3", new MapType(new StringType(), new LongType())));
+        Schema schema = Schema.builder()
+                .rowKeyFields(new Field("field1", new IntType()))
+                .sortKeyFields(new Field("field2", new LongType()))
+                .valueFields(new Field("field3", new MapType(new StringType(), new LongType())))
+                .build();
         Record record = new Record();
         record.put("field1", 1);
         record.put("field2", 100L);
@@ -115,6 +120,6 @@ public class RecordJSONSerDeTest {
         Record deserialised = jsonSerDe.fromJson(jsonSerDe.toJson(record));
 
         // Then
-        assertEquals(record, deserialised);
+        assertThat(deserialised).isEqualTo(record);
     }
 }

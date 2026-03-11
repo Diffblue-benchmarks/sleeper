@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,49 +28,43 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.util.Base64;
-import java.io.IOException;
+import org.apache.arrow.vector.complex.reader.FieldReader;
+import org.apache.arrow.vector.types.pojo.ArrowType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import sleeper.core.partition.Partition;
+import sleeper.core.range.Range;
+import sleeper.core.schema.Field;
+import sleeper.core.schema.type.PrimitiveType;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import org.apache.arrow.vector.complex.reader.FieldReader;
-import org.apache.arrow.vector.types.pojo.ArrowType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import sleeper.core.partition.Partition;
-import sleeper.core.range.Range;
-import sleeper.core.schema.Field;
-import sleeper.core.schema.type.PrimitiveType;
 
 /**
- * An {@link IteratorApplyingMetadataHandler} is an implementation of the
- * {@link SleeperMetadataHandler} which sends the relevant files in a batch,
- * grouped by partition so that the compaction time iterators can be applied to
- * them. To assist with this, the row keys are written to properties in the
- * split so the record handler doesn't have to query the statestore again to
- * find out what they are.
+ * Sends requested files in a batch grouped by partition. Allows compaction time iterators to be applied.
+ * To assist with this, the row keys are written to properties in the split so the record handler doesn't have to query
+ * the statestore again to find out what they are.
  */
 public class IteratorApplyingMetadataHandler extends SleeperMetadataHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(IteratorApplyingMetadataHandler.class);
 
     public static final String MIN_ROW_KEY_PREFIX = "_MinRowKey";
     public static final String MAX_ROW_KEY_PREFIX = "_MaxRowKey";
-    public static Predicate<String> ROW_KEY_PREFIX_TEST = Pattern.compile("_M[a-z]{2}RowKey").asPredicate();
+    public static final Predicate<String> ROW_KEY_PREFIX_TEST = Pattern.compile("_M[a-z]{2}RowKey").asPredicate();
 
-    public IteratorApplyingMetadataHandler() throws IOException {
+    public IteratorApplyingMetadataHandler() {
         super();
     }
 
-    public IteratorApplyingMetadataHandler(AmazonS3 s3Client,
-            AmazonDynamoDB dynamoDBClient,
-            String configBucket,
-            EncryptionKeyFactory encryptionKeyFactory,
-            AWSSecretsManager secretsManager,
-            AmazonAthena athena,
-            String spillBucket,
-            String spillPrefix) throws IOException {
+    public IteratorApplyingMetadataHandler(
+            AmazonS3 s3Client, AmazonDynamoDB dynamoDBClient, String configBucket,
+            EncryptionKeyFactory encryptionKeyFactory, AWSSecretsManager secretsManager,
+            AmazonAthena athena, String spillBucket, String spillPrefix) {
         super(s3Client, dynamoDBClient, configBucket, encryptionKeyFactory, secretsManager, athena, spillBucket, spillPrefix);
     }
 
@@ -97,17 +91,17 @@ public class IteratorApplyingMetadataHandler extends SleeperMetadataHandler {
      * Used to create splits from partitions. The partitionId is added to the
      * split.
      *
-     * @param blockAllocator Tool for creating and managing Apache Arrow Blocks.
-     * @param getSplitsRequest Provides details of the catalog, database, table,
-     * and partition(s) being queried as well as any filter predicate.
-     * @return A GetSplitsResponse which primarily contains: 1. A Set<Split>
-     * which represent read operations Amazon Athena must perform by calling
-     * your read function. 2. (Optional) A continuation token which allows you
-     * to paginate the generation of splits for large queries.
-     * @note A Split is a mostly opaque object to Amazon Athena. Amazon Athena
-     * will use the optional SpillLocation and optional EncryptionKey for
-     * pipelined reads but all properties you set on the Split are passed to
-     * your read function to help you perform the read.
+     * @param  blockAllocator   Tool for creating and managing Apache Arrow Blocks.
+     * @param  getSplitsRequest Provides details of the catalog, database, table,
+     *                          and partition(s) being queried as well as any filter predicate.
+     * @return                  A GetSplitsResponse which primarily contains: 1. A Set of Splits
+     *                          which represent read operations Amazon Athena must perform by calling
+     *                          your read function. 2. (Optional) A continuation token which allows you
+     *                          to paginate the generation of splits for large queries.
+     * @note                    A Split is a mostly opaque object to Amazon Athena. Amazon Athena
+     *                          will use the optional SpillLocation and optional EncryptionKey for
+     *                          pipelined reads but all properties you set on the Split are passed to
+     *                          your read function to help you perform the read.
      */
     @Override
     public GetSplitsResponse doGetSplits(BlockAllocator blockAllocator, GetSplitsRequest getSplitsRequest) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,42 +16,27 @@
 package sleeper.cdk.custom;
 
 import com.amazonaws.services.lambda.runtime.events.CloudFormationCustomResourceEvent;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import org.junit.ClassRule;
-import org.junit.Test;
-import org.testcontainers.containers.localstack.LocalStackContainer;
-import org.testcontainers.utility.DockerImageName;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.core.CommonTestConstants;
+import org.junit.jupiter.api.Test;
+
+import sleeper.configuration.properties.S3InstanceProperties;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.localstack.test.LocalStackTestBase;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.ACCOUNT;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.ID;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.JARS_BUCKET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.REGION;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.SUBNET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.TABLE_PROPERTIES;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.VERSION;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.VPC_ID;
+import static org.assertj.core.api.Assertions.assertThat;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.VERSION;
+import static sleeper.core.properties.instance.CommonProperty.ACCOUNT;
+import static sleeper.core.properties.instance.CommonProperty.ID;
+import static sleeper.core.properties.instance.CommonProperty.JARS_BUCKET;
+import static sleeper.core.properties.instance.CommonProperty.REGION;
+import static sleeper.core.properties.instance.CommonProperty.SUBNETS;
+import static sleeper.core.properties.instance.CommonProperty.VPC_ID;
 
-public class PropertiesWriterLambdaIT {
-
-    @ClassRule
-    public static LocalStackContainer localStackContainer = new LocalStackContainer(DockerImageName.parse(CommonTestConstants.LOCALSTACK_DOCKER_IMAGE))
-            .withServices(LocalStackContainer.Service.S3);
-
-    private AmazonS3 createClient() {
-        return AmazonS3ClientBuilder.standard()
-                .withEndpointConfiguration(localStackContainer.getEndpointConfiguration(LocalStackContainer.Service.S3))
-                .withCredentials(localStackContainer.getDefaultCredentialsProvider())
-                .build();
-    }
+public class PropertiesWriterLambdaIT extends LocalStackTestBase {
 
     private InstanceProperties createDefaultProperties(String account, String bucket) {
         InstanceProperties instanceProperties = new InstanceProperties();
@@ -60,20 +45,18 @@ public class PropertiesWriterLambdaIT {
         instanceProperties.set(CONFIG_BUCKET, bucket);
         instanceProperties.set(REGION, "region");
         instanceProperties.set(VERSION, "1.2.3");
-        instanceProperties.set(SUBNET, "subnet-12345");
+        instanceProperties.set(SUBNETS, "subnet-12345");
         instanceProperties.set(VPC_ID, "vpc-12345");
         instanceProperties.set(ACCOUNT, account);
-        instanceProperties.set(TABLE_PROPERTIES, "/path/to/table.properties");
         return instanceProperties;
     }
 
     @Test
     public void shouldUpdateS3BucketOnCreate() throws IOException {
         // Given
-        AmazonS3 client = createClient();
         String bucketName = UUID.randomUUID().toString();
-        client.createBucket(bucketName);
-        PropertiesWriterLambda propertiesWriterLambda = new PropertiesWriterLambda(client);
+        createBucket(bucketName);
+        PropertiesWriterLambda propertiesWriterLambda = new PropertiesWriterLambda(s3ClientV2, bucketName);
 
         // When
         InstanceProperties instanceProperties = createDefaultProperties("foo", bucketName);
@@ -89,23 +72,19 @@ public class PropertiesWriterLambdaIT {
         propertiesWriterLambda.handleEvent(event, null);
 
         // Then
-        InstanceProperties loadedProperties = new InstanceProperties();
-        loadedProperties.loadFromS3(client, bucketName);
-        assertEquals("foo", loadedProperties.get(ACCOUNT));
-
-        client.shutdown();
+        InstanceProperties loadedProperties = S3InstanceProperties.loadFromBucket(s3Client, bucketName);
+        assertThat(loadedProperties.get(ACCOUNT)).isEqualTo("foo");
 
     }
 
     @Test
     public void shouldUpdateS3BucketOnUpdate() throws IOException {
         // Given
-        AmazonS3 client = createClient();
         String bucketName = UUID.randomUUID().toString();
-        client.createBucket(bucketName);
-        PropertiesWriterLambda propertiesWriterLambda = new PropertiesWriterLambda(client);
+        createBucket(bucketName);
+        PropertiesWriterLambda propertiesWriterLambda = new PropertiesWriterLambda(s3ClientV2, bucketName);
 
-        client.putObject(bucketName, "config", "foo");
+        putObject(bucketName, S3InstanceProperties.S3_INSTANCE_PROPERTIES_FILE, "foo");
 
         // When
         InstanceProperties instanceProperties = createDefaultProperties("bar", bucketName);
@@ -121,23 +100,19 @@ public class PropertiesWriterLambdaIT {
         propertiesWriterLambda.handleEvent(event, null);
 
         // Then
-        InstanceProperties loadedProperties = new InstanceProperties();
-        loadedProperties.loadFromS3(client, bucketName);
-        assertEquals("bar", loadedProperties.get(ACCOUNT));
-
-        client.shutdown();
+        InstanceProperties loadedProperties = S3InstanceProperties.loadFromBucket(s3Client, bucketName);
+        assertThat(loadedProperties.get(ACCOUNT)).isEqualTo("bar");
     }
 
     @Test
     public void shouldUpdateS3BucketAccordingToProperties() throws IOException {
         // Given
-        AmazonS3 client = createClient();
         String bucketName = UUID.randomUUID().toString();
-        client.createBucket(bucketName);
-        PropertiesWriterLambda propertiesWriterLambda = new PropertiesWriterLambda(client);
+        createBucket(bucketName);
+        PropertiesWriterLambda propertiesWriterLambda = new PropertiesWriterLambda(s3ClientV2, bucketName);
         String alternativeBucket = bucketName + "-alternative";
 
-        client.createBucket(alternativeBucket);
+        createBucket(alternativeBucket);
 
         // When
         InstanceProperties instanceProperties = createDefaultProperties("foo", alternativeBucket);
@@ -153,20 +128,16 @@ public class PropertiesWriterLambdaIT {
         propertiesWriterLambda.handleEvent(event, null);
 
         // Then
-        InstanceProperties loadedProperties = new InstanceProperties();
-        loadedProperties.loadFromS3(client, alternativeBucket);
-        assertEquals("foo", loadedProperties.get(ACCOUNT));
-
-        client.shutdown();
+        InstanceProperties loadedProperties = S3InstanceProperties.loadFromBucket(s3Client, alternativeBucket);
+        assertThat(loadedProperties.get(ACCOUNT)).isEqualTo("foo");
     }
 
     @Test
     public void shouldDeleteConfigObjectWhenCalledWithDeleteRequest() throws IOException {
         // Given
-        AmazonS3 client = createClient();
         String bucketName = UUID.randomUUID().toString();
-        client.createBucket(bucketName);
-        client.putObject(bucketName, "config", "foo");
+        createBucket(bucketName);
+        putObject(bucketName, S3InstanceProperties.S3_INSTANCE_PROPERTIES_FILE, "foo");
 
         // When
         InstanceProperties instanceProperties = createDefaultProperties("foo", bucketName);
@@ -179,11 +150,10 @@ public class PropertiesWriterLambdaIT {
                 .withResourceProperties(resourceProperties)
                 .build();
 
-        PropertiesWriterLambda lambda = new PropertiesWriterLambda(client);
+        PropertiesWriterLambda lambda = new PropertiesWriterLambda(s3ClientV2, bucketName);
         lambda.handleEvent(event, null);
 
         // Then
-        assertEquals(0, client.listObjects(bucketName).getObjectSummaries().size());
-        client.shutdown();
+        assertThat(listObjectKeys(bucketName)).isEmpty();
     }
 }

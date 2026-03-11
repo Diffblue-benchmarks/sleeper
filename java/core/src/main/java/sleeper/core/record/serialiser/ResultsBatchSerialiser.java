@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,24 @@ package sleeper.core.record.serialiser;
 
 import sleeper.core.record.ResultsBatch;
 
-import java.io.IOException;
-
+/**
+ * Serialises and deserialises batches of results for a query.
+ */
 public interface ResultsBatchSerialiser {
 
-    String serialise(ResultsBatch resultsBatch) throws IOException;
+    /**
+     * Serialise a results batch to a string.
+     *
+     * @param  resultsBatch the results batch
+     * @return              a serialised string
+     */
+    String serialise(ResultsBatch resultsBatch);
 
-    ResultsBatch deserialise(String serialisedResultsBatch) throws IOException;
+    /**
+     * Deserialise a results batch from a string.
+     *
+     * @param  serialisedResultsBatch the serialised results batch
+     * @return                        a {@link ResultsBatch} object
+     */
+    ResultsBatch deserialise(String serialisedResultsBatch);
 }

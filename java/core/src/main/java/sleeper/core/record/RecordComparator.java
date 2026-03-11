@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,21 @@
  */
 package sleeper.core.record;
 
+import sleeper.core.key.Key;
 import sleeper.core.schema.Schema;
 
 import java.util.Comparator;
 import java.util.List;
-import sleeper.core.key.Key;
 
 /**
- * Compares {@link Record}s by row keys then sort keys.
+ * Compares records by row keys then sort keys.
  */
 public class RecordComparator implements Comparator<Record> {
     private final List<String> rowKeyNames;
     private final List<String> sortKeyNames;
     private final KeyComparator rowKeyComparator;
     private final KeyComparator sortKeyComparator;
-    
+
     public RecordComparator(Schema schema) {
         this.rowKeyNames = schema.getRowKeyFieldNames();
         this.sortKeyNames = schema.getSortKeyFieldNames();

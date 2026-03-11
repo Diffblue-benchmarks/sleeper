@@ -1,22 +1,22 @@
-# Copyright 2022 Crown Copyright
+#  Copyright 2022-2024 Crown Copyright
 # 
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
 # 
-#     http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 # 
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+import json
 import random
 from typing import BinaryIO, Mapping, List, Dict
 
 import pyarrow as pa
 import pyarrow.parquet as pq
-import json
 
 ROW_GROUP_SIZE = 128 * 1024 * 1024
 """Maximum in memory size of row group."""
@@ -135,8 +135,7 @@ class ParquetSerialiser():
 
         self._row_count += 1
 
-
-    def _getsize(record: Mapping[str, str]) -> int:
+    def _getsize(self, record: Mapping[str, str]) -> int:
         """
         A hacky way to estimate the size of the object.
         
@@ -164,7 +163,7 @@ class ParquetSerialiser():
         # This tends to over-estimate quite badly (especially given compression) so we have a scaling factor.
 
         if self._row_count >= self._next_row_memory_check:
-            row_sz: int = getsize(record)
+            row_sz: int = self._getsize(record)
             # This tends to massively over-estimate, so we scale down by a scaling factor
             total_predicted: int = (row_sz * self._mem_sample_duration) / 5
             self._total_memory += total_predicted

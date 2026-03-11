@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,23 @@ import com.amazonaws.athena.connector.lambda.security.FederatedIdentity;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.s3.AmazonS3;
 import com.google.common.collect.Lists;
-import sleeper.configuration.jars.ObjectFactory;
-import sleeper.configuration.jars.ObjectFactoryException;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.configuration.properties.table.TableProperties;
-import sleeper.core.iterator.IteratorException;
+import org.apache.hadoop.conf.Configuration;
+
+import sleeper.configuration.properties.S3InstanceProperties;
+import sleeper.configuration.properties.S3TableProperties;
+import sleeper.configuration.table.index.DynamoDBTableIndexCreator;
+import sleeper.core.iterator.IteratorCreationException;
+import sleeper.core.partition.PartitionsFromSplitPoints;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
+import sleeper.core.properties.table.TableProperty;
 import sleeper.core.record.Record;
 import sleeper.core.schema.Schema;
-import sleeper.ingest.IngestRecordsFromIterator;
-import sleeper.statestore.InitialiseStateStore;
-import sleeper.statestore.StateStoreException;
-import sleeper.statestore.dynamodb.DynamoDBStateStore;
-import sleeper.statestore.dynamodb.DynamoDBStateStoreCreator;
+import sleeper.core.statestore.StateStore;
+import sleeper.core.util.ObjectFactory;
+import sleeper.ingest.runner.IngestFactory;
+import sleeper.statestore.StateStoreFactory;
+import sleeper.statestore.transactionlog.TransactionLogStateStoreCreator;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -39,107 +44,68 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.ACCOUNT;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.FILE_SYSTEM;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.ID;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.JARS_BUCKET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.REGION;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.SUBNET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.TABLE_PROPERTIES;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.VERSION;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.VPC_ID;
-import static sleeper.configuration.properties.table.TableProperty.ACTIVE_FILEINFO_TABLENAME;
-import static sleeper.configuration.properties.table.TableProperty.COMPRESSION_CODEC;
-import static sleeper.configuration.properties.table.TableProperty.DATA_BUCKET;
-import static sleeper.configuration.properties.table.TableProperty.PAGE_SIZE;
-import static sleeper.configuration.properties.table.TableProperty.PARTITION_TABLENAME;
-import static sleeper.configuration.properties.table.TableProperty.READY_FOR_GC_FILEINFO_TABLENAME;
-import static sleeper.configuration.properties.table.TableProperty.ROW_GROUP_SIZE;
-import static sleeper.configuration.properties.table.TableProperty.TABLE_NAME;
+import static sleeper.core.properties.instance.ArrayListIngestProperty.MAX_IN_MEMORY_BATCH_SIZE;
+import static sleeper.core.properties.instance.ArrayListIngestProperty.MAX_RECORDS_TO_WRITE_LOCALLY;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.DATA_BUCKET;
+import static sleeper.core.properties.instance.CommonProperty.FILE_SYSTEM;
+import static sleeper.core.properties.instance.IngestProperty.INGEST_PARTITION_REFRESH_PERIOD_IN_SECONDS;
+import static sleeper.core.properties.instance.TableDefaultProperty.DEFAULT_INGEST_PARTITION_FILE_WRITER_TYPE;
+import static sleeper.core.properties.testutils.InstancePropertiesTestHelper.createTestInstanceProperties;
+import static sleeper.core.properties.testutils.TablePropertiesTestHelper.createTestTableProperties;
+import static sleeper.core.properties.validation.IngestFileWritingStrategy.ONE_FILE_PER_LEAF;
+import static sleeper.core.statestore.testutils.StateStoreUpdatesWrapper.update;
 
 public class TestUtils {
 
-    public static InstanceProperties createInstance(AmazonS3 s3Client) {
-        String configBucket = s3Client.createBucket(UUID.randomUUID().toString()).getName();
-        InstanceProperties instanceProperties = new InstanceProperties();
-        instanceProperties.set(ID, UUID.randomUUID().toString());
-        instanceProperties.set(VERSION, "1");
-        instanceProperties.set(CONFIG_BUCKET, configBucket);
+    private TestUtils() {
+    }
+
+    public static InstanceProperties createInstance(AmazonS3 s3Client, AmazonDynamoDB dynamoDB, String dataDir) {
+        InstanceProperties instanceProperties = createTestInstanceProperties();
+        instanceProperties.set(DATA_BUCKET, dataDir);
         instanceProperties.set(FILE_SYSTEM, "file://"); // Overwrite S3 because we're going to use the standard fs.
-        instanceProperties.set(JARS_BUCKET, "unused");
-        instanceProperties.set(ACCOUNT, "unused");
-        instanceProperties.set(REGION, "unused");
-        instanceProperties.set(VPC_ID, "unused");
-        instanceProperties.set(SUBNET, "unused");
-        instanceProperties.set(TABLE_PROPERTIES, "unused");
+        instanceProperties.set(DEFAULT_INGEST_PARTITION_FILE_WRITER_TYPE, "direct");
+        instanceProperties.setNumber(MAX_RECORDS_TO_WRITE_LOCALLY, 1000L);
+        instanceProperties.setNumber(MAX_IN_MEMORY_BATCH_SIZE, 1024L);
+        instanceProperties.setNumber(INGEST_PARTITION_REFRESH_PERIOD_IN_SECONDS, 10);
 
-        try {
-            instanceProperties.saveToS3(s3Client);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        s3Client.shutdown();
+        s3Client.createBucket(instanceProperties.get(CONFIG_BUCKET));
+        S3InstanceProperties.saveToS3(s3Client, instanceProperties);
+        DynamoDBTableIndexCreator.create(dynamoDB, instanceProperties);
+        new TransactionLogStateStoreCreator(instanceProperties, dynamoDB).create();
 
         return instanceProperties;
     }
 
-    public static TableProperties createTable(InstanceProperties instance, Schema schema, String dataDir, AmazonDynamoDB dynamoDB, AmazonS3 s3Client, Object... splitPoints) throws IOException {
-        TableProperties tableProperties = new TableProperties(instance);
-        tableProperties.setSchema(schema);
-        String tableName = UUID.randomUUID().toString();
-        tableProperties.set(TABLE_NAME, tableName);
+    public static TableProperties createTable(
+            InstanceProperties instance, Schema schema, AmazonDynamoDB dynamoDB, AmazonS3 s3Client,
+            Configuration configuration, Object... splitPoints) {
+        TableProperties tableProperties = createTestTableProperties(instance, schema);
+        tableProperties.setEnum(TableProperty.INGEST_FILE_WRITING_STRATEGY, ONE_FILE_PER_LEAF);
+        S3TableProperties.createStore(instance, s3Client, dynamoDB).save(tableProperties);
 
-        // Create a place for data to go
-        tableProperties.set(DATA_BUCKET, dataDir);
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoDB, configuration).getStateStore(tableProperties);
+        update(stateStore).initialise(new PartitionsFromSplitPoints(schema, List.of(splitPoints)).construct());
 
-        // Create a state store
-        tableProperties.set(ACTIVE_FILEINFO_TABLENAME, tableName + "-af");
-        tableProperties.set(PARTITION_TABLENAME, tableName + "-p");
-        tableProperties.set(READY_FOR_GC_FILEINFO_TABLENAME, tableName + "-rfgcf");
-
-        try {
-            DynamoDBStateStore stateStore = new DynamoDBStateStoreCreator(tableName, schema, dynamoDB).create();
-            new InitialiseStateStore(schema, stateStore, Lists.newArrayList(splitPoints)).run();
-        } catch (StateStoreException e) {
-            throw new RuntimeException(e);
-        } finally {
-            dynamoDB.shutdown();
-        }
-
-        tableProperties.saveToS3(s3Client);
-        s3Client.shutdown();
         return tableProperties;
     }
 
-    public static void ingestData(AmazonDynamoDB dynamoClient, AmazonS3 s3Client, String dataDir, InstanceProperties instanceProperties,
-                                  TableProperties table) {
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
+    public static void ingestData(
+            AmazonS3 s3Client, AmazonDynamoDB dynamoClient, String dataDir,
+            InstanceProperties instanceProperties, TableProperties table) {
         try {
-            new IngestRecordsFromIterator(new ObjectFactory(instanceProperties, s3Client, "/tmp"),
-                    generateTimeSeriesData().iterator(),
-                    dataDir,
-                    1000L,
-                    1024L,
-                    table.getInt(ROW_GROUP_SIZE),
-                    table.getInt(PAGE_SIZE),
-                    table.get(COMPRESSION_CODEC),
-                    stateStore,
-                    table.getSchema(),
-                    "file://",
-                    table.get(DATA_BUCKET),
-                    null,
-                    null,
-                    10
-            ).write();
-        } catch (IOException | StateStoreException | InterruptedException | IteratorException | ObjectFactoryException e) {
+            IngestFactory factory = IngestFactory.builder()
+                    .objectFactory(ObjectFactory.noUserJars())
+                    .localDir(dataDir)
+                    .stateStoreProvider(StateStoreFactory.createProvider(instanceProperties, s3Client, dynamoClient, new Configuration()))
+                    .hadoopConfiguration(new Configuration())
+                    .instanceProperties(instanceProperties)
+                    .build();
+            factory.ingestFromRecordIterator(table, generateTimeSeriesData().iterator());
+        } catch (IOException | IteratorCreationException e) {
             throw new RuntimeException("Failed to Ingest data", e);
-        } finally {
-            dynamoClient.shutdown();
-            s3Client.shutdown();
         }
     }
 

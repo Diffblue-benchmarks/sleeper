@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 package sleeper.core.record;
 
 import com.facebook.collections.ByteArray;
+
+import sleeper.core.key.Key;
 import sleeper.core.schema.Field;
 import sleeper.core.schema.Schema;
 import sleeper.core.schema.type.ByteArrayType;
@@ -35,7 +37,7 @@ import java.util.Set;
  */
 public class Record {
     private final Map<String, Object> values;
-    
+
     public Record() {
         values = new HashMap<>();
     }
@@ -49,23 +51,56 @@ public class Record {
         this();
         this.values.putAll(record.values);
     }
-    
+
+    /**
+     * Gets the value of a field.
+     *
+     * @param  fieldName the name of the field
+     * @return           the value of the field
+     */
     public Object get(String fieldName) {
         return values.get(fieldName);
     }
 
+    /**
+     * Gets a key containing the values of all row keys.
+     *
+     * @param  schema the schema for this record
+     * @return        a {@link Key} containing all row key values
+     */
+    public Key getRowKeys(Schema schema) {
+        return Key.create(getValues(schema.getRowKeyFieldNames()));
+    }
+
+    /**
+     * Removes the value of a field.
+     *
+     * @param fieldName the name of the field
+     */
     public void remove(String fieldName) {
         this.values.remove(fieldName);
     }
 
+    /**
+     * Sets a value for a field.
+     *
+     * @param fieldName the name of the field
+     * @param value     the value to set
+     */
     public void put(String fieldName, Object value) {
         values.put(fieldName, value);
     }
-    
+
     public Set<String> getKeys() {
         return Collections.unmodifiableSet(values.keySet());
     }
 
+    /**
+     * Gets the values for all provided field names.
+     *
+     * @param  fieldNames the names of fields
+     * @return            a list of values
+     */
     public List<Object> getValues(List<String> fieldNames) {
         List<Object> valuesList = new ArrayList<>();
         for (String fieldName : fieldNames) {
@@ -73,7 +108,7 @@ public class Record {
         }
         return valuesList;
     }
-    
+
     @Override
     public int hashCode() {
         Map<String, Object> cloneWithWrappedByteArray = new HashMap<>();
@@ -101,7 +136,7 @@ public class Record {
             return false;
         }
         final Record other = (Record) obj;
-        
+
         Map<String, Object> cloneWithWrappedByteArray = new HashMap<>();
         for (Map.Entry<String, Object> entry : values.entrySet()) {
             if (entry.getValue() instanceof byte[]) {
@@ -134,6 +169,12 @@ public class Record {
         return "Record{" + "values=" + cloneWithWrappedByteArray + '}';
     }
 
+    /**
+     * Returns a string representation of this record. The only fields that are shown are those present in the schema.
+     *
+     * @param  schema the schema to filter fields by
+     * @return        a string representation of this record
+     */
     public String toString(Schema schema) {
         StringBuilder stringBuilder = new StringBuilder();
         List<String> terms = new ArrayList<>();
@@ -152,7 +193,7 @@ public class Record {
             if (field.getType() instanceof ByteArrayType) {
                 term += ByteArray.wrap((byte[]) values.get(field.getName()));
             } else {
-                 term += values.get(field.getName());
+                term += values.get(field.getName());
             }
             terms.add(term);
         }

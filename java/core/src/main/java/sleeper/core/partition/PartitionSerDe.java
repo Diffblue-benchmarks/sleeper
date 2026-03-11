@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,15 +25,18 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import sleeper.core.range.Region;
 import sleeper.core.range.RegionSerDe.RegionJsonSerDe;
 import sleeper.core.schema.Schema;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
- * Serialises a {@link Partition} to and from a JSON string.
+ * Serialises a partition to and from a JSON string.
  */
 public class PartitionSerDe {
     public static final String PARTITION_ID = "partitionId";
@@ -42,28 +45,35 @@ public class PartitionSerDe {
     public static final String CHILD_PARTITION_IDS = "childPartitionIds";
     public static final String REGION = "region";
     public static final String DIMENSION = "dimension";
-    
-    private final Schema schema;
+
     private final Gson gson;
     private final Gson gsonPrettyPrinting;
-    
+
     public PartitionSerDe(Schema schema) {
-        try {
-            this.schema = schema;
-            GsonBuilder builder = new GsonBuilder()
-                    .registerTypeAdapter(Class.forName(Partition.class.getName()), new PartitionJsonSerDe(this.schema))
-                    .serializeNulls();
-            this.gson = builder.create();
-            this.gsonPrettyPrinting = builder.setPrettyPrinting().create();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Exception creating Gson", e);
-        }
+        GsonBuilder builder = new GsonBuilder()
+                .registerTypeAdapter(Partition.class, new PartitionJsonSerDe(schema))
+                .serializeNulls();
+        this.gson = builder.create();
+        this.gsonPrettyPrinting = builder.setPrettyPrinting().create();
     }
-    
+
+    /**
+     * Serialises a partition to JSON.
+     *
+     * @param  partition the partition
+     * @return           a JSON representation of the partition
+     */
     public String toJson(Partition partition) {
         return gson.toJson(partition);
     }
 
+    /**
+     * Serialises a partition to JSON.
+     *
+     * @param  partition   the partition
+     * @param  prettyPrint true if the JSON should be formatted for readability
+     * @return             a JSON representation of the partition
+     */
     public String toJson(Partition partition, boolean prettyPrint) {
         if (prettyPrint) {
             return gsonPrettyPrinting.toJson(partition);
@@ -71,20 +81,28 @@ public class PartitionSerDe {
         return toJson(partition);
     }
 
+    /**
+     * Deserialises a partition from JSON.
+     *
+     * @param  jsonSchema the JSON
+     * @return            the partition represented by the JSON
+     */
     public Partition fromJson(String jsonSchema) {
         return gson.fromJson(jsonSchema, Partition.class);
     }
 
+    /**
+     * A GSON plugin to serialise/deserialise a partition.
+     */
     public static class PartitionJsonSerDe implements JsonSerializer<Partition>, JsonDeserializer<Partition> {
-        private final Schema schema;
         private final RegionJsonSerDe regionJsonSerDe;
-        
+
         public PartitionJsonSerDe(Schema schema) {
-            this.schema = schema;
             this.regionJsonSerDe = new RegionJsonSerDe(schema);
         }
 
         @Override
+        @SuppressFBWarnings("RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE")
         public JsonElement serialize(Partition partition, java.lang.reflect.Type typeOfSrc, JsonSerializationContext context) {
             JsonObject json = new JsonObject();
             json.addProperty(PARTITION_ID, partition.getId());
@@ -107,14 +125,14 @@ public class PartitionSerDe {
             if (!jsonElement.isJsonObject()) {
                 throw new JsonParseException("Expected JsonObject, got " + jsonElement);
             }
-            JsonObject json = (JsonObject) jsonElement;
+            JsonObject json = jsonElement.getAsJsonObject();
             String partitionId = json.get(PARTITION_ID).getAsString();
             boolean isLeafPartition = json.get(IS_LEAF_PARTITION).getAsBoolean();
             String parentPartitionId = null;
             if (json.has(PARENT_PARTITION_ID)) {
                 if (!json.get(PARENT_PARTITION_ID).isJsonNull()) {
                     parentPartitionId = json.get(PARENT_PARTITION_ID).getAsString();
-                
+
                 }
             }
             JsonArray childPartitionIdsArray = json.get(CHILD_PARTITION_IDS).getAsJsonArray();
@@ -126,7 +144,14 @@ public class PartitionSerDe {
             }
             Region region = regionJsonSerDe.deserialize(json.get(REGION), null, context);
             int dimension = json.get(DIMENSION).getAsInt();
-            return new Partition(schema.getRowKeyTypes(), region, partitionId, isLeafPartition, parentPartitionId, childPartitionIds, dimension);
+            return Partition.builder()
+                    .region(region)
+                    .id(partitionId)
+                    .leafPartition(isLeafPartition)
+                    .parentPartitionId(parentPartitionId)
+                    .childPartitionIds(childPartitionIds)
+                    .dimension(dimension)
+                    .build();
         }
     }
 }

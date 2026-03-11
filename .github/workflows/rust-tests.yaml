@@ -1,0 +1,22 @@
+name: Rust Tests
+on:
+  pull_request:
+    paths:
+      - 'rust/**'
+      - '.github/workflows/rust-tests.yaml'
+
+env:
+  SCCACHE_GHA_ENABLED: "true"
+  SSCACHE_CACHE_SIZE: "2G"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: mozilla-actions/sccache-action@v0.0.7
+      - name: Rust tests
+        run: cargo test
+        working-directory: ./rust

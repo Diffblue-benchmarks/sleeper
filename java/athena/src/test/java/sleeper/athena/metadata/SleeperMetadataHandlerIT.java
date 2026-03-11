@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,51 +45,50 @@ import com.google.gson.Gson;
 import org.apache.arrow.vector.complex.reader.FieldReader;
 import org.apache.arrow.vector.types.Types;
 import org.apache.hadoop.conf.Configuration;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import sleeper.athena.TestUtils;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.configuration.properties.table.TableProperties;
 import sleeper.core.partition.Partition;
-import sleeper.splitter.SplitPartition;
-import sleeper.statestore.dynamodb.DynamoDBStateStore;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
+import sleeper.core.statestore.StateStore;
+import sleeper.splitter.core.split.SplitPartition;
+import sleeper.statestore.StateStoreFactory;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static sleeper.athena.metadata.SleeperMetadataHandler.RELEVANT_FILES_FIELD;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.ID;
-import static sleeper.configuration.properties.table.TableProperty.TABLE_NAME;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
+import static sleeper.core.properties.instance.CommonProperty.ID;
+import static sleeper.core.properties.table.TableProperty.TABLE_NAME;
+import static sleeper.splitter.core.split.FindPartitionSplitPoint.loadSketchesFromFile;
 
-public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
+public class SleeperMetadataHandlerIT extends MetadataHandlerITBase {
 
     @Test
     public void shouldJustReturnLeafPartitionsWhichContainValuesGreaterThanMinKey() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
 
         // When
         // Make query
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<String> relevantFiles = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() >= 2020)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .filter(Objects::nonNull)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
@@ -98,7 +97,7 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
 
         GetTableResponse getTableResponse = sleeperMetadataHandler.doGetTable(new BlockAllocatorImpl(),
                 new GetTableRequest(TestUtils.createIdentity(),
-                "abc", "def", tableName));
+                        "abc", "def", tableName));
 
         BlockAllocatorImpl blockAllocator = new BlockAllocatorImpl();
         Map<String, ValueSet> predicate = new HashMap<>();
@@ -111,37 +110,34 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 tableName,
                 new Constraints(predicate),
                 getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        );
+                getTableResponse.getPartitionColumns());
 
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(blockAllocator, request);
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(1, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isOne();
         FieldReader partitionReader = partitions.getFieldReader(RELEVANT_FILES_FIELD);
         partitionReader.setPosition(0);
-        List<String> files =  (List<String>) new Gson().fromJson(partitionReader.readObject().toString(), List.class);
-        assertEquals(relevantFiles, files);
+        List<String> files = (List<String>) new Gson().fromJson(partitionReader.readObject().toString(), List.class);
+        assertThat(files).isEqualTo(relevantFiles);
     }
 
     @Test
     public void shouldJustReturnPartitionsWhichContainValuesLessThanMaxKey() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
 
         // When
         // Make query
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<List<String>> relevantFiles = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() <= 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
@@ -161,41 +157,38 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 tableName,
                 new Constraints(predicate),
                 getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        );
+                getTableResponse.getPartitionColumns());
 
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(blockAllocator, request);
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(2, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isEqualTo(2);
         FieldReader partitionReader = partitions.getFieldReader(RELEVANT_FILES_FIELD);
         partitionReader.setPosition(0);
         Object files = new Gson().fromJson(partitionReader.readObject().toString(), List.class);
-        assertEquals(relevantFiles.get(0), files);
+        assertThat(files).isEqualTo(relevantFiles.get(0));
         partitionReader.setPosition(1);
         files = new Gson().fromJson(partitionReader.readObject().toString(), List.class);
-        assertEquals(relevantFiles.get(1), files);
+        assertThat(files).isEqualTo(relevantFiles.get(1));
     }
 
     @Test
     public void shouldJustReturnPartitionsThatContainASpecificKey() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
 
         // When
         // Make query
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<List<String>> relevantFiles = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
@@ -218,38 +211,35 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 tableName,
                 new Constraints(predicate),
                 getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        );
+                getTableResponse.getPartitionColumns());
 
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(new BlockAllocatorImpl(),
                 request);
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(1, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isOne();
         FieldReader partitionReader = partitions.getFieldReader(RELEVANT_FILES_FIELD);
         partitionReader.setPosition(0);
-        Object files =  new Gson().fromJson(partitionReader.readObject().toString(), List.class);
-        assertEquals(relevantFiles.get(0), files);
+        Object files = new Gson().fromJson(partitionReader.readObject().toString(), List.class);
+        assertThat(files).isEqualTo(relevantFiles.get(0));
     }
 
     @Test
     public void shouldNotFilterPartitionsBasedOnDenyList() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
 
         // When
         // Make query
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<List<String>> relevantFiles = stateStore.getLeafPartitions().stream()
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
@@ -268,40 +258,37 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 tableName,
                 new Constraints(predicate),
                 getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        );
+                getTableResponse.getPartitionColumns());
 
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(new BlockAllocatorImpl(),
                 request);
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(4, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isEqualTo(4);
         FieldReader partitionFilesReader = partitions.getFieldReader(RELEVANT_FILES_FIELD);
         for (int i = 0; i < 4; i++) {
             partitionFilesReader.setPosition(i);
             Object o = new Gson().fromJson(partitionFilesReader.readObject().toString(), List.class);
-            assertEquals(relevantFiles.get(i), o);
+            assertThat(o).isEqualTo(relevantFiles.get(i));
         }
     }
 
     @Test
     public void shouldScanAllFilesWhenANonKeyFieldIsFiltered() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
 
         // When
         // Make query
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<List<String>> relevantFiles = stateStore.getLeafPartitions().stream()
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
@@ -319,33 +306,30 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 tableName,
                 new Constraints(predicate),
                 getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        );
+                getTableResponse.getPartitionColumns());
 
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(new BlockAllocatorImpl(),
                 request);
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(4, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isEqualTo(4);
 
         FieldReader partitionFilesReader = partitions.getFieldReader(RELEVANT_FILES_FIELD);
         for (int i = 0; i < 4; i++) {
             partitionFilesReader.setPosition(i);
             Object o = new Gson().fromJson(partitionFilesReader.readObject().toString(), List.class);
-            assertEquals(relevantFiles.get(i), o);
+            assertThat(o).isEqualTo(relevantFiles.get(i));
         }
     }
 
     @Test
     public void shouldGenerateArrowSchemaFromSleeperSchema() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         String tableName = createEmptyTable(instance).get(TABLE_NAME);
 
         // When
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
         GetTableResponse getTableResponse = sleeperMetadataHandler.doGetTable(new BlockAllocatorImpl(),
@@ -360,27 +344,25 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 .build();
 
         org.apache.arrow.vector.types.pojo.Schema schema = getTableResponse.getSchema();
-        assertEquals(arrowSchema, schema);
+        assertThat(schema).isEqualTo(arrowSchema);
     }
 
     @Test
     public void shouldReturnMultiplePartitionsWhenExactQueryMatchesMultiplePartitions() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
 
         // When
         // Make query
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
         List<List<String>> relevantFiles = stateStore.getLeafPartitions().stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == Integer.MIN_VALUE || (Integer) p.getRegion().getRange("year").getMin() == 2019)
                 .map(Partition::getId)
-                .map(partitionToActiveFilesMap::get)
+                .map(partitionToFiles::get)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
@@ -399,137 +381,118 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 tableName,
                 new Constraints(predicate),
                 getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        );
+                getTableResponse.getPartitionColumns());
 
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(new BlockAllocatorImpl(),
                 request);
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(2, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isEqualTo(2);
 
         FieldReader partitionReader = partitions.getFieldReader(RELEVANT_FILES_FIELD);
         for (int i = 0; i < 2; i++) {
             partitionReader.setPosition(i);
-            assertEquals(relevantFiles.get(i), new Gson().fromJson(partitionReader.readObject().toString(), List.class));
+            assertThat(new Gson().fromJson(partitionReader.readObject().toString(), List.class)).isEqualTo(relevantFiles.get(i));
         }
 
-        assertEquals(2, sleeperMetadataHandler.writeExtraPartitionDataCalled);
+        assertThat(sleeperMetadataHandler.writeExtraPartitionDataCalled).isEqualTo(2);
     }
 
     @Test
     public void shouldProvideSetContainingInstanceIdWhenAskedForSchemaList() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
 
         // When
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
         ListSchemasResponse listSchemasResponse = sleeperMetadataHandler.doListSchemaNames(new BlockAllocatorImpl(), new ListSchemasRequest(TestUtils.createIdentity(), "abc", "def"));
 
         // Then
-        Collection<String> schemas = listSchemasResponse.getSchemas();
-        assertEquals(1, schemas.size());
-        assertTrue(schemas.contains(instance.get(ID)));
+        assertThat(listSchemasResponse.getSchemas()).containsExactly(instance.get(ID));
     }
 
     @Test
     public void shouldJustReturnAllTheTablesWithinTheInstanceWhenAskedToListTheTables() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         String table1 = createEmptyTable(instance).get(TABLE_NAME);
         String table2 = createEmptyTable(instance).get(TABLE_NAME);
         String table3 = createEmptyTable(instance).get(TABLE_NAME);
 
         // When
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
         ListTablesResponse listTablesResponse = sleeperMetadataHandler.doListTables(new BlockAllocatorImpl(),
                 new ListTablesRequest(TestUtils.createIdentity(), "abc", "def", "mySchema", "next", -1));
 
         // Then
-        Collection<TableName> tables = listTablesResponse.getTables();
-        assertEquals(3, tables.size());
-
-        Lists.newArrayList(table1, table2, table3)
-                .forEach(tableName -> assertTrue(tables.contains(new TableName("mySchema", tableName))));
+        assertThat(listTablesResponse.getTables()).containsExactlyInAnyOrder(
+                new TableName("mySchema", table1),
+                new TableName("mySchema", table2),
+                new TableName("mySchema", table3));
     }
 
     @Test
     public void shouldProvideSubsetOfTheTablesWithinTheInstanceWhenAskedToListTheTablesAndPageSizeIsSet() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         String table1 = createEmptyTable(instance).get(TABLE_NAME);
         String table2 = createEmptyTable(instance).get(TABLE_NAME);
 
         // When
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
         ListTablesResponse listTablesResponse = sleeperMetadataHandler.doListTables(new BlockAllocatorImpl(),
                 new ListTablesRequest(TestUtils.createIdentity(), "abc", "def", "mySchema", null, 1));
 
         // Then
-        Collection<TableName> tables = listTablesResponse.getTables();
-        assertEquals(1, tables.size());
 
         // Order the tables
         List<String> sorted = Lists.newArrayList(table1, table2).stream().sorted().collect(Collectors.toList());
 
-        assertEquals("1", listTablesResponse.getNextToken());
-        assertTrue(tables.contains(new TableName("mySchema", sorted.get(0))));
+        assertThat(listTablesResponse.getNextToken()).isEqualTo("1");
+        assertThat(listTablesResponse.getTables()).containsExactly(new TableName("mySchema", sorted.get(0)));
     }
 
     @Test
     public void shouldProvideSubsetOfTheTablesWithinTheInstanceWhenAskedToListTheTablesAndPageSizeIsSetStartingWithStartToken() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         String table1 = createEmptyTable(instance).get(TABLE_NAME);
         String table2 = createEmptyTable(instance).get(TABLE_NAME);
 
         List<String> sorted = Lists.newArrayList(table1, table2).stream().sorted().collect(Collectors.toList());
 
         // When
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
         ListTablesResponse listTablesResponse = sleeperMetadataHandler.doListTables(new BlockAllocatorImpl(),
                 new ListTablesRequest(TestUtils.createIdentity(), "abc", "def", "mySchema", "1", 1));
 
         // Then
-        Collection<TableName> tables = listTablesResponse.getTables();
-        assertNull(listTablesResponse.getNextToken());
-        assertEquals(1, tables.size());
-        assertTrue(tables.contains(new TableName("mySchema", sorted.get(1))));
+        assertThat(listTablesResponse.getNextToken()).isNull();
+        assertThat(listTablesResponse.getTables()).containsExactly(new TableName("mySchema", sorted.get(1)));
     }
 
     @Test
     public void shouldReturnBothPartitionsWhenItHasBeenSplitBySystemAndLeftMaxAppearsInDenyList() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         SleeperMetadataHandlerImpl sleeperMetadataHandler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
         TableName tableName = new TableName(instance.get(ID), table.get(TABLE_NAME));
 
         // When
-
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
         Partition partition2018 = stateStore.getLeafPartitions()
                 .stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
                 .collect(Collectors.toList()).get(0);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
-        SplitPartition splitPartition = new SplitPartition(stateStore, table.getSchema(), new Configuration());
-        splitPartition.splitPartition(partition2018, partitionToActiveFilesMap.get(partition2018.getId()));
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
+        SplitPartition splitPartition = splitPartition(stateStore, table);
+        splitPartition.splitPartition(partition2018, partitionToFiles.get(partition2018.getId()));
         Partition firstHalfOf2018 = stateStore.getLeafPartitions()
                 .stream()
                 .filter(p -> (Integer) p.getRegion().getRange("year").getMin() == 2018)
@@ -551,35 +514,38 @@ public class SleeperMetadataHandlerIT extends AbstractMetadataHandlerIT {
                 "abc", "cde",
                 tableName,
                 queryConstraints, getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        ));
+                getTableResponse.getPartitionColumns()));
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(2, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isEqualTo(2);
     }
 
     @Test
     public void shouldCallExtraSchemaEnhancementMethodWhenEnhanceingSchema() throws IOException {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
+        InstanceProperties instance = createInstance();
         SleeperMetadataHandlerImpl handler = new SleeperMetadataHandlerImpl(s3Client, dynamoClient, instance.get(CONFIG_BUCKET));
 
         // When
         handler.enhancePartitionSchema(new SchemaBuilder(), null);
 
         // Then
-        assertEquals(1, handler.schemaEnhancementsCalled);
+        assertThat(handler.schemaEnhancementsCalled).isOne();
 
+    }
+
+    private SplitPartition splitPartition(StateStore stateStore, TableProperties tableProperties) {
+        return new SplitPartition(stateStore, tableProperties,
+                loadSketchesFromFile(tableProperties, new Configuration()),
+                () -> UUID.randomUUID().toString(), null);
     }
 
     private static class SleeperMetadataHandlerImpl extends SleeperMetadataHandler {
         private int schemaEnhancementsCalled = 0;
         private int writeExtraPartitionDataCalled = 0;
 
-        public SleeperMetadataHandlerImpl(AmazonS3 s3Client, AmazonDynamoDB dynamoDBClient, String configBucket) throws IOException {
+        private SleeperMetadataHandlerImpl(AmazonS3 s3Client, AmazonDynamoDB dynamoDBClient, String configBucket) {
             super(s3Client, dynamoDBClient, configBucket, mock(EncryptionKeyFactory.class),
                     mock(AWSSecretsManager.class), mock(AmazonAthena.class), "abc", "def");
         }

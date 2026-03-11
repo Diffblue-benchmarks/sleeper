@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@
  */
 package sleeper.core.record.serialiser;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import sleeper.core.record.Record;
 import sleeper.core.schema.Field;
 import sleeper.core.schema.Schema;
@@ -26,17 +27,18 @@ import sleeper.core.schema.type.StringType;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RecordSerialiserTest {
 
     @Test
     public void shouldSerialiseAndDeserialiseCorrectly() throws IOException {
         // Given
-        Schema schema = new Schema();
-        schema.setRowKeyFields(new Field("column1", new IntType()), new Field("column2", new LongType()));
-        schema.setSortKeyFields(new Field("column3", new StringType()), new Field("column4", new ByteArrayType()));
-        schema.setValueFields(new Field("column5", new ByteArrayType()), new Field("column6", new ByteArrayType()));
+        Schema schema = Schema.builder()
+                .rowKeyFields(new Field("column1", new IntType()), new Field("column2", new LongType()))
+                .sortKeyFields(new Field("column3", new StringType()), new Field("column4", new ByteArrayType()))
+                .valueFields(new Field("column5", new ByteArrayType()), new Field("column6", new ByteArrayType()))
+                .build();
         Record record = new Record();
         record.put("column1", 19);
         record.put("column2", 100L);
@@ -45,11 +47,11 @@ public class RecordSerialiserTest {
         record.put("column5", new byte[]{4, 5, 6, 7});
         record.put("column6", new byte[]{8, 9, 10, 11, 12});
         RecordSerialiser serialiser = new RecordSerialiser(schema);
-        
+
         // When
         Record deserialised = serialiser.deserialise(serialiser.serialise(record));
-        
+
         // Then
-        assertEquals(record, deserialised);
+        assertThat(deserialised).isEqualTo(record);
     }
 }

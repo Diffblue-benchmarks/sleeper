@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,15 +38,22 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Serialises and deserialises a {@link Record} to and from a <code>byte[]</code>.
+ * Serialises and deserialises a record to and from a byte array.
  */
 public class RecordSerialiser {
     private final Schema schema;
-    
+
     public RecordSerialiser(Schema schema) {
         this.schema = schema;
     }
 
+    /**
+     * Serialises a record to a byte array.
+     *
+     * @param  record      the record to serialise
+     * @return             a byte array representing the record
+     * @throws IOException if a field type is unknown
+     */
     public byte[] serialise(Record record) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
@@ -80,7 +87,14 @@ public class RecordSerialiser {
         dos.close();
         return baos.toByteArray();
     }
-    
+
+    /**
+     * Deserialises a byte array to a record.
+     *
+     * @param  serialised  a byte array representing the record
+     * @return             the deserialised record
+     * @throws IOException if a field type is unknown
+     */
     public Record deserialise(byte[] serialised) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(serialised);
         DataInputStream dis = new DataInputStream(bais);
@@ -148,7 +162,7 @@ public class RecordSerialiser {
         if (primitiveType instanceof ByteArrayType) {
             int length = dis.readInt();
             byte[] byteArray = new byte[length];
-            dis.read(byteArray);
+            dis.readFully(byteArray);
             return byteArray;
         }
         throw new IOException("Unknown type " + primitiveType);

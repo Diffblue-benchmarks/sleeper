@@ -1,0 +1,66 @@
+[
+  {
+    "jobId": "job22222-2222-2222-2222-222222222222",
+    "partitionId": "partnCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC",
+    "inputFilesCount": 1,
+    "createUpdateTime": "2022-10-13T12:01:00Z",
+    "jobRuns": [
+      {
+        "taskId": "task-id",
+        "updates": [
+          {
+            "updateTime": "2022-10-13T12:01:10.123Z",
+            "startTime": "2022-10-13T12:01:10Z",
+            "type": "STARTED"
+          },
+          {
+            "updateTime": "2022-10-13T14:01:10.123Z",
+            "finishTime": "2022-10-13T14:01:10Z",
+            "recordsProcessed": {
+              "recordsRead": 1000600,
+              "recordsWritten": 500300
+            },
+            "type": "FINISHED_WHEN_COMMITTED"
+          },
+          {
+            "commitTime": "2022-10-13T14:01:30Z",
+            "updateTime": "2022-10-13T14:01:30.123Z",
+            "type": "COMMITTED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "jobId": "job11111-1111-1111-1111-111111111111",
+    "partitionId": "partnCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC",
+    "inputFilesCount": 1,
+    "createUpdateTime": "2022-10-13T12:00:00Z",
+    "jobRuns": [
+      {
+        "taskId": "task-id",
+        "updates": [
+          {
+            "updateTime": "2022-10-13T12:00:10.123Z",
+            "startTime": "2022-10-13T12:00:10Z",
+            "type": "STARTED"
+          },
+          {
+            "updateTime": "2022-10-13T12:00:10.123Z",
+            "finishTime": "2022-10-13T12:00:10.123Z",
+            "recordsProcessed": {
+              "recordsRead": 600,
+              "recordsWritten": 300
+            },
+            "type": "FINISHED_WHEN_COMMITTED"
+          },
+          {
+            "commitTime": "2022-10-13T12:00:30Z",
+            "updateTime": "2022-10-13T12:00:30.123Z",
+            "type": "COMMITTED"
+          }
+        ]
+      }
+    ]
+  }
+]

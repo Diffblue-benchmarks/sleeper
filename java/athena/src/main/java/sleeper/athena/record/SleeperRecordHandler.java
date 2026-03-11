@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,16 +27,21 @@ import com.amazonaws.athena.connector.lambda.data.writers.extractors.VarCharExtr
 import com.amazonaws.athena.connector.lambda.handlers.RecordHandler;
 import com.amazonaws.athena.connector.lambda.records.ReadRecordsRequest;
 import com.amazonaws.services.athena.AmazonAthena;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import org.apache.hadoop.conf.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.configuration.properties.table.TableProperties;
-import sleeper.configuration.properties.table.TablePropertiesProvider;
+
+import sleeper.configuration.properties.S3InstanceProperties;
+import sleeper.configuration.properties.S3TableProperties;
 import sleeper.core.iterator.CloseableIterator;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
+import sleeper.core.properties.table.TablePropertiesProvider;
 import sleeper.core.record.Record;
 import sleeper.core.schema.Schema;
 import sleeper.core.schema.type.ByteArrayType;
@@ -46,59 +51,52 @@ import sleeper.core.schema.type.LongType;
 import sleeper.core.schema.type.MapType;
 import sleeper.core.schema.type.StringType;
 import sleeper.core.schema.type.Type;
-import sleeper.utils.HadoopConfigurationProvider;
+import sleeper.parquet.utils.HadoopConfigurationProvider;
 
-import java.io.IOException;
-
-import static sleeper.athena.metadata.IteratorApplyingMetadataHandler.SOURCE_TYPE;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.table.TableProperty.S3A_READAHEAD_RANGE;
+import static sleeper.athena.metadata.SleeperMetadataHandler.SOURCE_TYPE;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
 
 /**
- * An abstraction layer for the {@link RecordHandler} so that users can choose how to create a record iterator. The
- * {@link SleeperRecordHandler} handles the writing of the records to Athena and delegates the iterator creation to
- * the implementation.
+ * An abstraction layer so that users can choose how to create a record iterator. Handles the writing of the records to
+ * Athena and delegates the iterator creation to the implementation.
  */
 public abstract class SleeperRecordHandler extends RecordHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(SleeperRecordHandler.class);
-    
-    private final Configuration defaultConfig;
+
     private final TablePropertiesProvider tablePropertiesProvider;
     private final InstanceProperties instanceProperties;
 
-    public SleeperRecordHandler() throws IOException {
-        this(AmazonS3ClientBuilder.defaultClient(), System.getenv(CONFIG_BUCKET.toEnvironmentVariable()));
+    public SleeperRecordHandler() {
+        this(AmazonS3ClientBuilder.defaultClient(), AmazonDynamoDBClientBuilder.defaultClient(),
+                System.getenv(CONFIG_BUCKET.toEnvironmentVariable()));
     }
 
-    public SleeperRecordHandler(AmazonS3 s3Client, String configBucket) throws IOException {
+    public SleeperRecordHandler(AmazonS3 s3Client, AmazonDynamoDB dynamoDB, String configBucket) {
         super(SOURCE_TYPE);
-        this.instanceProperties = new InstanceProperties();
-        instanceProperties.loadFromS3(s3Client, configBucket);
-        this.tablePropertiesProvider = new TablePropertiesProvider(s3Client, instanceProperties);
-        this.defaultConfig = HadoopConfigurationProvider.getConfigurationForQueryLambdas(instanceProperties);
+        this.instanceProperties = S3InstanceProperties.loadFromBucket(s3Client, configBucket);
+        this.tablePropertiesProvider = S3TableProperties.createProvider(instanceProperties, s3Client, dynamoDB);
     }
 
-    public SleeperRecordHandler(AmazonS3 s3Client, String configBucket, AWSSecretsManager secretsManager, AmazonAthena athena) throws IOException {
+    public SleeperRecordHandler(AmazonS3 s3Client, AmazonDynamoDB dynamoDB, String configBucket, AWSSecretsManager secretsManager, AmazonAthena athena) {
         super(s3Client, secretsManager, athena, SOURCE_TYPE);
-        this.instanceProperties = new InstanceProperties();
-        instanceProperties.loadFromS3(s3Client, configBucket);
-        this.tablePropertiesProvider = new TablePropertiesProvider(s3Client, instanceProperties);
-        this.defaultConfig = HadoopConfigurationProvider.getConfigurationForQueryLambdas(instanceProperties);
+        this.instanceProperties = S3InstanceProperties.loadFromBucket(s3Client, configBucket);
+        this.tablePropertiesProvider = S3TableProperties.createProvider(instanceProperties, s3Client, dynamoDB);
     }
 
     /**
      * Reads and sends data to Athena for further processing. It allows the implementation to create the iterator which
      * will depend on the {@link com.amazonaws.athena.connector.lambda.handlers.MetadataHandler} supplying the splits.
      * The way that the iterator is created from the request will depend on implementation.
-     * @param spiller a mechanism to write data
-     * @param recordsRequest The request from the user
-     * @param queryStatusChecker a means of checking the status of the query
-     * @throws Exception If something goes wrong
+     *
+     * @param  spiller            a mechanism to write data
+     * @param  recordsRequest     the request from the user
+     * @param  queryStatusChecker a means of checking the status of the query
+     * @throws Exception          if something goes wrong
      */
     @Override
     protected void readWithConstraint(BlockSpiller spiller, ReadRecordsRequest recordsRequest, QueryStatusChecker queryStatusChecker) throws Exception {
         LOGGER.info("User {} with groups {} made data read request: {}", recordsRequest.getIdentity().getArn(), recordsRequest.getIdentity().getIamGroups(), recordsRequest);
-        TableProperties tableProperties = tablePropertiesProvider.getTableProperties(recordsRequest.getTableName().getTableName());
+        TableProperties tableProperties = tablePropertiesProvider.getByName(recordsRequest.getTableName().getTableName());
 
         Schema schema = createSchemaForDataRead(tableProperties.getSchema(), recordsRequest);
         CloseableIterator<Record> recordIterator = createRecordIterator(recordsRequest, schema, tableProperties);
@@ -113,7 +111,7 @@ public abstract class SleeperRecordHandler extends RecordHandler {
 
         GeneratedRowWriter writer = rowWriterBuilder.build();
 
-        while(recordIterator.hasNext()) {
+        while (recordIterator.hasNext()) {
             Record next = recordIterator.next();
             spiller.writeRows((block, rowNum) -> writer.writeRow(block, rowNum, next) ? 1 : 0);
         }
@@ -124,28 +122,32 @@ public abstract class SleeperRecordHandler extends RecordHandler {
     /**
      * Implementation dependent code to create the schema used to read the data. Some implementations may be able to
      * slim down the schema to reduce the amount of data read per query, thereby making queries cheaper.
-     * @param schema the original schema associated with the table being queried
-     * @param recordsRequest the records request made by the user
-     * @return a schema to use for reading the files.
+     *
+     * @param  schema         the original schema associated with the table being queried
+     * @param  recordsRequest the records request made by the user
+     * @return                a schema to use for reading the files.
      */
     protected abstract Schema createSchemaForDataRead(Schema schema, ReadRecordsRequest recordsRequest);
 
     /**
      * Implementation dependent iterator creation code. The entire request which contains the user, split and schema is
      * passed to this method along with the table properties.
-     * @param recordsRequest the request
-     * @param schema the table schema to use for reading
-     * @param tableProperties The table properties to use for reading the table
-     * @implNote Do not use the schema in the table properties as it could differ from the schema provided.
-     * @return an iterator of records
-     * @throws Exception when an iterator is not created
+     *
+     * @param    recordsRequest  the request
+     * @param    schema          the table schema to use for reading
+     * @param    tableProperties the table properties to use for reading the table
+     * @return                   an iterator of records
+     * @throws   Exception       when an iterator is not created
+     * @implNote                 do not use the schema in the table properties as it could differ from the schema
+     *                           provided
      */
     protected abstract CloseableIterator<Record> createRecordIterator(ReadRecordsRequest recordsRequest, Schema schema, TableProperties tableProperties) throws Exception;
 
     /**
      * Configures the writer so that it can write records from Sleeper to Athena.
-     * @param rowWriterBuilder The WriterBuilder
-     * @param schema The Sleeper Schema for this table
+     *
+     * @param rowWriterBuilder the WriterBuilder
+     * @param schema           the Sleeper schema for this table
      */
     private void configureBuilder(GeneratedRowWriter.RowWriterBuilder rowWriterBuilder, Schema schema) {
         // Add Extractors according to the schema
@@ -172,9 +174,10 @@ public abstract class SleeperRecordHandler extends RecordHandler {
     }
 
     /**
-     * Adds an extractor for byte arrays
+     * Adds an extractor for byte arrays.
+     *
      * @param rowWriterBuilder the WriterBuilder
-     * @param name the name of the field
+     * @param name             the name of the field
      */
     private void addByteArrayExtractor(GeneratedRowWriter.RowWriterBuilder rowWriterBuilder, String name) {
         rowWriterBuilder.withExtractor(name, (VarBinaryExtractor) (context, dst) -> {
@@ -186,25 +189,26 @@ public abstract class SleeperRecordHandler extends RecordHandler {
 
     /**
      * Adds an extractor factory for Lists.
+     *
      * @param rowWriterBuilder the WriterBuilder
-     * @param name the name of the field
+     * @param name             the name of the field
      */
     private void addListExtractorFactory(GeneratedRowWriter.RowWriterBuilder rowWriterBuilder, String name, ListType type) {
-        rowWriterBuilder.withFieldWriterFactory(name, (vector, extractor, constraint) ->
-                (context, rowNum) -> {
-                    Record record = (Record) context;
-                    Object object = record.get(name);
-                    if (object != null) {
-                        BlockUtils.setComplexValue(vector, rowNum, FieldResolver.DEFAULT, object);
-                    }
-                    return true;
-                });
+        rowWriterBuilder.withFieldWriterFactory(name, (vector, extractor, constraint) -> (context, rowNum) -> {
+            Record record = (Record) context;
+            Object object = record.get(name);
+            if (object != null) {
+                BlockUtils.setComplexValue(vector, rowNum, FieldResolver.DEFAULT, object);
+            }
+            return true;
+        });
     }
 
     /**
-     * Adds an extractor for Strings
+     * Adds an extractor for Strings.
+     *
      * @param rowWriterBuilder the WriterBuilder
-     * @param name the name of the field
+     * @param name             the name of the field
      */
     private void addStringExtractor(GeneratedRowWriter.RowWriterBuilder rowWriterBuilder, String name) {
         rowWriterBuilder.withExtractor(name, (VarCharExtractor) (context, dst) -> {
@@ -215,9 +219,10 @@ public abstract class SleeperRecordHandler extends RecordHandler {
     }
 
     /**
-     * Adds an extractor for Longs
+     * Adds an extractor for Longs.
+     *
      * @param rowWriterBuilder the WriterBuilder
-     * @param name the name of the field
+     * @param name             the name of the field
      */
     private void addLongExtractor(GeneratedRowWriter.RowWriterBuilder rowWriterBuilder, String name) {
         rowWriterBuilder.withExtractor(name, (BigIntExtractor) (context, dst) -> {
@@ -228,9 +233,10 @@ public abstract class SleeperRecordHandler extends RecordHandler {
     }
 
     /**
-     * Adds an extractor for Integers
+     * Adds an extractor for Integers.
+     *
      * @param rowWriterBuilder the WriterBuilder
-     * @param name the name of the field
+     * @param name             the name of the field
      */
     private void addIntExtractor(GeneratedRowWriter.RowWriterBuilder rowWriterBuilder, String name) {
         rowWriterBuilder.withExtractor(name, (IntExtractor) (context, dst) -> {
@@ -241,14 +247,14 @@ public abstract class SleeperRecordHandler extends RecordHandler {
     }
 
     /**
-     * Gets the Hadoop configuration set in the table and instance
-     * @param tablePropeties the table properties
-     * @return the Hadoop configuration
+     * Gets the Hadoop configuration set in the table and instance.
+     *
+     * @param  tableProperties the table properties
+     * @return                 the Hadoop configuration
      */
     protected Configuration getConfigurationForTable(TableProperties tableProperties) {
-        Configuration config = new Configuration(defaultConfig);
-        config.set("fs.s3a.readahead.range", tableProperties.get(S3A_READAHEAD_RANGE));
-        return config;
+        Configuration conf = HadoopConfigurationProvider.getConfigurationForQueryLambdas(instanceProperties, tableProperties);
+        return conf;
     }
 
     protected InstanceProperties getInstanceProperties() {

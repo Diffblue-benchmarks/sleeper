@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,9 @@ import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
 import com.amazonaws.services.sqs.model.ReceiveMessageResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sleeper.configuration.properties.InstanceProperties;
+
+import sleeper.configuration.properties.S3InstanceProperties;
+import sleeper.core.properties.instance.InstanceProperties;
 import sleeper.core.record.Record;
 import sleeper.core.record.ResultsBatch;
 import sleeper.core.record.serialiser.JSONResultsBatchSerialiser;
@@ -32,9 +34,8 @@ import sleeper.core.schema.Schema;
 
 import java.io.IOException;
 import java.util.List;
-import sleeper.ClientUtils;
 
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.QUERY_RESULTS_QUEUE_URL;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.QUERY_RESULTS_QUEUE_URL;
 
 /**
  * Polls an SQS queue of query results, printing them out to the screen as they arrive.
@@ -50,7 +51,7 @@ public class QueryResultsSQSQueuePoller {
         this.resultsSQSQueueUrl = resultsSQSQueueUrl;
     }
 
-    public void run() throws IOException {
+    public void run() {
         int numConsecutiveNoMessages = 0;
         while (numConsecutiveNoMessages < 15) {
             ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest()
@@ -81,16 +82,23 @@ public class QueryResultsSQSQueuePoller {
 
     public static void main(String[] args) throws IOException {
         if (1 != args.length) {
-            throw new IllegalArgumentException("Usage: <instance id>");
+            throw new IllegalArgumentException("Usage: <instance-id>");
         }
 
-        AmazonS3 amazonS3 = AmazonS3ClientBuilder.defaultClient();
-        InstanceProperties instanceProperties = ClientUtils.getInstanceProperties(amazonS3, args[0]);
-        amazonS3.shutdown();
+        AmazonS3 s3Client = AmazonS3ClientBuilder.defaultClient();
+        InstanceProperties instanceProperties;
+        try {
+            instanceProperties = S3InstanceProperties.loadGivenInstanceId(s3Client, args[0]);
+        } finally {
+            s3Client.shutdown();
+        }
 
         AmazonSQS sqsClient = AmazonSQSClientBuilder.defaultClient();
-        QueryResultsSQSQueuePoller poller = new QueryResultsSQSQueuePoller(sqsClient, instanceProperties.get(QUERY_RESULTS_QUEUE_URL));
-        poller.run();
-        sqsClient.shutdown();
+        try {
+            QueryResultsSQSQueuePoller poller = new QueryResultsSQSQueuePoller(sqsClient, instanceProperties.get(QUERY_RESULTS_QUEUE_URL));
+            poller.run();
+        } finally {
+            sqsClient.shutdown();
+        }
     }
 }

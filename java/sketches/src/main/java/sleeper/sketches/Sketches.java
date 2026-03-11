@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,114 @@
  */
 package sleeper.sketches;
 
+import com.facebook.collections.ByteArray;
 import org.apache.datasketches.quantiles.ItemsSketch;
+import org.apache.datasketches.quantiles.ItemsUnion;
 
+import sleeper.core.record.Record;
+import sleeper.core.schema.Field;
+import sleeper.core.schema.Schema;
+import sleeper.core.schema.type.ByteArrayType;
+import sleeper.core.schema.type.IntType;
+import sleeper.core.schema.type.PrimitiveType;
+import sleeper.core.schema.type.Type;
+
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class Sketches {
+
+    private final Schema schema;
     private final Map<String, ItemsSketch> keyFieldToQuantilesSketch;
 
-    public Sketches(Map<String, ItemsSketch> keyFieldToQuantilesSketch) {
+    public Sketches(Schema schema, Map<String, ItemsSketch> keyFieldToQuantilesSketch) {
+        this.schema = schema;
         this.keyFieldToQuantilesSketch = keyFieldToQuantilesSketch;
     }
 
-    public Map<String, ItemsSketch> getQuantilesSketches() {
-        return keyFieldToQuantilesSketch;
+    public static Sketches from(Schema schema) {
+        Map<String, ItemsSketch> keyFieldToSketch = new HashMap<>();
+        for (Field rowKeyField : schema.getRowKeyFields()) {
+            keyFieldToSketch.put(rowKeyField.getName(), createSketch(rowKeyField.getType(), 1024));
+        }
+        return new Sketches(schema, keyFieldToSketch);
     }
 
-    public ItemsSketch getQuantilesSketch(String keyFieldName) {
-        return keyFieldToQuantilesSketch.get(keyFieldName);
+    public static <T> ItemsSketch<T> createSketch(Type type, int k) {
+        return (ItemsSketch<T>) ItemsSketch.getInstance(k, createComparator(type));
+    }
+
+    public static <T> ItemsUnion<T> createUnion(Type type, int maxK) {
+        return (ItemsUnion<T>) ItemsUnion.getInstance(maxK, createComparator(type));
+    }
+
+    public static <T> Comparator<T> createComparator(Type type) {
+        if (type instanceof PrimitiveType) {
+            return (Comparator<T>) Comparator.naturalOrder();
+        } else {
+            throw new IllegalArgumentException("Unknown key type of " + type);
+        }
+    }
+
+    public <T> ItemsSketch<T> getQuantilesSketch(String keyFieldName) {
+        return (ItemsSketch<T>) keyFieldToQuantilesSketch.get(keyFieldName);
+    }
+
+    public Stream<FieldSketch> fieldSketches() {
+        return keyFieldToQuantilesSketch.entrySet().stream()
+                .map(entry -> new FieldSketch(schema.getField(entry.getKey()).orElseThrow(), entry.getValue()));
+    }
+
+    public void update(Record record) {
+        for (Field rowKeyField : schema.getRowKeyFields()) {
+            update(getQuantilesSketch(rowKeyField.getName()), record, rowKeyField);
+        }
+    }
+
+    public static void update(ItemsSketch sketch, Record record, Field field) {
+        sketch.update(convertValueForSketch(record, field));
+    }
+
+    public static Object readValueFromSketchWithWrappedBytes(Object value, Field field) {
+        if (value == null) {
+            return null;
+        } else if (field.getType() instanceof IntType) {
+            return ((Long) value).intValue();
+        } else {
+            return value;
+        }
+    }
+
+    private static Object convertValueForSketch(Record record, Field field) {
+        Object value = record.get(field.getName());
+        if (value == null) {
+            return null;
+        } else if (field.getType() instanceof IntType) {
+            return ((Integer) value).longValue();
+        } else if (field.getType() instanceof ByteArrayType) {
+            return ByteArray.wrap((byte[]) value);
+        } else {
+            return value;
+        }
+    }
+
+    public static class FieldSketch {
+        private final Field field;
+        private final ItemsSketch sketch;
+
+        private FieldSketch(Field field, ItemsSketch sketch) {
+            this.field = field;
+            this.sketch = sketch;
+        }
+
+        public Field getField() {
+            return field;
+        }
+
+        public <T> ItemsSketch<T> getSketch() {
+            return sketch;
+        }
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,38 @@
  */
 package sleeper.sketches.s3;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.Path;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import sleeper.core.schema.Schema;
-import sleeper.sketches.SketchSerialiser;
 import sleeper.sketches.Sketches;
+import sleeper.sketches.SketchesSerDe;
 
 import java.io.IOException;
 
 public class SketchesSerDeToS3 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(SketchesSerDeToS3.class);
+
     private final Schema schema;
 
     public SketchesSerDeToS3(Schema schema) {
         this.schema = schema;
     }
 
+    public static Path sketchesPathForDataFile(String filename) {
+        return new Path(FilenameUtils.removeExtension(filename) + ".sketches");
+    }
+
     public void saveToHadoopFS(Path path, Sketches sketches, Configuration conf) throws IOException {
-        FSDataOutputStream dataOutputStream = path.getFileSystem(conf).create(path);
-        new SketchSerialiser(schema).serialise(sketches, dataOutputStream);
-        dataOutputStream.close();
+        try (FSDataOutputStream dataOutputStream = path.getFileSystem(conf).create(path)) {
+            new SketchesSerDe(schema).serialise(sketches, dataOutputStream);
+            LOGGER.info("Wrote sketches to {}", path);
+        }
     }
 
     public void saveToHadoopFS(String fs, String file, Sketches sketches, Configuration conf) throws IOException {
@@ -44,9 +55,11 @@ public class SketchesSerDeToS3 {
     }
 
     public Sketches loadFromHadoopFS(Path path, Configuration conf) throws IOException {
-        FSDataInputStream dataInputStream = path.getFileSystem(conf).open(path);
-        Sketches sketches = new SketchSerialiser(schema).deserialise(dataInputStream);
-        dataInputStream.close();
+        Sketches sketches;
+        try (FSDataInputStream dataInputStream = path.getFileSystem(conf).open(path)) {
+            sketches = new SketchesSerDe(schema).deserialise(dataInputStream);
+        }
+        LOGGER.info("Loaded sketches from {}", path);
         return sketches;
     }
 

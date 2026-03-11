@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,7 @@
 package sleeper.core.range;
 
 import com.facebook.collections.ByteArray;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+
 import sleeper.core.key.Key;
 import sleeper.core.record.KeyComparator;
 import sleeper.core.schema.Field;
@@ -31,6 +27,12 @@ import sleeper.core.schema.type.LongType;
 import sleeper.core.schema.type.PrimitiveType;
 import sleeper.core.schema.type.StringType;
 import sleeper.core.schema.type.Type;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Represents a contiguous range in a single dimension.
@@ -49,7 +51,7 @@ public class Range {
         this.max = max;
         this.maxInclusive = maxInclusive;
     }
-    
+
     public Range(Field field, Object min, Object max) {
         this(field, min, true, max, false);
     }
@@ -57,15 +59,15 @@ public class Range {
     public Field getField() {
         return field;
     }
-    
+
     public String getFieldName() {
         return field.getName();
     }
-    
+
     public Type getFieldType() {
         return field.getType();
     }
-    
+
     public Object getMin() {
         return min;
     }
@@ -82,32 +84,44 @@ public class Range {
         return maxInclusive;
     }
 
-    public boolean doesRangeContainObject(Object object) {
+    /**
+     * Checks whether the provided value is contained within this range.
+     *
+     * @param  value the value to check
+     * @return       whether the object is contained within this range
+     */
+    public boolean doesRangeContainObject(Object value) {
         Type type = field.getType();
         if (type instanceof IntType) {
-            if (!(object instanceof Integer)) {
-                throw new IllegalArgumentException("The object must match the schema: expected an Integer, got " + object);
+            if (!(value instanceof Integer)) {
+                throw new IllegalArgumentException("The object must match the schema: expected an Integer, got " + value);
             }
-            return doesRangeContainInt((Integer) object);
+            return doesRangeContainInt((Integer) value);
         } else if (type instanceof LongType) {
-            if (!(object instanceof Long)) {
-                throw new IllegalArgumentException("The object must match the schema: expected a Long, got " + object);
+            if (!(value instanceof Long)) {
+                throw new IllegalArgumentException("The object must match the schema: expected a Long, got " + value);
             }
-            return doesRangeContainLong((Long) object);
+            return doesRangeContainLong((Long) value);
         } else if (type instanceof StringType) {
-            if (!(object instanceof String)) {
-                throw new IllegalArgumentException("The object must match the schema: expected a String, got " + object);
+            if (!(value instanceof String)) {
+                throw new IllegalArgumentException("The object must match the schema: expected a String, got " + value);
             }
-            return doesRangeContainString((String) object);
+            return doesRangeContainString((String) value);
         } else if (type instanceof ByteArrayType) {
-            if (!(object instanceof byte[])) {
-                throw new IllegalArgumentException("The object must match the schema: expected a byte[], got " + object);
+            if (!(value instanceof byte[])) {
+                throw new IllegalArgumentException("The object must match the schema: expected a byte[], got " + value);
             }
-            return doesRangeContainByteArray((byte[]) object);
+            return doesRangeContainByteArray((byte[]) value);
         }
         throw new IllegalArgumentException("Unknown type in the schema: " + type);
     }
-    
+
+    /**
+     * Checks whether the provided range overlaps with this range.
+     *
+     * @param  otherRange the range to check
+     * @return            whether the range overlaps with this range
+     */
     public boolean doesRangeOverlap(Range otherRange) {
         // We work on the canonicalised version of the ranges as this makes the following
         // logic simpler. As an example of a counter-intuitive example, consider whether
@@ -115,10 +129,10 @@ public class Range {
         // If this range is for an integer field then these ranges do not overlap:
         // 5 is not in (1,5), but 4 is, 4 is not in (4,6), but 5 is. If this was a string
         // field then they do overlap (e.g. the string "4zzzz" is in both ranges).
-        
+
         Range canonicalRange = RangeCanonicaliser.canonicaliseRange(this);
         Range canonicalOtherRange = RangeCanonicaliser.canonicaliseRange(otherRange);
-        
+
         // The otherRange doesn't overlap this range if it is either completely
         // to the left of the partition or completely to the right of the
         // partition:
@@ -132,9 +146,9 @@ public class Range {
         //      Overlapping range:          |-------)
         //      Overlapping range:         |-------------)
         //      Overlapping range:                           |-------------)
-        
+
         KeyComparator keyComparator = new KeyComparator((PrimitiveType) field.getType());
-        
+
         // Other range to the left of this one
         boolean otherRangeMaxLessThanRangeMin = keyComparator.compare(Key.create(canonicalOtherRange.max), Key.create(canonicalRange.min)) <= 0;
         if (otherRangeMaxLessThanRangeMin) {
@@ -151,10 +165,10 @@ public class Range {
 
         return true;
     }
-    
+
     private boolean doesRangeContainInt(Integer value) {
         Integer minInteger = (Integer) min;
-            
+
         // If min is inclusive then return false if value is less than the minimum of the range
         if (minInclusive) {
             if (value < minInteger) {
@@ -187,10 +201,10 @@ public class Range {
 
         return true;
     }
-    
+
     private boolean doesRangeContainLong(Long value) {
         Long minLong = (Long) min;
-            
+
         // If min is inclusive then return false if value is less than the minimum of the range
         if (minInclusive) {
             if (value < minLong) {
@@ -223,10 +237,10 @@ public class Range {
 
         return true;
     }
-    
+
     private boolean doesRangeContainString(String value) {
         String minString = (String) min;
-            
+
         // If min is inclusive then return false if value is less than the minimum of the range
         if (minInclusive) {
             if (value.compareTo(minString) < 0) {
@@ -259,11 +273,11 @@ public class Range {
 
         return true;
     }
-    
+
     private boolean doesRangeContainByteArray(byte[] value) {
         ByteArray valueByteArray = ByteArray.wrap(value);
         ByteArray minByteArray = ByteArray.wrap((byte[]) min);
-            
+
         // If min is inclusive then return false if value is less than the minimum of the range
         if (minInclusive) {
             if (valueByteArray.compareTo(minByteArray) < 0) {
@@ -297,6 +311,10 @@ public class Range {
         return true;
     }
 
+    public boolean isInCanonicalForm() {
+        return isMinInclusive() && !isMaxInclusive();
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -325,7 +343,7 @@ public class Range {
             return false;
         }
         final Range other = (Range) obj;
-        
+
         Object minTransformed;
         Object otherMinTransformed;
         Object maxTransformed;
@@ -363,11 +381,14 @@ public class Range {
     public String toString() {
         return "Range{" + "field=" + field + ", min=" + min + ", minInclusive=" + minInclusive + ", max=" + max + ", maxInclusive=" + maxInclusive + '}';
     }
-    
+
+    /**
+     * Creates ranges and validates them against a schema.
+     */
     public static class RangeFactory {
         private final Map<String, PrimitiveType> rowKeyFieldToType;
         private final Set<String> rowKeyFieldNames;
-    
+
         public RangeFactory(Schema schema) {
             this.rowKeyFieldToType = new HashMap<>();
             for (Field field : schema.getRowKeyFields()) {
@@ -376,48 +397,98 @@ public class Range {
             this.rowKeyFieldNames = new HashSet<>(schema.getRowKeyFieldNames());
         }
 
+        /**
+         * Creates a new range.
+         *
+         * @param  field        the field which the range applies to
+         * @param  min          the minimum of the range
+         * @param  minInclusive whether the minimum is inclusive or not
+         * @param  max          the maximum of the range
+         * @param  maxInclusive whether the maximum is inclusive or not
+         * @return              the new range
+         */
         public Range createRange(Field field, Object min, boolean minInclusive, Object max, boolean maxInclusive) {
             // fieldName should be a row key
             if (!rowKeyFieldNames.contains(field.getName())) {
                 throw new IllegalArgumentException("Field name should be a row key field, got " + field.getName() + ", row key fields are " + rowKeyFieldNames);
             }
-            
+
             // min should not be null and should be of the correct type
             if (null == min) {
                 throw new IllegalArgumentException("Min should not be null");
             }
             validateType(field.getName(), min, "min");
-            
+
             // max should be null or of the correct type
             if (null != max) {
                 validateType(field.getName(), max, "max");
             } else {
                 maxInclusive = false;
             }
-            
+
             return new Range(field, min, minInclusive, max, maxInclusive);
         }
-        
+
+        /**
+         * Creates a new range.
+         *
+         * @param  fieldName    the name of the field which the range applies to
+         * @param  min          the minimum of the range
+         * @param  minInclusive whether the minimum is inclusive or not
+         * @param  max          the maximum of the range
+         * @param  maxInclusive whether the maximum is inclusive or not
+         * @return              the new range
+         */
         public Range createRange(String fieldName, Object min, boolean minInclusive, Object max, boolean maxInclusive) {
             return createRange(new Field(fieldName, rowKeyFieldToType.get(fieldName)), min, minInclusive, max, maxInclusive);
         }
-        
+
+        /**
+         * Creates a new range.
+         *
+         * @param  field the field which the range applies to
+         * @param  min   the minimum of the range (inclusive)
+         * @param  max   the maximum of the range (exclusive)
+         * @return       the new range
+         */
         public Range createRange(Field field, Object min, Object max) {
             return createRange(field, min, true, max, false);
         }
-        
+
+        /**
+         * Creates a new range.
+         *
+         * @param  fieldName the name of the field which the range applies to
+         * @param  min       the minimum of the range (inclusive)
+         * @param  max       the maximum of the range (exclusive)
+         * @return           the new range
+         */
         public Range createRange(String fieldName, Object min, Object max) {
             return createRange(fieldName, min, true, max, false);
         }
-        
+
+        /**
+         * Creates an exact range (where the min and max values are the same).
+         *
+         * @param  field the field which the range applies to
+         * @param  value the value for the exact range
+         * @return       the new range
+         */
         public Range createExactRange(Field field, Object value) {
             return createRange(field, value, true, value, true);
         }
-        
+
+        /**
+         * Creates an exact range (where the min and max values are the same).
+         *
+         * @param  fieldName the name of the field which the range applies to
+         * @param  value     the value for the exact range
+         * @return           the new range
+         */
         public Range createExactRange(String fieldName, Object value) {
             return createRange(fieldName, value, true, value, true);
         }
-        
+
         private void validateType(String fieldName, Object object, String description) {
             PrimitiveType type = rowKeyFieldToType.get(fieldName);
             if (type instanceof IntType) {

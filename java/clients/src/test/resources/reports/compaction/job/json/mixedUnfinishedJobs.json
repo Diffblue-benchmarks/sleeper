@@ -1,0 +1,81 @@
+[
+  {
+    "jobId": "job44444-4444-4444-4444-444444444444",
+    "partitionId": "partnDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD",
+    "inputFilesCount": 1,
+    "createUpdateTime": "2022-09-20T13:33:12.001Z",
+    "jobRuns": [
+      {
+        "taskId": "task1111-1111-1111-1111-111111111111",
+        "updates": [
+          {
+            "updateTime": "2022-09-20T13:34:12.123Z",
+            "startTime": "2022-09-20T13:34:12.001Z",
+            "type": "STARTED"
+          },
+          {
+            "updateTime": "2022-09-20T13:35:12.123Z",
+            "finishTime": "2022-09-20T13:35:12.001Z",
+            "recordsProcessed": {
+              "recordsRead": 600,
+              "recordsWritten": 300
+            },
+            "type": "FINISHED_WHEN_COMMITTED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "jobId": "job33333-3333-3333-3333-333333333333",
+    "partitionId": "partnCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC",
+    "inputFilesCount": 1,
+    "createUpdateTime": "2022-09-19T13:33:12.001Z",
+    "jobRuns": [
+      {
+        "taskId": "task1111-1111-1111-1111-111111111111",
+        "updates": [
+          {
+            "updateTime": "2022-09-19T13:34:12.123Z",
+            "startTime": "2022-09-19T13:34:12.001Z",
+            "type": "STARTED"
+          },
+          {
+            "updateTime": "2022-09-19T13:35:12.123Z",
+            "failureTime": "2022-09-19T13:35:12.001Z",
+            "failureReasons": [
+              "Something went wrong",
+              "More details"
+            ],
+            "type": "FAILED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "jobId": "job22222-2222-2222-2222-222222222222",
+    "partitionId": "partnBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB",
+    "inputFilesCount": 1,
+    "createUpdateTime": "2022-09-18T13:33:12.001Z",
+    "jobRuns": [
+      {
+        "taskId": "task1111-1111-1111-1111-111111111111",
+        "updates": [
+          {
+            "updateTime": "2022-09-18T13:34:12.123Z",
+            "startTime": "2022-09-18T13:34:12.001Z",
+            "type": "STARTED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "jobId": "job11111-1111-1111-1111-111111111111",
+    "partitionId": "partnAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA",
+    "inputFilesCount": 1,
+    "createUpdateTime": "2022-09-17T13:33:12.001Z",
+    "jobRuns": []
+  }
+]

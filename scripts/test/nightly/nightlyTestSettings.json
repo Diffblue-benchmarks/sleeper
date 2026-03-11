@@ -1,0 +1,16 @@
+{
+  "deployId": "my deployment ID (up to 2 characters to distinguish these tests from others running simultaneously)",
+  "vpc": "my VPC ID",
+  "subnets": "comma separated list of my subnet IDs",
+  "resultsBucket": "S3 bucket name",
+  "repoPath": "github-user-or-org/sleeper",
+  "mergeToMainOnTestType": {
+    "performance": false,
+    "functional": false
+  },
+  "gitHubApp": {
+    "privateKeyFile": "/sleeper-builder/<my GitHub App private key uploaded to Sleeper builder>.pem",
+    "appId": "my GitHub App ID",
+    "installationId": "my GitHub App installation ID"
+  }
+}

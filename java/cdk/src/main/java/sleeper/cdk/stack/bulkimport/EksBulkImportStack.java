@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,60 +15,46 @@
  */
 package sleeper.cdk.stack.bulkimport;
 
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.BULK_IMPORT_EKS_JOB_QUEUE_URL;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.facebook.collections.Pair;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
-
+import com.google.gson.reflect.TypeToken;
 import org.apache.commons.io.IOUtils;
-
-import sleeper.cdk.Utils;
-import sleeper.cdk.stack.StateStoreStack;
-import sleeper.configuration.properties.InstanceProperties;
-import sleeper.configuration.properties.SystemDefinedInstanceProperty;
-import sleeper.configuration.properties.UserDefinedInstanceProperty;
 import software.amazon.awscdk.Duration;
 import software.amazon.awscdk.NestedStack;
-import software.amazon.awscdk.services.cloudwatch.ComparisonOperator;
-import software.amazon.awscdk.services.cloudwatch.CreateAlarmOptions;
-import software.amazon.awscdk.services.cloudwatch.MetricOptions;
-import software.amazon.awscdk.services.cloudwatch.TreatMissingData;
-import software.amazon.awscdk.services.cloudwatch.actions.SnsAction;
+import software.amazon.awscdk.cdk.lambdalayer.kubectl.v24.KubectlV24Layer;
+import software.amazon.awscdk.services.cloudwatch.IMetric;
+import software.amazon.awscdk.services.ec2.ISubnet;
 import software.amazon.awscdk.services.ec2.IVpc;
+import software.amazon.awscdk.services.ec2.Subnet;
 import software.amazon.awscdk.services.ec2.SubnetSelection;
 import software.amazon.awscdk.services.ec2.Vpc;
 import software.amazon.awscdk.services.ec2.VpcLookupOptions;
 import software.amazon.awscdk.services.eks.AwsAuthMapping;
 import software.amazon.awscdk.services.eks.Cluster;
 import software.amazon.awscdk.services.eks.FargateCluster;
-import software.amazon.awscdk.services.eks.FargateClusterProps;
+import software.amazon.awscdk.services.eks.FargateProfile;
 import software.amazon.awscdk.services.eks.FargateProfileOptions;
 import software.amazon.awscdk.services.eks.KubernetesManifest;
 import software.amazon.awscdk.services.eks.KubernetesVersion;
 import software.amazon.awscdk.services.eks.Selector;
 import software.amazon.awscdk.services.eks.ServiceAccount;
 import software.amazon.awscdk.services.eks.ServiceAccountOptions;
+import software.amazon.awscdk.services.iam.Effect;
 import software.amazon.awscdk.services.iam.IRole;
-import software.amazon.awscdk.services.lambda.Code;
-import software.amazon.awscdk.services.lambda.Function;
-import software.amazon.awscdk.services.lambda.S3Code;
+import software.amazon.awscdk.services.iam.PolicyStatement;
+import software.amazon.awscdk.services.iam.Role;
+import software.amazon.awscdk.services.lambda.IFunction;
 import software.amazon.awscdk.services.lambda.eventsources.SqsEventSource;
+import software.amazon.awscdk.services.logs.ILogGroup;
 import software.amazon.awscdk.services.s3.Bucket;
 import software.amazon.awscdk.services.s3.IBucket;
-import software.amazon.awscdk.services.sns.ITopic;
+import software.amazon.awscdk.services.sns.Topic;
 import software.amazon.awscdk.services.sqs.DeadLetterQueue;
 import software.amazon.awscdk.services.sqs.Queue;
 import software.amazon.awscdk.services.stepfunctions.Choice;
 import software.amazon.awscdk.services.stepfunctions.Condition;
 import software.amazon.awscdk.services.stepfunctions.CustomState;
-import software.amazon.awscdk.services.stepfunctions.CustomStateProps;
+import software.amazon.awscdk.services.stepfunctions.DefinitionBody;
 import software.amazon.awscdk.services.stepfunctions.Fail;
 import software.amazon.awscdk.services.stepfunctions.Pass;
 import software.amazon.awscdk.services.stepfunctions.StateMachine;
@@ -76,31 +62,54 @@ import software.amazon.awscdk.services.stepfunctions.TaskInput;
 import software.amazon.awscdk.services.stepfunctions.tasks.SnsPublish;
 import software.constructs.Construct;
 
-/**
- * An {@link EksBulkImportStack} creates an EKS cluster and associated Kubernetes
- * resources needed to run Spark on Kubernetes. In addition to this, it creates
- * a statemachine which can run jobs on the cluster.
- */
-public class EksBulkImportStack extends NestedStack {
-    private final StateMachine stateMachine;
-    private final ServiceAccount sparkServiceAccount;
+import sleeper.cdk.jars.BuiltJars;
+import sleeper.cdk.jars.LambdaCode;
+import sleeper.cdk.stack.core.CoreStacks;
+import sleeper.cdk.stack.core.LoggingStack.LogGroupRef;
+import sleeper.cdk.util.Utils;
+import sleeper.core.deploy.LambdaHandler;
+import sleeper.core.properties.instance.CdkDefinedInstanceProperty;
+import sleeper.core.properties.instance.InstanceProperties;
 
-    public EksBulkImportStack(Construct scope, String id, List<IBucket> dataBuckets,
-            List<StateStoreStack> stateStoreStacks, InstanceProperties instanceProperties,
-            ITopic errorsTopic) {
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+
+import static sleeper.cdk.util.Utils.createAlarmForDlq;
+import static sleeper.cdk.util.Utils.createStateMachineLogOptions;
+import static sleeper.core.properties.instance.BulkImportProperty.BULK_IMPORT_STARTER_LAMBDA_MEMORY;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.BULK_IMPORT_EKS_JOB_QUEUE_ARN;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.BULK_IMPORT_EKS_JOB_QUEUE_URL;
+import static sleeper.core.properties.instance.CommonProperty.ACCOUNT;
+import static sleeper.core.properties.instance.CommonProperty.JARS_BUCKET;
+import static sleeper.core.properties.instance.CommonProperty.REGION;
+import static sleeper.core.properties.instance.CommonProperty.SUBNETS;
+import static sleeper.core.properties.instance.CommonProperty.VPC_ID;
+import static sleeper.core.properties.instance.EKSProperty.BULK_IMPORT_REPO;
+import static sleeper.core.properties.instance.EKSProperty.EKS_CLUSTER_ADMIN_ROLES;
+
+/**
+ * Deploys an EKS cluster and associated Kubernetes resources needed to run Spark on Kubernetes. In addition to this,
+ * it creates a state machine which can run bulk import jobs on the cluster.
+ */
+public final class EksBulkImportStack extends NestedStack {
+    private final Queue bulkImportJobQueue;
+
+    public EksBulkImportStack(
+            Construct scope, String id, InstanceProperties instanceProperties, BuiltJars jars,
+            Topic errorsTopic, BulkImportBucketStack importBucketStack, CoreStacks coreStacks,
+            List<IMetric> errorMetrics) {
         super(scope, id);
-        
-        IBucket ingestBucket = null;
-        String ingestBucketName = instanceProperties.get(UserDefinedInstanceProperty.INGEST_SOURCE_BUCKET);
-        if (null != ingestBucketName && !ingestBucketName.isEmpty()) {
-            ingestBucket = Bucket.fromBucketName(this, "IngestBucket", ingestBucketName);
-        }
-        
-        String instanceId = instanceProperties.get(UserDefinedInstanceProperty.ID);
+
+        String instanceId = Utils.cleanInstanceId(instanceProperties);
 
         Queue queueForDLs = Queue.Builder
                 .create(this, "BulkImportEKSJobDeadLetterQueue")
-                .queueName(instanceId + "-BulkImportEKSDLQ")
+                .queueName(String.join("sleeper", instanceId, "BulkImportEKSDLQ"))
                 .build();
 
         DeadLetterQueue deadLetterQueue = DeadLetterQueue.builder()
@@ -108,140 +117,136 @@ public class EksBulkImportStack extends NestedStack {
                 .queue(queueForDLs)
                 .build();
 
-        queueForDLs.metricApproximateNumberOfMessagesVisible().with(MetricOptions.builder()
-                .period(Duration.seconds(60))
-                .statistic("Sum")
-                .build())
-                .createAlarm(this, "BulkImportEKSUndeliveredJobsAlarm", CreateAlarmOptions.builder()
-                        .alarmDescription("Alarms if there are any messages that have failed validation or failed to be passed to the statemachine")
-                        .evaluationPeriods(1)
-                        .comparisonOperator(ComparisonOperator.GREATER_THAN_THRESHOLD)
-                        .threshold(0)
-                        .datapointsToAlarm(1)
-                        .treatMissingData(TreatMissingData.IGNORE)
-                        .build())
-                .addAlarmAction(new SnsAction(errorsTopic));
+        createAlarmForDlq(this, "BulkImportEKSUndeliveredJobsAlarm",
+                "Alarms if there are any messages that have failed validation or failed to be passed to the statemachine",
+                queueForDLs, errorsTopic);
+        errorMetrics.add(Utils.createErrorMetric("Bulk Import EKS Errors", queueForDLs, instanceProperties));
 
-        Queue bulkImportJobQueue = Queue.Builder
+        bulkImportJobQueue = Queue.Builder
                 .create(this, "BulkImportEKSJobQueue")
                 .deadLetterQueue(deadLetterQueue)
-                .queueName(instanceId + "-BulkImportEKSQ")
+                .visibilityTimeout(Duration.minutes(3))
+                .queueName(String.join("sleeper", instanceId, "BulkImportEKSQ"))
                 .build();
 
         instanceProperties.set(BULK_IMPORT_EKS_JOB_QUEUE_URL, bulkImportJobQueue.getQueueUrl());
+        instanceProperties.set(BULK_IMPORT_EKS_JOB_QUEUE_ARN, bulkImportJobQueue.getQueueArn());
+        bulkImportJobQueue.grantSendMessages(coreStacks.getIngestByQueuePolicyForGrants());
+        bulkImportJobQueue.grantPurge(coreStacks.getPurgeQueuesPolicyForGrants());
 
         Map<String, String> env = Utils.createDefaultEnvironment(instanceProperties);
         env.put("BULK_IMPORT_PLATFORM", "EKS");
-        S3Code code = Code.fromBucket(Bucket.fromBucketName(this, "CodeBucketEKS", instanceProperties.get(UserDefinedInstanceProperty.JARS_BUCKET)),
-                "bulk-import-starter-" + instanceProperties.get(UserDefinedInstanceProperty.VERSION) + ".jar");
+        IBucket jarsBucket = Bucket.fromBucketName(this, "CodeBucketEKS", instanceProperties.get(JARS_BUCKET));
+        LambdaCode lambdaCode = jars.lambdaCode(jarsBucket);
 
-        IBucket configBucket = Bucket.fromBucketName(this, "ConfigBucket", instanceProperties.get(SystemDefinedInstanceProperty.CONFIG_BUCKET));
+        String functionName = String.join("-", "sleeper", instanceId, "bulk-import-eks-starter");
 
-        String functionName = Utils.truncateTo64Characters(String.join("-", "sleeper",
-                instanceId.toLowerCase(), "eks-bulk-import-job-starter"));
-
-        Function bulkImportJobStarter = Function.Builder.create(this, "BulkImportEKSJobStarter")
-                .code(code)
+        IFunction bulkImportJobStarter = lambdaCode.buildFunction(this, LambdaHandler.BULK_IMPORT_STARTER, "BulkImportEKSJobStarter", builder -> builder
                 .functionName(functionName)
                 .description("Function to start EKS bulk import jobs")
-                .memorySize(1024)
-                .timeout(Duration.seconds(10))
+                .memorySize(instanceProperties.getInt(BULK_IMPORT_STARTER_LAMBDA_MEMORY))
+                .timeout(Duration.minutes(2))
                 .environment(env)
-                .runtime(software.amazon.awscdk.services.lambda.Runtime.JAVA_8)
-                .handler("sleeper.bulkimport.starter.BulkImportStarter")
-                .logRetention(Utils.getRetentionDays(instanceProperties.getInt(UserDefinedInstanceProperty.LOG_RETENTION_IN_DAYS)))
-                .events(Lists.newArrayList(new SqsEventSource(bulkImportJobQueue)))
-                .build();
+                .logGroup(coreStacks.getLogGroup(LogGroupRef.BULK_IMPORT_EKS_STARTER))
+                .events(Lists.newArrayList(SqsEventSource.Builder.create(bulkImportJobQueue).batchSize(1).build())));
+        configureJobStarterFunction(bulkImportJobStarter);
 
-        configBucket.grantRead(bulkImportJobStarter);
-        if (null != ingestBucket) {
-            ingestBucket.grantRead(bulkImportJobStarter);
-        }
-        
+        importBucketStack.getImportBucket().grantReadWrite(bulkImportJobStarter);
+        coreStacks.grantValidateBulkImport(bulkImportJobStarter.getRole());
+
         VpcLookupOptions vpcLookupOptions = VpcLookupOptions.builder()
-                .vpcId(instanceProperties.get(UserDefinedInstanceProperty.VPC_ID))
+                .vpcId(instanceProperties.get(VPC_ID))
                 .build();
         IVpc vpc = Vpc.fromLookup(this, "VPC", vpcLookupOptions);
 
-        Cluster bulkImportCluster = new FargateCluster(this, "EksBulkImportCluster", FargateClusterProps.builder()
-                .clusterName(String.join("-", "sleeper", instanceId.toLowerCase(), "eksBulkImportCluster"))
-                .version(KubernetesVersion.of("1.20"))
+        String uniqueBulkImportId = String.join("-", "sleeper", instanceId, "bulk-import-eks");
+        Cluster bulkImportCluster = FargateCluster.Builder.create(this, "EksBulkImportCluster")
+                .clusterName(uniqueBulkImportId)
+                .version(KubernetesVersion.of("1.24"))
+                .kubectlLayer(new KubectlV24Layer(this, "KubectlLayer"))
                 .vpc(vpc)
                 .vpcSubnets(Lists.newArrayList(SubnetSelection.builder().subnets(vpc.getPrivateSubnets()).build()))
-                .build());
+                .build();
 
-        instanceProperties.set(SystemDefinedInstanceProperty.BULK_IMPORT_EKS_CLUSTER_ENDPOINT, bulkImportCluster.getClusterEndpoint());
-
-        String uniqueBulkImportId = Utils.truncateToMaxSize("sleeper-" + instanceProperties.get(UserDefinedInstanceProperty.ID)
-                .replace(".", "-") + "-eks-bulk-import", 63);
+        instanceProperties.set(CdkDefinedInstanceProperty.BULK_IMPORT_EKS_CLUSTER_ENDPOINT, bulkImportCluster.getClusterEndpoint());
 
         KubernetesManifest namespace = createNamespace(bulkImportCluster, uniqueBulkImportId);
-        instanceProperties.set(SystemDefinedInstanceProperty.BULK_IMPORT_EKS_NAMESPACE, uniqueBulkImportId);
+        instanceProperties.set(CdkDefinedInstanceProperty.BULK_IMPORT_EKS_NAMESPACE, uniqueBulkImportId);
 
-        bulkImportCluster.addFargateProfile("EksBulkImportFargateProfile", FargateProfileOptions.builder()
+        ISubnet subnet = Subnet.fromSubnetId(this, "EksBulkImportSubnet", instanceProperties.getList(SUBNETS).get(0));
+        FargateProfile fargateProfile = bulkImportCluster.addFargateProfile("EksBulkImportFargateProfile", FargateProfileOptions.builder()
                 .fargateProfileName(uniqueBulkImportId)
+                .vpc(vpc)
+                .subnetSelection(SubnetSelection.builder()
+                        .subnets(List.of(subnet))
+                        .build())
                 .selectors(Lists.newArrayList(Selector.builder()
                         .namespace(uniqueBulkImportId)
                         .build()))
                 .build());
+        addFluentBitLogging(bulkImportCluster, fargateProfile, instanceProperties, coreStacks.getLogGroup(LogGroupRef.BULK_IMPORT_EKS));
 
         ServiceAccount sparkSubmitServiceAccount = bulkImportCluster.addServiceAccount("SparkSubmitServiceAccount", ServiceAccountOptions.builder()
                 .namespace(uniqueBulkImportId)
                 .name("spark-submit")
                 .build());
 
-        this.sparkServiceAccount = bulkImportCluster.addServiceAccount("SparkServiceAccount", ServiceAccountOptions.builder()
+        ServiceAccount sparkServiceAccount = bulkImportCluster.addServiceAccount("SparkServiceAccount", ServiceAccountOptions.builder()
                 .namespace(uniqueBulkImportId)
                 .name("spark")
                 .build());
 
         Lists.newArrayList(sparkServiceAccount, sparkSubmitServiceAccount)
                 .forEach(sa -> sa.getNode().addDependency(namespace));
-        grantAccesses(dataBuckets, stateStoreStacks, configBucket, instanceProperties);
+        coreStacks.grantIngest(sparkServiceAccount.getRole());
 
-        this.stateMachine = createStateMachine(bulkImportCluster, instanceProperties, errorsTopic);
-        instanceProperties.set(SystemDefinedInstanceProperty.BULK_IMPORT_EKS_STATE_MACHINE_ARN, stateMachine.getStateMachineArn());
+        StateMachine stateMachine = createStateMachine(bulkImportCluster, instanceProperties, coreStacks, errorsTopic);
+        instanceProperties.set(CdkDefinedInstanceProperty.BULK_IMPORT_EKS_STATE_MACHINE_ARN, stateMachine.getStateMachineArn());
 
         bulkImportCluster.getAwsAuth().addRoleMapping(stateMachine.getRole(), AwsAuthMapping.builder()
                 .groups(Lists.newArrayList())
                 .build());
+        addClusterAdminRoles(bulkImportCluster, instanceProperties);
 
-        createManifests(bulkImportCluster, namespace, uniqueBulkImportId, stateMachine.getRole());
-        
-        grantAccessToResources(bulkImportJobStarter, ingestBucket);
+        addRoleManifests(bulkImportCluster, namespace, uniqueBulkImportId, stateMachine.getRole());
+
+        importBucketStack.getImportBucket().grantReadWrite(sparkServiceAccount);
+        stateMachine.grantStartExecution(bulkImportJobStarter);
+
+        Utils.addStackTagIfSet(this, instanceProperties);
     }
 
-    private StateMachine createStateMachine(Cluster cluster, InstanceProperties instanceProperties,
-            ITopic errorsTopic) {
-        String imageName = new StringBuilder()
-                .append(instanceProperties.get(UserDefinedInstanceProperty.ACCOUNT))
-                .append(".dkr.ecr.")
-                .append(instanceProperties.get(UserDefinedInstanceProperty.REGION))
-                .append(".amazonaws.com/")
-                .append(instanceProperties.get(UserDefinedInstanceProperty.BULK_IMPORT_REPO))
-                .append(":")
-                .append(instanceProperties.get(UserDefinedInstanceProperty.VERSION))
-                .toString();
+    private static void configureJobStarterFunction(IFunction bulkImportJobStarter) {
 
-        String sparkJobJson = parseJsonFile("/step-functions/run-job.json",
-                instanceProperties.get(SystemDefinedInstanceProperty.BULK_IMPORT_EKS_NAMESPACE));
-        String parsedSparkJobStepFunction = sparkJobJson
-                .replace("endpoint-placeholder", instanceProperties.get(SystemDefinedInstanceProperty.BULK_IMPORT_EKS_CLUSTER_ENDPOINT))
-                .replace("image-placeholder", imageName)
-                .replace("cluster-placeholder", cluster.getClusterName())
-                .replace("ca-placeholder", cluster.getClusterCertificateAuthorityData());
+        bulkImportJobStarter.addToRolePolicy(PolicyStatement.Builder.create()
+                .actions(Lists.newArrayList("eks:*", "states:*"))
+                .effect(Effect.ALLOW)
+                .resources(Lists.newArrayList("*"))
+                .build());
+    }
 
-        Map<String, Object> runJobState = new Gson().fromJson(parsedSparkJobStepFunction, Map.class);
+    private StateMachine createStateMachine(Cluster cluster, InstanceProperties instanceProperties, CoreStacks coreStacks, Topic errorsTopic) {
+        String imageName = instanceProperties.get(ACCOUNT) +
+                ".dkr.ecr." +
+                instanceProperties.get(REGION) +
+                ".amazonaws.com/" +
+                instanceProperties.get(BULK_IMPORT_REPO) +
+                ":" +
+                instanceProperties.get(CdkDefinedInstanceProperty.VERSION);
 
-        String deleteJobJson = parseJsonFile("/step-functions/delete-driver-pod.json",
-                instanceProperties.get(SystemDefinedInstanceProperty.BULK_IMPORT_EKS_NAMESPACE));
-        String parsedDeleteJob = deleteJobJson
-                .replace("endpoint-placeholder", instanceProperties.get(SystemDefinedInstanceProperty.BULK_IMPORT_EKS_CLUSTER_ENDPOINT))
-                .replace("image-placeholder", imageName)
-                .replace("cluster-placeholder", cluster.getClusterName())
-                .replace("ca-placeholder", cluster.getClusterCertificateAuthorityData());
+        Map<String, Object> runJobState = parseEksStepDefinition(
+                "/step-functions/run-job.json", instanceProperties, cluster,
+                replacements(Map.of("image-placeholder", imageName)));
 
-        Map<String, Object> deleteJobState = new Gson().fromJson(parsedDeleteJob, Map.class);
+        // Deleting the driver pod is necessary as a Spark job does not delete the pod afterwards:
+        // https://spark.apache.org/docs/3.3.1/running-on-kubernetes.html#how-it-works
+        // Although the Spark documentation says it doesn't use up resources in the completed state, it does when it's
+        // scheduled into AWS Fargate.
+        Map<String, Object> deleteDriverPodState = parseEksStepDefinition(
+                "/step-functions/delete-driver-pod.json", instanceProperties, cluster);
+
+        Map<String, Object> deleteJobState = parseEksStepDefinition(
+                "/step-functions/delete-job.json", instanceProperties, cluster);
 
         SnsPublish publishError = SnsPublish.Builder
                 .create(this, "AlertUserFailedSparkSubmit")
@@ -249,80 +254,149 @@ public class EksBulkImportStack extends NestedStack {
                 .topic(errorsTopic)
                 .build();
 
-        Map<String, String> createErrorMessageParams = new HashMap<>();
-        createErrorMessageParams.put("errorMessage.$",
-                "States.Format('Bulk import job {} failed. Check the pod logs for details.', $.job.jobId)");
-
-        Pass createErrorMessage = Pass.Builder.create(this, "CreateErrorMessage").parameters(createErrorMessageParams)
+        Pass createErrorMessage = Pass.Builder.create(this, "CreateErrorMessage")
+                .parameters(Map.of("errorMessage.$",
+                        "States.Format('Bulk import job {} failed. Check the pod logs for details.', $.job.id)"))
                 .build();
 
         return StateMachine.Builder.create(this, "EksBulkImportStateMachine")
-                .definition(
-                        new CustomState(this, "RunSparkJob", CustomStateProps.builder().stateJson(runJobState).build())
+                .definitionBody(DefinitionBody.fromChainable(
+                        CustomState.Builder.create(this, "RunSparkJob").stateJson(runJobState).build()
                                 .next(Choice.Builder.create(this, "SuccessDecision").build()
                                         .when(Condition.stringMatches("$.output.logs[0]", "*exit code: 0*"),
                                                 CustomState.Builder.create(this, "DeleteDriverPod")
-                                                        .stateJson(deleteJobState).build())
+                                                        .stateJson(deleteDriverPodState).build()
+                                                        .next(CustomState.Builder.create(this, "DeleteJob")
+                                                                .stateJson(deleteJobState).build()))
                                         .otherwise(createErrorMessage.next(publishError).next(Fail.Builder
-                                                .create(this, "FailedJobState").cause("Spark job failed").build()))))
+                                                .create(this, "FailedJobState").cause("Spark job failed").build())))))
+                .logs(createStateMachineLogOptions(coreStacks.getLogGroup(LogGroupRef.BULK_IMPORT_EKS_STATE_MACHINE)))
                 .build();
     }
 
-    private void grantAccesses(List<IBucket> dataBuckets,
-            List<StateStoreStack> stateStoreStacks, IBucket configBucket, InstanceProperties instanceProperties) {
-        dataBuckets.forEach(bucket -> bucket.grantReadWrite(sparkServiceAccount));
-        stateStoreStacks.forEach(sss -> {
-            sss.grantReadWriteActiveFileMetadata(sparkServiceAccount);
-            sss.grantReadPartitionMetadata(sparkServiceAccount);
-        });
-        configBucket.grantRead(sparkServiceAccount);
+    @SuppressWarnings("unchecked")
+    private void addFluentBitLogging(Cluster cluster, FargateProfile fargateProfile, InstanceProperties instanceProperties, ILogGroup logGroup) {
+        // Based on guide at https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html
+
+        KubernetesManifest namespace = cluster.addManifest("LoggingNamespace", Map.of(
+                "apiVersion", "v1",
+                "kind", "Namespace",
+                "metadata", Map.of(
+                        "name", "aws-observability",
+                        "labels", Map.of("aws-observability", "enabled"))));
+
+        // Fluent Bit configuration
+        // See https://docs.fluentbit.io/manual/pipeline/outputs/cloudwatch
+        Function<String, String> outputReplacements = replacements(Map.of(
+                "region-placeholder", instanceProperties.get(REGION),
+                "log-group-placeholder", logGroup.getLogGroupName()));
+        withDependencyOn(namespace, cluster.addManifest("LoggingConfig", Map.of(
+                "apiVersion", "v1",
+                "kind", "ConfigMap",
+                "metadata", Map.of("name", "aws-logging", "namespace", "aws-observability"),
+                "data", Map.of(
+                        "flb_log_cw", "false",
+                        "filters.conf", loadResource("/fluentbit/filters.conf"),
+                        "output.conf", outputReplacements.apply(loadResource("/fluentbit/output.conf")),
+                        "parsers.conf", loadResource("/fluentbit/parsers.conf")))));
+
+        fargateProfile.getPodExecutionRole().addToPrincipalPolicy(PolicyStatement.Builder.create()
+                .effect(Effect.ALLOW)
+                .actions(List.of(
+                        "logs:CreateLogStream",
+                        "logs:CreateLogGroup",
+                        "logs:DescribeLogStreams",
+                        "logs:PutLogEvents",
+                        "logs:PutRetentionPolicy"))
+                .resources(List.of("*"))
+                .build());
     }
 
-    private KubernetesManifest createNamespace(Cluster bulkImportCluster, String bulkImportNamespace) {
-        return createManifestFromResource(bulkImportCluster, "EksBulkImportNamespace", bulkImportNamespace,
-                "/k8s/namespace.json");
+    @SuppressWarnings("unchecked")
+    private KubernetesManifest createNamespace(Cluster cluster, String namespaceName) {
+        return cluster.addManifest("EksBulkImportNamespace", parseJson("/k8s/namespace.json", namespaceReplacement(namespaceName)));
     }
 
-    private void createManifests(Cluster cluster, KubernetesManifest namespace, String namespaceName,
+    private void addClusterAdminRoles(Cluster cluster, InstanceProperties properties) {
+        List<String> roles = properties.getList(EKS_CLUSTER_ADMIN_ROLES);
+        if (roles == null) {
+            return;
+        }
+        for (String role : roles) {
+            cluster.getAwsAuth().addMastersRole(Role.fromRoleName(this, "ClusterAccessFor" + role, role));
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private void addRoleManifests(Cluster cluster, KubernetesManifest namespace, String namespaceName,
             IRole stateMachineRole) {
-        Lists.newArrayList(
-                createManifestFromResource(cluster, "SparkSubmitRole", namespaceName, "/k8s/spark-submit-role.json"),
-                createManifestFromResource(cluster, "SparkSubmitRoleBinding", namespaceName,
-                        "/k8s/spark-submit-role-binding.json"),
-                createManifestFromResource(cluster, "SparkRole", namespaceName, "/k8s/spark-role.json"),
-                createManifestFromResource(cluster, "SparkRoleBinding", namespaceName, "/k8s/spark-role-binding.json"),
-                createManifestFromResource(cluster, "StepFunctionRole", namespaceName, "/k8s/step-function-role.json"),
-                createManifestFromResource(cluster, "StepFunctionRoleBinding", namespaceName,
-                        "/k8s/step-function-role-binding.json",
-                        Pair.of("user-placeholder", stateMachineRole.getRoleArn())))
-                .forEach(manifest -> manifest.getNode().addDependency(namespace));
+        withDependencyOn(namespace,
+                cluster.addManifest("SparkSubmitRole", parseJson("/k8s/spark-submit-role.json", namespaceReplacement(namespaceName))),
+                cluster.addManifest("SparkSubmitRoleBinding", parseJson("/k8s/spark-submit-role-binding.json", namespaceReplacement(namespaceName))),
+                cluster.addManifest("SparkRole", parseJson("/k8s/spark-role.json", namespaceReplacement(namespaceName))),
+                cluster.addManifest("SparkRoleBinding", parseJson("/k8s/spark-role-binding.json", namespaceReplacement(namespaceName))),
+                cluster.addManifest("StepFunctionRole", parseJson("/k8s/step-function-role.json", namespaceReplacement(namespaceName))),
+                cluster.addManifest("StepFunctionRoleBinding", parseJson("/k8s/step-function-role-binding.json",
+                        namespaceReplacement(namespaceName).andThen(replacement("user-placeholder", stateMachineRole.getRoleArn())))));
     }
 
-    private KubernetesManifest createManifestFromResource(Cluster cluster, String id, String namespace, String resource,
-            Pair<String, String>... replacements) {
-        String json = parseJsonFile(resource, namespace);
-        for (Pair<String, String> replacement : replacements) {
-            json = json.replace(replacement.getFirst(), replacement.getSecond());
+    private void withDependencyOn(KubernetesManifest namespace, KubernetesManifest... manifests) {
+        for (KubernetesManifest manifest : manifests) {
+            manifest.getNode().addDependency(namespace);
         }
-
-        return cluster.addManifest(id, new Gson().fromJson(json, Map.class));
     }
 
-    private String parseJsonFile(String resource, String namespace) {
-        String json;
+    private static Map<String, Object> parseEksStepDefinition(String resource, InstanceProperties instanceProperties, Cluster cluster) {
+        return parseEksStepDefinition(resource, instanceProperties, cluster, json -> json);
+    }
+
+    private static Map<String, Object> parseEksStepDefinition(
+            String resource, InstanceProperties instanceProperties, Cluster cluster, Function<String, String> replacements) {
+        return parseJson(resource,
+                namespaceReplacement(instanceProperties.get(CdkDefinedInstanceProperty.BULK_IMPORT_EKS_NAMESPACE))
+                        .andThen(replacements(Map.of(
+                                "endpoint-placeholder", instanceProperties.get(CdkDefinedInstanceProperty.BULK_IMPORT_EKS_CLUSTER_ENDPOINT),
+                                "cluster-placeholder", cluster.getClusterName(),
+                                "ca-placeholder", cluster.getClusterCertificateAuthorityData())))
+                        .andThen(replacements));
+    }
+
+    private static Map<String, Object> parseJson(
+            String resource, Function<String, String> replacements) {
+        String json = loadResource(resource);
+        String jsonWithReplacements = replacements.apply(json);
+        return new Gson().fromJson(jsonWithReplacements, new JsonTypeToken());
+    }
+
+    private static String loadResource(String resource) {
         try {
-            json = IOUtils.toString(getClass().getResourceAsStream(resource), StandardCharsets.UTF_8);
+            return IOUtils.toString(Objects.requireNonNull(EksBulkImportStack.class.getResourceAsStream(resource)), StandardCharsets.UTF_8);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UncheckedIOException(e);
         }
-
-        return json.replace("namespace-placeholder", namespace);
     }
 
-    public void grantAccessToResources(Function starterFunction, IBucket ingestBucket) {
-        stateMachine.grantStartExecution(starterFunction);
-        if (ingestBucket != null) {
-            ingestBucket.grantRead(sparkServiceAccount);
-        }
+    private static Function<String, String> namespaceReplacement(String namespace) {
+        return replacement("namespace-placeholder", namespace);
+    }
+
+    private static Function<String, String> replacement(String key, String value) {
+        return str -> str.replace(key, value);
+    }
+
+    private static Function<String, String> replacements(Map<String, String> replacements) {
+        return str -> {
+            for (Map.Entry<String, String> replacement : replacements.entrySet()) {
+                str = str.replace(replacement.getKey(), replacement.getValue());
+            }
+            return str;
+        };
+    }
+
+    public Queue getBulkImportJobQueue() {
+        return bulkImportJobQueue;
+    }
+
+    public static class JsonTypeToken extends TypeToken<Map<String, Object>> {
     }
 }

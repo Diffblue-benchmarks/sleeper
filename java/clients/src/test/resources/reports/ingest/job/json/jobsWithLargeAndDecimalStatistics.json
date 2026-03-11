@@ -1,0 +1,115 @@
+{
+  "queueMessages": {
+    "ingestMessages": 0
+  },
+  "jobList": [
+    {
+      "jobId": "job44444-4444-4444-4444-444444444444",
+      "jobRuns": [
+        {
+          "taskId": "task-id",
+          "updates": [
+            {
+              "type": "STARTED",
+              "inputFileCount": 1,
+              "startTime": "2022-10-13T14:02:10Z",
+              "updateTime": "2022-10-13T14:02:10.123Z"
+            },
+            {
+              "type": "FINISHED",
+              "updateTime": "2022-10-13T14:04:13.123Z",
+              "finishTime": "2022-10-13T14:04:13.456Z",
+              "recordsProcessed": {
+                "recordsRead": 1234000,
+                "recordsWritten": 1234000
+              },
+              "committedBySeparateFileUpdates": false,
+              "numFilesWrittenByJob": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "jobId": "job33333-3333-3333-3333-333333333333",
+      "jobRuns": [
+        {
+          "taskId": "task-id",
+          "updates": [
+            {
+              "type": "STARTED",
+              "inputFileCount": 1,
+              "startTime": "2022-10-13T14:01:10Z",
+              "updateTime": "2022-10-13T14:01:10.123Z"
+            },
+            {
+              "type": "FINISHED",
+              "updateTime": "2022-10-13T14:02:10.123Z",
+              "finishTime": "2022-10-13T14:02:10Z",
+              "recordsProcessed": {
+                "recordsRead": 1000600,
+                "recordsWritten": 500300
+              },
+              "committedBySeparateFileUpdates": false,
+              "numFilesWrittenByJob": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "jobId": "job22222-2222-2222-2222-222222222222",
+      "jobRuns": [
+        {
+          "taskId": "task-id",
+          "updates": [
+            {
+              "type": "STARTED",
+              "inputFileCount": 1,
+              "startTime": "2022-10-13T12:01:10Z",
+              "updateTime": "2022-10-13T12:01:10.123Z"
+            },
+            {
+              "type": "FINISHED",
+              "updateTime": "2022-10-13T14:01:10.123Z",
+              "finishTime": "2022-10-13T14:01:10Z",
+              "recordsProcessed": {
+                "recordsRead": 1000600,
+                "recordsWritten": 500300
+              },
+              "committedBySeparateFileUpdates": false,
+              "numFilesWrittenByJob": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "jobId": "job11111-1111-1111-1111-111111111111",
+      "jobRuns": [
+        {
+          "taskId": "task-id",
+          "updates": [
+            {
+              "type": "STARTED",
+              "inputFileCount": 1,
+              "startTime": "2022-10-13T10:00:10Z",
+              "updateTime": "2022-10-13T10:00:10.123Z"
+            },
+            {
+              "type": "FINISHED",
+              "updateTime": "2022-10-13T10:02:13.123Z",
+              "finishTime": "2022-10-13T10:02:13.123Z",
+              "recordsProcessed": {
+                "recordsRead": 600000,
+                "recordsWritten": 300000
+              },
+              "committedBySeparateFileUpdates": false,
+              "numFilesWrittenByJob": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

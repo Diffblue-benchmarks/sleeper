@@ -1,228 +1,491 @@
+/*
+ * Copyright 2022-2024 Crown Copyright
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package sleeper.garbagecollector;
 
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-import com.amazonaws.services.dynamodbv2.model.ScanRequest;
-import com.amazonaws.services.dynamodbv2.model.ScanResult;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
-import java.util.UUID;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-import org.testcontainers.containers.localstack.LocalStackContainer;
-import org.testcontainers.utility.DockerImageName;
-import sleeper.configuration.properties.InstanceProperties;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.FILE_SYSTEM;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.ID;
-import sleeper.configuration.properties.table.TableProperties;
-import sleeper.configuration.properties.table.TablePropertiesProvider;
-import static sleeper.configuration.properties.table.TableProperty.ACTIVE_FILEINFO_TABLENAME;
-import static sleeper.configuration.properties.table.TableProperty.DATA_BUCKET;
-import static sleeper.configuration.properties.table.TableProperty.GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION;
-import static sleeper.configuration.properties.table.TableProperty.PARTITION_TABLENAME;
-import static sleeper.configuration.properties.table.TableProperty.READY_FOR_GC_FILEINFO_TABLENAME;
-import static sleeper.configuration.properties.table.TableProperty.TABLE_NAME;
-import sleeper.core.CommonTestConstants;
-import sleeper.core.key.Key;
-import sleeper.core.partition.Partition;
+import org.apache.parquet.hadoop.ParquetWriter;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import sleeper.core.partition.PartitionTree;
+import sleeper.core.partition.PartitionsBuilder;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
 import sleeper.core.record.Record;
 import sleeper.core.schema.Field;
 import sleeper.core.schema.Schema;
 import sleeper.core.schema.type.IntType;
 import sleeper.core.schema.type.StringType;
-import sleeper.io.parquet.record.ParquetRecordWriter;
-import sleeper.io.parquet.record.SchemaConverter;
-import sleeper.statestore.FileInfo;
-import sleeper.statestore.StateStore;
-import sleeper.statestore.StateStoreException;
-import sleeper.statestore.dynamodb.DynamoDBStateStore;
-import sleeper.statestore.dynamodb.DynamoDBStateStoreCreator;
-import sleeper.table.job.TableLister;
-import sleeper.table.util.StateStoreProvider;
+import sleeper.core.statestore.FileReference;
+import sleeper.core.statestore.FileReferenceFactory;
+import sleeper.core.statestore.StateStore;
+import sleeper.core.statestore.StateStoreProvider;
+import sleeper.core.statestore.commit.StateStoreCommitRequest;
+import sleeper.core.statestore.testutils.InMemoryTransactionLogStateStore;
+import sleeper.core.statestore.testutils.InMemoryTransactionLogsPerTable;
+import sleeper.core.statestore.transactionlog.transaction.impl.DeleteFilesTransaction;
+import sleeper.garbagecollector.FailedGarbageCollectionException.FileFailure;
+import sleeper.garbagecollector.FailedGarbageCollectionException.TableFailures;
+import sleeper.garbagecollector.GarbageCollector.DeleteFile;
+import sleeper.parquet.record.ParquetRecordWriterFactory;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.DATA_BUCKET;
+import static sleeper.core.properties.instance.CommonProperty.FILE_SYSTEM;
+import static sleeper.core.properties.instance.GarbageCollectionProperty.GARBAGE_COLLECTOR_BATCH_SIZE;
+import static sleeper.core.properties.table.TableProperty.GARBAGE_COLLECTOR_ASYNC_COMMIT;
+import static sleeper.core.properties.table.TableProperty.GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION;
+import static sleeper.core.properties.table.TableProperty.TABLE_ID;
+import static sleeper.core.properties.testutils.InstancePropertiesTestHelper.createTestInstanceProperties;
+import static sleeper.core.properties.testutils.TablePropertiesTestHelper.createTestTableProperties;
+import static sleeper.core.statestore.AllReferencesToAFileTestHelper.fileWithNoReferences;
+import static sleeper.core.statestore.AssignJobIdRequest.assignJobOnPartitionToFiles;
+import static sleeper.core.statestore.FilesReportTestHelper.activeAndReadyForGCFilesReport;
+import static sleeper.core.statestore.FilesReportTestHelper.activeFilesReport;
+import static sleeper.core.statestore.FilesReportTestHelper.noFilesReport;
+import static sleeper.core.statestore.FilesReportTestHelper.readyForGCFilesReport;
+import static sleeper.core.statestore.ReplaceFileReferencesRequest.replaceJobFileReferences;
+import static sleeper.core.statestore.testutils.StateStoreUpdatesWrapper.update;
+import static sleeper.garbagecollector.GarbageCollector.deleteFileAndSketches;
 
 public class GarbageCollectorIT {
+    private static final Schema TEST_SCHEMA = getSchema();
 
-    @ClassRule
-    public static LocalStackContainer localStackContainer = new LocalStackContainer(DockerImageName.parse(CommonTestConstants.LOCALSTACK_DOCKER_IMAGE)).withServices(
-            LocalStackContainer.Service.DYNAMODB, LocalStackContainer.Service.S3
-    );
+    @TempDir
+    public Path tempDir;
+    private final PartitionTree partitions = new PartitionsBuilder(TEST_SCHEMA).singlePartition("root").buildTree();
+    private final List<TableProperties> tables = new ArrayList<>();
+    private final InstanceProperties instanceProperties = createTestInstanceProperties();
+    private final StateStoreProvider stateStoreProvider = InMemoryTransactionLogStateStore
+            .createProvider(instanceProperties, new InMemoryTransactionLogsPerTable());
 
-    @Rule
-    public TemporaryFolder folder = new TemporaryFolder(CommonTestConstants.TMP_DIRECTORY);
+    private final List<StateStoreCommitRequest> sentCommits = new ArrayList<>();
 
-    private AmazonDynamoDB createDynamoClient() {
-        return AmazonDynamoDBClientBuilder.standard()
-                .withCredentials(localStackContainer.getDefaultCredentialsProvider())
-                .withEndpointConfiguration(localStackContainer.getEndpointConfiguration(LocalStackContainer.Service.DYNAMODB))
-                .build();
+    @BeforeEach
+    void setUp() throws Exception {
+        instanceProperties.set(FILE_SYSTEM, "file://");
+        instanceProperties.set(DATA_BUCKET, tempDir.toString());
     }
 
-    private AmazonS3 createS3Client() {
-        return AmazonS3ClientBuilder.standard()
-                .withCredentials(localStackContainer.getDefaultCredentialsProvider())
-                .withEndpointConfiguration(localStackContainer.getEndpointConfiguration(LocalStackContainer.Service.S3))
-                .build();
+    @Nested
+    @DisplayName("Collecting from single table")
+    class SingleTable {
+        private final TableProperties table = createTable();
+        private final StateStore stateStore = stateStore(table);
+
+        @Test
+        void shouldCollectFileWithNoReferencesAfterSpecifiedDelay() throws Exception {
+            // Given
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            Path oldFile = tempDir.resolve("old-file.parquet");
+            Path newFile = tempDir.resolve("new-file.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile, newFile);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(oldFile)).isFalse();
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(activeFilesReport(oldEnoughTime, activeReference(newFile)));
+        }
+
+        @Test
+        void shouldNotCollectFileMarkedAsActive() throws Exception {
+            // Given
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            Path filePath = tempDir.resolve("test-file.parquet");
+            createActiveFile(filePath, stateStore);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(filePath)).isTrue();
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(activeFilesReport(oldEnoughTime, activeReference(filePath)));
+        }
+
+        @Test
+        void shouldNotCollectFileWithNoReferencesBeforeSpecifiedDelay() throws Exception {
+            // Given
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant notOldEnoughTime = currentTime.minus(Duration.ofMinutes(5));
+            stateStore.fixFileUpdateTime(notOldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            Path oldFile = tempDir.resolve("old-file.parquet");
+            Path newFile = tempDir.resolve("new-file.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile, newFile);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(oldFile)).isTrue();
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10)).isEqualTo(
+                    activeAndReadyForGCFilesReport(notOldEnoughTime,
+                            List.of(activeReference(newFile)),
+                            List.of(oldFile.toString())));
+        }
+
+        @Test
+        void shouldCollectMultipleFilesInOneRun() throws Exception {
+            // Given
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            Path oldFile1 = tempDir.resolve("old-file-1.parquet");
+            Path oldFile2 = tempDir.resolve("old-file-2.parquet");
+            Path newFile1 = tempDir.resolve("new-file-1.parquet");
+            Path newFile2 = tempDir.resolve("new-file-2.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile1, newFile1);
+            createFileWithNoReferencesByCompaction(stateStore, oldFile2, newFile2);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(oldFile1)).isFalse();
+            assertThat(Files.exists(oldFile2)).isFalse();
+            assertThat(Files.exists(newFile1)).isTrue();
+            assertThat(Files.exists(newFile2)).isTrue();
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(activeFilesReport(oldEnoughTime,
+                            activeReference(newFile1),
+                            activeReference(newFile2)));
+        }
+
+        @Test
+        void shouldCollectFilesInBatchesIfBatchSizeExceeded() throws Exception {
+            // Given
+            instanceProperties.setNumber(GARBAGE_COLLECTOR_BATCH_SIZE, 2);
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            Path oldFile1 = tempDir.resolve("old-file-1.parquet");
+            Path oldFile2 = tempDir.resolve("old-file-2.parquet");
+            Path newFile1 = tempDir.resolve("new-file-1.parquet");
+            Path newFile2 = tempDir.resolve("new-file-2.parquet");
+            Path oldFile3 = tempDir.resolve("old-file-3.parquet");
+            Path newFile3 = tempDir.resolve("new-file-3.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile1, newFile1);
+            createFileWithNoReferencesByCompaction(stateStore, oldFile2, newFile2);
+            createFileWithNoReferencesByCompaction(stateStore, oldFile3, newFile3);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(oldFile1)).isFalse();
+            assertThat(Files.exists(oldFile2)).isFalse();
+            assertThat(Files.exists(oldFile3)).isFalse();
+            assertThat(Files.exists(newFile1)).isTrue();
+            assertThat(Files.exists(newFile2)).isTrue();
+            assertThat(Files.exists(newFile3)).isTrue();
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10)).isEqualTo(
+                    activeFilesReport(oldEnoughTime,
+                            activeReference(newFile1),
+                            activeReference(newFile2),
+                            activeReference(newFile3)));
+        }
+
+        @Test
+        void shouldContinueCollectingFilesIfFileDoesNotExist() throws Exception {
+            // Given
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            update(stateStore).addFilesWithReferences(List.of(
+                    fileWithNoReferences("/tmp/not-a-file.parquet")));
+            Path oldFile2 = tempDir.resolve("old-file-2.parquet");
+            Path newFile2 = tempDir.resolve("new-file-2.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile2, newFile2);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(oldFile2)).isFalse();
+            assertThat(Files.exists(newFile2)).isTrue();
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(activeFilesReport(oldEnoughTime,
+                            activeReference(newFile2)));
+        }
     }
 
-    private InstanceProperties createInstanceProperties(AmazonS3 s3Client) {
-        InstanceProperties instanceProperties = new InstanceProperties();
-        instanceProperties.set(ID, UUID.randomUUID().toString());
-        instanceProperties.set(CONFIG_BUCKET, UUID.randomUUID().toString());
-        instanceProperties.set(FILE_SYSTEM, "");
+    @Nested
+    @DisplayName("Collecting from multiple tables")
+    class MultipleTables {
 
-        s3Client.createBucket(instanceProperties.get(CONFIG_BUCKET));
+        @Test
+        void shouldCollectOneFileFromEachTable() throws Exception {
+            // Given
+            instanceProperties.setNumber(GARBAGE_COLLECTOR_BATCH_SIZE, 2);
+            TableProperties table1 = createTableWithGcDelayMinutes(10);
+            TableProperties table2 = createTableWithGcDelayMinutes(10);
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            StateStore stateStore1 = stateStoreWithFixedTime(table1, oldEnoughTime);
+            StateStore stateStore2 = stateStoreWithFixedTime(table2, oldEnoughTime);
+            Path oldFile1 = tempDir.resolve("old-file-1.parquet");
+            Path oldFile2 = tempDir.resolve("old-file-2.parquet");
+            Path newFile1 = tempDir.resolve("new-file-1.parquet");
+            Path newFile2 = tempDir.resolve("new-file-2.parquet");
+            createFileWithNoReferencesByCompaction(stateStore1, oldFile1, newFile1);
+            createFileWithNoReferencesByCompaction(stateStore2, oldFile2, newFile2);
 
-        return instanceProperties;
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(oldFile1)).isFalse();
+            assertThat(Files.exists(oldFile2)).isFalse();
+            assertThat(stateStore1.getAllFilesWithMaxUnreferenced(10)).isEqualTo(
+                    activeFilesReport(oldEnoughTime, activeReference(newFile1)));
+            assertThat(stateStore2.getAllFilesWithMaxUnreferenced(10)).isEqualTo(
+                    activeFilesReport(oldEnoughTime, activeReference(newFile2)));
+        }
+
+        @Test
+        void shouldFailOneFileAndFinishBatch() throws Exception {
+            // Given
+            instanceProperties.setNumber(GARBAGE_COLLECTOR_BATCH_SIZE, 2);
+            TableProperties table1 = createTableWithGcDelayMinutes(10);
+            TableProperties table2 = createTableWithGcDelayMinutes(10);
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            StateStore stateStore1 = stateStoreWithFixedTime(table1, oldEnoughTime);
+            StateStore stateStore2 = stateStoreWithFixedTime(table2, oldEnoughTime);
+            String file1 = "file-1.parquet";
+            String file2 = "file-2.parquet";
+            update(stateStore1).addFilesWithReferences(List.of(fileWithNoReferences(file1)));
+            update(stateStore2).addFilesWithReferences(List.of(fileWithNoReferences(file2)));
+
+            // When
+            List<String> deletedFiles = new ArrayList<>();
+            IOException failure = new IOException();
+            GarbageCollector collector = collectorWithDeleteAction(filename -> {
+                if (filename.equals(file1)) {
+                    throw failure;
+                }
+                deletedFiles.add(filename);
+            });
+
+            // And / Then
+            assertThatThrownBy(() -> collector.runAtTime(currentTime, tables))
+                    .isInstanceOfSatisfying(FailedGarbageCollectionException.class,
+                            e -> assertThat(e.getTableFailures())
+                                    .usingRecursiveFieldByFieldElementComparator()
+                                    .containsExactly(fileFailure(table1, file1, failure)));
+            assertThat(deletedFiles).containsExactly(file2);
+            assertThat(stateStore1.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(readyForGCFilesReport(oldEnoughTime, file1));
+            assertThat(stateStore2.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(noFilesReport());
+        }
     }
 
-    private TableProperties createTable(AmazonS3 s3,
-                                        AmazonDynamoDB dynamoDB,
-                                        InstanceProperties instanceProperties,
-                                        String tableName,
-                                        String dataBucket,
-                                        Schema schema) throws IOException, StateStoreException {
-        TableProperties tableProperties = new TableProperties(instanceProperties);
-        tableProperties.set(TABLE_NAME, tableName);
-        tableProperties.setSchema(schema);
-        tableProperties.set(DATA_BUCKET, dataBucket);
-        tableProperties.set(ACTIVE_FILEINFO_TABLENAME, tableName + "-af");
-        tableProperties.set(READY_FOR_GC_FILEINFO_TABLENAME, tableName + "-rfgcf");
-        tableProperties.set(PARTITION_TABLENAME, tableName + "-p");
-        tableProperties.set(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, "10");
-        tableProperties.saveToS3(s3);
+    @Nested
+    @DisplayName("Asynchronous commits for deleted files")
+    class AsynchronousCommits {
 
-        DynamoDBStateStoreCreator dynamoDBStateStoreCreator = new DynamoDBStateStoreCreator(instanceProperties,
-                tableProperties, dynamoDB);
-        dynamoDBStateStoreCreator.create();
+        private final TableProperties table = createTable();
+        private final StateStore stateStore = stateStore(table);
+
+        @Test
+        void shouldSendCommitForTheDeletionOfFilesAsychronously() throws Exception {
+            // Given
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            table.set(GARBAGE_COLLECTOR_ASYNC_COMMIT, "true");
+            Path oldFile = tempDir.resolve("old-file.parquet");
+            Path newFile = tempDir.resolve("new-file.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile, newFile);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(activeAndReadyForGCFilesReport(oldEnoughTime, List.of(activeReference(newFile)), List.of(oldFile.toString())));
+            assertThat(sentCommits).containsExactly(
+                    StateStoreCommitRequest.create(table.get(TABLE_ID),
+                            new DeleteFilesTransaction(List.of(oldFile.toString()))));
+        }
+
+        @Test
+        void shouldSendOneCommitPerFileBatch() throws Exception {
+            // Given
+            instanceProperties.setNumber(GARBAGE_COLLECTOR_BATCH_SIZE, 2);
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            table.set(GARBAGE_COLLECTOR_ASYNC_COMMIT, "true");
+            Path oldFile1 = tempDir.resolve("old-file-1.parquet");
+            Path oldFile2 = tempDir.resolve("old-file-2.parquet");
+            Path newFile1 = tempDir.resolve("new-file-1.parquet");
+            Path newFile2 = tempDir.resolve("new-file-2.parquet");
+            Path oldFile3 = tempDir.resolve("old-file-3.parquet");
+            Path newFile3 = tempDir.resolve("new-file-3.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile1, newFile1);
+            createFileWithNoReferencesByCompaction(stateStore, oldFile2, newFile2);
+            createFileWithNoReferencesByCompaction(stateStore, oldFile3, newFile3);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(activeAndReadyForGCFilesReport(oldEnoughTime,
+                            List.of(activeReference(newFile1), activeReference(newFile2), activeReference(newFile3)),
+                            List.of(oldFile1.toString(), oldFile2.toString(), oldFile3.toString())));
+            assertThat(sentCommits).containsExactly(
+                    StateStoreCommitRequest.create(table.get(TABLE_ID),
+                            new DeleteFilesTransaction(List.of(oldFile1.toString(), oldFile2.toString()))),
+                    StateStoreCommitRequest.create(table.get(TABLE_ID),
+                            new DeleteFilesTransaction(List.of(oldFile3.toString()))));
+        }
+
+        @Test
+        void shouldNotSendCommitWhenUpdatingStateStoreSynchronously() throws Exception {
+            // Given
+            Instant currentTime = Instant.parse("2023-06-28T13:46:00Z");
+            Instant oldEnoughTime = currentTime.minus(Duration.ofMinutes(11));
+            stateStore.fixFileUpdateTime(oldEnoughTime);
+            table.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, 10);
+            table.set(GARBAGE_COLLECTOR_ASYNC_COMMIT, "false");
+            Path oldFile = tempDir.resolve("old-file.parquet");
+            Path newFile = tempDir.resolve("new-file.parquet");
+            createFileWithNoReferencesByCompaction(stateStore, oldFile, newFile);
+
+            // When
+            collectGarbageAtTime(currentTime);
+
+            // Then
+            assertThat(Files.exists(oldFile)).isFalse();
+            assertThat(stateStore.getAllFilesWithMaxUnreferenced(10))
+                    .isEqualTo(activeAndReadyForGCFilesReport(oldEnoughTime, List.of(activeReference(newFile)), List.of()));
+            assertThat(sentCommits).isEmpty();
+        }
+    }
+
+    private static TableFailures fileFailure(TableProperties table, String filename, Exception failure) {
+        return new TableFailures(table.getStatus(), null,
+                List.of(new FileFailure(filename, failure)),
+                List.of());
+    }
+
+    private FileReference createActiveFile(Path filePath, StateStore stateStore) throws Exception {
+        String filename = filePath.toString();
+        FileReference fileReference = FileReferenceFactory.from(partitions).rootFile(filename, 100L);
+        writeFile(filename);
+        update(stateStore).addFile(fileReference);
+        return fileReference;
+    }
+
+    private void createFileWithNoReferencesByCompaction(StateStore stateStore,
+            Path oldFilePath, Path newFilePath) throws Exception {
+        FileReference oldFile = createActiveFile(oldFilePath, stateStore);
+        writeFile(newFilePath.toString());
+        update(stateStore).assignJobIds(List.of(
+                assignJobOnPartitionToFiles("job1", "root", List.of(oldFile.getFilename()))));
+        update(stateStore).atomicallyReplaceFileReferencesWithNewOnes(List.of(replaceJobFileReferences(
+                "job1", List.of(oldFile.getFilename()), FileReferenceFactory.from(partitions).rootFile(newFilePath.toString(), 100))));
+    }
+
+    private FileReference activeReference(Path filePath) {
+        return FileReferenceFactory.from(partitions).rootFile(filePath.toString(), 100);
+    }
+
+    private void writeFile(String filename) throws Exception {
+        ParquetWriter<Record> writer = ParquetRecordWriterFactory.createParquetRecordWriter(
+                new org.apache.hadoop.fs.Path(filename), TEST_SCHEMA);
+        for (int i = 0; i < 100; i++) {
+            Record record = new Record();
+            record.put("key", i);
+            record.put("value", "" + i);
+            writer.write(record);
+        }
+        writer.close();
+    }
+
+    private TableProperties createTable() {
+        TableProperties tableProperties = createTestTableProperties(instanceProperties, TEST_SCHEMA);
+        tables.add(tableProperties);
+        update(stateStoreProvider.getStateStore(tableProperties)).initialise(partitions.getAllPartitions());
         return tableProperties;
     }
 
-    private Schema getSchema() {
-        Schema schema = new Schema();
-        schema.setRowKeyFields(new Field("key", new IntType()));
-        schema.setValueFields(new Field("value", new StringType()));
-        return schema;
+    private TableProperties createTableWithGcDelayMinutes(int delay) {
+        TableProperties tableProperties = createTable();
+        tableProperties.setNumber(GARBAGE_COLLECTOR_DELAY_BEFORE_DELETION, delay);
+        return tableProperties;
     }
 
-    @Test
-    public void shouldGarbageCollect() throws StateStoreException, IOException, InterruptedException {
-        // Given
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoDBClient = createDynamoClient();
-        Schema schema = getSchema();
-        String tableName = UUID.randomUUID().toString();
-        String localDir = folder.newFolder().getAbsolutePath();
-        InstanceProperties instanceProperties = createInstanceProperties(s3Client);
-        TableProperties tableProperties = createTable(s3Client, dynamoDBClient, instanceProperties, tableName, localDir, schema);
-        TablePropertiesProvider tablePropertiesProvider = new TablePropertiesProvider(s3Client, instanceProperties);
-        StateStoreProvider stateStoreProvider = new StateStoreProvider(dynamoDBClient, instanceProperties);
-        StateStore stateStore = stateStoreProvider.getStateStore(tableProperties);
-        stateStore.initialise();
-        System.out.println(tableProperties);
-        TableLister tableLister = new TableLister(s3Client, instanceProperties);
-        Partition partition = stateStore.getAllPartitions().get(0);
-        String tempFolder = folder.newFolder().getAbsolutePath();
-        //  - A file which should be garbage collected immediately
-        String file1 = tempFolder + "/file1.parquet";
-        FileInfo fileInfo1 = new FileInfo();
-        fileInfo1.setRowKeyTypes(new IntType());
-        fileInfo1.setFilename(file1);
-        fileInfo1.setFileStatus(FileInfo.FileStatus.READY_FOR_GARBAGE_COLLECTION);
-        fileInfo1.setPartitionId(partition.getId());
-        fileInfo1.setMinRowKey(Key.create(1));
-        fileInfo1.setMaxRowKey(Key.create(100));
-        fileInfo1.setNumberOfRecords(100L);
-        fileInfo1.setLastStateStoreUpdateTime(System.currentTimeMillis() - 100000);
-        ParquetRecordWriter writer1 = new ParquetRecordWriter(new Path(file1), SchemaConverter.getSchema(schema), schema);
-        for (int i = 0; i < 100; i++) {
-            Record record = new Record();
-            record.put("key", i);
-            record.put("value", "" + i);
-            writer1.write(record);
-        }
-        writer1.close();
-        stateStore.addFile(fileInfo1);
-        //  - An active file which should not be garbage collected
-        String file2 = tempFolder + "/file2.parquet";
-        FileInfo fileInfo2 = new FileInfo();
-        fileInfo2.setRowKeyTypes(new IntType());
-        fileInfo2.setFilename(file2);
-        fileInfo2.setFileStatus(FileInfo.FileStatus.ACTIVE);
-        fileInfo2.setPartitionId(partition.getId());
-        fileInfo2.setMinRowKey(Key.create(1));
-        fileInfo2.setMaxRowKey(Key.create(100));
-        fileInfo2.setNumberOfRecords(100L);
-        fileInfo2.setLastStateStoreUpdateTime(System.currentTimeMillis());
-        ParquetRecordWriter writer2 = new ParquetRecordWriter(new Path(file2), SchemaConverter.getSchema(schema), schema);
-        for (int i = 0; i < 100; i++) {
-            Record record = new Record();
-            record.put("key", i);
-            record.put("value", "" + i);
-            writer2.write(record);
-        }
-        writer2.close();
-        stateStore.addFile(fileInfo2);
-        //  - A file which is ready for garbage collection but which should not be garbage collected now as it has only
-        //      just been marked as ready for GC
-        String file3 = tempFolder + "/file3.parquet";
-        FileInfo fileInfo3 = new FileInfo();
-        fileInfo3.setRowKeyTypes(new IntType());
-        fileInfo3.setFilename(file3);
-        fileInfo3.setFileStatus(FileInfo.FileStatus.READY_FOR_GARBAGE_COLLECTION);
-        fileInfo3.setPartitionId(partition.getId());
-        fileInfo3.setMinRowKey(Key.create(1));
-        fileInfo3.setMaxRowKey(Key.create(100));
-        fileInfo3.setNumberOfRecords(100L);
-        fileInfo3.setLastStateStoreUpdateTime(System.currentTimeMillis());
-        ParquetRecordWriter writer3 = new ParquetRecordWriter(new Path(file3), SchemaConverter.getSchema(schema), schema);
-        for (int i = 0; i < 100; i++) {
-            Record record = new Record();
-            record.put("key", i);
-            record.put("value", "" + i);
-            writer3.write(record);
-        }
-        writer3.close();
-        stateStore.addFile(fileInfo3);
+    private StateStore stateStore(TableProperties table) {
+        return stateStoreProvider.getStateStore(table);
+    }
 
-        Configuration conf = new Configuration();
-        GarbageCollector garbageCollector = new GarbageCollector(conf, tableLister, tablePropertiesProvider, stateStoreProvider,10);
+    private StateStore stateStoreWithFixedTime(TableProperties table, Instant fixedTime) {
+        StateStore store = stateStore(table);
+        store.fixFileUpdateTime(fixedTime);
+        return store;
+    }
 
-        // When
-        Thread.sleep(1000L);
-        garbageCollector.run(); // This should remove file 1 but leave files 2 and 3
+    private void collectGarbageAtTime(Instant time) throws Exception {
+        collector().runAtTime(time, tables);
+    }
 
-        // Then
-        //  - There should be no more files currently ready for garbage collection
-        assertFalse(stateStore.getReadyForGCFiles().hasNext());
-        //  - File1 should have been deleted
-        assertFalse(Files.exists(new File(file1).toPath()));
-        //  - The active file should still be there
-        List<FileInfo> activeFiles = stateStore.getActiveFiles();
-        assertEquals(1, activeFiles.size());
-        assertEquals(fileInfo2, activeFiles.get(0));
-        //  - The ready for GC table should still have 1 item in (but it's not returned by getReadyForGCFiles()
-        //      because it is less than 10 seconds since it was marked as ready for GC). As the StateStore API
-        //      does not have a method to return all values in the ready for gc table, we query the table
-        //      directly.
-        ScanRequest scanRequest = new ScanRequest()
-                .withTableName(tableProperties.get(READY_FOR_GC_FILEINFO_TABLENAME))
-                .withConsistentRead(true);
-        ScanResult scanResult = dynamoDBClient.scan(scanRequest);
-        assertEquals(1, scanResult.getItems().size());
-        assertEquals(file3, scanResult.getItems().get(0).get(DynamoDBStateStore.FILE_NAME).getS());
+    private GarbageCollector collector() throws Exception {
+        return new GarbageCollector(deleteFileAndSketches(new Configuration()), instanceProperties,
+                stateStoreProvider, sentCommits::add);
+    }
 
-        s3Client.shutdown();
-        dynamoDBClient.shutdown();
+    private GarbageCollector collectorWithDeleteAction(DeleteFile deleteFile) throws Exception {
+        return new GarbageCollector(deleteFile, instanceProperties, stateStoreProvider, sentCommits::add);
+    }
+
+    private static Schema getSchema() {
+        return Schema.builder()
+                .rowKeyFields(new Field("key", new IntType()))
+                .valueFields(new Field("value", new StringType()))
+                .build();
     }
 }

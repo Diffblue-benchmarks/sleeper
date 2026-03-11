@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package sleeper.athena.metadata;
 
 import com.amazonaws.athena.connector.lambda.data.Block;
+import com.amazonaws.athena.connector.lambda.data.BlockAllocator;
 import com.amazonaws.athena.connector.lambda.data.BlockAllocatorImpl;
 import com.amazonaws.athena.connector.lambda.data.BlockUtils;
 import com.amazonaws.athena.connector.lambda.data.SchemaBuilder;
@@ -34,56 +35,57 @@ import com.amazonaws.athena.connector.lambda.metadata.GetTableRequest;
 import com.amazonaws.athena.connector.lambda.metadata.GetTableResponse;
 import com.amazonaws.athena.connector.lambda.security.EncryptionKeyFactory;
 import com.amazonaws.services.athena.AmazonAthena;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
+import org.apache.arrow.vector.complex.reader.FieldReader;
+import org.apache.arrow.vector.types.Types;
+import org.apache.hadoop.conf.Configuration;
+import org.junit.jupiter.api.Test;
+
+import sleeper.athena.TestUtils;
+import sleeper.core.partition.Partition;
+import sleeper.core.properties.instance.InstanceProperties;
+import sleeper.core.properties.table.TableProperties;
+import sleeper.core.schema.Field;
+import sleeper.core.statestore.StateStore;
+import sleeper.splitter.core.split.SplitPartition;
+import sleeper.statestore.StateStoreFactory;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
-import org.apache.arrow.vector.complex.reader.FieldReader;
-import org.apache.arrow.vector.types.Types;
-import org.apache.hadoop.conf.Configuration;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
-import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
-import sleeper.athena.TestUtils;
 import static sleeper.athena.metadata.IteratorApplyingMetadataHandler.MAX_ROW_KEY_PREFIX;
 import static sleeper.athena.metadata.IteratorApplyingMetadataHandler.MIN_ROW_KEY_PREFIX;
 import static sleeper.athena.metadata.SleeperMetadataHandler.RELEVANT_FILES_FIELD;
-import sleeper.configuration.properties.InstanceProperties;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
-import static sleeper.configuration.properties.UserDefinedInstanceProperty.ID;
-import sleeper.configuration.properties.table.TableProperties;
-import static sleeper.configuration.properties.table.TableProperty.TABLE_NAME;
-import sleeper.core.partition.Partition;
-import sleeper.core.schema.Field;
-import sleeper.splitter.SplitPartition;
-import sleeper.statestore.dynamodb.DynamoDBStateStore;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
+import static sleeper.core.properties.instance.CommonProperty.ID;
+import static sleeper.core.properties.table.TableProperty.TABLE_NAME;
+import static sleeper.splitter.core.split.FindPartitionSplitPoint.loadSketchesFromFile;
 
-public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT {
+public class IteratorApplyingMetadataHandlerIT extends MetadataHandlerITBase {
 
     @Test
     public void shouldAddMinAndMaxRowKeysToTheRowsForEachLeafPartition() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
 
         // When
         // Make query
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         IteratorApplyingMetadataHandler sleeperMetadataHandler = new IteratorApplyingMetadataHandler(
                 s3Client, dynamoClient, instance.get(CONFIG_BUCKET),
                 mock(EncryptionKeyFactory.class), mock(AWSSecretsManager.class), mock(AmazonAthena.class),
                 "spillBucket", "spillPrefix");
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
         TableName tableName = new TableName(table.get(TABLE_NAME), table.get(TABLE_NAME));
         GetTableResponse getTableResponse = sleeperMetadataHandler.doGetTable(new BlockAllocatorImpl(),
                 new GetTableRequest(TestUtils.createIdentity(), "abc", "def", tableName));
@@ -93,15 +95,14 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
                 tableName,
                 new Constraints(new HashMap<>()),
                 getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        );
+                getTableResponse.getPartitionColumns());
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(new BlockAllocatorImpl(),
                 request);
 
         // Then
         List<Partition> leafPartitions = stateStore.getLeafPartitions();
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(4, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isEqualTo(4);
         for (int i = 0; i < leafPartitions.size(); i++) {
             Partition partition = leafPartitions.get(i);
             for (Field field : TIME_SERIES_SCHEMA.getRowKeyFields()) {
@@ -109,23 +110,21 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
                 FieldReader reader = partitions.getFieldReader(fieldName);
                 reader.setPosition(i);
                 Object o = reader.readObject();
-                assertEquals(partition.getRegion().getRange(field.getName()).getMin(), o);
-                
+                assertThat(o).isEqualTo(partition.getRegion().getRange(field.getName()).getMin());
+
                 fieldName = MAX_ROW_KEY_PREFIX + "-" + field.getName();
                 reader = partitions.getFieldReader(fieldName);
                 reader.setPosition(i);
                 o = reader.readObject();
-                assertEquals(partition.getRegion().getRange(field.getName()).getMax(), o);
+                assertThat(o).isEqualTo(partition.getRegion().getRange(field.getName()).getMax());
             }
         }
     }
 
     @Test
-    public void shouldPassOnTheListofFilesAndRowKeysWhenCallingGetSplits() throws Exception {
+    public void shouldPassOnTheListOfFilesAndRowKeysWhenCallingGetSplits() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
+        InstanceProperties instance = createInstance();
 
         // When
         IteratorApplyingMetadataHandler sleeperMetadataHandler = new IteratorApplyingMetadataHandler(s3Client, dynamoClient,
@@ -133,25 +132,28 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
                 mock(EncryptionKeyFactory.class), mock(AWSSecretsManager.class), mock(AmazonAthena.class),
                 "spillBucket", "spillPrefix");
 
-        Block partitions = new BlockAllocatorImpl().createBlock(SchemaBuilder.newBuilder()
-                .addIntField("_MinRowKey-year")
-                .addStringField("_MinRowKey-month")
-                .addIntField("_MaxRowKey-year")
-                .addStringField("_MaxRowKey-month")
-                .addStringField(RELEVANT_FILES_FIELD)
-                .build());
+        GetSplitsResponse getSplitsResponse;
+        try (BlockAllocator blockAllocator = new BlockAllocatorImpl()) {
+            Block partitions = blockAllocator.createBlock(SchemaBuilder.newBuilder()
+                    .addIntField("_MinRowKey-year")
+                    .addStringField("_MinRowKey-month")
+                    .addIntField("_MaxRowKey-year")
+                    .addStringField("_MaxRowKey-month")
+                    .addStringField(RELEVANT_FILES_FIELD)
+                    .build());
 
-        addPartition(partitions, 0, 25);
-        addPartition(partitions, 1, 26);
-        addPartition(partitions, 2, 27);
+            addPartition(partitions, 0, 25);
+            addPartition(partitions, 1, 26);
+            addPartition(partitions, 2, 27);
 
-        GetSplitsResponse getSplitsResponse = sleeperMetadataHandler.doGetSplits(new BlockAllocatorImpl(),
-                new GetSplitsRequest(TestUtils.createIdentity(), "abc", "def", new TableName("myDB", "myTable"),
-                        partitions, new ArrayList<>(), new Constraints(new HashMap<>()), "unused"));
+            getSplitsResponse = sleeperMetadataHandler.doGetSplits(blockAllocator,
+                    new GetSplitsRequest(TestUtils.createIdentity(), "abc", "def", new TableName("myDB", "myTable"),
+                            partitions, new ArrayList<>(), new Constraints(new HashMap<>()), "unused"));
+        }
 
         // Then
         Set<Split> splits = getSplitsResponse.getSplits();
-        assertEquals(3, splits.size());
+        assertThat(splits).hasSize(3);
 
         validateSplit(splits, 25);
         validateSplit(splits, 26);
@@ -161,10 +163,8 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
     @Test
     public void shouldIncludePartitionsWhenItHasBeenSplitBySystem() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         IteratorApplyingMetadataHandler sleeperMetadataHandler = new IteratorApplyingMetadataHandler(s3Client, dynamoClient,
                 instance.get(CONFIG_BUCKET),
                 mock(EncryptionKeyFactory.class), mock(AWSSecretsManager.class), mock(AmazonAthena.class),
@@ -172,14 +172,14 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
         TableName tableName = new TableName(instance.get(ID), table.get(TABLE_NAME));
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
         Partition partition2018 = stateStore.getLeafPartitions()
                 .stream()
                 .filter(p -> p.getRegion().getRange("year").getMin().equals(2018))
                 .collect(Collectors.toList()).get(0);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
-        SplitPartition splitPartition = new SplitPartition(stateStore, table.getSchema(), new Configuration());
-        splitPartition.splitPartition(partition2018, partitionToActiveFilesMap.get(partition2018.getId()));
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
+        SplitPartition splitPartition = splitPartition(stateStore, table);
+        splitPartition.splitPartition(partition2018, partitionToFiles.get(partition2018.getId()));
 
         Map<String, ValueSet> valueSets = new HashMap<>();
         valueSets.put("year", EquatableValueSet.newBuilder(new BlockAllocatorImpl(), Types.MinorType.INT.getType(),
@@ -193,24 +193,21 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
 
         GetTableLayoutResponse getTableLayoutResponse = sleeperMetadataHandler.doGetTableLayout(new BlockAllocatorImpl(),
                 new GetTableLayoutRequest(TestUtils.createIdentity(),
-                    "abc", "cde",
-                    tableName,
-                    queryConstraints, getTableResponse.getSchema(),
-                    getTableResponse.getPartitionColumns()
-        ));
+                        "abc", "cde",
+                        tableName,
+                        queryConstraints, getTableResponse.getSchema(),
+                        getTableResponse.getPartitionColumns()));
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(2, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isEqualTo(2);
     }
 
     @Test
     public void shouldReturnLeftPartitionWhenItHasBeenSplitBySystemAndRangeMaxIsEqualToThePartitionMax() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         IteratorApplyingMetadataHandler sleeperMetadataHandler = new IteratorApplyingMetadataHandler(s3Client, dynamoClient,
                 instance.get(CONFIG_BUCKET),
                 mock(EncryptionKeyFactory.class), mock(AWSSecretsManager.class), mock(AmazonAthena.class),
@@ -218,15 +215,15 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
         TableName tableName = new TableName(instance.get(ID), table.get(TABLE_NAME));
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
         Partition partition2018 = stateStore.getLeafPartitions()
                 .stream()
                 .filter(p -> p.getRegion().getRange("year").getMin().equals(2018))
                 .collect(Collectors.toList()).get(0);
-        
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
-        SplitPartition splitPartition = new SplitPartition(stateStore, table.getSchema(), new Configuration());
-        splitPartition.splitPartition(partition2018, partitionToActiveFilesMap.get(partition2018.getId()));
+
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
+        SplitPartition splitPartition = splitPartition(stateStore, table);
+        splitPartition.splitPartition(partition2018, partitionToFiles.get(partition2018.getId()));
 
         Partition firstHalfOf2018 = stateStore.getLeafPartitions()
                 .stream()
@@ -249,27 +246,24 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
                 "abc", "cde",
                 tableName,
                 queryConstraints, getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        ));
+                getTableResponse.getPartitionColumns()));
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(1, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isOne();
         FieldReader yearReader = partitions.getFieldReader("_MaxRowKey-year");
         FieldReader monthReader = partitions.getFieldReader("_MaxRowKey-month");
         FieldReader dayReader = partitions.getFieldReader("_MaxRowKey-day");
-        assertEquals(2019, yearReader.readObject());
-        assertEquals(firstHalfOf2018.getRegion().getRange("month").getMax(), monthReader.readObject());
-        assertNull(dayReader.readObject());
+        assertThat(yearReader.readObject()).isEqualTo(2019);
+        assertThat(monthReader.readObject()).isEqualTo(firstHalfOf2018.getRegion().getRange("month").getMax());
+        assertThat(dayReader.readObject()).isNull();
     }
 
     @Test
     public void shouldAddRightPartitionWhenItHasBeenSplitBySystemAndRequestedValueEqualsToThePartitionMax() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
+        InstanceProperties instance = createInstance();
         TableProperties table = createTable(instance);
-        AmazonS3 s3Client = createS3Client();
-        AmazonDynamoDB dynamoClient = createDynamoClient();
         IteratorApplyingMetadataHandler sleeperMetadataHandler = new IteratorApplyingMetadataHandler(s3Client, dynamoClient,
                 instance.get(CONFIG_BUCKET),
                 mock(EncryptionKeyFactory.class), mock(AWSSecretsManager.class), mock(AmazonAthena.class),
@@ -277,14 +271,14 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
         TableName tableName = new TableName(instance.get(ID), table.get(TABLE_NAME));
 
         // When
-        DynamoDBStateStore stateStore = new DynamoDBStateStore(table, dynamoClient);
+        StateStore stateStore = new StateStoreFactory(instance, s3Client, dynamoClient, hadoopConf).getStateStore(table);
         Partition partition2018 = stateStore.getLeafPartitions()
                 .stream()
                 .filter(p -> p.getRegion().getRange("year").getMin().equals(2018))
                 .collect(Collectors.toList()).get(0);
-        Map<String, List<String>> partitionToActiveFilesMap = stateStore.getPartitionToActiveFilesMap();
-        SplitPartition splitPartition = new SplitPartition(stateStore, table.getSchema(), new Configuration());
-        splitPartition.splitPartition(partition2018, partitionToActiveFilesMap.get(partition2018.getId()));
+        Map<String, List<String>> partitionToFiles = stateStore.getPartitionToReferencedFilesMap();
+        SplitPartition splitPartition = splitPartition(stateStore, table);
+        splitPartition.splitPartition(partition2018, partitionToFiles.get(partition2018.getId()));
 
         Partition firstHalfOf2018 = stateStore.getLeafPartitions()
                 .stream()
@@ -307,30 +301,34 @@ public class IteratorApplyingMetadataHandlerIT extends AbstractMetadataHandlerIT
                 "abc", "cde",
                 tableName,
                 queryConstraints, getTableResponse.getSchema(),
-                getTableResponse.getPartitionColumns()
-        ));
+                getTableResponse.getPartitionColumns()));
 
         // Then
         Block partitions = getTableLayoutResponse.getPartitions();
-        assertEquals(1, partitions.getRowCount());
+        assertThat(partitions.getRowCount()).isOne();
         FieldReader yearReader = partitions.getFieldReader("_MinRowKey-year");
         FieldReader monthReader = partitions.getFieldReader("_MinRowKey-month");
         FieldReader dayReader = partitions.getFieldReader("_MinRowKey-day");
-        assertEquals(2018, yearReader.readObject());
-        assertEquals(firstHalfOf2018.getRegion().getRange("month").getMax(), monthReader.readObject());
-        assertEquals(Integer.MIN_VALUE, dayReader.readObject());
+        assertThat(yearReader.readObject()).isEqualTo(2018);
+        assertThat(monthReader.readObject()).isEqualTo(firstHalfOf2018.getRegion().getRange("month").getMax());
+        assertThat(dayReader.readObject()).isEqualTo(Integer.MIN_VALUE);
+    }
+
+    private SplitPartition splitPartition(StateStore stateStore, TableProperties tableProperties) {
+        return new SplitPartition(stateStore, tableProperties,
+                loadSketchesFromFile(tableProperties, new Configuration()),
+                () -> UUID.randomUUID().toString(), null);
     }
 
     private void validateSplit(Set<Split> splits, Integer expectedValue) {
         long matched = splits.stream()
                 .filter(split -> split.getProperty("_MinRowKey-year").equals(expectedValue.toString()))
-                .map(split -> {
-                    assertEquals(Integer.toString(expectedValue + 1), split.getProperty("_MaxRowKey-year"));
-                    assertEquals("", split.getProperty("_MinRowKey-month"));
-                    assertNull(split.getProperty("_MaxRowKey-month"));
-                    assertEquals("[\"s3a://table/partition-" + expectedValue + "/file1.parquet\"," +
-                            "\"s3a://table/partition-" + expectedValue + "/file2.parquet\"]", split.getProperty(RELEVANT_FILES_FIELD));
-                    return split;
+                .peek(split -> {
+                    assertThat(split.getProperty("_MaxRowKey-year")).isEqualTo(Integer.toString(expectedValue + 1));
+                    assertThat(split.getProperty("_MinRowKey-month")).isEmpty();
+                    assertThat(split.getProperty("_MaxRowKey-month")).isNull();
+                    assertThat(split.getProperty(RELEVANT_FILES_FIELD)).isEqualTo("[\"s3a://table/partition-" + expectedValue + "/file1.parquet\"," +
+                            "\"s3a://table/partition-" + expectedValue + "/file2.parquet\"]");
                 })
                 .count();
 

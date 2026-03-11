@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Crown Copyright
+ * Copyright 2022-2024 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 package sleeper.athena.metadata;
 
 import com.amazonaws.athena.connector.lambda.data.Block;
+import com.amazonaws.athena.connector.lambda.data.BlockAllocator;
 import com.amazonaws.athena.connector.lambda.data.BlockAllocatorImpl;
 import com.amazonaws.athena.connector.lambda.data.SchemaBuilder;
-import com.amazonaws.athena.connector.lambda.domain.Split;
 import com.amazonaws.athena.connector.lambda.domain.TableName;
 import com.amazonaws.athena.connector.lambda.domain.predicate.Constraints;
 import com.amazonaws.athena.connector.lambda.metadata.GetSplitsRequest;
@@ -26,81 +26,69 @@ import com.amazonaws.athena.connector.lambda.metadata.GetSplitsResponse;
 import com.amazonaws.athena.connector.lambda.security.EncryptionKeyFactory;
 import com.amazonaws.services.athena.AmazonAthena;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
-import org.apache.curator.shaded.com.google.common.collect.Lists;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import sleeper.athena.TestUtils;
-import sleeper.configuration.properties.InstanceProperties;
+import sleeper.core.properties.instance.InstanceProperties;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static sleeper.athena.metadata.SleeperMetadataHandler.RELEVANT_FILES_FIELD;
-import static sleeper.configuration.properties.SystemDefinedInstanceProperty.CONFIG_BUCKET;
+import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.CONFIG_BUCKET;
 
-public class SimpleMetadataHandlerIT extends AbstractMetadataHandlerIT {
+public class SimpleMetadataHandlerIT extends MetadataHandlerITBase {
 
     @Test
     public void shouldCreateSplitForEachFileInAPartition() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
-        SimpleMetadataHandler simpleMetadataHandler = new SimpleMetadataHandler(createS3Client(), createDynamoClient(),
+        InstanceProperties instance = createInstance();
+        SimpleMetadataHandler simpleMetadataHandler = new SimpleMetadataHandler(s3Client, dynamoClient,
                 instance.get(CONFIG_BUCKET), mock(EncryptionKeyFactory.class), mock(AWSSecretsManager.class),
                 mock(AmazonAthena.class), "abc", "def");
 
         // When
-        Block partitionsBlock = createPartitionsBlock("[ \"a/b/c.parquet\", \"d/e/f.parquet\"]");
-        GetSplitsResponse getSplitsResponse = simpleMetadataHandler.doGetSplits(new BlockAllocatorImpl(), new GetSplitsRequest(TestUtils.createIdentity(),
-                "abc", "def", new TableName("mydb", "myTable"), partitionsBlock, new ArrayList<>(),
-                new Constraints(new HashMap<>()), "continue"));
+        GetSplitsResponse getSplitsResponse;
+        try (BlockAllocator blockAllocator = new BlockAllocatorImpl()) {
+            Block partitionsBlock = createPartitionsBlock(blockAllocator, "[ \"a/b/c.parquet\", \"d/e/f.parquet\"]");
+            getSplitsResponse = simpleMetadataHandler.doGetSplits(blockAllocator, new GetSplitsRequest(TestUtils.createIdentity(),
+                    "abc", "def", new TableName("mydb", "myTable"), partitionsBlock, new ArrayList<>(),
+                    new Constraints(new HashMap<>()), "continue"));
+        }
 
         // Then
-        Set<Split> splits = getSplitsResponse.getSplits();
-        assertEquals(2, splits.size());
-
-        List<String> files = splits.stream()
-                .map(Split::getProperties)
-                .map(props -> props.get(RELEVANT_FILES_FIELD))
-                .sorted()
-                .collect(Collectors.toList());
-
-        assertEquals(Lists.newArrayList("a/b/c.parquet", "d/e/f.parquet"), files);
+        assertThat(getSplitsResponse.getSplits())
+                .extracting(split -> split.getProperties().get(RELEVANT_FILES_FIELD))
+                .containsExactlyInAnyOrder("a/b/c.parquet", "d/e/f.parquet");
     }
 
     @Test
     public void shouldOnlyCreateOneSplitForEachFileAcrossMultiplePartitions() throws Exception {
         // Given
-        InstanceProperties instance = TestUtils.createInstance(createS3Client());
-        SimpleMetadataHandler simpleMetadataHandler = new SimpleMetadataHandler(createS3Client(), createDynamoClient(),
+        InstanceProperties instance = createInstance();
+        SimpleMetadataHandler simpleMetadataHandler = new SimpleMetadataHandler(s3Client, dynamoClient,
                 instance.get(CONFIG_BUCKET), mock(EncryptionKeyFactory.class), mock(AWSSecretsManager.class),
                 mock(AmazonAthena.class), "abc", "def");
 
         // When
-        Block partitionsBlock = createPartitionsBlock("[ \"a/b/c.parquet\", \"d/e/f.parquet\"]",
-                "[ \"g/h/i.parquet\", \"d/e/f.parquet\"]");
-        GetSplitsResponse getSplitsResponse = simpleMetadataHandler.doGetSplits(new BlockAllocatorImpl(), new GetSplitsRequest(TestUtils.createIdentity(),
-                "abc", "def", new TableName("mydb", "myTable"), partitionsBlock, new ArrayList<>(),
-                new Constraints(new HashMap<>()), "continue"));
+        GetSplitsResponse getSplitsResponse;
+        try (BlockAllocator blockAllocator = new BlockAllocatorImpl()) {
+            Block partitionsBlock = createPartitionsBlock(blockAllocator, "[ \"a/b/c.parquet\", \"d/e/f.parquet\"]",
+                    "[ \"g/h/i.parquet\", \"d/e/f.parquet\"]");
+            getSplitsResponse = simpleMetadataHandler.doGetSplits(blockAllocator, new GetSplitsRequest(TestUtils.createIdentity(),
+                    "abc", "def", new TableName("mydb", "myTable"), partitionsBlock, new ArrayList<>(),
+                    new Constraints(new HashMap<>()), "continue"));
+        }
 
         // Then
-        Set<Split> splits = getSplitsResponse.getSplits();
-        assertEquals(3, splits.size());
-
-        List<String> files = splits.stream()
-                .map(Split::getProperties)
-                .map(props -> props.get(RELEVANT_FILES_FIELD))
-                .sorted()
-                .collect(Collectors.toList());
-
-        assertEquals(Lists.newArrayList("a/b/c.parquet", "d/e/f.parquet", "g/h/i.parquet"), files);
+        assertThat(getSplitsResponse.getSplits())
+                .extracting(split -> split.getProperties().get(RELEVANT_FILES_FIELD))
+                .containsExactlyInAnyOrder("a/b/c.parquet", "d/e/f.parquet", "g/h/i.parquet");
     }
 
-    private Block createPartitionsBlock(String... jsonSerialisedLists) {
-        BlockAllocatorImpl blockAllocator = new BlockAllocatorImpl();
+    private Block createPartitionsBlock(BlockAllocator blockAllocator, String... jsonSerialisedLists) {
         Block block = blockAllocator.createBlock(new SchemaBuilder().addStringField(RELEVANT_FILES_FIELD).build());
         block.setRowCount(jsonSerialisedLists.length);
         for (int i = 0; i < jsonSerialisedLists.length; i++) {
