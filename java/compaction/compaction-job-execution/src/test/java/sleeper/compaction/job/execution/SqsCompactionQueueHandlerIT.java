@@ -185,6 +185,50 @@ class SqsCompactionQueueHandlerIT {
         }
     }
 
+    @Nested
+    @DisplayName("Initialize message handle")
+    class InitializeMessageHandle {
+
+        @Test
+        void shouldInitializeAllFieldsCorrectly() throws Exception {
+            // Given
+            TestSqsClient sqsClient = new TestSqsClient();
+            InstanceProperties instanceProperties = createInstanceProperties();
+            SqsCompactionQueueHandler handler = new SqsCompactionQueueHandler(sqsClient, instanceProperties);
+
+            CompactionJob job = CompactionJob.builder()
+                    .tableId("test-table")
+                    .jobId("test-job-1")
+                    .partitionId("root")
+                    .inputFiles(List.of("file1.parquet", "file2.parquet"))
+                    .outputFile("output.parquet")
+                    .build();
+            String jobJson = new CompactionJobSerDe().toJson(job);
+
+            sqsClient.addMessageToQueue(jobJson);
+
+            // When
+            Optional<MessageHandle> messageHandle = handler.receiveMessage();
+
+            // Then
+            assertThat(messageHandle).isPresent();
+            MessageHandle handle = messageHandle.get();
+
+            // Verify job field is initialized
+            CompactionJob retrievedJob = handle.getJob();
+            assertThat(retrievedJob).isNotNull();
+            assertThat(retrievedJob.getId()).isEqualTo("test-job-1");
+            assertThat(retrievedJob.getTableId()).isEqualTo("test-table");
+
+            // Verify message field is initialized by testing delete operation
+            handle.deleteFromQueue();
+            assertThat(sqsClient.getDeleteMessageCalls()).hasSize(1);
+
+            // Verify keepAliveRunnable field is initialized by testing close operation
+            handle.close();
+        }
+    }
+
     private static InstanceProperties createInstanceProperties() {
         InstanceProperties properties = createTestInstanceProperties();
         properties.set(COMPACTION_JOB_QUEUE_URL, "https://sqs.test-region.amazonaws.com/test-queue");
