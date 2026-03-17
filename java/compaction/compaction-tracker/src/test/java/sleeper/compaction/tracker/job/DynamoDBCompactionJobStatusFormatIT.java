@@ -22,6 +22,7 @@ import sleeper.core.tracker.compaction.job.query.CompactionJobStatus;
 import sleeper.core.tracker.compaction.job.update.CompactionJobCommittedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobFailedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobFinishedEvent;
+import sleeper.core.tracker.compaction.job.update.CompactionJobStartedEvent;
 import sleeper.core.tracker.job.run.JobRunSummary;
 import sleeper.core.tracker.job.run.RecordsProcessed;
 import sleeper.dynamodb.tools.DynamoDBRecordBuilder;
@@ -456,5 +457,77 @@ public class DynamoDBCompactionJobStatusFormatIT {
         assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(finishTime.toEpochMilli()));
         assertThat(record.get("RecordsRead").getN()).isEqualTo("0");
         assertThat(record.get("RecordsWritten").getN()).isEqualTo("0");
+    }
+
+    @Test
+    public void shouldCreateJobStartedUpdate() {
+        // Given
+        Instant startTime = Instant.parse("2024-03-17T09:00:00Z");
+        CompactionJobStartedEvent event = CompactionJobStartedEvent.builder()
+                .jobId("job-1")
+                .tableId("table-1")
+                .taskId("task-1")
+                .jobRunId("run-1")
+                .startTime(startTime)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobStartedUpdate(event, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "StartTime", "TaskId", "JobRunId");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("started");
+        assertThat(record.get("StartTime").getN()).isEqualTo(String.valueOf(startTime.toEpochMilli()));
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-1");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-1");
+    }
+
+    @Test
+    public void shouldCreateJobStartedUpdateWithDifferentTaskAndRunIds() {
+        // Given
+        Instant startTime = Instant.parse("2024-03-17T10:15:00Z");
+        CompactionJobStartedEvent event = CompactionJobStartedEvent.builder()
+                .jobId("job-2")
+                .tableId("table-2")
+                .taskId("task-abc")
+                .jobRunId("run-xyz")
+                .startTime(startTime)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobStartedUpdate(event, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("started");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-abc");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-xyz");
+        assertThat(record.get("StartTime").getN()).isEqualTo(String.valueOf(startTime.toEpochMilli()));
+    }
+
+    @Test
+    public void shouldCreateJobStartedUpdateWithCorrectStartTimeConversion() {
+        // Given
+        Instant startTime = Instant.parse("2024-03-17T08:30:00.789Z");
+        CompactionJobStartedEvent event = CompactionJobStartedEvent.builder()
+                .jobId("job-3")
+                .tableId("table-3")
+                .taskId("task-3")
+                .jobRunId("run-3")
+                .startTime(startTime)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobStartedUpdate(event, builder);
+
+        // Then
+        long expectedEpochMilli = 1710664200789L;
+        assertThat(startTime.toEpochMilli()).isEqualTo(expectedEpochMilli);
+        assertThat(record.get("StartTime").getN()).isEqualTo(String.valueOf(expectedEpochMilli));
     }
 }
