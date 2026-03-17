@@ -18,6 +18,7 @@ package sleeper.compaction.tracker.job;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import org.junit.jupiter.api.Test;
 
+import sleeper.core.statestore.AssignJobIdRequest;
 import sleeper.core.tracker.compaction.job.query.CompactionJobStatus;
 import sleeper.core.tracker.compaction.job.update.CompactionJobCommittedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobCreatedEvent;
@@ -594,5 +595,82 @@ public class DynamoDBCompactionJobStatusFormatIT {
         long expectedEpochMilli = 1710664200789L;
         assertThat(startTime.toEpochMilli()).isEqualTo(expectedEpochMilli);
         assertThat(record.get("StartTime").getN()).isEqualTo(String.valueOf(expectedEpochMilli));
+    }
+
+    @Test
+    public void shouldCreateFilesAssignedUpdate() {
+        // Given
+        AssignJobIdRequest request = AssignJobIdRequest.assignJobOnPartitionToFiles(
+                "job-1",
+                "partition-1",
+                List.of("file1.parquet", "file2.parquet", "file3.parquet"));
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createFilesAssignedUpdate(request, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "PartitionId", "InputFilesCount");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("created");
+        assertThat(record.get("PartitionId").getS()).isEqualTo("partition-1");
+        assertThat(record.get("InputFilesCount").getN()).isEqualTo("3");
+    }
+
+    @Test
+    public void shouldCreateFilesAssignedUpdateWithDifferentPartitionId() {
+        // Given
+        AssignJobIdRequest request = AssignJobIdRequest.assignJobOnPartitionToFiles(
+                "job-2",
+                "partition-xyz",
+                List.of("file1.parquet", "file2.parquet"));
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createFilesAssignedUpdate(request, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("created");
+        assertThat(record.get("PartitionId").getS()).isEqualTo("partition-xyz");
+        assertThat(record.get("InputFilesCount").getN()).isEqualTo("2");
+    }
+
+    @Test
+    public void shouldCreateFilesAssignedUpdateWithSingleFile() {
+        // Given
+        AssignJobIdRequest request = AssignJobIdRequest.assignJobOnPartitionToFiles(
+                "job-3",
+                "partition-3",
+                List.of("file1.parquet"));
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createFilesAssignedUpdate(request, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("created");
+        assertThat(record.get("PartitionId").getS()).isEqualTo("partition-3");
+        assertThat(record.get("InputFilesCount").getN()).isEqualTo("1");
+    }
+
+    @Test
+    public void shouldCreateFilesAssignedUpdateWithEmptyFileList() {
+        // Given
+        AssignJobIdRequest request = AssignJobIdRequest.assignJobOnPartitionToFiles(
+                "job-4",
+                "partition-4",
+                List.of());
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createFilesAssignedUpdate(request, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("created");
+        assertThat(record.get("PartitionId").getS()).isEqualTo("partition-4");
+        assertThat(record.get("InputFilesCount").getN()).isEqualTo("0");
     }
 }
