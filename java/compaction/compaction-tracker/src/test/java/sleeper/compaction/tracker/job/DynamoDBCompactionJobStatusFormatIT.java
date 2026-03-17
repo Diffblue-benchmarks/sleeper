@@ -19,10 +19,13 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import org.junit.jupiter.api.Test;
 
 import sleeper.core.tracker.compaction.job.query.CompactionJobStatus;
+import sleeper.dynamodb.tools.DynamoDBRecordBuilder;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -103,5 +106,77 @@ public class DynamoDBCompactionJobStatusFormatIT {
 
         // Then
         assertThat(statuses).isEmpty();
+    }
+
+    @Test
+    public void shouldGenerateJobUpdateIdWithCorrectFormat() {
+        // Given
+        String tableId = "test-table";
+        String jobId = "test-job";
+        Instant timeNow = Instant.parse("2024-03-17T10:00:00Z");
+        Instant expiry = timeNow.plusSeconds(604800);
+
+        // When
+        DynamoDBRecordBuilder builder = DynamoDBCompactionJobStatusFormat
+                .jobUpdateBuilder(tableId, jobId, timeNow, expiry);
+        Map<String, AttributeValue> record = builder.build();
+
+        // Then
+        String jobIdAndUpdate = record.get("JobIdAndUpdate").getS();
+        assertThat(jobIdAndUpdate).startsWith("test-job|" + timeNow.toEpochMilli() + "|");
+
+        // Extract the update ID part
+        String[] parts = jobIdAndUpdate.split("\\|");
+        assertThat(parts).hasSize(3);
+        String updateId = parts[2];
+
+        // Verify it's a valid hex string of 8 characters (4 bytes)
+        assertThat(updateId).hasSize(8);
+        assertThat(updateId).matches("[0-9a-f]{8}");
+    }
+
+    @Test
+    public void shouldGenerateUniqueJobUpdateIds() {
+        // Given
+        String tableId = "test-table";
+        String jobId = "test-job";
+        Instant timeNow = Instant.parse("2024-03-17T10:00:00Z");
+        Instant expiry = timeNow.plusSeconds(604800);
+        Set<String> updateIds = new HashSet<>();
+
+        // When
+        for (int i = 0; i < 100; i++) {
+            DynamoDBRecordBuilder builder = DynamoDBCompactionJobStatusFormat
+                    .jobUpdateBuilder(tableId, jobId, timeNow, expiry);
+            Map<String, AttributeValue> record = builder.build();
+            String jobIdAndUpdate = record.get("JobIdAndUpdate").getS();
+            String[] parts = jobIdAndUpdate.split("\\|");
+            String updateId = parts[2];
+            updateIds.add(updateId);
+        }
+
+        // Then
+        assertThat(updateIds).hasSizeGreaterThan(95);
+    }
+
+    @Test
+    public void shouldIncludeGeneratedUpdateIdInJobUpdateBuilder() {
+        // Given
+        String tableId = "test-table";
+        String jobId = "test-job";
+        Instant timeNow = Instant.parse("2024-03-17T10:00:00Z");
+        Instant expiry = timeNow.plusSeconds(604800);
+
+        // When
+        DynamoDBRecordBuilder builder = DynamoDBCompactionJobStatusFormat
+                .jobUpdateBuilder(tableId, jobId, timeNow, expiry);
+        Map<String, AttributeValue> record = builder.build();
+
+        // Then
+        assertThat(record).containsKeys("TableId", "JobId", "JobIdAndUpdate", "UpdateTime", "ExpiryDate");
+        assertThat(record.get("TableId").getS()).isEqualTo("test-table");
+        assertThat(record.get("JobId").getS()).isEqualTo("test-job");
+        assertThat(record.get("UpdateTime").getN()).isEqualTo(String.valueOf(timeNow.toEpochMilli()));
+        assertThat(record.get("ExpiryDate").getN()).isEqualTo(String.valueOf(expiry.getEpochSecond()));
     }
 }
