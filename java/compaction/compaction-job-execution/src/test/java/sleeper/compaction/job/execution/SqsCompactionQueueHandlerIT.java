@@ -45,6 +45,77 @@ import static sleeper.core.properties.testutils.InstancePropertiesTestHelper.cre
 class SqsCompactionQueueHandlerIT {
 
     @Nested
+    @DisplayName("Delete message from queue")
+    class DeleteMessageFromQueue {
+
+        @Test
+        void shouldCallDeleteMessageWithCorrectParameters() throws Exception {
+            // Given
+            TestSqsClient sqsClient = new TestSqsClient();
+            InstanceProperties instanceProperties = createInstanceProperties();
+            SqsCompactionQueueHandler handler = new SqsCompactionQueueHandler(sqsClient, instanceProperties);
+
+            CompactionJob job = CompactionJob.builder()
+                    .tableId("test-table")
+                    .jobId("test-job-1")
+                    .partitionId("root")
+                    .inputFiles(List.of("file1.parquet", "file2.parquet"))
+                    .outputFile("output.parquet")
+                    .build();
+            String jobJson = new CompactionJobSerDe().toJson(job);
+
+            sqsClient.addMessageToQueue(jobJson);
+            Optional<MessageHandle> messageHandle = handler.receiveMessage();
+            assertThat(messageHandle).isPresent();
+
+            // When
+            messageHandle.get().deleteFromQueue();
+
+            // Then
+            assertThat(sqsClient.getDeleteMessageCalls()).hasSize(1);
+            TestSqsClient.DeleteMessageCall call = sqsClient.getDeleteMessageCalls().get(0);
+            assertThat(call.queueUrl).isEqualTo("https://sqs.test-region.amazonaws.com/test-queue");
+            assertThat(call.receiptHandle).isEqualTo("receipt-handle-0");
+        }
+
+        @Test
+        void shouldWrapActionExceptionInRuntimeException() throws Exception {
+            // Given
+            TestSqsClient sqsClient = new TestSqsClient();
+            sqsClient.setDeleteMessageShouldFail(true);
+            InstanceProperties instanceProperties = createInstanceProperties();
+            SqsCompactionQueueHandler handler = new SqsCompactionQueueHandler(sqsClient, instanceProperties);
+
+            CompactionJob job = CompactionJob.builder()
+                    .tableId("test-table")
+                    .jobId("test-job-1")
+                    .partitionId("root")
+                    .inputFiles(List.of("file1.parquet", "file2.parquet"))
+                    .outputFile("output.parquet")
+                    .build();
+            String jobJson = new CompactionJobSerDe().toJson(job);
+
+            sqsClient.addMessageToQueue(jobJson);
+            Optional<MessageHandle> messageHandle = handler.receiveMessage();
+            assertThat(messageHandle).isPresent();
+
+            // When / Then
+            assertThat(messageHandle.get())
+                    .extracting(handle -> {
+                        try {
+                            handle.deleteFromQueue();
+                            return null;
+                        } catch (RuntimeException e) {
+                            return e;
+                        }
+                    })
+                    .isInstanceOf(RuntimeException.class)
+                    .extracting(Throwable::getCause)
+                    .hasFieldOrPropertyWithValue("class", sleeper.job.common.action.ActionException.class);
+        }
+    }
+
+    @Nested
     @DisplayName("Return message to queue")
     class ReturnMessageToQueue {
 
@@ -92,14 +163,24 @@ class SqsCompactionQueueHandlerIT {
     private static class TestSqsClient implements AmazonSQS {
         private final List<String> queueMessages = new ArrayList<>();
         private final List<ChangeVisibilityCall> changeVisibilityCalls = new ArrayList<>();
+        private final List<DeleteMessageCall> deleteMessageCalls = new ArrayList<>();
         private int messageCounter = 0;
+        private boolean deleteMessageShouldFail = false;
 
         void addMessageToQueue(String messageBody) {
             queueMessages.add(messageBody);
         }
 
+        void setDeleteMessageShouldFail(boolean shouldFail) {
+            this.deleteMessageShouldFail = shouldFail;
+        }
+
         List<ChangeVisibilityCall> getChangeVisibilityCalls() {
             return changeVisibilityCalls;
+        }
+
+        List<DeleteMessageCall> getDeleteMessageCalls() {
+            return deleteMessageCalls;
         }
 
         @Override
@@ -123,6 +204,10 @@ class SqsCompactionQueueHandlerIT {
 
         @Override
         public DeleteMessageResult deleteMessage(String queueUrl, String receiptHandle) {
+            if (deleteMessageShouldFail) {
+                throw new com.amazonaws.services.sqs.model.AmazonSQSException("Simulated SQS failure");
+            }
+            deleteMessageCalls.add(new DeleteMessageCall(queueUrl, receiptHandle));
             return new DeleteMessageResult();
         }
 
@@ -143,6 +228,16 @@ class SqsCompactionQueueHandlerIT {
             }
         }
 
+        static class DeleteMessageCall {
+            final String queueUrl;
+            final String receiptHandle;
+
+            DeleteMessageCall(String queueUrl, String receiptHandle) {
+                this.queueUrl = queueUrl;
+                this.receiptHandle = receiptHandle;
+            }
+        }
+
         // All other methods throw UnsupportedOperationException as they are not needed for this test
         @Override public void setEndpoint(String endpoint) { throw new java.lang.UnsupportedOperationException(); }
         @Override public void setRegion(Region region) { throw new java.lang.UnsupportedOperationException(); }
@@ -152,7 +247,7 @@ class SqsCompactionQueueHandlerIT {
         @Override public ChangeMessageVisibilityBatchResult changeMessageVisibilityBatch(String queueUrl, List<ChangeMessageVisibilityBatchRequestEntry> entries) { throw new java.lang.UnsupportedOperationException(); }
         @Override public CreateQueueResult createQueue(CreateQueueRequest request) { throw new java.lang.UnsupportedOperationException(); }
         @Override public CreateQueueResult createQueue(String queueName) { throw new java.lang.UnsupportedOperationException(); }
-        @Override public DeleteMessageResult deleteMessage(DeleteMessageRequest request) { throw new java.lang.UnsupportedOperationException(); }
+        @Override public DeleteMessageResult deleteMessage(DeleteMessageRequest request) { return deleteMessage(request.getQueueUrl(), request.getReceiptHandle()); }
         @Override public DeleteMessageBatchResult deleteMessageBatch(DeleteMessageBatchRequest request) { throw new java.lang.UnsupportedOperationException(); }
         @Override public DeleteMessageBatchResult deleteMessageBatch(String queueUrl, List<DeleteMessageBatchRequestEntry> entries) { throw new java.lang.UnsupportedOperationException(); }
         @Override public DeleteQueueResult deleteQueue(DeleteQueueRequest request) { throw new java.lang.UnsupportedOperationException(); }
