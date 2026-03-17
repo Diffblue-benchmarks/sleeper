@@ -50,6 +50,15 @@ public class BasicCompactionStrategyTest extends CompactionStrategyTestBase {
     }
 
     @Test
+    public void shouldCreateBasicCompactionStrategy() {
+        // Given / When
+        BasicCompactionStrategy basicStrategy = new BasicCompactionStrategy();
+
+        // Then
+        assertThat(basicStrategy).isNotNull();
+    }
+
+    @Test
     public void shouldCreateOneJobWhenOneLeafPartitionAndOnlyTwoFiles() {
         // Given
         tableProperties.set(COMPACTION_FILES_BATCH_SIZE, "2");
