@@ -48,6 +48,15 @@ public class SizeRatioCompactionStrategyTest extends CompactionStrategyTestBase 
     }
 
     @Test
+    void shouldInstantiateStrategy() {
+        // When
+        SizeRatioCompactionStrategy strategy = new SizeRatioCompactionStrategy();
+
+        // Then
+        assertThat(strategy).isNotNull();
+    }
+
+    @Test
     public void shouldCreateOneJobWhenOneLeafPartitionAndFilesMeetCriteria() {
         // Given
         tableProperties.set(COMPACTION_FILES_BATCH_SIZE, "11");
