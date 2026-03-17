@@ -29,6 +29,7 @@ import java.util.Queue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static sleeper.compaction.core.job.CompactionJobStatusFromJobTestData.compactionJobCreated;
+import static sleeper.core.properties.instance.CompactionProperty.COMPACTION_TASK_MAX_CONSECUTIVE_FAILURES;
 import static sleeper.core.properties.table.TableProperty.TABLE_ID;
 import static sleeper.core.properties.testutils.TablePropertiesTestHelper.createTestTableProperties;
 import static sleeper.core.tracker.compaction.job.CompactionJobStatusTestData.failedCompactionRun;
@@ -157,5 +158,59 @@ public class CompactionTaskTest extends CompactionTaskTestBase {
 
         // When / Then
         handle.close();
+    }
+
+    @Test
+    void shouldTerminateWhenMaxConsecutiveFailuresReached() throws Exception {
+        // Given
+        instanceProperties.setNumber(COMPACTION_TASK_MAX_CONSECUTIVE_FAILURES, 3);
+        CompactionJob job1 = createJobOnQueue("job1");
+        CompactionJob job2 = createJobOnQueue("job2");
+        CompactionJob job3 = createJobOnQueue("job3");
+        CompactionJob job4 = createJobOnQueue("job4");
+
+        // When
+        runTask(processJobs(jobFails(), jobFails(), jobFails()));
+
+        // Then
+        assertThat(consumedJobs).isEmpty();
+        assertThat(jobsReturnedToQueue).containsExactly(job1, job2, job3);
+        assertThat(jobsOnQueue).containsExactly(job4);
+    }
+
+    @Test
+    void shouldResetConsecutiveFailuresAfterSuccess() throws Exception {
+        // Given
+        instanceProperties.setNumber(COMPACTION_TASK_MAX_CONSECUTIVE_FAILURES, 3);
+        CompactionJob job1 = createJobOnQueue("job1");
+        CompactionJob job2 = createJobOnQueue("job2");
+        CompactionJob job3 = createJobOnQueue("job3");
+        CompactionJob job4 = createJobOnQueue("job4");
+        CompactionJob job5 = createJobOnQueue("job5");
+
+        // When
+        runTask(processJobs(jobFails(), jobFails(), jobSucceeds(), jobFails(), jobFails()));
+
+        // Then
+        assertThat(consumedJobs).containsExactly(job3);
+        assertThat(jobsReturnedToQueue).containsExactly(job1, job2, job4, job5);
+        assertThat(jobsOnQueue).isEmpty();
+    }
+
+    @Test
+    void shouldContinueProcessingWhenBelowMaxConsecutiveFailures() throws Exception {
+        // Given
+        instanceProperties.setNumber(COMPACTION_TASK_MAX_CONSECUTIVE_FAILURES, 5);
+        CompactionJob job1 = createJobOnQueue("job1");
+        CompactionJob job2 = createJobOnQueue("job2");
+        CompactionJob job3 = createJobOnQueue("job3");
+
+        // When
+        runTask(processJobs(jobFails(), jobFails(), jobSucceeds()));
+
+        // Then
+        assertThat(consumedJobs).containsExactly(job3);
+        assertThat(jobsReturnedToQueue).containsExactly(job1, job2);
+        assertThat(jobsOnQueue).isEmpty();
     }
 }
