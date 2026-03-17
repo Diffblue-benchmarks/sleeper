@@ -21,6 +21,9 @@ import org.junit.jupiter.api.Test;
 import sleeper.core.tracker.compaction.job.query.CompactionJobStatus;
 import sleeper.core.tracker.compaction.job.update.CompactionJobCommittedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobFailedEvent;
+import sleeper.core.tracker.compaction.job.update.CompactionJobFinishedEvent;
+import sleeper.core.tracker.job.run.JobRunSummary;
+import sleeper.core.tracker.job.run.RecordsProcessed;
 import sleeper.dynamodb.tools.DynamoDBRecordBuilder;
 
 import java.time.Instant;
@@ -339,5 +342,119 @@ public class DynamoDBCompactionJobStatusFormatIT {
         long expectedEpochMilli = 1710691200123L;
         assertThat(commitTime.toEpochMilli()).isEqualTo(expectedEpochMilli);
         assertThat(record.get("CommitTime").getN()).isEqualTo(String.valueOf(expectedEpochMilli));
+    }
+
+    @Test
+    public void shouldCreateJobFinishedUpdate() {
+        // Given
+        Instant startTime = Instant.parse("2024-03-17T10:00:00Z");
+        Instant finishTime = Instant.parse("2024-03-17T10:30:00Z");
+        RecordsProcessed recordsProcessed = new RecordsProcessed(1000L, 900L);
+        JobRunSummary summary = new JobRunSummary(recordsProcessed, startTime, finishTime);
+        CompactionJobFinishedEvent event = CompactionJobFinishedEvent.builder()
+                .jobId("job-1")
+                .tableId("table-1")
+                .taskId("task-1")
+                .jobRunId("run-1")
+                .summary(summary)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobFinishedUpdate(event, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "TaskId", "JobRunId", "FinishTime", "RecordsRead", "RecordsWritten");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("finished");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-1");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-1");
+        assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(finishTime.toEpochMilli()));
+        assertThat(record.get("RecordsRead").getN()).isEqualTo("1000");
+        assertThat(record.get("RecordsWritten").getN()).isEqualTo("900");
+    }
+
+    @Test
+    public void shouldCreateJobFinishedUpdateWithDifferentTaskAndRunIds() {
+        // Given
+        Instant startTime = Instant.parse("2024-03-17T11:00:00Z");
+        Instant finishTime = Instant.parse("2024-03-17T11:45:00Z");
+        RecordsProcessed recordsProcessed = new RecordsProcessed(5000L, 4500L);
+        JobRunSummary summary = new JobRunSummary(recordsProcessed, startTime, finishTime);
+        CompactionJobFinishedEvent event = CompactionJobFinishedEvent.builder()
+                .jobId("job-2")
+                .tableId("table-2")
+                .taskId("task-abc")
+                .jobRunId("run-xyz")
+                .summary(summary)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobFinishedUpdate(event, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("finished");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-abc");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-xyz");
+        assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(finishTime.toEpochMilli()));
+        assertThat(record.get("RecordsRead").getN()).isEqualTo("5000");
+        assertThat(record.get("RecordsWritten").getN()).isEqualTo("4500");
+    }
+
+    @Test
+    public void shouldCreateJobFinishedUpdateWithCorrectFinishTimeConversion() {
+        // Given
+        Instant startTime = Instant.parse("2024-03-17T12:00:00Z");
+        Instant finishTime = Instant.parse("2024-03-17T12:30:00.456Z");
+        RecordsProcessed recordsProcessed = new RecordsProcessed(2500L, 2400L);
+        JobRunSummary summary = new JobRunSummary(recordsProcessed, startTime, finishTime);
+        CompactionJobFinishedEvent event = CompactionJobFinishedEvent.builder()
+                .jobId("job-3")
+                .tableId("table-3")
+                .taskId("task-3")
+                .jobRunId("run-3")
+                .summary(summary)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobFinishedUpdate(event, builder);
+
+        // Then
+        long expectedEpochMilli = 1710678600456L;
+        assertThat(finishTime.toEpochMilli()).isEqualTo(expectedEpochMilli);
+        assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(expectedEpochMilli));
+    }
+
+    @Test
+    public void shouldCreateJobFinishedUpdateWithZeroRecordsProcessed() {
+        // Given
+        Instant startTime = Instant.parse("2024-03-17T13:00:00Z");
+        Instant finishTime = Instant.parse("2024-03-17T13:05:00Z");
+        RecordsProcessed recordsProcessed = new RecordsProcessed(0L, 0L);
+        JobRunSummary summary = new JobRunSummary(recordsProcessed, startTime, finishTime);
+        CompactionJobFinishedEvent event = CompactionJobFinishedEvent.builder()
+                .jobId("job-4")
+                .tableId("table-4")
+                .taskId("task-4")
+                .jobRunId("run-4")
+                .summary(summary)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobFinishedUpdate(event, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("finished");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-4");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-4");
+        assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(finishTime.toEpochMilli()));
+        assertThat(record.get("RecordsRead").getN()).isEqualTo("0");
+        assertThat(record.get("RecordsWritten").getN()).isEqualTo("0");
     }
 }
