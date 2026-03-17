@@ -36,6 +36,7 @@ import sleeper.core.tracker.compaction.job.CompactionJobTracker;
 import sleeper.core.util.ThreadSleep;
 import sleeper.core.util.ThreadSleepTestHelper;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -216,5 +217,43 @@ public class StateStoreWaitForFilesTest {
 
     protected void actionAfterWait(ThreadSleepTestHelper.WaitAction action) throws Exception {
         waiter = ThreadSleepTestHelper.withActionAfterWait(waiter, action);
+    }
+
+    @Test
+    void shouldSetAndGetTrueInResultTracker() throws Exception {
+        // Given
+        Class<?> resultTrackerClass = Class.forName("sleeper.compaction.core.task.StateStoreWaitForFiles$ResultTracker");
+        var constructor = resultTrackerClass.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        Object resultTracker = constructor.newInstance();
+        Method setMethod = resultTrackerClass.getDeclaredMethod("set", boolean.class);
+        Method getMethod = resultTrackerClass.getDeclaredMethod("get");
+        setMethod.setAccessible(true);
+        getMethod.setAccessible(true);
+
+        // When
+        setMethod.invoke(resultTracker, true);
+
+        // Then
+        assertThat((Boolean) getMethod.invoke(resultTracker)).isTrue();
+    }
+
+    @Test
+    void shouldSetAndGetFalseInResultTracker() throws Exception {
+        // Given
+        Class<?> resultTrackerClass = Class.forName("sleeper.compaction.core.task.StateStoreWaitForFiles$ResultTracker");
+        var constructor = resultTrackerClass.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        Object resultTracker = constructor.newInstance();
+        Method setMethod = resultTrackerClass.getDeclaredMethod("set", boolean.class);
+        Method getMethod = resultTrackerClass.getDeclaredMethod("get");
+        setMethod.setAccessible(true);
+        getMethod.setAccessible(true);
+
+        // When
+        setMethod.invoke(resultTracker, false);
+
+        // Then
+        assertThat((Boolean) getMethod.invoke(resultTracker)).isFalse();
     }
 }
