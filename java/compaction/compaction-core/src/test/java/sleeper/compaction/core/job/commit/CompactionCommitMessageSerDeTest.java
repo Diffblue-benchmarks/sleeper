@@ -110,6 +110,33 @@ public class CompactionCommitMessageSerDeTest {
                 .withName("example-compaction-commit-pretty", ".json"));
     }
 
+    @Test
+    void shouldDeserialiseMessageWithCallbackInHandle() {
+        // Given
+        PartitionTree partitions = new PartitionsBuilder(schemaWithKey("key")).singlePartition("root").buildTree();
+        ReplaceFileReferencesRequest filesRequest = ReplaceFileReferencesRequest.builder()
+                .jobId("test-job")
+                .taskId("test-task")
+                .jobRunId("test-run")
+                .inputFiles(List.of("test.parquet"))
+                .newReference(FileReferenceFactory.from(partitions).rootFile("output.parquet", 200))
+                .build();
+        CompactionCommitMessage message = new CompactionCommitMessage("test-table", filesRequest);
+        String json = serDe.toJson(message);
+        boolean[] callbackInvoked = {false};
+        Runnable callback = () -> callbackInvoked[0] = true;
+
+        // When
+        CompactionCommitMessageHandle handle = serDe.fromJsonWithCallbackOnFail(json, callback);
+
+        // Then
+        assertThat(handle.tableId()).isEqualTo("test-table");
+        assertThat(handle.request()).isEqualTo(filesRequest);
+        assertThat(handle.callbackOnFail()).isEqualTo(callback);
+        handle.callbackOnFail().run();
+        assertThat(callbackInvoked[0]).isTrue();
+    }
+
     private ReplaceFileReferencesRequest createExampleFilesRequestOfRepresentativeSize() {
         PartitionTree partitions = new PartitionsBuilder(schema).singlePartition(exampleUUID("partn", 0)).buildTree();
         List<String> inputFiles = IntStream.rangeClosed(1, 11)
