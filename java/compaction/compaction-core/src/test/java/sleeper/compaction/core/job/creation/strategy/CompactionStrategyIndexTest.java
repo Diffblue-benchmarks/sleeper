@@ -98,6 +98,26 @@ public class CompactionStrategyIndexTest {
                             unassignedFilesInPartition("L", List.of(file1)),
                             unassignedFilesInPartition("R", List.of(file2, file3)));
         }
+
+        @Test
+        void shouldSortFilesInAscendingOrderByRecordCount() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema)
+                    .rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference largeFile = factory.rootFile("large.parquet", 1000000L);
+            FileReference mediumFile = factory.rootFile("medium.parquet", 50000L);
+            FileReference smallFile = factory.rootFile("small.parquet", 100L);
+            FileReference tinyFile = factory.rootFile("tiny.parquet", 1L);
+            List<FileReference> allFileReferences = List.of(largeFile, mediumFile, smallFile, tinyFile);
+
+            // When
+            CompactionStrategyIndex index = new CompactionStrategyIndex(tableStatus, allFileReferences, partitionsBuilder.buildList());
+
+            // Then
+            assertThat(index.getFilesInLeafPartitions())
+                    .containsExactly(unassignedFilesInPartition("root", List.of(tinyFile, smallFile, mediumFile, largeFile)));
+        }
     }
 
     @Test
