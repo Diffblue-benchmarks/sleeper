@@ -165,4 +165,148 @@ public class CompactionStrategyIndexTest {
     private FilesInPartition unassignedFilesInPartition(String partitionId, List<FileReference> unassignedFiles) {
         return new FilesInPartition(tableStatus, partitionId, unassignedFiles, List.of());
     }
+
+    @Nested
+    @DisplayName("FilesInPartition methods")
+    class FilesInPartitionMethods {
+        @Test
+        void shouldGetFilesWithJobId() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema)
+                    .rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference file1 = factory.rootFile("file1.parquet", 100L);
+            FileReference file2 = withJobId("job1", factory.rootFile("file2.parquet", 200L));
+            FilesInPartition filesInPartition = new FilesInPartition(tableStatus, "root", List.of(file1), List.of(file2));
+
+            // When
+            List<FileReference> filesWithJobId = filesInPartition.getFilesWithJobId();
+
+            // Then
+            assertThat(filesWithJobId).containsExactly(file2);
+        }
+
+        @Test
+        void shouldGetFilesWithNoJobIdInAscendingOrder() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema)
+                    .rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference file1 = factory.rootFile("file1.parquet", 300L);
+            FileReference file2 = factory.rootFile("file2.parquet", 100L);
+            FilesInPartition filesInPartition = new FilesInPartition(tableStatus, "root", List.of(file2, file1), List.of());
+
+            // When
+            List<FileReference> filesWithNoJobId = filesInPartition.getFilesWithNoJobIdInAscendingOrder();
+
+            // Then
+            assertThat(filesWithNoJobId).containsExactly(file2, file1);
+        }
+
+        @Test
+        void shouldGetPartitionId() {
+            // Given
+            FilesInPartition filesInPartition = new FilesInPartition(tableStatus, "test-partition", List.of(), List.of());
+
+            // When
+            String partitionId = filesInPartition.getPartitionId();
+
+            // Then
+            assertThat(partitionId).isEqualTo("test-partition");
+        }
+
+        @Test
+        void shouldGetTableStatus() {
+            // Given
+            FilesInPartition filesInPartition = new FilesInPartition(tableStatus, "root", List.of(), List.of());
+
+            // When
+            TableStatus result = filesInPartition.getTableStatus();
+
+            // Then
+            assertThat(result).isEqualTo(tableStatus);
+        }
+
+        @Test
+        void shouldGenerateConsistentHashCode() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema)
+                    .rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference file1 = factory.rootFile("file1.parquet", 100L);
+            FileReference file2 = withJobId("job1", factory.rootFile("file2.parquet", 200L));
+            FilesInPartition filesInPartition1 = new FilesInPartition(tableStatus, "root", List.of(file1), List.of(file2));
+            FilesInPartition filesInPartition2 = new FilesInPartition(tableStatus, "root", List.of(file1), List.of(file2));
+
+            // When
+            int hashCode1 = filesInPartition1.hashCode();
+            int hashCode2 = filesInPartition2.hashCode();
+
+            // Then
+            assertThat(hashCode1).isEqualTo(hashCode2);
+        }
+
+        @Test
+        void shouldBeEqualWhenSameInstance() {
+            // Given
+            FilesInPartition filesInPartition = new FilesInPartition(tableStatus, "root", List.of(), List.of());
+
+            // When / Then
+            assertThat(filesInPartition).isEqualTo(filesInPartition);
+        }
+
+        @Test
+        void shouldBeEqualWhenSameContent() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema)
+                    .rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference file1 = factory.rootFile("file1.parquet", 100L);
+            FileReference file2 = withJobId("job1", factory.rootFile("file2.parquet", 200L));
+            FilesInPartition filesInPartition1 = new FilesInPartition(tableStatus, "root", List.of(file1), List.of(file2));
+            FilesInPartition filesInPartition2 = new FilesInPartition(tableStatus, "root", List.of(file1), List.of(file2));
+
+            // When / Then
+            assertThat(filesInPartition1).isEqualTo(filesInPartition2);
+        }
+
+        @Test
+        void shouldNotBeEqualWhenDifferentPartitionId() {
+            // Given
+            FilesInPartition filesInPartition1 = new FilesInPartition(tableStatus, "root", List.of(), List.of());
+            FilesInPartition filesInPartition2 = new FilesInPartition(tableStatus, "other", List.of(), List.of());
+
+            // When / Then
+            assertThat(filesInPartition1).isNotEqualTo(filesInPartition2);
+        }
+
+        @Test
+        void shouldNotBeEqualWhenDifferentType() {
+            // Given
+            FilesInPartition filesInPartition = new FilesInPartition(tableStatus, "root", List.of(), List.of());
+            String other = "not a FilesInPartition";
+
+            // When / Then
+            assertThat(filesInPartition).isNotEqualTo(other);
+        }
+
+        @Test
+        void shouldGenerateToString() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema)
+                    .rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference file1 = factory.rootFile("file1.parquet", 100L);
+            FilesInPartition filesInPartition = new FilesInPartition(tableStatus, "root", List.of(file1), List.of());
+
+            // When
+            String result = filesInPartition.toString();
+
+            // Then
+            assertThat(result)
+                    .contains("FilesInPartition")
+                    .contains("root")
+                    .contains("file1.parquet");
+        }
+    }
 }
