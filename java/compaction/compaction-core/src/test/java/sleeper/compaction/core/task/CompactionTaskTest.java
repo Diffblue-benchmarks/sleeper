@@ -110,4 +110,52 @@ public class CompactionTaskTest extends CompactionTaskTestBase {
                         failedCompactionRun(DEFAULT_TASK_ID, new JobRunTime(startTime2, finishTime2), List.of(
                                 "Table not found with ID \"" + table.get(TABLE_ID) + "\""))));
     }
+
+    @Test
+    void shouldGetJobFromMessageHandle() throws Exception {
+        // Given
+        CompactionJob job = createJobOnQueue("job1");
+
+        // When
+        CompactionTask.MessageHandle handle = new FakeMessageHandle(job);
+
+        // Then
+        assertThat(handle.getJob()).isEqualTo(job);
+    }
+
+    @Test
+    void shouldDeleteJobFromQueueWhenMessageHandleDeletes() throws Exception {
+        // Given
+        CompactionJob job = createJobOnQueue("job1");
+        CompactionTask.MessageHandle handle = new FakeMessageHandle(job);
+
+        // When
+        handle.deleteFromQueue();
+
+        // Then
+        assertThat(consumedJobs).containsExactly(job);
+    }
+
+    @Test
+    void shouldReturnJobToQueueWhenMessageHandleReturns() throws Exception {
+        // Given
+        CompactionJob job = createJobOnQueue("job1");
+        CompactionTask.MessageHandle handle = new FakeMessageHandle(job);
+
+        // When
+        handle.returnToQueue();
+
+        // Then
+        assertThat(jobsReturnedToQueue).containsExactly(job);
+    }
+
+    @Test
+    void shouldCloseMessageHandle() throws Exception {
+        // Given
+        CompactionJob job = createJobOnQueue("job1");
+        CompactionTask.MessageHandle handle = new FakeMessageHandle(job);
+
+        // When / Then
+        handle.close();
+    }
 }
