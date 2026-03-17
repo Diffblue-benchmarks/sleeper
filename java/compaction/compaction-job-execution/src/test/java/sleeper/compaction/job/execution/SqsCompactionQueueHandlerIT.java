@@ -116,6 +116,41 @@ class SqsCompactionQueueHandlerIT {
     }
 
     @Nested
+    @DisplayName("Get job from message handle")
+    class GetJobFromMessageHandle {
+
+        @Test
+        void shouldReturnCompactionJobFromHandle() throws Exception {
+            // Given
+            TestSqsClient sqsClient = new TestSqsClient();
+            InstanceProperties instanceProperties = createInstanceProperties();
+            SqsCompactionQueueHandler handler = new SqsCompactionQueueHandler(sqsClient, instanceProperties);
+
+            CompactionJob job = CompactionJob.builder()
+                    .tableId("test-table")
+                    .jobId("test-job-1")
+                    .partitionId("root")
+                    .inputFiles(List.of("file1.parquet", "file2.parquet"))
+                    .outputFile("output.parquet")
+                    .build();
+            String jobJson = new CompactionJobSerDe().toJson(job);
+
+            sqsClient.addMessageToQueue(jobJson);
+            Optional<MessageHandle> messageHandle = handler.receiveMessage();
+            assertThat(messageHandle).isPresent();
+
+            // When
+            CompactionJob retrievedJob = messageHandle.get().getJob();
+
+            // Then
+            assertThat(retrievedJob).isEqualTo(job);
+            assertThat(retrievedJob.getTableId()).isEqualTo("test-table");
+            assertThat(retrievedJob.getId()).isEqualTo("test-job-1");
+            assertThat(retrievedJob.getPartitionId()).isEqualTo("root");
+        }
+    }
+
+    @Nested
     @DisplayName("Return message to queue")
     class ReturnMessageToQueue {
 
