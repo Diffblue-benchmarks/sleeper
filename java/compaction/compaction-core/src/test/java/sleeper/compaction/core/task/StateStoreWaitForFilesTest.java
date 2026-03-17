@@ -218,6 +218,25 @@ public class StateStoreWaitForFilesTest {
         assertThat(jobTracker.streamAllJobs(job.getTableId())).isNotEmpty();
     }
 
+    @Test
+    void shouldCreateWaiterWithDefaultConstructor() throws Exception {
+        // Given
+        FileReference file = factory.rootFile("test.parquet", 123L);
+        update(stateStore).addFile(file);
+        CompactionJob job = jobForFileAtRoot(file);
+        update(stateStore).assignJobIds(List.of(job.createAssignJobIdRequest()));
+
+        // When
+        StateStoreWaitForFiles waiter = new StateStoreWaitForFiles(
+                new FixedTablePropertiesProvider(tableProperties),
+                new FixedStateStoreProvider(tableProperties, stateStore),
+                CompactionJobTracker.NONE);
+        waiter.wait(job, "test-task", "test-job-run");
+
+        // Then
+        assertThat(stateStore.isAssigned(List.of(job.createInputFileAssignmentsCheck()))).isTrue();
+    }
+
     private Duration foundWaitsTotal() {
         return foundWaits.stream()
                 .collect(reducing((Duration a, Duration b) -> a.plus(b)))
