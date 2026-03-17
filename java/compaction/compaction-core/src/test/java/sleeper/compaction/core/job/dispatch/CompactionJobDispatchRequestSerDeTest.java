@@ -51,4 +51,37 @@ public class CompactionJobDispatchRequestSerDeTest {
         assertThat(serDe.fromJson(json)).isEqualTo(request);
         Approvals.verify(json, new Options().forFile().withExtension(".json"));
     }
+
+    @Test
+    void shouldConvertRequestToFromJsonWithoutPrettyPrint() {
+        // Given
+        instanceProperties.set(DATA_BUCKET, "test-bucket");
+        tableProperties.set(TABLE_ID, "test-table");
+        CompactionJobDispatchRequest request = CompactionJobDispatchRequest.forTableWithBatchIdAtTime(
+                tableProperties, "test-batch", Instant.parse("2024-11-18T12:01:00Z"));
+
+        // When
+        String json = serDe.toJson(request);
+
+        // Then
+        assertThat(serDe.fromJson(json)).isEqualTo(request);
+        assertThat(json).doesNotContain("\n");
+    }
+
+    @Test
+    void shouldSerializeRequestToJsonWithoutPrettyPrint() {
+        // Given
+        instanceProperties.set(DATA_BUCKET, "test-bucket");
+        tableProperties.set(TABLE_ID, "test-table");
+        CompactionJobDispatchRequest request = CompactionJobDispatchRequest.forTableWithBatchIdAtTime(
+                tableProperties, "test-batch", Instant.parse("2024-11-18T12:01:00Z"));
+
+        // When
+        String json = serDe.toJson(request);
+
+        // Then
+        assertThat(json).contains("\"tableId\":\"test-table\"");
+        assertThat(json).contains("\"batchKey\"");
+        assertThat(json).contains("\"createTime\"");
+    }
 }
