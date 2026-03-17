@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import sleeper.core.tracker.compaction.job.query.CompactionJobStatus;
 import sleeper.core.tracker.compaction.job.update.CompactionJobCommittedEvent;
+import sleeper.core.tracker.compaction.job.update.CompactionJobCreatedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobFailedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobFinishedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobStartedEvent;
@@ -457,6 +458,70 @@ public class DynamoDBCompactionJobStatusFormatIT {
         assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(finishTime.toEpochMilli()));
         assertThat(record.get("RecordsRead").getN()).isEqualTo("0");
         assertThat(record.get("RecordsWritten").getN()).isEqualTo("0");
+    }
+
+    @Test
+    public void shouldCreateJobCreatedUpdate() {
+        // Given
+        CompactionJobCreatedEvent event = CompactionJobCreatedEvent.builder()
+                .jobId("job-1")
+                .tableId("table-1")
+                .partitionId("partition-1")
+                .inputFilesCount(5)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobCreated(event, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "PartitionId", "InputFilesCount");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("created");
+        assertThat(record.get("PartitionId").getS()).isEqualTo("partition-1");
+        assertThat(record.get("InputFilesCount").getN()).isEqualTo("5");
+    }
+
+    @Test
+    public void shouldCreateJobCreatedUpdateWithDifferentPartitionId() {
+        // Given
+        CompactionJobCreatedEvent event = CompactionJobCreatedEvent.builder()
+                .jobId("job-2")
+                .tableId("table-2")
+                .partitionId("partition-abc")
+                .inputFilesCount(10)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobCreated(event, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("created");
+        assertThat(record.get("PartitionId").getS()).isEqualTo("partition-abc");
+        assertThat(record.get("InputFilesCount").getN()).isEqualTo("10");
+    }
+
+    @Test
+    public void shouldCreateJobCreatedUpdateWithZeroInputFiles() {
+        // Given
+        CompactionJobCreatedEvent event = CompactionJobCreatedEvent.builder()
+                .jobId("job-3")
+                .tableId("table-3")
+                .partitionId("partition-3")
+                .inputFilesCount(0)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobCreated(event, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("created");
+        assertThat(record.get("PartitionId").getS()).isEqualTo("partition-3");
+        assertThat(record.get("InputFilesCount").getN()).isEqualTo("0");
     }
 
     @Test
