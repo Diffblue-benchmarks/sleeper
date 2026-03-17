@@ -19,6 +19,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import org.junit.jupiter.api.Test;
 
 import sleeper.core.tracker.compaction.job.query.CompactionJobStatus;
+import sleeper.core.tracker.compaction.job.update.CompactionJobFailedEvent;
 import sleeper.dynamodb.tools.DynamoDBRecordBuilder;
 
 import java.time.Instant;
@@ -178,5 +179,92 @@ public class DynamoDBCompactionJobStatusFormatIT {
         assertThat(record.get("JobId").getS()).isEqualTo("test-job");
         assertThat(record.get("UpdateTime").getN()).isEqualTo(String.valueOf(timeNow.toEpochMilli()));
         assertThat(record.get("ExpiryDate").getN()).isEqualTo(String.valueOf(expiry.getEpochSecond()));
+    }
+
+    @Test
+    public void shouldCreateJobFailedUpdateWithSingleFailureReason() {
+        // Given
+        Instant failureTime = Instant.parse("2024-03-17T11:30:00Z");
+        CompactionJobFailedEvent event = CompactionJobFailedEvent.builder()
+                .jobId("job-1")
+                .tableId("table-1")
+                .taskId("task-1")
+                .jobRunId("run-1")
+                .failureTime(failureTime)
+                .failureReasons(List.of("Connection timeout"))
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobFailedUpdate(event, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "TaskId", "JobRunId", "FinishTime", "FailureReasons");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("failed");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-1");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-1");
+        assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(failureTime.toEpochMilli()));
+        assertThat(record.get("FailureReasons").getL())
+                .hasSize(1)
+                .extracting(AttributeValue::getS)
+                .containsExactly("Connection timeout");
+    }
+
+    @Test
+    public void shouldCreateJobFailedUpdateWithMultipleFailureReasons() {
+        // Given
+        Instant failureTime = Instant.parse("2024-03-17T12:45:00Z");
+        CompactionJobFailedEvent event = CompactionJobFailedEvent.builder()
+                .jobId("job-2")
+                .tableId("table-2")
+                .taskId("task-2")
+                .jobRunId("run-2")
+                .failureTime(failureTime)
+                .failureReasons(List.of("Network error", "Retry failed", "Max attempts exceeded"))
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobFailedUpdate(event, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "TaskId", "JobRunId", "FinishTime", "FailureReasons");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("failed");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-2");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-2");
+        assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(failureTime.toEpochMilli()));
+        assertThat(record.get("FailureReasons").getL())
+                .hasSize(3)
+                .extracting(AttributeValue::getS)
+                .containsExactly("Network error", "Retry failed", "Max attempts exceeded");
+    }
+
+    @Test
+    public void shouldCreateJobFailedUpdateWithEmptyFailureReasons() {
+        // Given
+        Instant failureTime = Instant.parse("2024-03-17T13:00:00Z");
+        CompactionJobFailedEvent event = CompactionJobFailedEvent.builder()
+                .jobId("job-3")
+                .tableId("table-3")
+                .taskId("task-3")
+                .jobRunId("run-3")
+                .failureTime(failureTime)
+                .failureReasons(List.of())
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobFailedUpdate(event, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "TaskId", "JobRunId", "FinishTime", "FailureReasons");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("failed");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-3");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-3");
+        assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(failureTime.toEpochMilli()));
+        assertThat(record.get("FailureReasons").getL()).isEmpty();
     }
 }
