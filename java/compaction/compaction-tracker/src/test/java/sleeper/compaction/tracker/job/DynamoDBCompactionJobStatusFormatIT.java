@@ -19,6 +19,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import org.junit.jupiter.api.Test;
 
 import sleeper.core.tracker.compaction.job.query.CompactionJobStatus;
+import sleeper.core.tracker.compaction.job.update.CompactionJobCommittedEvent;
 import sleeper.core.tracker.compaction.job.update.CompactionJobFailedEvent;
 import sleeper.dynamodb.tools.DynamoDBRecordBuilder;
 
@@ -266,5 +267,77 @@ public class DynamoDBCompactionJobStatusFormatIT {
         assertThat(record.get("JobRunId").getS()).isEqualTo("run-3");
         assertThat(record.get("FinishTime").getN()).isEqualTo(String.valueOf(failureTime.toEpochMilli()));
         assertThat(record.get("FailureReasons").getL()).isEmpty();
+    }
+
+    @Test
+    public void shouldCreateJobCommittedUpdate() {
+        // Given
+        Instant commitTime = Instant.parse("2024-03-17T14:30:00Z");
+        CompactionJobCommittedEvent event = CompactionJobCommittedEvent.builder()
+                .jobId("job-1")
+                .tableId("table-1")
+                .taskId("task-1")
+                .jobRunId("run-1")
+                .commitTime(commitTime)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobCommittedUpdate(event, builder);
+
+        // Then
+        assertThat(record).containsKeys("UpdateType", "TaskId", "JobRunId", "CommitTime");
+        assertThat(record.get("UpdateType").getS()).isEqualTo("committed");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-1");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-1");
+        assertThat(record.get("CommitTime").getN()).isEqualTo(String.valueOf(commitTime.toEpochMilli()));
+    }
+
+    @Test
+    public void shouldCreateJobCommittedUpdateWithDifferentTaskAndRunIds() {
+        // Given
+        Instant commitTime = Instant.parse("2024-03-17T15:45:00Z");
+        CompactionJobCommittedEvent event = CompactionJobCommittedEvent.builder()
+                .jobId("job-2")
+                .tableId("table-2")
+                .taskId("task-abc")
+                .jobRunId("run-xyz")
+                .commitTime(commitTime)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobCommittedUpdate(event, builder);
+
+        // Then
+        assertThat(record.get("UpdateType").getS()).isEqualTo("committed");
+        assertThat(record.get("TaskId").getS()).isEqualTo("task-abc");
+        assertThat(record.get("JobRunId").getS()).isEqualTo("run-xyz");
+        assertThat(record.get("CommitTime").getN()).isEqualTo(String.valueOf(commitTime.toEpochMilli()));
+    }
+
+    @Test
+    public void shouldCreateJobCommittedUpdateWithCorrectCommitTimeConversion() {
+        // Given
+        Instant commitTime = Instant.parse("2024-03-17T16:00:00.123Z");
+        CompactionJobCommittedEvent event = CompactionJobCommittedEvent.builder()
+                .jobId("job-3")
+                .tableId("table-3")
+                .taskId("task-3")
+                .jobRunId("run-3")
+                .commitTime(commitTime)
+                .build();
+        DynamoDBRecordBuilder builder = new DynamoDBRecordBuilder();
+
+        // When
+        Map<String, AttributeValue> record = DynamoDBCompactionJobStatusFormat
+                .createJobCommittedUpdate(event, builder);
+
+        // Then
+        long expectedEpochMilli = 1710691200123L;
+        assertThat(commitTime.toEpochMilli()).isEqualTo(expectedEpochMilli);
+        assertThat(record.get("CommitTime").getN()).isEqualTo(String.valueOf(expectedEpochMilli));
     }
 }
