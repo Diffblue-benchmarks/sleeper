@@ -33,6 +33,8 @@ import sleeper.core.statestore.testutils.InMemoryTransactionLogStateStore;
 import sleeper.core.statestore.testutils.InMemoryTransactionLogStore;
 import sleeper.core.statestore.testutils.InMemoryTransactionLogs;
 import sleeper.core.tracker.compaction.job.CompactionJobTracker;
+import sleeper.core.tracker.compaction.job.InMemoryCompactionJobTracker;
+import sleeper.core.tracker.job.run.JobRunTime;
 import sleeper.core.util.ThreadSleep;
 import sleeper.core.util.ThreadSleepTestHelper;
 
@@ -43,15 +45,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.DoubleSupplier;
+import java.util.function.Supplier;
 
 import static java.util.stream.Collectors.reducing;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static sleeper.compaction.core.job.CompactionJobStatusFromJobTestData.compactionJobCreated;
 import static sleeper.compaction.core.task.StateStoreWaitForFiles.JOB_ASSIGNMENT_WAIT_ATTEMPTS;
 import static sleeper.core.properties.testutils.InstancePropertiesTestHelper.createTestInstanceProperties;
 import static sleeper.core.properties.testutils.TablePropertiesTestHelper.createTestTableProperties;
 import static sleeper.core.schema.SchemaTestHelper.schemaWithKey;
 import static sleeper.core.statestore.testutils.StateStoreUpdatesWrapper.update;
+import static sleeper.core.tracker.compaction.job.CompactionJobStatusTestData.failedCompactionRun;
 import static sleeper.core.util.ExponentialBackoffWithJitterTestHelper.constantJitterFraction;
 import static sleeper.core.util.ExponentialBackoffWithJitterTestHelper.fixJitterSeed;
 
@@ -189,6 +194,30 @@ public class StateStoreWaitForFilesTest {
         assertThat(exceptions).isExhausted();
     }
 
+    @Test
+    void shouldReportFailureWhenNonThrottlingExceptionOccurs() throws Exception {
+        // Given
+        InMemoryCompactionJobTracker jobTracker = new InMemoryCompactionJobTracker();
+        FileReference file = factory.rootFile("test.parquet", 123L);
+        update(stateStore).addFile(file);
+        CompactionJob job = jobForFileAtRoot(file);
+        Instant startTime = Instant.parse("2024-03-04T10:50:00Z");
+        Instant failureTime = Instant.parse("2024-03-04T10:50:01Z");
+        Iterator<Instant> times = List.of(startTime, failureTime).iterator();
+
+        RuntimeException exception = new RuntimeException("State store error");
+        filesLogStore.atStartOfReadTransactions(() -> {
+            throw exception;
+        });
+
+        // When / Then
+        assertThatThrownBy(() -> waiterWithJobTracker(jobTracker, times::next).wait(job, "test-task", "test-job-run"))
+                .isInstanceOf(StateStoreException.class)
+                .hasMessage("Failed updating state from transactions")
+                .hasCauseInstanceOf(RuntimeException.class);
+        assertThat(jobTracker.streamAllJobs(job.getTableId())).isNotEmpty();
+    }
+
     private Duration foundWaitsTotal() {
         return foundWaits.stream()
                 .collect(reducing((Duration a, Duration b) -> a.plus(b)))
@@ -213,6 +242,14 @@ public class StateStoreWaitForFilesTest {
                 new FixedStateStoreProvider(tableProperties, stateStore),
                 CompactionJobTracker.NONE, waiter, Instant::now)
                 .withAttemptsAndThrottlingRetries(attempts, jitter);
+    }
+
+    private StateStoreWaitForFiles waiterWithJobTracker(CompactionJobTracker jobTracker, Supplier<Instant> timeSupplier) {
+        return new StateStoreWaitForFilesTestHelper(
+                new FixedTablePropertiesProvider(tableProperties),
+                new FixedStateStoreProvider(tableProperties, stateStore),
+                jobTracker, waiter, timeSupplier)
+                .withAttempts(1);
     }
 
     protected void actionAfterWait(ThreadSleepTestHelper.WaitAction action) throws Exception {
