@@ -392,6 +392,48 @@ public class CreateCompactionJobsTest {
     }
 
     @Nested
+    @DisplayName("Generate batch IDs")
+    class GenerateBatchIds {
+
+        @Test
+        void shouldGenerateRandomBatchId() {
+            // Given
+            GenerateBatchId generator = GenerateBatchId.random();
+
+            // When
+            String batchId = generator.generate();
+
+            // Then
+            assertThat(batchId).isNotNull().isNotEmpty();
+        }
+
+        @Test
+        void shouldGenerateDifferentBatchIdsOnMultipleCalls() {
+            // Given
+            GenerateBatchId generator = GenerateBatchId.random();
+
+            // When
+            String batchId1 = generator.generate();
+            String batchId2 = generator.generate();
+
+            // Then
+            assertThat(batchId1).isNotEqualTo(batchId2);
+        }
+
+        @Test
+        void shouldGenerateValidUuidFormat() {
+            // Given
+            GenerateBatchId generator = GenerateBatchId.random();
+
+            // When
+            String batchId = generator.generate();
+
+            // Then
+            assertThat(batchId).matches("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}");
+        }
+    }
+
+    @Nested
     @DisplayName("Save file assignment asynchronously")
     class SaveFileAssignmentAsync {
 
