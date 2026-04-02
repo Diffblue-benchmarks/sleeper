@@ -66,6 +66,22 @@ public class StateStoreWaitForFilesTest {
     private ThreadSleep waiter = ThreadSleepTestHelper.recordWaits(foundWaits);
 
     @Test
+    void shouldCreateWithDefaultsWhenUsingConvenienceConstructor() throws Exception {
+        // Given
+        FileReference file = factory.rootFile("test.parquet", 123L);
+        update(stateStore).addFile(file);
+        CompactionJob job = jobForFileAtRoot(file);
+        update(stateStore).assignJobIds(List.of(job.createAssignJobIdRequest()));
+
+        // When / Then
+        StateStoreWaitForFiles waitForFiles = new StateStoreWaitForFiles(
+                new FixedTablePropertiesProvider(tableProperties),
+                new FixedStateStoreProvider(tableProperties, stateStore),
+                CompactionJobTracker.NONE);
+        waitForFiles.wait(job, "test-task", "test-job-run");
+    }
+
+    @Test
     void shouldSkipWaitIfFilesAreAlreadyAssignedToJob() throws Exception {
         // Given
         FileReference file = factory.rootFile("test.parquet", 123L);
