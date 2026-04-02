@@ -19,6 +19,7 @@ import com.amazonaws.services.lambda.runtime.ClientContext;
 import com.amazonaws.services.lambda.runtime.CognitoIdentity;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import sleeper.task.common.EC2InstanceDetails;
@@ -37,6 +38,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SafeTerminationTest {
+
+    static class LowTimeContext extends FakeContext {
+        @Override
+        public int getRemainingTimeInMillis() {
+            return 100;
+        }
+    }
 
     /**
      * Fake Lambda context class.
@@ -431,5 +439,26 @@ class SafeTerminationTest {
 
         // Then
         assertThat(totalCapacity).isEqualTo(7);
+    }
+
+    @Test
+    void shouldBreakWhenRunningOutOfTime() {
+        // Given
+        List<EC2InstanceDetails> details = new ArrayList<>();
+        details.add(new EC2InstanceDetails("id1", "someARN", Instant.now(), 1, 1, 1, 1, 0, 0));
+        details.add(new EC2InstanceDetails("id2", "someARN", Instant.now(), 1, 1, 1, 1, 0, 0));
+
+        // When
+        Set<String> result = SafeTerminationLambda.findEmptyInstances(details, 10, new LowTimeContext());
+
+        // Then
+        assertThat(result).containsExactly("id1");
+    }
+
+    @Test
+    void shouldThrowWhenConfigBucketEnvVarMissing() {
+        // Given / When / Then
+        assertThatThrownBy(() -> new SafeTerminationLambda())
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
