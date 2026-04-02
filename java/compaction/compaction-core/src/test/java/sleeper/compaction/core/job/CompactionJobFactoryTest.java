@@ -28,6 +28,7 @@ import sleeper.core.statestore.FileReferenceFactory;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static sleeper.core.properties.instance.CdkDefinedInstanceProperty.DATA_BUCKET;
 import static sleeper.core.properties.instance.CommonProperty.FILE_SYSTEM;
 import static sleeper.core.properties.table.TableProperty.TABLE_ID;
@@ -64,5 +65,17 @@ public class CompactionJobFactoryTest {
                 .outputFile("file://test-data-bucket/test-table-id/data/partition_root/job1.parquet")
                 .tableId("test-table-id")
                 .build());
+    }
+
+    @Test
+    void shouldThrowWhenFilePartitionDoesNotMatchProvidedPartition() {
+        // Given
+        FileReference file = fileFactory.rootFile("file1.parquet", 123L);
+        CompactionJobFactory jobFactory = new CompactionJobFactory(instanceProperties, tableProperties, () -> "job1");
+
+        // When / Then
+        assertThatThrownBy(() -> jobFactory.createCompactionJob("job1", List.of(file), "other-partition"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("other-partition");
     }
 }
