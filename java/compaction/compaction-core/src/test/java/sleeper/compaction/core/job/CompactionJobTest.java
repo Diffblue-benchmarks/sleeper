@@ -121,6 +121,21 @@ public class CompactionJobTest {
     }
 
     @Test
+    public void shouldNotEqualNullOrDifferentType() {
+        // Given
+        CompactionJob job = CompactionJob.builder()
+                .tableId("table")
+                .jobId("job-1")
+                .inputFiles(Arrays.asList("file1", "file2"))
+                .outputFile("outputFile")
+                .partitionId("partition1").build();
+
+        // When / Then
+        assertThat(job.equals(null)).isFalse();
+        assertThat(job.equals("not-a-compaction-job")).isFalse();
+    }
+
+    @Test
     public void testShouldThrowOnDuplicateNames() {
         // Given
         List<String> names = Arrays.asList("file1", "file2", "file3", "file1");
