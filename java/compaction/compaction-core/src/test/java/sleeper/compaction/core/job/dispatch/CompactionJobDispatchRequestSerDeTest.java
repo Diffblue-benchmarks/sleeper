@@ -37,6 +37,22 @@ public class CompactionJobDispatchRequestSerDeTest {
     TableProperties tableProperties = createTestTablePropertiesWithNoSchema(instanceProperties);
 
     @Test
+    void shouldSerialiseToJson() {
+        // Given
+        instanceProperties.set(DATA_BUCKET, "test-bucket");
+        tableProperties.set(TABLE_ID, "test-table");
+        CompactionJobDispatchRequest request = CompactionJobDispatchRequest.forTableWithBatchIdAtTime(
+                tableProperties, "test-batch", Instant.parse("2024-11-18T12:01:00Z"));
+
+        // When
+        String json = serDe.toJson(request);
+
+        // Then
+        assertThat(serDe.fromJson(json)).isEqualTo(request);
+        assertThat(json).doesNotContain("\n");
+    }
+
+    @Test
     void shouldConvertRequestToFromJson() {
         // Given
         instanceProperties.set(DATA_BUCKET, "test-bucket");
