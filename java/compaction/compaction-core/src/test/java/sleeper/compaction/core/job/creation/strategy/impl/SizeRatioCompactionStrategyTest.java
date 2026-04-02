@@ -105,6 +105,30 @@ public class SizeRatioCompactionStrategyTest extends CompactionStrategyTestBase 
     }
 
     @Test
+    void shouldCreateNoJobsWhenMaxConcurrentJobsPerPartitionIsAlreadyReached() {
+        // Given
+        tableProperties.set(COMPACTION_FILES_BATCH_SIZE, "5");
+        tableProperties.setNumber(SIZE_RATIO_COMPACTION_STRATEGY_MAX_CONCURRENT_JOBS_PER_PARTITION, 1);
+        FileReference fileWithJob = FileReference.builder()
+                .filename("running-job.parquet")
+                .partitionId("root")
+                .jobId("running-job-1")
+                .numberOfRecords(50L)
+                .build();
+        List<FileReference> allFiles = new ArrayList<>();
+        allFiles.add(fileWithJob);
+        for (int i = 0; i < 5; i++) {
+            allFiles.add(fileReferenceFactory.rootFile("file-" + i, 50L));
+        }
+
+        // When
+        List<CompactionJob> compactionJobs = createCompactionJobs(allFiles, partitionTree.getAllPartitions());
+
+        // Then
+        assertThat(compactionJobs).isEmpty();
+    }
+
+    @Test
     void shouldCreateOneJobWhenTwoBatchesCanBeCreatedButLimitOfOneJobPerPartitionIsSet() {
         // Given
         tableProperties.set(COMPACTION_FILES_BATCH_SIZE, "5");
