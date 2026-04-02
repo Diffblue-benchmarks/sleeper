@@ -162,6 +162,46 @@ public class CompactionStrategyIndexTest {
         assertThat(index.getFilesInLeafPartitions()).isEmpty();
     }
 
+    @Nested
+    @DisplayName("FilesInPartition value methods")
+    class FilesInPartitionValueMethods {
+        @Test
+        void shouldComputeHashCode() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema).rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference file = factory.rootFile("file.parquet", 100L);
+            FilesInPartition partition = new FilesInPartition(tableStatus, "root", List.of(file), List.of());
+
+            // When / Then
+            assertThat(partition.hashCode()).isEqualTo(partition.hashCode());
+        }
+
+        @Test
+        void shouldNotEqualObjectOfDifferentType() {
+            // Given
+            FilesInPartition partition = new FilesInPartition(tableStatus, "root", List.of(), List.of());
+
+            // When / Then
+            assertThat(partition).isNotEqualTo("not a FilesInPartition");
+        }
+
+        @Test
+        void shouldHaveToString() {
+            // Given
+            PartitionsBuilder partitionsBuilder = new PartitionsBuilder(schema).rootFirst("root");
+            FileReferenceFactory factory = FileReferenceFactory.from(partitionsBuilder.buildTree());
+            FileReference file = factory.rootFile("file.parquet", 100L);
+            FilesInPartition partition = new FilesInPartition(tableStatus, "root", List.of(file), List.of());
+
+            // When
+            String result = partition.toString();
+
+            // Then
+            assertThat(result).contains("FilesInPartition").contains("partitionId=root");
+        }
+    }
+
     private FilesInPartition unassignedFilesInPartition(String partitionId, List<FileReference> unassignedFiles) {
         return new FilesInPartition(tableStatus, partitionId, unassignedFiles, List.of());
     }
