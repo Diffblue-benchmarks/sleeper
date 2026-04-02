@@ -275,6 +275,30 @@ public class CreateCompactionJobsTest {
         }
 
         @Test
+        void shouldCreateJobsInFullBatchesWhenLeftoverFilesExceedBatchSize() throws Exception {
+            // Given we use the SizeRatioCompactionStrategy with a batch size of 3
+            tableProperties.set(COMPACTION_STRATEGY_CLASS, SizeRatioCompactionStrategy.class.getName());
+            tableProperties.set(COMPACTION_FILES_BATCH_SIZE, "3");
+            update(stateStore).initialise(new PartitionsBuilder(schema).singlePartition("root").buildList());
+            // And we have 4 files with geometrically increasing sizes that won't meet the size ratio criteria
+            // (for each grouping, sum of smaller files < ratio * largest), so the strategy creates no jobs
+            FileReference file1 = fileFactory().rootFile("file1", 1L);
+            FileReference file2 = fileFactory().rootFile("file2", 2L);
+            FileReference file3 = fileFactory().rootFile("file3", 4L);
+            FileReference file4 = fileFactory().rootFile("file4", 8L);
+            update(stateStore).addFiles(List.of(file1, file2, file3, file4));
+
+            // When we force create jobs
+            createJobWithForceAllFiles(fixJobIds("batch-job", "tail-job"));
+
+            // Then one job is created for the first full batch of 3 files (lines 259-262 in createJobsFromLeftoverFiles)
+            // and one job for the remaining file
+            assertThat(jobs).containsExactly(
+                    compactionFactory().createCompactionJob("batch-job", List.of(file1, file2, file3), "root"),
+                    compactionFactory().createCompactionJob("tail-job", List.of(file4), "root"));
+        }
+
+        @Test
         void shouldCreateJobsWhenStrategyDoesNotCreateJobsForSplitFilesWhenCompactingAllFiles() throws Exception {
             // Given we use the BasicCompactionStrategy with a batch size of 3
             tableProperties.set(COMPACTION_STRATEGY_CLASS, BasicCompactionStrategy.class.getName());
